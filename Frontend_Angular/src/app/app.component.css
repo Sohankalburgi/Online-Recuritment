@@ -1,0 +1,17 @@
+.navbar {
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    color: white;
+}
+
+.navbar-brand, .nav-link {
+    color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #ddd;
+}
+
+.nav-link.active {
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
+}

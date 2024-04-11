@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  registrationForm: FormGroup = this.fb.group({}) as FormGroup; // Use a type assertion here
-  nationalities = ['Indian', 'American', 'British', /*...other nationalities...*/];
+  registrationForm!: FormGroup;
+  nationalities = ['Indian', 'American', 'British'];
 
   constructor(private fb: FormBuilder) { }
 
@@ -17,19 +17,20 @@ export class RegistrationComponent implements OnInit {
       fullname: ['', Validators.required],
       address: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      password: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       birthdate: ['', Validators.required],
-      gender: this.fb.group({
-        gender: ['', Validators.required]
-      }),
-      nationality: ['', Validators.required]
+      nationality: ['', Validators.required],
+      gender: ['', Validators.required] // Simplified gender field
     });
   }
 
   onSubmit(): void {
     if (this.registrationForm.valid) {
-      // Handle the form submission
+      console.log('Form Data:', this.registrationForm.value);
+      // Implement actual submission logic here
+    } else {
+      this.registrationForm.markAllAsTouched(); // Ensure all fields are touched to show validation messages
     }
   }
 }

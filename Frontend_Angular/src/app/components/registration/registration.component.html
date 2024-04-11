@@ -1,44 +1,92 @@
-<p>registration works!</p>
-<body>
-<div class="container">
-  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <h1>Student Registration Page</h1>
-
-    <label for="fullname">Full Name</label>
-    <input type="text" id="fullname" formControlName="fullname" required>
-
-    <label for="address">Address</label>
-    <input type="text" id="address" formControlName="address" required>
-
-    <label for="email">Email Id</label>
-    <input type="email" id="email" formControlName="email" required>
-
-    <label>Phone no</label>
-    <input type="tel" id="phone" formControlName="phone" required>
-
-    <label for="password">Password</label>
-    <input type="password" id="password" formControlName="password" required>
-
-    <label for="birthdate">Date of Birth (dd-mm-yyyy)</label>
-    <input type="text" id="birthdate" formControlName="birthdate" required>
-
-    <label for="gender">Gender</label>
-    <div formGroupName="gender">
-      <input type="radio" id="male" formControlName="gender" value="male">Male
-      <input type="radio" id="female" formControlName="gender" value="female">Female
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="text-center mb-4">Student Registration Page</h1>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+              <div class="mb-3">
+                <label for="fullname" class="form-label">Full Name</label>
+                <input type="text" id="fullname" formControlName="fullname" class="form-control" placeholder="Enter your full name" aria-describedby="fullnameHelp">
+                <div *ngIf="registrationForm.get('fullname')?.touched && registrationForm.get('fullname')?.errors?.['required']" class="text-danger">
+                  Full name is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" id="address" formControlName="address" class="form-control" placeholder="Enter your address" required>
+                <div *ngIf="registrationForm.get('address')?.invalid && (registrationForm.get('address')?.dirty || registrationForm.get('address')?.touched)" class="text-danger">
+                  <div *ngIf="registrationForm.get('address')?.errors?.['required']">
+                    Address is required.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Id</label>
+                <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter your email" required>
+                <div *ngIf="registrationForm.get('email')?.invalid && (registrationForm.get('email')?.dirty || registrationForm.get('email')?.touched)" class="text-danger">
+                  <div *ngIf="registrationForm.get('email')?.errors?.['required']">
+                    Email is required.
+                  </div>
+                  <div *ngIf="registrationForm.get('email')!.errors?.['email']">
+                    Please enter a valid email address.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone no</label>
+                <input type="tel" id="phone" formControlName="phone" class="form-control" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+                <div *ngIf="registrationForm.get('phone')?.invalid && (registrationForm.get('phone')?.dirty || registrationForm.get('phone')?.touched)" class="text-danger">
+                  <div *ngIf="registrationForm.get('phone')?.errors?.['required']">
+                    Phone number is required.
+                  </div>
+                  <div *ngIf="registrationForm.get('phone')?.errors?.['pattern']">
+                    Please enter a valid phone number.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password" minlength="8" required>
+                <div *ngIf="registrationForm.get('password')?.invalid && (registrationForm.get('password')?.dirty || registrationForm.get('password')?.touched)" class="text-danger">
+                  <div *ngIf="registrationForm.get('password')?.errors?.['required']">
+                    Password is required.
+                  </div>
+                  <div *ngIf="registrationForm.get('password')?.errors?.['minlength']">
+                    Password must be at least 8 characters long.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="birthdate" class="form-label">Date of Birth</label>
+                <input type="date" id="birthdate" formControlName="birthdate" class="form-control" required>
+                <div *ngIf="registrationForm.get('birthdate')?.invalid && (registrationForm.get('birthdate')?.dirty || registrationForm.get('birthdate')?.touched)" class="text-danger">
+                  <div *ngIf="registrationForm.get('birthdate')?.errors?.['required']">
+                    Date of birth is required.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="nationality" class="form-label">Nationality</label>
+                <select id="nationality" formControlName="nationality" class="form-select" aria-placeholder="Select Nationality" required>
+                  <option value="">Select Nationality</option>
+                  <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
+                </select>
+                <div *ngIf="registrationForm.get('nationality')?.invalid && (registrationForm.get('nationality')?.dirty || registrationForm.get('nationality')?.touched)" class="text-danger">
+                  <div *ngIf="registrationForm.get('nationality')?.errors?.['required']">
+                    Nationality is required.
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+              <p class="text-center mt-3">
+                Already a Member? <a routerLink="/login">Login</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <br>
-
-    Nationality
-    <select id="nationality" formControlName="nationality">
-      <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
-    </select><br>
-
-    <input type="submit" value="Submit" [disabled]="!registrationForm.valid">
-    <div>
-      Already have an account? <a routerLink="/login">Login</a>
-    </div>
-  </form>
-</div>
+  </div>
 </body>

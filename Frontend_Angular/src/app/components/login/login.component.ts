@@ -12,8 +12,8 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(8)]]
   });
 
-  errorMessage!: string; // Define errorMessage property
-  hide = true; // Define hide property
+  errorMessage!: string; 
+  hide = true; 
 
   constructor(private fb: FormBuilder) { }
 
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // handle form submission
+      console.log('Form Data:', this.loginForm.value);
     } else {
       this.errorMessage = 'Please fill out the form correctly.';
     }

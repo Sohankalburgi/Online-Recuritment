@@ -1,11 +1,12 @@
 <body class="bg-light">
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h1 class="text-center mb-4">Student Registration Page</h1>
-            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+  <body class="bg-light">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="text-center mb-4">Student Registration Page</h1>
+              <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
               <div class="mb-3">
                 <label for="fullname" class="form-label">Full Name</label>
                 <input type="text" id="fullname" formControlName="fullname" class="form-control" placeholder="Enter your full name" aria-describedby="fullnameHelp">
@@ -31,6 +32,21 @@
                   </div>
                   <div *ngIf="registrationForm.get('email')!.errors?.['email']">
                     Please enter a valid email address.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="emailVerification" class="form-label">Email Verification</label>
+                <input type="email" id="emailVerification" formControlName="emailVerification" class="form-control" placeholder="Enter your email again" required>
+                <div *ngIf="registrationForm.get('emailVerification')?.invalid && (registrationForm.get('emailVerification')?.dirty || registrationForm.get('emailVerification')?.touched)" class="text-danger">
+                  <div *ngIf="registrationForm.get('emailVerification')?.errors?.['required']">
+                    Email verification is required.
+                  </div>
+                  <div *ngIf="registrationForm.get('emailVerification')?.errors?.['email']">
+                    Please enter a valid email address.
+                  </div>
+                  <div *ngIf="registrationForm.get('emailVerification')?.errors?.['notMatch']">
+                    Email verification does not match.
                   </div>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ValidatorFn, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -8,29 +9,39 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
-  nationalities = ['Indian', 'American', 'British'];
+  nationalities = ['', 'American', 'Australian', 'British', 'Canadian', 'Indian']; 
+  // ...
 
-  constructor(private fb: FormBuilder) { }
+  emailMatchValidator: ValidatorFn = (control: AbstractControl) => {
+    const email = control.get('email')?.value;
+    const emailVerification = control.get('emailVerification')?.value;
 
-  ngOnInit(): void {
-    this.registrationForm = this.fb.group({
-      fullname: ['', Validators.required],
-      address: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      birthdate: ['', Validators.required],
-      nationality: ['', Validators.required],
-      gender: ['', Validators.required] // Simplified gender field
-    });
+    if (email !== emailVerification) {
+      return { notMatch: true };
+    }
+
+    return null;
+  };
+
+  ngOnInit() {
+    this.registrationForm = new FormGroup({
+      'fullname': new FormControl(null, Validators.required),
+      'address': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'emailVerification': new FormControl(null, [Validators.required, Validators.email]),
+      'phone': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{10}')]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      'birthdate': new FormControl(null, Validators.required),
+      'nationality': new FormControl(null, Validators.required)
+    }, { validators: this.emailMatchValidator });
   }
 
   onSubmit(): void {
     if (this.registrationForm.valid) {
       console.log('Form Data:', this.registrationForm.value);
-      // Implement actual submission logic here
+      
     } else {
-      this.registrationForm.markAllAsTouched(); // Ensure all fields are touched to show validation messages
+      this.registrationForm.markAllAsTouched(); 
     }
   }
 }

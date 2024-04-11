@@ -9,6 +9,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class ForgotpasswordComponent implements OnInit {
   
   forgotpasswordform!: FormGroup;
+  errorMessage: string = ''; 
 
   constructor(private fb: FormBuilder) { }
 
@@ -20,12 +21,20 @@ export class ForgotpasswordComponent implements OnInit {
       confirmPassword: ['', Validators.required]
     }, {validator: this.checkPasswords });
   }
-form: any;
 
-  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+  checkPasswords(group: FormGroup) { 
     let pass = group.get('newPassword')?.value;
     let confirmPass = group.get('confirmPassword')?.value;
 
     return pass === confirmPass ? null : { notSame: true }     
+  }
+
+  onSubmit() {
+    if (this.forgotpasswordform.valid) {
+      // handle the form submission
+      console.log(this.forgotpasswordform.value);
+    } else {
+      this.errorMessage = 'Form is not valid'; 
+    }
   }
 }

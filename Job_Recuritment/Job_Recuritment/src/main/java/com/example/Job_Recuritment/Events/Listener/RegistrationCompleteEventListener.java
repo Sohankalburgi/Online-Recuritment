@@ -17,12 +17,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 @Component
-
 public class RegistrationCompleteEventListener implements ApplicationListener<RegistrationCompleteEvent> {
     @Autowired
     private VerificationTokenService tokenService;
     @Autowired
     private  JavaMailSender mailSender;
+
+
+
 
     private User user;
 
@@ -71,7 +73,7 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
             throws MessagingException, UnsupportedEncodingException {
         MimeMessage message = mailSender.createMimeMessage();
         var messageHelper = new MimeMessageHelper(message);
-        messageHelper.setFrom("sohankalburgi2004@gmail.com", senderName);
+        messageHelper.setFrom("eshwarsakg07@gmail.com", senderName);
         messageHelper.setTo(theUser.getEmail());
         messageHelper.setSubject(subject);
         messageHelper.setText(mailContent, true);

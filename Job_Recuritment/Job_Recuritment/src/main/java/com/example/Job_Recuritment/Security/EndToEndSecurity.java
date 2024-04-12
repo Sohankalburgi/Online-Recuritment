@@ -37,10 +37,7 @@ public class EndToEndSecurity {
         return http.csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/",
-                        "/login",
-                        "/error",
-                        "/registration/**")
+                        "/register")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

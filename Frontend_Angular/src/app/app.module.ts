@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JobSearchComponent } from './components/job-search/job-search.component';
+import { LoginSuccessComponent } from './components/login-success/login-success.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { JobSearchComponent } from './components/job-search/job-search.component
     RegistrationComponent,
     ForgotpasswordComponent,
     HomeComponent,
-    JobSearchComponent
+    JobSearchComponent,
+    LoginSuccessComponent
   ],
   imports: [
     BrowserModule,

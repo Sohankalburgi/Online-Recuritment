@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,8 @@ import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassw
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { JobSearchComponent } from './components/job-search/job-search.component';
+import { LoginSuccessComponent } from './components/login-success/login-success.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     RegistrationComponent,
     ForgotpasswordComponent,
-    HomeComponent
+    HomeComponent,
+    JobSearchComponent,
+    LoginSuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    FontAwesomeModule  // Add ReactiveFormsModule to the imports array
+    FontAwesomeModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

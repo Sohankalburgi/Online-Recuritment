@@ -1,0 +1,20 @@
+package com.example.OnlineRecruitment.Services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.OnlineRecruitment.Entities.Graduate;
+import com.example.OnlineRecruitment.Repositories.GraduateRepository;
+import com.example.OnlineRecruitment.ServiceInterface.GraduateServiceInterface;
+
+@Service
+public class GraduateServices implements GraduateServiceInterface{
+	
+	@Autowired
+	private GraduateRepository graduateRepository;
+	
+	@Override
+	public void saveGraduate(Graduate graduate) {
+		graduateRepository.save(graduate);
+	}
+}

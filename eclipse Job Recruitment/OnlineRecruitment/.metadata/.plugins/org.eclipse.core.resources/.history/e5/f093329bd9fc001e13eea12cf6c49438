@@ -1,0 +1,48 @@
+package com.example.OnlineRecruitment.Entities;
+
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Lob;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Entity
+@Setter
+@Getter
+@NoArgsConstructor
+public class Graduate extends User{
+	
+	private int yearOfPassing;
+	private float percentage;
+	private String[] languages;
+	private String[] skills;
+	private String[] projects;
+	private String fileName;
+	@Lob
+	private byte[] file;
+	
+	
+	public Graduate(int yearOfPassing, float percentage, String[] languages, String[] skills
+			, String[] projects,String name,String email,String password,
+			String phone,String fileName,byte[] file) {
+		super(name,email,password,phone);
+		this.yearOfPassing = yearOfPassing;
+		this.percentage = percentage;
+		this.languages = languages;
+		this.skills = skills;
+		this.projects = projects;
+		this.fileName = fileName;
+		this.file = file;
+	}
+	
+	
+	
+
+}

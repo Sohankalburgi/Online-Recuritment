@@ -1,0 +1,29 @@
+package com.example.OnlineRecruitment.Services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.OnlineRecruitment.Entities.User;
+import com.example.OnlineRecruitment.Repositories.UserRepository;
+import com.example.OnlineRecruitment.ServiceInterface.UserServiceInterface;
+
+@Service
+public class UserService implements UserServiceInterface{
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Override
+	public void saveUser(User user) {
+		// TODO Auto-generated method stub
+		userRepository.save(user);
+	}
+
+	@Override
+	public User getUserById(Integer id) {
+		// TODO Auto-generated method stub
+		return userRepository.getById(id);
+	}
+	
+
+}

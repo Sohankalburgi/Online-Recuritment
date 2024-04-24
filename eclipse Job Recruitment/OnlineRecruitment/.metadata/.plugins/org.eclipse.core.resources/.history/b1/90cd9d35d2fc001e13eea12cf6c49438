@@ -1,0 +1,17 @@
+package com.example.OnlineRecruitment.Entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+public class Graduate extends User{
+	
+	private int yearOfPassing;
+	private float percentage;
+	private String[] languages;
+	private String[] skills;
+	private String[] projects;
+	
+	
+
+}

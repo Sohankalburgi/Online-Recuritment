@@ -1,0 +1,22 @@
+package com.example.OnlineRecruitment.Controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.OnlineRecruitment.Entities.User;
+import com.example.OnlineRecruitment.Services.UserService;
+
+@RestController
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+	
+	@PostMapping("/user")
+	public void saveUser(@RequestBody User user) {
+		userService.saveUser(user);
+	}
+}

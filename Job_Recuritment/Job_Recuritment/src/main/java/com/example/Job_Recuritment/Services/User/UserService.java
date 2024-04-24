@@ -33,9 +33,6 @@ public class UserService {
 
     public User registerUser(RegistrationRequest registration) {
 
-        System.out.println("registerUser service");
-        System.out.println(registration.getFullName());
-
         var user = new User(registration.getFullName(),registration.getAddress(),registration.getEmail(),registration.getPhone()
         ,passwordEncoder.encode(registration.getPassword()),registration.getDOB(),registration.getGender(),registration.getNationality(), Arrays.asList(new Role()));
 

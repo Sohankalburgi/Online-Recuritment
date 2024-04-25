@@ -1,0 +1,94 @@
+<div class="container">
+    <h1 class="my-4 text-center">Find your dream job now</h1>
+    <div class="row mb-3">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Enter skills/designations/companies"
+                [(ngModel)]="searchTerm">
+        </div>
+        <div class="col">
+            <select class="form-select" [(ngModel)]="selectedExperience">
+                <option selected>Experience</option>
+                <option *ngFor="let experience of experiences" [value]="experience">{{ experience }}</option>
+            </select>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Enter location" [(ngModel)]="location">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="search()">Search</button>
+        </div>
+    </div>
+
+    <!-- Filter buttons -->
+    <div class="d-flex flex-wrap mb-4">
+        <button type="button" class="btn btn-outline-secondary m-2" style="color: rgb(255, 255, 255);" *ngFor="let filter of filters">{{ filter }}</button>
+    </div>
+
+    <!-- Companies section -->
+    <div class="mb-5">
+        <h2 class="my-4 text-center">Top companies hiring now</h2>
+        <div class="d-flex justify-content-start overflow-auto">
+            <div class="card me-3" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.naukri.com/hotjobs/images/v3/infosys_nov13.gif" alt="Company Logo" class="me-2" style="width: auto; height: 100%;">
+                    </div>
+                    <h5 class="card-title text-center">Infosys</h5>
+                    <p class="card-text text-center">Global leader in technology services.</p>
+                    <div class="d-flex justify-content-center">
+                        <a routerLink="" class="btn btn-primary mt-3">View more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card me-3" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://img.naukimg.com/logo_images/groups/v2/1288.gif" alt="Company Logo" class="me-2" style="width: auto; height: 100%;">
+                    </div>
+                    <h5 class="card-title text-center">Capgemini</h5>
+                    <p class="card-text text-center">Global digital solutions & technology company.</p>
+                    <div class="d-flex justify-content-center">
+                        <a routerLink="" class="btn btn-primary mt-3">View more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card me-3" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://img.naukimg.com/logo_images/groups/v2/4156.gif" alt="Company Logo" class="me-2" style="width: auto; height: 100%;">
+                    </div>
+                    <h5 class="card-title text-center">Cognizant</h5>
+                    <p class="card-text text-center">Leading ITeS company with global presence.</p>
+                    <div class="d-flex justify-content-center">
+                        <a routerLink="" class="btn btn-primary mt-3">View more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card me-3" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://img.naukimg.com/logo_images/groups/v2/1288.gif" alt="Company Logo" class="me-2" style="width: auto; height: 100%;">
+                    </div>
+                    <h5 class="card-title text-center">Genpact</h5>
+                    <p class="card-text text-center">Global professional sevices</p>
+                    <div class="d-flex justify-content-center">
+                        <a routerLink="" class="btn btn-primary mt-3">View more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.naukri.com/hotjobs/images/v3/amazon.gif" alt="Company Logo" class="me-2" style="width: auto; height: 100%;">
+                    </div>
+                    <h5 class="card-title text-center">Amazon</h5>
+                    <p class="card-text text-center">Gobal ecommerce services</p>
+                    <div class="d-flex justify-content-center">
+                        <a routerLink="" class="btn btn-primary mt-3">View more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

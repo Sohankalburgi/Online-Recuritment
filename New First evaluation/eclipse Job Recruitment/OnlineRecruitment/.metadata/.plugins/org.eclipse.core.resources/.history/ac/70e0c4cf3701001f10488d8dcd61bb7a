@@ -1,0 +1,5 @@
+package com.example.OnlineRecruitment.ServiceInterface;
+
+public interface JobServiceInterface {
+
+}

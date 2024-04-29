@@ -1,0 +1,5 @@
+package com.example.OnlineRecruitment.EmailService;
+
+public class OTPService {
+
+}

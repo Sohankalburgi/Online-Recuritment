@@ -15,6 +15,8 @@ import { LoginSuccessComponent } from './components/login-success/login-success.
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 import { EmailService } from './email.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AppointmentComponent } from './components/appointment/appointment.component';
+
 
 
 
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     JobSearchComponent,
     LoginSuccessComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,

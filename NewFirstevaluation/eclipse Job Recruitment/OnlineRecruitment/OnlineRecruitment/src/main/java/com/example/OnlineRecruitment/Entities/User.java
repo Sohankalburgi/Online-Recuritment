@@ -18,6 +18,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -27,6 +28,7 @@ import jakarta.validation.constraints.Pattern;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,17 +46,18 @@ public class User {
         message = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character")
 	private String password;
 	
-	
-	private Date dateOfBirth;
+
 	@NotEmpty(message = "Invalid Address")
 	private String address;
-	@NotEmpty(message = "Invalid Gender")
-	private String gender;
+
 	@NotEmpty(message="Invalid Nationality")
 	private String nationality;
 
 	@Pattern(regexp = "^(9|8|6)\\d{9}$",message = "Invalid phone Number")
 	private String phone; 
+	
+	@Transient
+	private String signas;
 	
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="roleId")
@@ -66,15 +69,15 @@ public class User {
 	}
 	
 
-	public User(String name, String email, String password, Date dateOfBirth, String address, String gender,
-			String nationality, String phone, Role role) {
+	public User(String name, String email, String password, String address,
+			String nationality, String phone, Role role,String signas) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.dateOfBirth = dateOfBirth;
+		
 		this.address = address;
-		this.gender = gender;
+		this.signas = signas;
 		this.nationality = nationality;
 		this.phone = phone;
 		this.role = role;
@@ -114,13 +117,7 @@ public class User {
 		this.password = password;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+	
 
 	public String getAddress() {
 		return address;
@@ -130,13 +127,6 @@ public class User {
 		this.address = address;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
 
 	public String getNationality() {
 		return nationality;
@@ -162,10 +152,21 @@ public class User {
 		this.role = role;
 	}
 
+	public String getSignas() {
+		return signas;
+	}
+
+
+	public void setSignas(String signas) {
+		this.signas = signas;
+	}
+
+	
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", password=" + password
-				+ ", dateOfBirth=" + dateOfBirth + ", address=" + address + ", gender=" + gender + ", nationality="
+				 + ", address=" + address + ", nationality="
 				+ nationality + ", phone=" + phone + ", role=" + role + "]";
 	}
 	

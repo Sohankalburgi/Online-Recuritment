@@ -39,9 +39,9 @@ public class UserService implements UserServiceInterface{
 	public void updateUserById(Integer id,User user) {
 		User updateUser = userRepository.getById(id);
 		updateUser.setAddress(user.getAddress());
-		updateUser.setDateOfBirth(user.getDateOfBirth());
+
 		updateUser.setEmail(user.getEmail());
-		updateUser.setGender(user.getGender());
+	
 		updateUser.setName(user.getName());
 		updateUser.setNationality(user.getNationality());
 		updateUser.setPassword(user.getPassword());

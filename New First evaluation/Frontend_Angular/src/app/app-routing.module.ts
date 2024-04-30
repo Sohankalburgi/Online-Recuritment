@@ -6,6 +6,7 @@ import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassw
 import { HomeComponent } from './components/home/home.component';
 import { LoginSuccessComponent } from './components/login-success/login-success.component';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
+import { AppointmentComponent } from './components/appointment/appointment.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path:'',
     redirectTo: '/home', pathMatch: 'full',
+  },
+  {
+    path:'appointment',
+    component:AppointmentComponent
   }
 ];
 

@@ -1,0 +1,24 @@
+#inputfield{
+    width: 100%;
+}
+
+#formcard{
+    position: absolute;
+    right: 20%;
+}
+
+
+#sponsorcard{
+    position: absolute;
+    left: 38%;
+    padding-right: 0%;
+    padding-left: 0%;
+}
+
+#wisecard{
+    position: absolute;
+    left: 38%;
+    padding-right: 0%;
+    padding-left: 0%;
+    top: 100%;
+}

@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmailService } from '../../email.service';
 import { RegistrationserviceService } from '../../registrationservice.service';
-import { User } from '../Model/user.model';
-import { faCropSimple } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-email-verification',

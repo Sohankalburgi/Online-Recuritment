@@ -34,7 +34,7 @@
               <div data-mdb-input-init class="form-outline mb-4">
                 <label for="email" class="col-sm-3 col-form-label">OTP:</label>
                 <div class="col-sm-9" id="inputfield" >
-                <input type="text" formControlName="otp" class="form-control form-select-lg" maxlength="6">
+                <input type="text" formControlName="otp" placeholder="6-digit OTP" class="form-control form-select-lg" maxlength="6">
                 <div *ngIf="isInvalid('otp')" class="text-danger">
                   {{ getErrorMessage('otp') }}
               </div>

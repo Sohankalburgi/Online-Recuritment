@@ -53,6 +53,9 @@ export class EmailVerificationComponent {
           const user = this.formData;
           console.log(user);
           console.log(this.formData)
+          this.registrationService.registerUser(user).subscribe(
+              response => console.log("success")
+            );
           alert("Otp verified");
           this.router.navigateByUrl("/home");
           }

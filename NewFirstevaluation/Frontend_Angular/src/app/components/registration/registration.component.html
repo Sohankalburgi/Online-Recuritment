@@ -5,12 +5,12 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
       <div class="col col-xl-10">
         <div class="card" style="border-radius: 2rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); width: 60%; margin: auto;">
           <div class="card-body p-4 p-lg-5 text-black">
-            <h1 class="h1 fw-bold mb-0">Student Registration Page</h1>
+            <h1 class="h1 fw-bold mb-0">Registration Page</h1>
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
               <div class="form-outline mb-2">
-                <label for="fullName" class="col-sm-3 col-form-label">Full Name:</label>
+                <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg " id="fullName" formControlName="fullName" placeholder="Full Name">
+                                    <input type="text" class="form-control form-select-lg " id="name" formControlName="name" placeholder="Full Name">
                                     <div *ngIf="isInvalid('fullName')" class="text-danger">
                                         {{ getErrorMessage('fullName') }}
                                     </div>
@@ -55,6 +55,17 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                                 </div>
               </div>
               <div class="form-outline mb-2">
+                <label for="confirmpassword" class="col-sm-3 col-form-label">Confirm Password:</label>
+                <div class="col-sm-9" id="inputfield">
+                  <input type="password" class="form-control form-select-lg" id="confirmpassword" formControlName="confirmpassword" placeholder="Re Enter Password">
+                  <div *ngIf="registrationForm && registrationForm.get('confirmpassword')?.invalid && (registrationForm.get('confirmpassword')?.dirty || registrationForm.get('confirmpassword')?.touched)" class="text-danger">
+                    {{ getErrorMessage('confirmpassword') }}
+                  </div>
+                                
+                </div>
+              </div>
+              
+              <!-- <div class="form-outline mb-2">
                 <label for="dOB" class="col-sm-3 col-form-label" >Date Of Birth:</label>
                                 <div class="col-sm-9" id="inputfield">
                                     <input type="date" class="form-control form-select-lg" id="dOB" formControlName="dOB" placeholder="Date Of Birth">
@@ -62,9 +73,9 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                                         {{ getErrorMessage('dOB') }}
                                     </div>
                                 </div>
-              </div>
+              </div> -->
               <div class="form-outline mb-2">
-                <label for="nationality" class="form-label" id="inputfield">Nationality</label>
+                <label for="nationality" class="form-label" id="inputfield">Nationality:</label>
                 <select id="nationality" formControlName="nationality" class="form-select form-select-lg" aria-placeholder="Select Nationality" required>
                   <option value=""  disabled selected>Select Nationality</option>
                   <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
@@ -73,7 +84,19 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                   {{ getErrorMessage('nationality') }}
               </div>
               </div>
+
               <div class="form-outline mb-2">
+                <label for="signas" class="form-label" id="inputfield">Sign As:(Role)</label>
+                <select id="signas" formControlName="signas" class="form-select form-select-lg" aria-placeholder="signas" required>
+                  <option value=""  disabled selected>Select Role </option>
+                  <option value="graduate">Graduate</option>
+                  <option value="employer">Employer</option>
+                </select>
+                <div *ngIf="isInvalid('signas')" class="text-danger">
+                  {{ getErrorMessage('signas') }}
+              </div>
+              </div>
+              <!-- <div class="form-outline mb-2">
                 <label for="gender" class="form-label" id="inputfield">Gender</label><br>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="gender" id="male" formControlName="gender" value="male">
@@ -88,7 +111,7 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                     Gender is required.
                   </div>
                 </div>
-              </div>
+              </div> -->
               <button type="submit" class="btn btn-primary" id="inputfield" [disabled]="!registrationForm.valid">Register</button>
               <p class="text-center mt-3">
                 Already a Member? <a routerLink="/login" style="color: #393f81;">Login</a>

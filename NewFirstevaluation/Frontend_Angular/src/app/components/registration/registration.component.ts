@@ -48,15 +48,15 @@ constructor(private fb: FormBuilder,private router: Router,
 
 ) {
   this.registrationForm = this.fb.group({
-    fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     address: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
     email: ['', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
     phone: ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
     password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(this.passwordPattern)]],
-    dOB: ['', [Validators.required]],
-    gender: ['', [Validators.required]],
-    nationality: ['', [Validators.required]]
-  });
+    confirmpassword:['',[Validators.required, Validators.minLength(8)]],
+    nationality: ['', [Validators.required]],
+    signas:['',[Validators.required]]
+  },{ validator: this.passwordMatchValidator });
 }
 
 
@@ -77,6 +77,17 @@ onSubmit(): void {
   }
 }
 
+passwordMatchValidator(formGroup: FormGroup) {
+  const passwordControl = formGroup.get('password');
+  const confirmPasswordControl = formGroup.get('confirmpassword');
+
+  if (passwordControl?.value !== confirmPasswordControl?.value) {
+    confirmPasswordControl?.setErrors({ mismatch: true });
+  } else {
+    confirmPasswordControl?.setErrors(null);
+  }
+}
+
 isInvalid(controlName: string): boolean {
   const control = this.registrationForm.get(controlName);
   return control ? control.invalid && (control.dirty || control.touched) : false;
@@ -90,21 +101,16 @@ getErrorMessage(controlName: string): string {
     return '';
   }
 
-  if(control.hasError('pattern')){
-    if(controlName==='password'){
-      return "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long."
-    }
-  }
-
-  if(control.hasError('pattern')){
-    if(controlName==="email"){
-      return "Invalid email pattern"
-    }
-  }
-
   if (control.hasError('pattern')) {
-    
-      return 'Invalid phone number format. Please enter a 10-digit number.';
+    if (controlName === 'password') {
+      return "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long.";
+    }
+    if (controlName === "email") {
+      return "Invalid email pattern";
+    }
+    if(controlName==='phone'){
+      return "Invalid Phone number"
+    }
   }
 
   if (control.hasError('required')) {
@@ -117,6 +123,12 @@ getErrorMessage(controlName: string): string {
 
   if (control.errors?.['minlength']) {
     return `Minimum length should be ${(control.errors as any).minlength.requiredLength}`;
+  }
+
+  if (control.errors) {
+    if (control.hasError('mismatch')) {
+      return 'Passwords do not match';
+    }
   }
 
   return '';

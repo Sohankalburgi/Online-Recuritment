@@ -4,7 +4,6 @@ export interface User{
     email:string,
     phone:string,
     password:string,
-    dOB:string,
-    gender:string,
-    nationality:string
+    nationality:string,
+    signas:string
 }

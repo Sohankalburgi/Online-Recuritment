@@ -42,19 +42,6 @@ public class UserController {
 			return bindingResult.toString();
 		}
 		System.out.println("the enter to backend");
-		Role role = new Role();
-		if(user.getSignas().equals("graduate")) {
-			role.setRoleTitle("Gradute");
-			role.setRoleDescription("Job Seekers");
-			user.setRole(role);
-		}
-		else {
-			role.setRoleTitle("Employer");
-			role.setRoleDescription("Job Creator");
-			user.setRole(role);
-		}
-		
-		
 		userService.saveUser(user);
 		return "Created";
 	}

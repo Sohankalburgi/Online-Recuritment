@@ -12,6 +12,8 @@ import com.example.OnlineRecruitment.Repositories.UserRepository;
 import com.example.OnlineRecruitment.ServiceInterface.RoleServiceInterface;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class RoleService implements RoleServiceInterface {
 	
@@ -19,6 +21,7 @@ public class RoleService implements RoleServiceInterface {
 	private RoleRepository roleRepository;
 	@Autowired
 	private UserRepository userRepository;
+	
 	@Override
 	public void setRole(Role role) {
 		// TODO Auto-generated method stub
@@ -26,21 +29,22 @@ public class RoleService implements RoleServiceInterface {
 	}
 
 	@Override
-	public Role getRoleById(Integer id) {
+	
+	public Role getRoleById(String roleId) {
 		// TODO Auto-generated method stub
-		return roleRepository.getById(id);
+		return roleRepository.findById(roleId).orElse(new Role());
 	}
 	
 	@Override
-	public void deleteRoleById(Integer id) {
-		User user = roleRepository.getById(id).getUser();
+	public void deleteRoleById(String roleId) {
+		User user = roleRepository.findById(roleId).orElse(new Role()).getUser();
 		user.setRole(null);
 		userRepository.save(user);
-		roleRepository.deleteById(id);
+		roleRepository.deleteById(roleId);
 	}
 	@Override
-	public void updateRoleById(Integer id,Role role) {
-		Role updateRole = roleRepository.getById(id);
+	public void updateRoleById(String roleId,Role role) {
+		Role updateRole = roleRepository.findById(roleId).orElse(new Role());
 		 updateRole.setRoleDescription(role.getRoleDescription());
 		 updateRole.setRoleTitle(role.getRoleTitle());
 		 updateRole.setUser(role.getUser());

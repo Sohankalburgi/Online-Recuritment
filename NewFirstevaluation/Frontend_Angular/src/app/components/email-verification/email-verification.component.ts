@@ -62,10 +62,7 @@ export class EmailVerificationComponent {
           else {
             alert("not valid ")
           }
-          // 
-          // this.registrationService.registerUser(user).subscribe(
-          //   response => console.log("success")
-          // );
+          
         },
         (        error: any) => {
           console.error('Failed to verify OTP:', error);

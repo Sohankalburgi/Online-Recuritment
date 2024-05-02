@@ -1,5 +1,0 @@
-package com.example.OnlineRecruitment.ServiceInterface;
-
-public interface RoleServiceInterface {
-
-}

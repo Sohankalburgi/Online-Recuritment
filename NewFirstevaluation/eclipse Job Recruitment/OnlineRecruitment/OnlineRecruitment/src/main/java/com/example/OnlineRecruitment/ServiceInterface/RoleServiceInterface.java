@@ -6,11 +6,12 @@ public interface RoleServiceInterface {
 	
 	public void setRole(Role role);
 	
-	public Role getRoleById(Integer id);
 
-	public void deleteRoleById(Integer id);
+	public void deleteRoleById(String roleId);
 
-	public void updateRoleById(Integer id, Role role);
+	public void updateRoleById(String roleId, Role role);
+
+	public Role getRoleById(String roleId);
 	
 	
 }

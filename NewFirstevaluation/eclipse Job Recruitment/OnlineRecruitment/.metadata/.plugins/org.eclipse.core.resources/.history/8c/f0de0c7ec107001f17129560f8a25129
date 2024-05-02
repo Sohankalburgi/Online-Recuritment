@@ -1,0 +1,44 @@
+package com.example.OnlineRecruitment.Entities.Generators;
+
+import java.io.Serializable;
+
+import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.id.IdentifierGenerator;
+
+import com.example.OnlineRecruitment.Entities.User;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
+public class CustomIdGenerator implements IdentifierGenerator{
+	private static final String PREFIX = "GRAD";
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Transactional
+	@Override
+	public Serializable generate(SharedSessionContractImplementor session, Object object){
+		// TODO Auto-generated method stub
+    	String prefix = "";
+        if (object instanceof User) {
+            User user = (User) object;
+            if ("Gradute".equals(user.getRole().getRoleTitle())) {
+                prefix = "Gradute";
+            } else if ("Employer".equals(user.getRole().getRoleTitle())) {
+                prefix = "EMP";
+            }
+        }
+
+        Long maxId = (Long) entityManager.createQuery("SELECT MAX(CAST(SUBSTRING(u.id, 5) AS int)) FROM User u WHERE u.role = :role")
+                                        .setParameter("role", role)
+                                        .getSingleResult();
+        int nextNumber = (maxId == null) ? 1 : (maxId.intValue() + 1);
+        return prefix + String.format("%04d", nextNumber);
+	}
+
+
+}

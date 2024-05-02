@@ -1,5 +1,0 @@
-package com.example.OnlineRecruitment.AppConfig;
-
-public class GsonConfig {
-
-}

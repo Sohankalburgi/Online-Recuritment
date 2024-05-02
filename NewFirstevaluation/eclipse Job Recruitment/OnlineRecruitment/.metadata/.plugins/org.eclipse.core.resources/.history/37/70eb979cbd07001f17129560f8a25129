@@ -1,0 +1,5 @@
+package com.example.OnlineRecruitment.Entities.Generators;
+
+public class CustomIdGenerator {
+
+}

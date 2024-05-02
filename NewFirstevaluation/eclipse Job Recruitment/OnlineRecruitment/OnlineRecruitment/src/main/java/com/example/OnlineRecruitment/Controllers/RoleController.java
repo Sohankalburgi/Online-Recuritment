@@ -28,18 +28,18 @@ public class RoleController {
 	}
 	
 	@GetMapping("/role/{id}")
-	public Role getRole(@PathVariable Integer id) {
+	public Role getRole(@PathVariable String id) {
 		return roleService.getRoleById(id);
 	}
 	
 	@DeleteMapping("/deleterole/{id}")
-	public String deleteRoleById(@PathVariable Integer id) {
+	public String deleteRoleById(@PathVariable String id) {
 		roleService.deleteRoleById(id);
 		return "Role Deleted";
 	}
 	
 	@PutMapping("/updaterole/{id}")
-	public String updateRoleById(@PathVariable Integer id,@Valid @RequestBody Role role,
+	public String updateRoleById(@PathVariable String id,@Valid @RequestBody Role role,
 			BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return bindingResult.toString();

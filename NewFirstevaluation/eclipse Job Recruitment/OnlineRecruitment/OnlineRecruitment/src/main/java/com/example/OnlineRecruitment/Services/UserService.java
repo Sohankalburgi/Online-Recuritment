@@ -5,9 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.OnlineRecruitment.EmailService.RoleIDService;
+import com.example.OnlineRecruitment.Entities.Role;
 import com.example.OnlineRecruitment.Entities.User;
+import com.example.OnlineRecruitment.Repositories.RoleRepository;
 import com.example.OnlineRecruitment.Repositories.UserRepository;
 import com.example.OnlineRecruitment.ServiceInterface.UserServiceInterface;
+
+
 
 @Service
 public class UserService implements UserServiceInterface{
@@ -15,10 +20,37 @@ public class UserService implements UserServiceInterface{
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private RoleIDService roleIDService;
+	
 	@Override
 	public void saveUser(User user) {
 		// TODO Auto-generated method stub
+		
+		Long count = 0l;
+		Role role = new Role();
+		if(user.getSignas().equals("graduate")) {
+			role.setRoleTitle("Gradute");
+			role.setRoleDescription("Job Seekers");
+			count = roleRepository.countByRoleIdPrefix("GRAD");
+			count+=1l;
+			role.setRoleId("GRAD"+String.format("%05d", count));
+			user.setRole(role);
+		}
+		else {
+			role.setRoleTitle("Employer");
+			role.setRoleDescription("Job Vendors");
+			count = roleRepository.countByRoleIdPrefix("EMP");
+			count+=1l;
+			role.setRoleId("EMP"+String.format("%05d", count));
+			user.setRole(role);
+		}
+	
 		userRepository.save(user);
+		roleIDService.sendEmail(user.getEmail(),user.getRole().getRoleId(),user.getName(),user.getPassword());
 	}
 
 	@Override

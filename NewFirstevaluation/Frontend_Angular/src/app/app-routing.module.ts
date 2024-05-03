@@ -7,6 +7,12 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginSuccessComponent } from './components/login-success/login-success.component';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+import { EmpLoginComponent } from './components/emp-login/emp-login.component';
+import { EmpRegisterComponent } from './components/emp-register/emp-register.component';
+import { StudLoginComponent } from './components/stud-login/stud-login.component';
+import { StudRegisterComponent } from './components/stud-register/stud-register.component';
+
+
 
 const routes: Routes = [
   {
@@ -37,6 +43,28 @@ const routes: Routes = [
     path:'',
     redirectTo: '/home', pathMatch: 'full',
   },
+
+  {
+    path:'stud-login',
+    component: StudLoginComponent
+  },
+
+  {
+    path: 'stud-register',
+    component: StudRegisterComponent
+  },
+
+
+  {
+    path: 'emp-login',
+    component: EmpLoginComponent
+  },
+
+  {
+    path: 'emp-register',
+    component:EmpRegisterComponent
+  },
+
   {
     path:'appointment',
     component:AppointmentComponent

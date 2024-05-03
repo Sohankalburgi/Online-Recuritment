@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StudentregisterServiceService } from './StudentService/studentregister-service.service';
 
 
 @Component({
@@ -9,35 +11,55 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class StudRegisterComponent {
 
-  studRegisterForm:FormGroup;
+  studRegisterForm!:FormGroup;
+  roleIdString: string | null = null;
 
-  constructor(private fb: FormBuilder){
-    this.studRegisterForm = this.fb.group({
-      'city' : ['', Validators.required],
-      'state': ['', Validators.required],
-      'pinCode': ['', Validators.required],
-      'collegeName' : ['', Validators.required],
-      'collegeAddress' : ['', Validators.required],
-      'yearOfPassing' : ['', Validators.required],
-      'cgpa' : ['', Validators.required]
 
-    });
+  constructor(private fb: FormBuilder,private router:ActivatedRoute,
+    private studentservice:StudentregisterServiceService,private route:Router
+    
+  ){
   }
 
   ngOnInit(): void {
 
+    this.router.paramMap.subscribe(params=>{
+      this.roleIdString = params.get('roleIdString');
+      console.log('RoleIdString:',this.roleIdString);
+    });
+    
+    this.studRegisterForm = this.fb.group({
+      city : ['', Validators.required],
+      state: ['', Validators.required],
+      pinCode: ['', Validators.required],
+      collegeName : ['', Validators.required],
+      collegeAddress : ['', Validators.required],
+      yearOfPassing : ['', Validators.required],
+      cgpa : ['', Validators.required],
+      roleId:{
+        roleId:[this.roleIdString]}
+    });
   }
 
   onSubmit(): void {
     if (this.studRegisterForm.valid) {
       // Handle form submission logic here, e.g., sending data to server
       console.log(this.studRegisterForm.value);
+      this.studentservice.savestudent(this.studRegisterForm.value).subscribe(
+        Response=>{
+          if(Response){
+            alert("success");
+          }
+        }
+      )
+      this.route.navigate(['/home']);
     }
+
   }
 
   isInvalid(controlName: string): boolean {
     const control = this.studRegisterForm.get(controlName);
-    console.log(`Checking validity for ${controlName}:`, control);
+    // console.log(`Checking validity for ${controlName}:`, control);
 
     return control ? control.invalid && (control.dirty || control.touched) : false;
   }

@@ -5,13 +5,13 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
       <div class="col col-xl-10">
         <div class="card" style="border-radius: 2rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); width: 60%; margin: auto;">
           <div class="card-body p-4 p-lg-5 text-black">
-            <h2 class="h1 fw-bold mb-0">Fresher Registration Page</h2>
+            <h2 class="h1 fw-bold mb-0">Student Details</h2>
             <form [formGroup]="studRegisterForm" (ngSubmit)="onSubmit()" novalidate>
 
 
               <!-- City -->
               <div class="form-outline mb-2">
-                <label for="city" class="col-sm-3 col-form-label">College Name:</label>
+                <label for="city" class="col-sm-3 col-form-label fw-bolder ">College Name:</label>
                                 <div class="col-sm-9" id="inputfield">
                                     <input type="text" class="form-control form-select-lg " id="city" formControlName="city" placeholder="Enter College Name">
                                     <div *ngIf="isInvalid('city')" class="text-danger">
@@ -23,9 +23,9 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
 
               <!-- State -->
               <div class="form-outline mb-2">
-                <label for="state" class="col-sm-3 col-form-label">State:</label>
+                <label for="state" class="col-sm-3 col-form-label fw-bolder">State:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg " id="state" formControlName="state" placeholder="Enter College Name">
+                                    <input type="text" class="form-control form-select-lg " id="state" formControlName="state" placeholder="Enter State">
                                     <div *ngIf="isInvalid('state')" class="text-danger">
                                         {{ getErrorMessage('state') }}
                                     </div>
@@ -35,9 +35,9 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
 
               <!-- PinCode -->
               <div class="form-outline mb-2">
-                <label for="pinCode" class="col-sm-3 col-form-label">Pin Code:</label>
+                <label for="pinCode" class="col-sm-3 col-form-label fw-bolder">Pin Code:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="number" class="form-control form-select-lg " id="pinCode" formControlName="pinCode" placeholder="Enter College Name">
+                                    <input type="text" class="form-control form-select-lg " id="pinCode" formControlName="pinCode" placeholder="Enter Pin code">
                                     <div *ngIf="isInvalid('pinCode')" class="text-danger">
                                         {{ getErrorMessage('pinCode') }}
                                     </div>
@@ -50,7 +50,7 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
 
               <!-- COLLEGE NAME -->
               <div class="form-outline mb-2">
-                <label for="collegeName" class="col-sm-3 col-form-label">College Name:</label>
+                <label for="collegeName" class="col-sm-3 col-form-label fw-bolder">College Name:</label>
                                 <div class="col-sm-9" id="inputfield">
                                     <input type="text" class="form-control form-select-lg " id="collegeName" formControlName="collegeName" placeholder="Enter College Name">
                                     <div *ngIf="isInvalid('collegeName')" class="text-danger">
@@ -61,7 +61,7 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
 
               <!-- COLLEGE ADDRESS -->
               <div class="form-outline mb-2">
-                <label for="collegeAddress" class="col-sm-3 col-form-label">College Address:</label>
+                <label for="collegeAddress" class="col-sm- col-form-label fw-bolder">College Address:</label>
                                 <div class="col-sm-9" id="inputfield">
                                     <input type="text" class="form-control form-select-lg" id="collegeAddress" formControlName="collegeAddress" placeholder="Enter College Address">
                                     <div *ngIf="isInvalid('collegeAddress')" class="text-danger">
@@ -75,7 +75,7 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
 
               <!--YOP + drop-down-->
               <div class="form-outline mb-2">
-                <label for="yearOfPassing" class="col-sm-3 col-form-label">Year of Passing:</label>
+                <label for="yearOfPassing" class="col-sm- col-form-label fw-bolder">Year of Passing:</label>
                                 <div class="col-sm-9" id="inputfield">
                                     <input type="number" class="form-control form-select-lg" id="yearOfPassing" formControlName="yearOfPassing" placeholder="Enter Year of Passing">
                                     <div *ngIf="isInvalid('yearOfPassing')" class="text-danger">
@@ -87,7 +87,7 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
 
               <!-- CGPA -->
               <div class="form-outline mb-2">
-                <label for="cgpa" class="col-sm-3 col-form-label" >CGPA:</label>
+                <label for="cgpa" class="col-sm-3 col-form-label fw-bolder" >CGPA:</label>
                   <div class="col-sm-9" id="inputfield">
                   <input type="number" class="form-control form-select-lg" id="cgpa" formControlName="cgpa" placeholder="Enter CGPA">
 
@@ -169,10 +169,15 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
               </div> -->
 
 
+<<<<<<< HEAD
               <button type="submit" class="btn btn-primary" id="inputfield" [disabled]="!studRegisterForm.valid">Register</button>
               <p class="text-center mt-3">
                 Already a Member? <a routerLink="/stud-login" style="color: #393f81;">Login</a>
               </p>
+=======
+              <button type="submit" class="btn btn-primary mt-4" id="inputfield" [disabled]="!studRegisterForm.valid" >Register</button>
+              
+>>>>>>> c856fe30b65197a62c4341c3c25e314251895844
             </form>
           </div>
         </div>

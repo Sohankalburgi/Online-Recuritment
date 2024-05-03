@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OnlineRecruitment.Classes.Email;
 import com.example.OnlineRecruitment.Entities.Role;
 import com.example.OnlineRecruitment.Entities.User;
 
@@ -49,7 +50,6 @@ public class UserController {
 	@GetMapping("/user/{id}")
 	public User getUserById(@PathVariable Integer id) {
 		return userService.getUserById(id);
-	
 	}
 	
 	@GetMapping("/alluser")
@@ -70,6 +70,12 @@ public class UserController {
 		}
 		userService.updateUserById(id, user);
 		return "Updated";
+	}
+	
+	@PostMapping("/userlogin")
+	public boolean checkUserexist(@RequestBody Email email) throws Exception {
+		System.out.println(email.toString());
+		return userService.checkUserexist(email);
 	}
 	
 	

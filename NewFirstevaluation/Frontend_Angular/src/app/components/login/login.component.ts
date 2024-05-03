@@ -35,8 +35,11 @@ export class LoginComponent implements OnInit {
      console.log(this.loginForm.value);
      const roleIdString = this.loginForm.value.idName+this.loginForm.value.roleId;
      
-     this.loginservice.checkUserExist(this.loginForm.value).subscribe( response=>{
-      if(response){
+     console.log(roleIdString)
+
+     this.loginservice.checkUserExist(this.loginForm.value,roleIdString).subscribe( response=>{
+      if(response===true){
+        alert("Login Successful")
         if(this.loginForm.value.idName==="EMP"){
           this.router.navigate(['/emp-register', roleIdString]);
          }
@@ -49,8 +52,6 @@ export class LoginComponent implements OnInit {
       }
     }
      )
-
-     
 
      
 

@@ -87,16 +87,17 @@ public class UserService implements UserServiceInterface{
 		userRepository.save(updateUser);
 	}
 	
-	public boolean checkUserexist(Email email) {
-		User user = userRepository.findByEmail(email.getEmail());
+	public boolean checkUserexist(Email email) throws Exception{
+		User user = userRepository.findByEmail(email.getEmail()).orElse(null);
+		
 		if(user==null) {
 			return false;
 		}
 		else {
-			if(user.getPassword()!=email.getPassword()) {
+			if(!user.getPassword().equals(user.getPassword())) {
 				return false;
 			}
-			else if(user.getRole().getRoleId()!= email.getRoleId()){
+			else if(!user.getRole().getRoleId().equals(email.getRoleId())){
 				return false;
 			}
 			

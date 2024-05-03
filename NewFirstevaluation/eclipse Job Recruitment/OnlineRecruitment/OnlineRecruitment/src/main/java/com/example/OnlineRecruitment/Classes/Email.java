@@ -4,6 +4,10 @@ public class Email {
 
 	
 
+
+
+	private String idName;
+
 	private String email;
 	
 	private String password;
@@ -32,5 +36,17 @@ public class Email {
 
 	public void setRoleId(String roleId) {
 		this.roleId = roleId;
+	}
+	public String getIdName() {
+		return idName;
+	}
+
+	public void setIdName(String idName) {
+		this.idName = idName;
+	}
+	
+	@Override
+	public String toString() {
+		return "Email [idName=" + idName + ", email=" + email + ", password=" + password + ", roleId=" + roleId + "]";
 	}
 }

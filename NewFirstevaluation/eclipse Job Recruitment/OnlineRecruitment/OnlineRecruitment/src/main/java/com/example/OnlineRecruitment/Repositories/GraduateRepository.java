@@ -8,7 +8,7 @@ import com.example.OnlineRecruitment.Entities.Graduate;
 import com.example.OnlineRecruitment.Entities.Role;
 
 @Repository
-public interface GraduateRepository extends JpaRepository<Graduate,String>{
+public interface GraduateRepository extends JpaRepository<Graduate,Long>{
 	
 	@Query("SELECT g FROM Graduate g WHERE g.roleId.roleId = :roleId")
 	Graduate getByRoleId(String roleId);

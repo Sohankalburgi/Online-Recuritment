@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginServiceService } from './LoginService/login-service.service';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +15,12 @@ export class LoginComponent implements OnInit {
   passwordPattern:string ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private router:Router,private loginservice:LoginServiceService) {
     this.loginForm = this.fb.group({
       'email': [null, [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
-      'password': [null, [Validators.required, Validators.minLength(8),Validators.pattern(this.passwordPattern)]]
+      'password': [null, [Validators.required, Validators.minLength(8),Validators.pattern(this.passwordPattern)]],
+      'idName': ['GRAD',Validators.required], 
+      'roleId': ['',Validators.required]
     });
   }
 
@@ -28,12 +32,33 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       // Handle form submission logic here, e.g., sending data to server
-      console.log(this.loginForm.value);
+     console.log(this.loginForm.value);
+     const roleIdString = this.loginForm.value.idName+this.loginForm.value.roleId;
+     
+     this.loginservice.checkUserExist(this.loginForm.value).subscribe( response=>{
+      if(response){
+        if(this.loginForm.value.idName==="EMP"){
+          this.router.navigate(['/emp-register', roleIdString]);
+         }
+         else if(this.loginForm.value.idName==="GRAD"){
+          this.router.navigate(['/stud-register', roleIdString]);
+         }
+      }
+      else{
+        alert("Invalid User Details OR Not Registered")
+      }
+    }
+     )
+
+     
+
+     
+
     }
   }
   isInvalid(controlName: string): boolean {
     const control = this.loginForm.get(controlName);
-    console.log(`Checking validity for ${controlName}:`, control);
+    // console.log(`Checking validity for ${controlName}:`, control);
 
     return control ? control.invalid && (control.dirty || control.touched) : false;
   }
@@ -50,14 +75,11 @@ export class LoginComponent implements OnInit {
     if (control.hasError('required')) {
       return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required.`;
     }
-    if(control.hasError('pattern')){
-      if(controlName==="email"){
+    if (control.hasError('pattern')) {
+      if (controlName === "email") {
         return "Invalid email pattern"
       }
-    }
-
-    if(control.hasError('pattern')){
-      if(controlName==='password'){
+      if (controlName === 'password') {
         return "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long."
       }
     }

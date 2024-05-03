@@ -17,14 +17,13 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Graduate{
 
-	
-	
 	@OneToOne(fetch = FetchType.EAGER)
 	private Role roleId;
 	
-	@NotEmpty(message = "Enter the Student Id")
+	
 	@Id
-	private String studentId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long studentId;
 	
 	@NotEmpty(message = "Enter the city")
 	private String city;
@@ -39,35 +38,26 @@ public class Graduate{
 	@NotEmpty(message = "Enter the YearOfPassing")
 	private String yearOfPassing;
 	@NotEmpty(message = "Enter the Percentage")
-	private String percentage;
-	@NotEmpty(message = "Enter the Language")
-	private String language;
-	@NotEmpty(message = "Enter the keySkills")
-	private String keySkill;
-	@NotEmpty(message = "Enter the Project")
-	private String project;
+	private String cgpa;
+	
 	
 	
 	public Graduate() {
 		super();
 	}
 
-	public Graduate(Role roleId, String studentId, String city, String state, String pinCode, String collegeName,
-			String collegeAddress, String yearOfPassing, String percentage, String language, String keySkill,
-			String project) {
+	public Graduate(Role roleId, String city, String state, String pinCode, String collegeName,
+			String collegeAddress, String yearOfPassing,String cgpa) {
 		super();
 		this.roleId = roleId;
-		this.studentId = studentId;
 		this.city = city;
 		this.state = state;
 		this.pinCode = pinCode;
 		this.collegeName = collegeName;
 		this.collegeAddress = collegeAddress;
 		this.yearOfPassing = yearOfPassing;
-		this.percentage = percentage;
-		this.language = language;
-		this.keySkill = keySkill;
-		this.project = project;
+		this.cgpa = cgpa;
+		
 	}
 
 	public Role getRoleId() {
@@ -79,11 +69,11 @@ public class Graduate{
 	}
 	
 
-	public String getStudentId() {
+	public Long getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(String studentId) {
+	public void setStudentId(Long studentId) {
 		this.studentId = studentId;
 	}
 
@@ -135,37 +125,13 @@ public class Graduate{
 		this.yearOfPassing = yearOfPassing;
 	}
 
-	public String getPercentage() {
-		return percentage;
+	public String getCgpa() {
+		return cgpa;
 	}
 
-	public void setPercentage(String percentage) {
-		this.percentage = percentage;
+	public void setCgpa(String cgpa) {
+		this.cgpa = cgpa;
 	}
 
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-
-	public String getKeySkill() {
-		return keySkill;
-	}
-
-	public void setKeySkill(String keySkill) {
-		this.keySkill = keySkill;
-	}
-
-	public String getProject() {
-		return project;
-	}
-
-	public void setProject(String project) {
-		this.project = project;
-	}
-	
 	
 }

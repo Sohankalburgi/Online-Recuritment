@@ -23,9 +23,9 @@ public class GraduateService {
 		return graduateRepository.getByRoleId(roleId);
 	}
 	
-	public boolean checkGraduateExists(String graduateId) {
-		return graduateRepository.existsById(graduateId);
-	}
+//	public boolean checkGraduateExists(String graduateId) {
+//		return graduateRepository.existsById(graduateId);
+//	}
 	
 	public List<Graduate> getAllGraduate(){
 		return graduateRepository.findAll();

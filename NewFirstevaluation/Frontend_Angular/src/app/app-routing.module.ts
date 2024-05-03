@@ -50,7 +50,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'stud-register',
+    path: 'stud-register/:roleIdString',
     component: StudRegisterComponent
   },
 
@@ -61,7 +61,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'emp-register',
+    path: 'emp-register/:roleIdString',
     component:EmpRegisterComponent
   },
 

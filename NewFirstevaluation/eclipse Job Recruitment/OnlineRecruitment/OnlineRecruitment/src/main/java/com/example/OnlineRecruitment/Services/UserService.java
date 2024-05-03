@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.OnlineRecruitment.Classes.Email;
 import com.example.OnlineRecruitment.EmailService.RoleIDService;
 import com.example.OnlineRecruitment.Entities.Graduate;
 import com.example.OnlineRecruitment.Entities.Role;
@@ -86,5 +87,21 @@ public class UserService implements UserServiceInterface{
 		userRepository.save(updateUser);
 	}
 	
+	public boolean checkUserexist(Email email) {
+		User user = userRepository.findByEmail(email.getEmail());
+		if(user==null) {
+			return false;
+		}
+		else {
+			if(user.getPassword()!=email.getPassword()) {
+				return false;
+			}
+			else if(user.getRole().getRoleId()!= email.getRoleId()){
+				return false;
+			}
+			
+		}
+		return true;
+	}
 
 }

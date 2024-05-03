@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-emp-register',
@@ -7,82 +8,55 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   styleUrl: './emp-register.component.css'
 })
 export class EmpRegisterComponent implements OnInit {
-  empRegisterForm: FormGroup;
+  empRegisterForm!: FormGroup;
+  roleIdString: string | null = null;
 
-  constructor(private fb: FormBuilder){
-
-    this.empRegisterForm = this.fb.group({
-      'yourRole': ['', Validators.required],
-      'companyName': ['', Validators.required],
-      'companyType': ['', Validators.required],
-      'companyDesc': ['', Validators.required],
-      'companyAdd': ['', Validators.required],
-      'companySize': ['', [Validators.required,Validators.pattern('^[789]\\d{9}$')]]
-
-    });
-
-  }
+  constructor(private formBuilder: FormBuilder,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
 
+    this.router.paramMap.subscribe(params=>{
+      this.roleIdString = params.get('roleIdString');
+      console.log('RoleIdString:',this.roleIdString);
+    });
+    
+    this.empRegisterForm = this.formBuilder.group({
+      roleInCompany: ['', Validators.required],
+      companyName: ['', Validators.required],
+      companyType: ['', Validators.required],
+      companyDescription: ['', Validators.required],
+      companyAddress: ['', Validators.required],
+      companySize: ['', Validators.required],
+      roleId:[this.roleIdString]
+    })
+
   }
 
-  onSubmit(): void {
-    if (this.empRegisterForm.valid) {
-      // Handle form submission logic here, e.g., sending data to server
-      console.log(this.empRegisterForm.value);
-    }
-  }
-
-  isInvalid(controlName: string): boolean {
+  // Helper method to check if a form control is invalid
+  isInvalid(controlName: string) {
     const control = this.empRegisterForm.get(controlName);
-    console.log(`Checking validity for ${controlName}:`, control);
-
-    return control ? control.invalid && (control.dirty || control.touched) : false;
+    return control?.invalid && (control.dirty || control.touched);
   }
 
-
-
-  getErrorMessage(controlName: string): string {
+  // Helper method to get error messages for form controls
+  getErrorMessage(controlName: string) {
     const control = this.empRegisterForm.get(controlName);
-
-    if (!control) {
-      console.log(`Control ${controlName} not found.`);
-      return '';
+    if (control?.hasError('required')) {
+      return 'This field is required';
     }
-
-    if(control.hasError('pattern')){
-      if(controlName==='password'){
-        return "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long."
-      }
-    }
-
-    if(control.hasError('pattern')){
-      if(controlName==="email"){
-        return "Invalid email pattern"
-      }
-    }
-
-    if (control.hasError('pattern')) {
-
-        return 'Invalid phone number format. Please enter a 10-digit number.';
-    }
-
-    if (control.hasError('required')) {
-      return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required.`;
-    }
-
-    if (control.hasError('email')) {
-      return 'Invalid email format';
-    }
-
-    if (control.errors?.['minlength']) {
-      return `Minimum length should be ${(control.errors as any).minlength.requiredLength}`;
-    }
-
-
-
+    // You can add more specific error messages for different validators if needed
     return '';
+  }
+
+  // Method to handle form submission
+  onSubmit() {
+    if (this.empRegisterForm.valid) {
+      // Perform form submission actions here
+      console.log(this.empRegisterForm.value);
+    } else {
+      // Handle form validation errors here
+      console.log('Form is invalid');
+    }
   }
   
 }

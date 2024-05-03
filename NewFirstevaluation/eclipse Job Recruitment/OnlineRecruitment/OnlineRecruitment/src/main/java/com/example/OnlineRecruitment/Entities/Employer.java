@@ -4,6 +4,8 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -17,9 +19,10 @@ public class Employer{
 	@JoinColumn(name = "roleId")
 	private Role roleId;
 	
-	@NotEmpty(message = "Enter the EmployeeId")
+
 	@Id
-	private String employeeId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long employeeId;
 	@NotEmpty(message = "Enter the roleInCompany")
 	private String roleInCompany;
 	@NotEmpty(message = "Enter the companyName")
@@ -37,11 +40,10 @@ public class Employer{
 		super();
 	}
 	
-	public Employer(Role roleId, String employeeId, String roleInCompany, String companyName, String companyType,
+	public Employer(Role roleId, String roleInCompany, String companyName, String companyType,
 			String companyDescription, String companyAddress, Integer companySize) {
 		super();
 		this.roleId = roleId;
-		this.employeeId = employeeId;
 		this.roleInCompany = roleInCompany;
 		this.companyName = companyName;
 		this.companyType = companyType;
@@ -60,11 +62,11 @@ public class Employer{
 		this.roleId = roleId;
 	}
 
-	public String getEmployeeId() {
+	public Long getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(Long employeeId) {
 		this.employeeId = employeeId;
 	}
 

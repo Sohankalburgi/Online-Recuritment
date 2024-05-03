@@ -5,3 +5,11 @@ flex: 1;
 height: 1px;
 background: #eee;
 }
+
+#drop{
+    width: 100px;
+}
+
+#roleId{
+    width: 230px;
+}

@@ -11,6 +11,7 @@ import { EmpLoginComponent } from './components/emp-login/emp-login.component';
 import { EmpRegisterComponent } from './components/emp-register/emp-register.component';
 import { StudLoginComponent } from './components/stud-login/stud-login.component';
 import { StudRegisterComponent } from './components/stud-register/stud-register.component';
+import { JobSeekerComponent } from './components/job-seeker/job-seeker.component';
 
 
 
@@ -39,6 +40,12 @@ const routes: Routes = [
     path: 'email',
     component:EmailVerificationComponent
   },
+
+  {
+    path: 'job-seeker',
+    component: JobSeekerComponent
+  },
+
   {
     path:'',
     redirectTo: '/home', pathMatch: 'full',

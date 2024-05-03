@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 
 @Component({
-  selector: 'app-appointment',
-  templateUrl: './appointment.component.html',
-  styleUrl: './appointment.component.css'
+  selector: 'app-job-seeker',
+  templateUrl: './job-seeker.component.html',
+  styleUrl: './job-seeker.component.css'
 })
-export class AppointmentComponent implements OnInit{
-
+export class JobSeekerComponent {
   // selectedJob: string = '';
   // selectJob: string[] =  ['Software Developer', 'Data Scientist', 'Cybersecurity Analyst', 'UX/UI Designer',
   // 'Systems Administrator', 'Network Engineer', 'IT Project Manager', 'Cloud Architect'];
 
 
-  appointForm!:FormGroup;
+  jobSeekerForm!:FormGroup;
 
     emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
     constructor(private fb:FormBuilder){
-      this.appointForm = this.fb.group({
+      this.jobSeekerForm = this.fb.group({
         'name' : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
         'email': ['', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
         'phone' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
@@ -37,14 +37,14 @@ export class AppointmentComponent implements OnInit{
     }
 
     onSubmit(): void {
-      if (this.appointForm.valid) {
+      if (this.jobSeekerForm.valid) {
         // Handle form submission logic here, e.g., sending data to server
-        console.log(this.appointForm.value);
+        console.log(this.jobSeekerForm.value);
       }
     }
 
     isInvalid(controlName: string): boolean {
-      const control = this.appointForm.get(controlName);
+      const control = this.jobSeekerForm.get(controlName);
       console.log(`Checking validity for ${controlName}:`, control);
 
       return control ? control.invalid && (control.dirty || control.touched) : false;
@@ -53,7 +53,7 @@ export class AppointmentComponent implements OnInit{
 
 
     getErrorMessage(controlName: string): string {
-      const control = this.appointForm.get(controlName);
+      const control = this.jobSeekerForm.get(controlName);
 
       if (!control) {
         console.log(`Control ${controlName} not found.`);

@@ -16,6 +16,10 @@ import { EmailVerificationComponent } from './components/email-verification/emai
 import { EmailService } from './email.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+import { EmpLoginComponent } from './components/emp-login/emp-login.component';
+import { EmpRegisterComponent } from './components/emp-register/emp-register.component';
+import { StudLoginComponent } from './components/stud-login/stud-login.component';
+import { StudRegisterComponent } from './components/stud-register/stud-register.component';
 
 
 
@@ -30,7 +34,11 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
     JobSearchComponent,
     LoginSuccessComponent,
     EmailVerificationComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    EmpLoginComponent,
+    EmpRegisterComponent,
+    StudLoginComponent,
+    StudRegisterComponent
   ],
   imports: [
     BrowserModule,

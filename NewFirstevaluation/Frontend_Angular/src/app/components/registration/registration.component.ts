@@ -10,7 +10,7 @@ import { EmailService } from '../../email.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  
+
   nationalities = [
     'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia',
     'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium',
@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit {
     'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom',
     'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia',
     'Zimbabwe'
-]; 
+];
 
 
 registrationForm: FormGroup;
@@ -62,7 +62,7 @@ constructor(private fb: FormBuilder,private router: Router,
 
 
 ngOnInit(): void {
-  
+
 }
 
 onSubmit(): void {
@@ -140,5 +140,5 @@ getErrorMessage(controlName: string): string {
     { src: 'https://cdn.pixabay.com/photo/2018/03/18/11/58/recruit-3236547_1280.jpg', alt: 'Slide 2' },
     { src: 'https://cdn.pixabay.com/photo/2018/07/13/18/48/career-3536331_960_720.jpg', alt: 'Slide 3' }
   ];
- 
+
 }

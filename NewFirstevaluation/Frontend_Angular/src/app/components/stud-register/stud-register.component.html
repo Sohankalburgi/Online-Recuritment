@@ -5,56 +5,72 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
       <div class="col col-xl-10">
         <div class="card" style="border-radius: 2rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); width: 60%; margin: auto;">
           <div class="card-body p-4 p-lg-5 text-black">
-            <h2 class="h1 fw-bold mb-0">Registration Page</h2>
-            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+            <h2 class="h1 fw-bold mb-0">Fresher Registration Page</h2>
+            <form [formGroup]="studRegisterForm" (ngSubmit)="onSubmit()" novalidate>
+
+              <!-- COLLEGE NAME -->
               <div class="form-outline mb-2">
-                <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
+                <label for="name" class="col-sm-3 col-form-label">College Name:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg " id="name" formControlName="name" placeholder="Full Name">
-                                    <div *ngIf="isInvalid('fullName')" class="text-danger">
-                                        {{ getErrorMessage('fullName') }}
-                                    </div>
-                                </div>
-              </div>
-              <div class="form-outline mb-2">
-                <label for="address" class="col-sm-3 col-form-label">Address:</label>
-                                <div class="col-sm-9" id="inputfield">
-                                    <input type="textarea" class="form-control form-select-lg" id="address" formControlName="address" placeholder="Address">
-                                    <div *ngIf="isInvalid('address')" class="text-danger">
-                                        {{ getErrorMessage('address') }}
-                                    </div>
-                                </div>
-              </div>
-              <div class="form-outline mb-2">
-                <label for="email" class="col-sm-3 col-form-label">Email:</label>
-                                <div class="col-sm-9" id="inputfield">
-                                    <input type="email" class="form-control form-select-lg" id="email" formControlName="email" placeholder="Email">
-                                    <div *ngIf="isInvalid('email')" class="text-danger">
-                                        {{ getErrorMessage('email') }}
+                                    <input type="text" class="form-control form-select-lg " id="collegeName" formControlName="collegeName" placeholder="Enter College Name">
+                                    <div *ngIf="isInvalid('collegeName')" class="text-danger">
+                                        {{ getErrorMessage('collegeName') }}
                                     </div>
                                 </div>
               </div>
 
+              <!-- COLLEGE ADDRESS -->
+              <!-- state + city using drop-down -->
               <div class="form-outline mb-2">
-                <label for="phone" class="col-sm-3 col-form-label">Phone:</label>
+                <label for="address" class="col-sm-3 col-form-label">College Address:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg" id="phone" formControlName="phone" placeholder="Phone Number">
-                                    <div *ngIf="isInvalid('phone')" class="text-danger">
-                                        {{ getErrorMessage('phone') }}
+                                    <input type="text" class="form-control form-select-lg" id="collegeAdd" formControlName="collegeAdd" placeholder="Enter College Address">
+                                    <div *ngIf="isInvalid('collegeAdd')" class="text-danger">
+                                        {{ getErrorMessage('collegeAdd') }}
                                     </div>
                                 </div>
               </div>
-              <div class="form-outline mb-2">
-                <label for="password" class="col-sm-3 col-form-label" >Password:</label>
-                                <div class="col-sm-9" id="inputfield">
-                                    <input type="password" class="form-control form-select-lg" id="password" formControlName="password" placeholder="password">
-                                    <div *ngIf="isInvalid('password')" class="text-danger">
-                                        {{ getErrorMessage('password') }}
-                                    </div>
 
+
+              <!-- State + City -->
+              <!-- <div class="form-outline mb-2">
+                <label for="email" class="col-sm-3 col-form-label">State</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="email" class="form-control form-select-lg" id="state" formControlName="state" placeholder="Email">
+                                    <div *ngIf="isInvalid('state')" class="text-danger">
+                                        {{ getErrorMessage('state') }}
+                                    </div>
+                                </div>
+              </div> -->
+
+
+              <!--YOP + drop-down-->
+              <div class="form-outline mb-2">
+                <label for="phone" class="col-sm-3 col-form-label">Year of Passing:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="text" class="form-control form-select-lg" id="yOP" formControlName="yOP" placeholder="Enter Year of Passing">
+                                    <div *ngIf="isInvalid('yOP')" class="text-danger">
+                                        {{ getErrorMessage('yOP') }}
+                                    </div>
                                 </div>
               </div>
+
+
+              <!-- CGPA -->
               <div class="form-outline mb-2">
+                <label for="password" class="col-sm-3 col-form-label" >CGPA:</label>
+                  <div class="col-sm-9" id="inputfield">
+                  <input type="number" class="form-control form-select-lg" id="marks" formControlName="marks" placeholder="marks">
+
+                  <div *ngIf="isInvalid('marks')" class="text-danger">
+                  {{ getErrorMessage('marks') }}
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- CONFIRM PASSWORD -->
+              <!-- <div class="form-outline mb-2">
                 <label for="confirmpassword" class="col-sm-3 col-form-label">Confirm Password:</label>
                 <div class="col-sm-9" id="inputfield">
                   <input type="password" class="form-control form-select-lg" id="confirmpassword" formControlName="confirmpassword" placeholder="Re Enter Password">
@@ -63,8 +79,10 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                   </div>
 
                 </div>
-              </div>
+              </div> -->
 
+
+              <!-- DOB -->
               <!-- <div class="form-outline mb-2">
                 <label for="dOB" class="col-sm-3 col-form-label" >Date Of Birth:</label>
                                 <div class="col-sm-9" id="inputfield">
@@ -74,7 +92,10 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                                     </div>
                                 </div>
               </div> -->
-              <div class="form-outline mb-2">
+
+
+              <!-- NATIONALITY -->
+              <!-- <div class="form-outline mb-2">
                 <label for="nationality" class="form-label" id="inputfield">Nationality:</label>
                 <select id="nationality" formControlName="nationality" class="form-select form-select-lg" aria-placeholder="Select Nationality" required>
                   <option value=""  disabled selected>Select Nationality</option>
@@ -83,9 +104,11 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                 <div *ngIf="isInvalid('nationality')" class="text-danger">
                   {{ getErrorMessage('nationality') }}
               </div>
-              </div>
+              </div> -->
 
-              <div class="form-outline mb-2">
+
+              <!-- SIGN AS -->
+              <!-- <div class="form-outline mb-2">
                 <label for="signas" class="form-label" id="inputfield">Sign As:(Role)</label>
                 <select id="signas" formControlName="signas" class="form-select form-select-lg" aria-placeholder="signas" required>
                   <option value=""  disabled selected>Select Role </option>
@@ -95,7 +118,10 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                 <div *ngIf="isInvalid('signas')" class="text-danger">
                   {{ getErrorMessage('signas') }}
               </div>
-              </div>
+              </div> -->
+
+
+              <!-- GENDER -->
               <!-- <div class="form-outline mb-2">
                 <label for="gender" class="form-label" id="inputfield">Gender</label><br>
                 <div class="form-check form-check-inline">
@@ -112,9 +138,11 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                   </div>
                 </div>
               </div> -->
-              <button type="submit" class="btn btn-primary" id="inputfield" [disabled]="!registrationForm.valid">Register</button>
+
+
+              <button type="submit" class="btn btn-primary" id="inputfield" [disabled]="!studRegisterForm.valid">Register</button>
               <p class="text-center mt-3">
-                Already a Member? <a routerLink="/login" style="color: #393f81;">Login</a>
+                Already a Member? <a routerLink="/emp-login" style="color: #393f81;">Login</a>
               </p>
             </form>
           </div>

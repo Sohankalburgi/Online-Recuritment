@@ -29,6 +29,7 @@ public class RoleController {
 	
 	@GetMapping("/role/{id}")
 	public Role getRole(@PathVariable String id) {
+		System.out.println(roleService.getRoleById(id));
 		return roleService.getRoleById(id);
 	}
 	

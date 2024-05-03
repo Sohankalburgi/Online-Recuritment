@@ -13,10 +13,13 @@ export class StudRegisterComponent {
 
   constructor(private fb: FormBuilder){
     this.studRegisterForm = this.fb.group({
+      'city' : ['', Validators.required],
+      'state': ['', Validators.required],
+      'pinCode': ['', Validators.required],
       'collegeName' : ['', Validators.required],
-      'collegeAdd' : ['', Validators.required],
-      'yOP' : ['', Validators.required],
-      'marks' : ['', Validators.required]
+      'collegeAddress' : ['', Validators.required],
+      'yearOfPassing' : ['', Validators.required],
+      'cgpa' : ['', Validators.required]
 
     });
   }

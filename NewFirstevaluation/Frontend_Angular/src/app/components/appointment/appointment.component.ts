@@ -9,8 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AppointmentComponent implements OnInit{
 
   // selectedJob: string = '';
-  // selectJob: string[] =  ['Software Developer', 'Data Scientist', 'Cybersecurity Analyst', 'UX/UI Designer',
-  // 'Systems Administrator', 'Network Engineer', 'IT Project Manager', 'Cloud Architect'];
+// nationalities: string[] =  ['Software Developer', 'Data Scientist', 'Cybersecurity Analyst', 'UX/UI Designer',
+//    'Systems Administrator', 'Network Engineer', 'IT Project Manager', 'Cloud Architect'];
+
+
+
 
 
   appointForm!:FormGroup;
@@ -27,7 +30,9 @@ export class AppointmentComponent implements OnInit{
         'language' : ['', Validators.required],
         'keySkill' : ['', Validators.required],
         'project' : ['' , Validators.required],
-        'resume' : ['', Validators.required]
+        'cgpa': ['' , Validators.required],
+        'resume' : ['', Validators.required],
+        'selectJob': ['', Validators.required]
 
       });
     }

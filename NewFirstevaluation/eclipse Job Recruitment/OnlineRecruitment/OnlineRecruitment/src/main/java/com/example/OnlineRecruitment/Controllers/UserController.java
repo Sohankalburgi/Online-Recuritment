@@ -73,7 +73,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/userlogin")
-	public boolean checkUserexist(@RequestBody Email email) {
+	public boolean checkUserexist(@RequestBody Email email) throws Exception {
+		System.out.println(email.toString());
 		return userService.checkUserexist(email);
 	}
 	

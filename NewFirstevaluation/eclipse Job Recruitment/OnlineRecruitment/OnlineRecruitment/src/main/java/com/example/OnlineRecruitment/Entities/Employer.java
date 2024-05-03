@@ -33,7 +33,7 @@ public class Employer{
 	private String companyDescription;
 	@NotEmpty(message = "Enter the CompanyAddress")
 	private String companyAddress;
-	@NotEmpty(message = "Enter the CompanySize")
+	
 	private Integer companySize;
 	
 	public Employer() {

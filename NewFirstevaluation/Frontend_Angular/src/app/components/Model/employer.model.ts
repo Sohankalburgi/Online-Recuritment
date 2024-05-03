@@ -6,5 +6,7 @@ export interface Employer{
     companyDescription:string,
     companyAddress:string,
     companySize:string,
-    roleId:string
+    roleId:{
+        roleId:string
+    }
 }

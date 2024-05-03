@@ -18,8 +18,10 @@ export class LoginServiceService {
       
   constructor(private http:HttpClient) { }
 
-  checkUserExist(email:Email):Observable<any>{
+  checkUserExist(email:Email,roleIdString:string):Observable<any>{ 
     console.log(email+"this is service");
+    email.roleId = roleIdString;
+    console.log(email);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(`${this.baseUrl}/userlogin`,email,this.httpOptions);
   }

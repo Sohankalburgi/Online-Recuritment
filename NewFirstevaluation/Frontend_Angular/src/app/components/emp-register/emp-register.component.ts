@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmployerregistrationserviceService } from './Services/employerregistrationservice.service';
 
 @Component({
   selector: 'app-emp-register',
@@ -11,7 +12,9 @@ export class EmpRegisterComponent implements OnInit {
   empRegisterForm!: FormGroup;
   roleIdString: string | null = null;
 
-  constructor(private formBuilder: FormBuilder,private router:ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder,private router:ActivatedRoute,
+    private employerservice:EmployerregistrationserviceService,private route:Router
+  ) { }
 
   ngOnInit(): void {
 
@@ -27,7 +30,9 @@ export class EmpRegisterComponent implements OnInit {
       companyDescription: ['', Validators.required],
       companyAddress: ['', Validators.required],
       companySize: ['', Validators.required],
-      roleId:[this.roleIdString]
+      roleId:{
+        roleId:[this.roleIdString]}
+
     })
 
   }
@@ -53,6 +58,12 @@ export class EmpRegisterComponent implements OnInit {
     if (this.empRegisterForm.valid) {
       // Perform form submission actions here
       console.log(this.empRegisterForm.value);
+      this.employerservice.saveemployer(this.empRegisterForm.value).subscribe(Response=>{
+        if(Response){
+          alert("successful")
+        }
+      })
+      this.route.navigate(['/home']);
     } else {
       // Handle form validation errors here
       console.log('Form is invalid');

@@ -36,8 +36,4 @@ public class GraduateController {
 		return graduateService.getAllGraduate();
 	}
 	
-	@GetMapping("/existsgraduate/{roleId}")
-	public boolean existGraduateById(@PathVariable String roleId) {
-		return graduateService.checkGraduateExist(roleId);
-	}
 }

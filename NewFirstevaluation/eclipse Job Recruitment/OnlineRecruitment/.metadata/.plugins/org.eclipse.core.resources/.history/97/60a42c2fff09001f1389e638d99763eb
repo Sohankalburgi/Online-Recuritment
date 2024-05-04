@@ -31,7 +31,6 @@ public class GraduateService {
 		Graduate graduate = graduateRepository.getByRoleId(roleId);
 		
 		if(graduate==null) {
-			System.out.println("this is false ");
 			return false;
 		}
 		else {

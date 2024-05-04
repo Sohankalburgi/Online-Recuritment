@@ -25,14 +25,4 @@ public class EmployerService {
 	public Employer getEmployerById(String roleId) {
 		return employerRepository.getByRoleId(roleId);
 	}
-	
-	public boolean checkEmployerExist(String roleId) {
-		Employer employer = employerRepository.getByRoleId(roleId);
-		if(employer==null) {
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
 }

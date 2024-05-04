@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginServiceService } from './LoginService/login-service.service';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -37,21 +38,24 @@ export class LoginComponent implements OnInit {
      
      console.log(roleIdString)
 
-     this.loginservice.checkUserExist(this.loginForm.value,roleIdString).subscribe( response=>{
-      if(response===true){
-        alert("Login Successful")
-        if(this.loginForm.value.idName==="EMP"){
-          this.router.navigate(['/emp-register', roleIdString]);
-         }
-         else if(this.loginForm.value.idName==="GRAD"){
-          this.router.navigate(['/stud-register', roleIdString]);
-         }
+     this.loginservice.checkUserExist(this.loginForm.value, roleIdString).subscribe(response => {
+      if (response === true) {
+        alert("Login Successful");
+        this.loginservice.checkGraduateExist(roleIdString,this.loginForm.value.idName).subscribe(Response => {
+          if (Response === false) {
+            if (this.loginForm.value.idName === "EMP") {
+              this.router.navigate(['/emp-register', roleIdString]);
+            } else if (this.loginForm.value.idName === "GRAD") {
+              this.router.navigate(['/stud-register', roleIdString]);
+            }
+          } else {
+            this.router.navigate([`/home/${roleIdString}`]);
+          }
+        });
+      } else {
+        alert("Invalid User Details or Not Registered");
       }
-      else{
-        alert("Invalid User Details OR Not Registered")
-      }
-    }
-     )
+    });
 
      
 

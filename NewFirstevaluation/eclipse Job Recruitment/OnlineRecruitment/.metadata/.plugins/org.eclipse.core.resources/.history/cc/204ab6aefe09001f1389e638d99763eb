@@ -29,14 +29,11 @@ public class GraduateService {
 	
 	public boolean checkGraduateExist(String roleId) {
 		Graduate graduate = graduateRepository.getByRoleId(roleId);
-		
+		System.out.println(graduate.toString());
 		if(graduate==null) {
-			System.out.println("this is false ");
 			return false;
 		}
 		else {
-			System.out.println(graduate.toString());
-			System.out.println("this is the check graduate"+true);
 			return true;
 		}
 	}

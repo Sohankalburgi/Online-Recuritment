@@ -32,7 +32,8 @@ export class AppointmentComponent implements OnInit{
         'project' : ['' , Validators.required],
         'cgpa': ['' , Validators.required],
         'resume' : ['', Validators.required],
-        'selectJob': ['', Validators.required]
+        'selectJob': ['', Validators.required],
+        'selectSlot' : ['', Validators.required]
 
       });
     }

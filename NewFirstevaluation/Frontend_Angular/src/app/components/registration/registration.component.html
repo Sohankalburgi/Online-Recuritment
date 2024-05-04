@@ -38,7 +38,7 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
               <div class="form-outline mb-2">
                 <label for="phone" class="col-sm-3 col-form-label">Phone:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg" id="phone" formControlName="phone" placeholder="Phone Number">
+                                    <input type="number" class="form-control form-select-lg" id="phone" formControlName="phone" placeholder="Phone Number">
                                     <div *ngIf="isInvalid('phone')" class="text-danger">
                                         {{ getErrorMessage('phone') }}
                                     </div>

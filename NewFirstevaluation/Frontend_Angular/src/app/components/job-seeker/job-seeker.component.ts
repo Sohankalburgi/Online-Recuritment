@@ -23,11 +23,12 @@ export class JobSeekerComponent {
         'email': ['', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
         'phone' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
         'yearOfPassing' : ['', [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
-        'percentage' : ['', Validators.required],
+        'cgpa' : ['', Validators.required],
         'language' : ['', Validators.required],
         'keySkill' : ['', Validators.required],
         'project' : ['' , Validators.required],
-        'resume' : ['', Validators.required]
+        'resume' : ['', Validators.required],
+        'areasOfInterest' : ['', Validators.required]
 
       });
     }

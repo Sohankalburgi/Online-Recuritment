@@ -33,7 +33,7 @@
                       <div class="form-outline mb-2">
                           <label for="phone" class="col-sm-3 col-form-label">Phone No:</label>
                           <div class="col-sm-9" id="inputfield">
-                              <input type="text" class="form-control form-select-lg" id="phone" formControlName="phone" placeholder="Phone">
+                              <input type="number" class="form-control form-select-lg" id="phone" formControlName="phone" placeholder="Phone">
                               <div *ngIf="isInvalid('phone')" class="text-danger">
                                   {{ getErrorMessage('phone') }}
                               </div>
@@ -53,14 +53,29 @@
 
                       <!-- CGPA -->
                       <div class="form-outline mb-2">
-                          <label for="cgpa" class="col-sm-3 col-form-label">CGPA:</label>
-                          <div class="col-sm-9" id="inputfield">
-                              <input type="number" class="form-control form-select-lg" id="cgpa" formControlName="cgpa" placeholder="Enter CGPA">
-                              <div *ngIf="isInvalid('cgpa')" class="text-danger">
-                                  {{ getErrorMessage('cgpa') }}
-                              </div>
-                          </div>
+                        <label for="cgpa" class="col-sm-3 col-form-label">CGPA</label>
+                        <div class="col-sm-9" id="inputfield">
+                            <select id="cgpa" formControlName="cgpa" class="form-select form-select-lg" required>
+                                <option  value="" disabled selected>Select CGPA</option>
+                                <option value="value1">1 - 2</option>
+                                <option value="value2">2 - 3</option>
+                                <option value="value3">3 - 4</option>
+                                <option value="value4">4 - 5</option>
+                                <option value="value5">5 - 6</option>
+                                <option value="value6">6 - 7</option>
+                                <option value="value7">7 - 8</option>
+                                <option value="value8">8 - 9</option>
+                                <option value="value9">9 - 10</option>
+
+                            </select>
+                            <div *ngIf="isInvalid('cgpa')" class="text-danger">
+                                {{ getErrorMessage('cgpa') }}
+                            </div>
+                        </div>
                       </div>
+
+
+
 
                       <!-- Language -->
                       <div class="form-outline mb-2">
@@ -72,6 +87,8 @@
                               </div>
                           </div>
                       </div>
+
+
 
                       <!-- Key Skill -->
                       <div class="form-outline mb-2">
@@ -108,8 +125,38 @@
                           </div>
                       </div>
 
+
+
+
+
+                      <!-- Appointment Slots -->
+                    <div class="form-outline mb-2">
+                          <label for="selectSlot" class="col-sm-3 col-form-label">Appointment Time</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <select id="selectSlot" formControlName="selectSlot" class="form-select form-select-lg" required>
+                                  <option value="" disabled selected>Select Slot</option>
+                                  <option value="slot1">10 am - 11 am</option>
+                                  <option value="slot2">11 am - 12 pm</option>
+                                  <option value="slot3">12 pm - 1 pm</option>
+                                  <option value="slot4">1 pm - 2 pm</option>
+                                  <option value="slot5">2 pm - 3 pm</option>
+                                  <option value="slot6">3 pm - 4 pm</option>
+                                  <option value="slot7">4 pm - 5 pm</option>
+                                  <option value="slot8">5 pm - 6 pm</option>
+                                  <option value="slot9">6 pm - 7 pm</option>
+
+                              </select>
+                              <div *ngIf="isInvalid('selectSlot')" class="text-danger">
+                                  {{ getErrorMessage('selectSlot') }}
+                              </div>
+                          </div>
+                      </div>
+
+
+
+
                       <!-- Project -->
-                      <div class="form-outline mb-2">
+                      <!-- <div class="form-outline mb-2">
                           <label for="project" class="col-sm-3 col-form-label">Project</label>
                           <div class="col-sm-9" id="inputfield">
                               <textarea rows="5" class="form-control form-select-lg" id="project" formControlName="project" placeholder="Project"></textarea>
@@ -117,7 +164,7 @@
                                   {{ getErrorMessage('project') }}
                               </div>
                           </div>
-                      </div>
+                      </div> -->
 
                       <!-- Resume -->
                       <div class="form-outline mb-2">
@@ -130,6 +177,9 @@
                           </div>
                       </div>
 
+
+
+
                       <div>
                           <div>
                               <button type="submit" class="btn btn-primary w-100">Submit</button>
@@ -137,6 +187,7 @@
                       </div>
 
                   </form>
+
               </div>
           </div>
           <div class="col-md-4">

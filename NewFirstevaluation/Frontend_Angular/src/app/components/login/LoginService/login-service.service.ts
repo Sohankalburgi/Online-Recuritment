@@ -26,9 +26,16 @@ export class LoginServiceService {
     return this.http.post(`${this.baseUrl}/userlogin`,email,this.httpOptions);
   }
 
-  checkGraduateExist(roleIdString:string):Observable<any>{
+  checkGraduateExist(roleIdString:string,idName:string):Observable<any>{
     console.log("this is roleID form checkgradute"+roleIdString);
-    const url = `${this.baseUrl}/existsgraduate/${roleIdString}`;
+    let type = "";
+    if(idName="GRAD"){
+      type = "graduate";
+    }
+    else{
+      type = "employer";
+    }
+    const url = `${this.baseUrl}/exists${type}/${roleIdString}`;
     console.log(url);
     return this.http.get(url);
   }

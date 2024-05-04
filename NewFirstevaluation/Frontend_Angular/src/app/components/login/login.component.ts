@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
      this.loginservice.checkUserExist(this.loginForm.value, roleIdString).subscribe(response => {
       if (response === true) {
         alert("Login Successful");
-        this.loginservice.checkGraduateExist(roleIdString).subscribe(graduateResponse => {
-          if (graduateResponse === false) {
+        this.loginservice.checkGraduateExist(roleIdString,this.loginForm.value.idName).subscribe(Response => {
+          if (Response === false) {
             if (this.loginForm.value.idName === "EMP") {
               this.router.navigate(['/emp-register', roleIdString]);
             } else if (this.loginForm.value.idName === "GRAD") {

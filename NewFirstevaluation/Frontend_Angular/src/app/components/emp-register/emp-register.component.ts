@@ -62,8 +62,11 @@ export class EmpRegisterComponent implements OnInit {
         if(Response){
           alert("successful")
         }
+        
       })
-      this.route.navigate(['/home']);
+      this.route.navigate([`home/${this.roleIdString}`]);
+      console.log(this.roleIdString);
+      
     } else {
       // Handle form validation errors here
       console.log('Form is invalid');

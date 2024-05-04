@@ -52,7 +52,7 @@ export class StudRegisterComponent {
           }
         }
       )
-      this.route.navigate(['/home']);
+      this.route.navigate([`/home/${this.roleIdString}`]);
     }
 
   }

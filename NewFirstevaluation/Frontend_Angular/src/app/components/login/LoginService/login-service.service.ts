@@ -25,4 +25,11 @@ export class LoginServiceService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(`${this.baseUrl}/userlogin`,email,this.httpOptions);
   }
+
+  checkGraduateExist(roleIdString:string):Observable<any>{
+    console.log("this is roleID form checkgradute"+roleIdString);
+    const url = `${this.baseUrl}/existsgraduate/${roleIdString}`;
+    console.log(url);
+    return this.http.get(url);
+  }
 }

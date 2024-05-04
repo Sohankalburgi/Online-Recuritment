@@ -23,22 +23,12 @@ public class GraduateService {
 		return graduateRepository.getByRoleId(roleId);
 	}
 	
+//	public boolean checkGraduateExists(String graduateId) {
+//		return graduateRepository.existsById(graduateId);
+//	}
+	
 	public List<Graduate> getAllGraduate(){
 		return graduateRepository.findAll();
-	}
-	
-	public boolean checkGraduateExist(String roleId) {
-		Graduate graduate = graduateRepository.getByRoleId(roleId);
-		
-		if(graduate==null) {
-			System.out.println("this is false ");
-			return false;
-		}
-		else {
-			System.out.println(graduate.toString());
-			System.out.println("this is the check graduate"+true);
-			return true;
-		}
 	}
 
 }

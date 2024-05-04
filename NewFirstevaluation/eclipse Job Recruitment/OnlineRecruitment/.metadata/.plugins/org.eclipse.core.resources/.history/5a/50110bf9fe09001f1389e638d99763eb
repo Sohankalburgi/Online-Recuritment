@@ -31,12 +31,10 @@ public class GraduateService {
 		Graduate graduate = graduateRepository.getByRoleId(roleId);
 		
 		if(graduate==null) {
-			System.out.println("this is false ");
 			return false;
 		}
 		else {
 			System.out.println(graduate.toString());
-			System.out.println("this is the check graduate"+true);
 			return true;
 		}
 	}

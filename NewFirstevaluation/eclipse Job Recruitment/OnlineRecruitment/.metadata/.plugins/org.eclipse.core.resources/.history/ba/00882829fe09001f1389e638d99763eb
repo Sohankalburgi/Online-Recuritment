@@ -139,7 +139,7 @@ public class Graduate{
 	public String toString() {
 		return "Graduate [roleId=" + roleId + ", studentId=" + studentId + ", city=" + city + ", state=" + state
 				+ ", pinCode=" + pinCode + ", collegeName=" + collegeName + ", collegeAddress=" + collegeAddress
-				+ ", yearOfPassing=" + yearOfPassing + ", cgpa=" + cgpa;
+				+ ", yearOfPassing=" + yearOfPassing + ", cgpa=" + cgpa + ", getRoleId()=" + roleId.getRoleId() + "]";
 	}
 	
 }

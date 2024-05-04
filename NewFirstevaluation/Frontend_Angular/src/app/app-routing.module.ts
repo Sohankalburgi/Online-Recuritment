@@ -29,8 +29,12 @@ const routes: Routes = [
     component: ForgotpasswordComponent
   },
   {
-    path: 'home',
+    path: 'home/:roleIdString',
     component: HomeComponent,
+  },
+  {
+    path:'home',
+    component:HomeComponent,
   },
   {
     path: 'login-success',
@@ -50,21 +54,9 @@ const routes: Routes = [
     path:'',
     redirectTo: '/home', pathMatch: 'full',
   },
-
-  {
-    path:'stud-login',
-    component: StudLoginComponent
-  },
-
   {
     path: 'stud-register/:roleIdString',
     component: StudRegisterComponent
-  },
-
-
-  {
-    path: 'emp-login',
-    component: EmpLoginComponent
   },
 
   {

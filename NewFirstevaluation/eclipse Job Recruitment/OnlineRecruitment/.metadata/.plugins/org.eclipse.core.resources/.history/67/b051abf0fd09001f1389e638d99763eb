@@ -17,8 +17,6 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Graduate{
 
-	
-
 	@OneToOne(fetch = FetchType.EAGER)
 	private Role roleId;
 	
@@ -134,12 +132,6 @@ public class Graduate{
 	public void setCgpa(String cgpa) {
 		this.cgpa = cgpa;
 	}
-	
-	@Override
-	public String toString() {
-		return "Graduate [roleId=" + roleId + ", studentId=" + studentId + ", city=" + city + ", state=" + state
-				+ ", pinCode=" + pinCode + ", collegeName=" + collegeName + ", collegeAddress=" + collegeAddress
-				+ ", yearOfPassing=" + yearOfPassing + ", cgpa=" + cgpa;
-	}
+
 	
 }

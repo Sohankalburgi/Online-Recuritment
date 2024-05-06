@@ -3,16 +3,22 @@ package com.example.OnlineRecruitment.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Job {
 
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "roleId")
+	private Role roleId;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,6 +50,14 @@ public class Job {
 		this.jobDescription = jobDescription;
 		this.jobVacancy = jobVacancy;
 	}
+	
+	public Role getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(Role roleId) {
+		this.roleId = roleId;
+	}
+	
 	public Integer getJobId() {
 		return jobId;
 	}

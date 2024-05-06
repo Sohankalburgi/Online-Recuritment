@@ -9,28 +9,28 @@ import com.example.OnlineRecruitment.Entities.Job;
 import com.example.OnlineRecruitment.Repositories.JobRepository;
 import com.example.OnlineRecruitment.ServiceInterface.JobServiceInterface;
 @Service
-public class JobService implements JobServiceInterface{
+public class JobService {
 	
 	@Autowired
 	private JobRepository jobRepository;
 	
-	@Override
+	
 	public void createJob(Job job) {
 		jobRepository.save(job);
 	}
-	@Override
+	
 	public void deleteJob(Integer id) {
 		jobRepository.deleteById(id);
 	}
-	@Override
-	public Job getJobById(Integer id) {
-		return jobRepository.getById(id);
+	
+	public Job getJobById(String roleId) {
+		return jobRepository.getByRoleId(roleId);
 	}
-	@Override
+	
 	public List<Job> getAllJobs(){
 		return jobRepository.findAll();
 	}
-	@Override
+	
 	public void updateJobById(Integer id,Job job) {
 		Job updateJob = jobRepository.getById(id);
 		updateJob.setJobDescription(job.getJobDescription());

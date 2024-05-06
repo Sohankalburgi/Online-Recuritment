@@ -17,8 +17,8 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Graduate{
 
-	
 
+	
 	@OneToOne(fetch = FetchType.EAGER)
 	private Role roleId;
 	
@@ -33,10 +33,7 @@ public class Graduate{
 	private String state;
 	@NotEmpty(message = "Enter the pincode")
 	private String pinCode;
-	@NotEmpty(message = "Enter the collegeName")
-	private String collegeName;
-	@NotEmpty(message = "Enter the collegeAddress")
-	private String collegeAddress;
+
 	@NotEmpty(message = "Enter the YearOfPassing")
 	private String yearOfPassing;
 	@NotEmpty(message = "Enter the Percentage")
@@ -48,19 +45,22 @@ public class Graduate{
 		super();
 	}
 
-	public Graduate(Role roleId, String city, String state, String pinCode, String collegeName,
-			String collegeAddress, String yearOfPassing,String cgpa) {
+	public Graduate(Role roleId, Long studentId, @NotEmpty(message = "Enter the city") String city,
+			@NotEmpty(message = "Enter the state") String state,
+			@NotEmpty(message = "Enter the pincode") String pinCode,
+			@NotEmpty(message = "Enter the YearOfPassing") String yearOfPassing,
+			@NotEmpty(message = "Enter the Percentage") String cgpa) {
 		super();
 		this.roleId = roleId;
+		this.studentId = studentId;
 		this.city = city;
 		this.state = state;
 		this.pinCode = pinCode;
-		this.collegeName = collegeName;
-		this.collegeAddress = collegeAddress;
 		this.yearOfPassing = yearOfPassing;
 		this.cgpa = cgpa;
-		
 	}
+	
+	
 
 	public Role getRoleId() {
 		return roleId;
@@ -103,22 +103,7 @@ public class Graduate{
 		this.pinCode = pinCode;
 	}
 
-	public String getCollegeName() {
-		return collegeName;
-	}
-
-	public void setCollegeName(String collegeName) {
-		this.collegeName = collegeName;
-	}
-
-	public String getCollegeAddress() {
-		return collegeAddress;
-	}
-
-	public void setCollegeAddress(String collegeAddress) {
-		this.collegeAddress = collegeAddress;
-	}
-
+	
 	public String getYearOfPassing() {
 		return yearOfPassing;
 	}
@@ -134,12 +119,12 @@ public class Graduate{
 	public void setCgpa(String cgpa) {
 		this.cgpa = cgpa;
 	}
-	
 	@Override
 	public String toString() {
 		return "Graduate [roleId=" + roleId + ", studentId=" + studentId + ", city=" + city + ", state=" + state
-				+ ", pinCode=" + pinCode + ", collegeName=" + collegeName + ", collegeAddress=" + collegeAddress
-				+ ", yearOfPassing=" + yearOfPassing + ", cgpa=" + cgpa;
+				+ ", pinCode=" + pinCode + ", yearOfPassing=" + yearOfPassing + ", cgpa=" + cgpa + "]";
 	}
+
+	
 	
 }

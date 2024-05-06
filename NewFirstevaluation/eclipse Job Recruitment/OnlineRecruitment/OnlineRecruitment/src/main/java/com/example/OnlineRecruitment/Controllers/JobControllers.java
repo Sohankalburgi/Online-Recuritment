@@ -43,9 +43,9 @@ public class JobControllers {
 		return jobService.getAllJobs();
 	}
 	
-	@GetMapping("/jobs/{id}")
-	public Job getJobById(@PathVariable Integer id) {
-		return jobService.getJobById(id);
+	@GetMapping("/jobs/{roleId}")
+	public Job getJobById(@PathVariable String roleId) {
+		return jobService.getJobById(roleId);
 	}
 	
 	@DeleteMapping("/deletejob/{id}")

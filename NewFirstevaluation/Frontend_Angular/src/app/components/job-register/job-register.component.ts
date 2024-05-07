@@ -15,11 +15,11 @@ export class JobRegisterComponent {
     constructor(private fb:FormBuilder){
       this.jobRegisterForm = this.fb.group({
         'jobName' : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
-        'jobSalary' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
+        'jobSalary' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$')]],
         'jobType' : ['', Validators.required],
         'jobDescription' : ['', Validators.required],
         'jobVacancy' : ['', Validators.required],
-        
+
 
       });
     }

@@ -1,32 +1,25 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-
 @Component({
-  selector: 'app-job-seeker',
-  templateUrl: './job-seeker.component.html',
-  styleUrl: './job-seeker.component.css'
+  selector: 'app-job-register',
+  templateUrl: './job-register.component.html',
+  styleUrl: './job-register.component.css'
 })
-export class JobSeekerComponent {
-  
+export class JobRegisterComponent {
 
+  jobRegisterForm !: FormGroup;
 
-  jobSeekerForm!:FormGroup;
-
-    emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
+  emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
     constructor(private fb:FormBuilder){
-      this.jobSeekerForm = this.fb.group({
-        'name' : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
-        'email': ['', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
-        'phone' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
-        'yearOfPassing' : ['', [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
-        'cgpa' : ['', Validators.required],
-        'language' : ['', Validators.required],
-        'keySkill' : ['', Validators.required],
-        'project' : ['' , Validators.required],
-        'resume' : ['', Validators.required],
-        'areasOfInterest' : ['', Validators.required]
+      this.jobRegisterForm = this.fb.group({
+        'jobName' : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
+        'jobSalary' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
+        'jobType' : ['', Validators.required],
+        'jobDescription' : ['', Validators.required],
+        'jobVacancy' : ['', Validators.required],
+        
 
       });
     }
@@ -36,14 +29,14 @@ export class JobSeekerComponent {
     }
 
     onSubmit(): void {
-      if (this.jobSeekerForm.valid) {
+      if (this.jobRegisterForm.valid) {
         // Handle form submission logic here, e.g., sending data to server
-        console.log(this.jobSeekerForm.value);
+        console.log(this.jobRegisterForm.value);
       }
     }
 
     isInvalid(controlName: string): boolean {
-      const control = this.jobSeekerForm.get(controlName);
+      const control = this.jobRegisterForm.get(controlName);
       console.log(`Checking validity for ${controlName}:`, control);
 
       return control ? control.invalid && (control.dirty || control.touched) : false;
@@ -52,7 +45,7 @@ export class JobSeekerComponent {
 
 
     getErrorMessage(controlName: string): string {
-      const control = this.jobSeekerForm.get(controlName);
+      const control = this.jobRegisterForm.get(controlName);
 
       if (!control) {
         console.log(`Control ${controlName} not found.`);

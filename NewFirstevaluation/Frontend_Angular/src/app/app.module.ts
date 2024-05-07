@@ -21,6 +21,7 @@ import { EmpRegisterComponent } from './components/emp-register/emp-register.com
 import { StudLoginComponent } from './components/stud-login/stud-login.component';
 import { StudRegisterComponent } from './components/stud-register/stud-register.component';
 import { JobSeekerComponent } from './components/job-seeker/job-seeker.component';
+import { JobRegisterComponent } from './components/job-register/job-register.component';
 
 
 
@@ -40,7 +41,8 @@ import { JobSeekerComponent } from './components/job-seeker/job-seeker.component
     EmpRegisterComponent,
     StudLoginComponent,
     StudRegisterComponent,
-    JobSeekerComponent
+    JobSeekerComponent,
+    JobRegisterComponent
   ],
   imports: [
     BrowserModule,

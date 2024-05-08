@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-job-register',
@@ -9,35 +10,43 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class JobRegisterComponent {
 
   jobRegisterForm !: FormGroup;
+  roleIdString: string | null = null;
 
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
-    constructor(private fb:FormBuilder){
-      this.jobRegisterForm = this.fb.group({
-        'jobName' : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
-        'jobSalary' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
-        'jobType' : ['', Validators.required],
-        'jobDescription' : ['', Validators.required],
-        'jobVacancy' : ['', Validators.required],
-        
-
-      });
+    constructor(private fb:FormBuilder,private router:ActivatedRoute){
+      
     }
 
     ngOnInit(): void {
 
+      this.router.paramMap.subscribe(params=>{
+        this.roleIdString = params.get('roleIdString');
+        console.log('RoleIdString:',this.roleIdString);
+      });
+
+      this.jobRegisterForm = this.fb.group({
+        jobName : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
+        jobSalary : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
+        jobType : ['', Validators.required],
+        jobDescription: ['', Validators.required],
+        jobVacancy : ['', Validators.required],
+        roleId:{
+          roleId:[this.roleIdString]}
+      });
     }
 
     onSubmit(): void {
       if (this.jobRegisterForm.valid) {
         // Handle form submission logic here, e.g., sending data to server
+        console.log(this.roleIdString);
         console.log(this.jobRegisterForm.value);
       }
     }
 
     isInvalid(controlName: string): boolean {
       const control = this.jobRegisterForm.get(controlName);
-      console.log(`Checking validity for ${controlName}:`, control);
+      // console.log(`Checking validity for ${controlName}:`, control);
 
       return control ? control.invalid && (control.dirty || control.touched) : false;
     }

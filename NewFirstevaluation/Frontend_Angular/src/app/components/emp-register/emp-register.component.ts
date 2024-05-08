@@ -64,7 +64,7 @@ export class EmpRegisterComponent implements OnInit {
         }
         
       })
-      this.route.navigate([`home/${this.roleIdString}`]);
+      this.route.navigate([`job-register/${this.roleIdString}`]);
       console.log(this.roleIdString);
       
     } else {

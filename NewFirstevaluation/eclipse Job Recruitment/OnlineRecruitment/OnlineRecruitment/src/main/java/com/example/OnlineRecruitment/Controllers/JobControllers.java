@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OnlineRecruitment.Entities.Graduate;
 import com.example.OnlineRecruitment.Entities.Job;
 import com.example.OnlineRecruitment.Services.JobService;
 
@@ -23,7 +24,7 @@ import jakarta.validation.Valid;
 
 @RestController
 public class JobControllers {
-	
+
 	@Autowired
 	private JobService jobService;
 	
@@ -44,7 +45,7 @@ public class JobControllers {
 	}
 	
 	@GetMapping("/jobs/{roleId}")
-	public Job getJobById(@PathVariable String roleId) {
+	public List<Job> getJobById(@PathVariable String roleId) {
 		return jobService.getJobById(roleId);
 	}
 	
@@ -62,4 +63,11 @@ public class JobControllers {
 		jobService.updateJobById(id, job);
 		return "updated job";
 	}
+	
+	@GetMapping("/listgraduatejobId/{roleId}")
+	public List<Graduate> listallgraduateswithId(@PathVariable String roleId)
+	{
+		return jobService.listOfAllgraduateById(roleId);
+	}
+	
 }

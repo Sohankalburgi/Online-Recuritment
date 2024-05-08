@@ -52,7 +52,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'job-register',
+    path: 'job-register/:roleIdString',
     component: JobRegisterComponent
 
   },

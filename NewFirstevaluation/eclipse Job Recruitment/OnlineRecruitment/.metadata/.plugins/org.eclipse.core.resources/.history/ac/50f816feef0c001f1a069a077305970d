@@ -1,0 +1,13 @@
+package com.example.OnlineRecruitment.Classes;
+
+public class graduateJob {
+	
+
+
+	private String roleId;
+	
+	private Long jobId;
+	
+	
+
+}

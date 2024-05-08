@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.OnlineRecruitment.Entities.Graduate;
 import com.example.OnlineRecruitment.Entities.Job;
+import com.example.OnlineRecruitment.Repositories.GraduateRepository;
 import com.example.OnlineRecruitment.Repositories.JobRepository;
 import com.example.OnlineRecruitment.ServiceInterface.JobServiceInterface;
 @Service
@@ -14,8 +16,11 @@ public class JobService {
 	@Autowired
 	private JobRepository jobRepository;
 	
+	@Autowired
+	private GraduateRepository graduateRepository;
 	
 	public void createJob(Job job) {
+		
 		jobRepository.save(job);
 	}
 	
@@ -23,8 +28,8 @@ public class JobService {
 		jobRepository.deleteById(id);
 	}
 	
-	public Job getJobById(String roleId) {
-		return jobRepository.getByRoleId(roleId);
+	public List<Job> getJobById(String roleId) {
+		return jobRepository.findAllJobsById(roleId);
 	}
 	
 	public List<Job> getAllJobs(){
@@ -40,5 +45,10 @@ public class JobService {
 		updateJob.setJobVacancy(job.getJobVacancy());
 		
 		jobRepository.save(updateJob);
+	}
+
+	public List<Graduate> listOfAllgraduateById(String roleId) {
+		Job job = jobRepository.getByRoleId(roleId);
+		return job.getGraduate();
 	}
 }

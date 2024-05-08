@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OnlineRecruitment.Classes.graduateJob;
 import com.example.OnlineRecruitment.Entities.Graduate;
+import com.example.OnlineRecruitment.Entities.Job;
 import com.example.OnlineRecruitment.Services.GraduateService;
 
 @RestController
@@ -40,4 +42,14 @@ public class GraduateController {
 	public boolean existGraduateById(@PathVariable String roleId) {
 		return graduateService.checkGraduateExist(roleId);
 	}
+	
+	@PostMapping("/graduatejobs")
+	public String saveJobOfGraduate(@RequestBody graduateJob graduate) {
+		return graduateService.addJob(graduate);
+	}
+	
+//	@GetMapping("/graduatejobs/{roleId}")
+//	public List<Job> getListOfJobsByGraduateById(@PathVariable String roleId){
+//		return graduateService.getListofJobsofGraduateById(roleId);
+//	}
 }

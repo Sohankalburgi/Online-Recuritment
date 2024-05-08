@@ -1,13 +1,21 @@
 package com.example.OnlineRecruitment.Entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
@@ -15,8 +23,8 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Job {
 
-	
-	@OneToOne(fetch = FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
 	@JoinColumn(name = "roleId")
 	private Role roleId;
 	
@@ -37,6 +45,11 @@ public class Job {
 	@Max(value = 2147483647,message = "max vacancy can be 2147483647")
 	private Integer jobVacancy;
 	
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "job")
+	@JsonIgnore
+	private List<Graduate> graduate = new ArrayList<Graduate>();
+	
+	
 	public Job() {
 		super();
 	}
@@ -50,6 +63,14 @@ public class Job {
 		this.jobDescription = jobDescription;
 		this.jobVacancy = jobVacancy;
 	}
+	
+	public List<Graduate> getGraduate() {
+		return graduate;
+	}
+	public void setGraduate(List<Graduate> graduate) {
+		this.graduate = graduate;
+	}
+	
 	
 	public Role getRoleId() {
 		return roleId;

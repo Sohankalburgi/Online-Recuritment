@@ -1,6 +1,13 @@
 package com.example.OnlineRecruitment.Entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.annotations.NaturalId;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
@@ -10,16 +17,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Graduate{
 
-
-	
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Role roleId;
 	
 	
@@ -40,11 +49,14 @@ public class Graduate{
 	private String cgpa;
 	
 	
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	private Job job;
 	
 	public Graduate() {
 		super();
 	}
-
+	
+	
 	public Graduate(Role roleId, Long studentId, @NotEmpty(message = "Enter the city") String city,
 			@NotEmpty(message = "Enter the state") String state,
 			@NotEmpty(message = "Enter the pincode") String pinCode,
@@ -61,6 +73,14 @@ public class Graduate{
 	}
 	
 	
+	public Job getJobs() {
+		return job;
+	}
+
+
+	public void setJobs(Job job) {
+		this.job = job;
+	}
 
 	public Role getRoleId() {
 		return roleId;

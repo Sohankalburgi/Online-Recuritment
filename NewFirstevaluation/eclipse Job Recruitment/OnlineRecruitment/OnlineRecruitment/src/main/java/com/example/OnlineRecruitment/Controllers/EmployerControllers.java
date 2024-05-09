@@ -30,13 +30,16 @@ public class EmployerControllers {
 		return employerService.getAllEmployer();
 	}
 	
-	@GetMapping("/employer/{id}")
-	public Employer getById(@PathVariable String id) {
-		return employerService.getEmployerById(id);
+	@GetMapping("/employer/{roleId}")
+	public Employer getById(@PathVariable String roleId) {
+		return employerService.getEmployerById(roleId);
 	}
 	
 	@GetMapping("/existsemployer/{roleId}")
 	public boolean existsByEmployer(@PathVariable String roleId) {
 		return employerService.checkEmployerExist(roleId);
 	}
+	
+	
+	
 }

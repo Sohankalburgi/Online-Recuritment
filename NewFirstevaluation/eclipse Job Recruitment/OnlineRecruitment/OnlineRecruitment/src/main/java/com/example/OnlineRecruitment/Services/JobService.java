@@ -51,4 +51,9 @@ public class JobService {
 		Job job = jobRepository.getByRoleId(roleId);
 		return job.getGraduate();
 	}
+
+	public Job getJobsByIntegerId(Integer id) {
+		// TODO Auto-generated method stub
+		return jobRepository.getById(id);
+	}
 }

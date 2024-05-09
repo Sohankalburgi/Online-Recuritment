@@ -56,4 +56,9 @@ public class JobService {
 		// TODO Auto-generated method stub
 		return jobRepository.getById(id);
 	}
+	
+	public List<Job> getJobsBySearch(String prefix){
+		return jobRepository.findTheJobsOnSearch(prefix);
+	}
+	
 }

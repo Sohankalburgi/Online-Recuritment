@@ -76,4 +76,10 @@ public class JobControllers {
 	public Job getjobsByInteger(@PathVariable Integer id) {
 		return jobService.getJobsByIntegerId(id);
 	}
+	
+	@GetMapping("/jobsBysearch/{prefix}")
+	public List<Job> searchJobbyprefix(@PathVariable String prefix){
+		return jobService.getJobsBySearch(prefix);
+	}
+	
 }

@@ -22,6 +22,7 @@ import { StudLoginComponent } from './components/stud-login/stud-login.component
 import { StudRegisterComponent } from './components/stud-register/stud-register.component';
 import { JobSeekerComponent } from './components/job-seeker/job-seeker.component';
 import { JobRegisterComponent } from './components/job-register/job-register.component';
+import { JobdescriptionComponent } from './jobdescription/jobdescription.component';
 
 
 
@@ -42,7 +43,8 @@ import { JobRegisterComponent } from './components/job-register/job-register.com
     StudLoginComponent,
     StudRegisterComponent,
     JobSeekerComponent,
-    JobRegisterComponent
+    JobRegisterComponent,
+    JobdescriptionComponent
   ],
   imports: [
     BrowserModule,

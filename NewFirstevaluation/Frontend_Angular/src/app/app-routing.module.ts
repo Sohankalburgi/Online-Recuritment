@@ -13,6 +13,7 @@ import { StudLoginComponent } from './components/stud-login/stud-login.component
 import { StudRegisterComponent } from './components/stud-register/stud-register.component';
 import { JobSeekerComponent } from './components/job-seeker/job-seeker.component';
 import { JobRegisterComponent } from './components/job-register/job-register.component';
+import { JobdescriptionComponent } from './jobdescription/jobdescription.component';
 
 
 
@@ -74,6 +75,10 @@ const routes: Routes = [
   {
     path:'appointment',
     component:AppointmentComponent
+  },
+  {
+    path:'jobdescription/:roleIdString/:jobId',
+    component:JobdescriptionComponent
   }
 ];
 

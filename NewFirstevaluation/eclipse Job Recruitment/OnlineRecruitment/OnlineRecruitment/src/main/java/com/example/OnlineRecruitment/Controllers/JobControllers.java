@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.example.OnlineRecruitment.Services.JobService;
 import jakarta.validation.Valid;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class JobControllers {
 
 	@Autowired
@@ -43,7 +45,7 @@ public class JobControllers {
 	public List<Job> getAllJobs(){
 		return jobService.getAllJobs();
 	}
-	
+	// this is meant to get the jobs which is associated with the on employer
 	@GetMapping("/jobs/{roleId}")
 	public List<Job> getJobById(@PathVariable String roleId) {
 		return jobService.getJobById(roleId);
@@ -70,4 +72,8 @@ public class JobControllers {
 		return jobService.listOfAllgraduateById(roleId);
 	}
 	
+	@GetMapping("/jobsByIntegerId/{id}")
+	public Job getjobsByInteger(@PathVariable Integer id) {
+		return jobService.getJobsByIntegerId(id);
+	}
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./job-list.component.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Jobs For You</h1>
+       <div class="filter-container">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
+                <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="clearSearch()">Clear</button>
+                </div>
+            </div>
+            <ul>
+                <li *ngFor="let item of items | filter: searchText">
+                {{ item }}
+                </li>
+            </ul>
+       </div>
+        <table>
+            <tr>
+                <th>Company Name</th>
+                <th>Job Role</th>
+                <th>Skills</th>
+                <th>Job Type</th>            
+                <th></th>
+            </tr>
+            <tr *ngFor="let job of jobs">
+                <td>{{ job.company }}</td>
+                <td>{{ job.role }}</td>
+                <td>{{ job.skills }}</td>
+                <td>{{ job.type }}</td>
+                <td><button (click)="applyJob(job)">Apply</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

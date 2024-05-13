@@ -25,3 +25,4 @@ export class StudentregisterServiceService {
     return this.http.post(`${this.baseUrl}/graduate`,student,this.httpOptions);
   }
 }
+ 

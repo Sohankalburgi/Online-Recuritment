@@ -106,8 +106,8 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
 
 
 
-<section class="vh-50"
-style="background-image: url('https://cdn.vectorstock.com/i/500p/73/98/dark-blue-gradient-abstract-background-vector-27317398.jpg'); background-size:1900px 1900px ; background-repeat: no-repeat;">
+<section class="regDiv">
+  <!-- style="background-image: url('https://cdn.vectorstock.com/i/500p/73/98/dark-blue-gradient-abstract-background-vector-27317398.jpg'); background-size:1900px 1900px ; background-repeat: no-repeat;" -->
   <div class="container py-5 h-50">
     <!-- h-100 -->
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -125,14 +125,14 @@ style="background-image: url('https://cdn.vectorstock.com/i/500p/73/98/dark-blue
               <div class="card-body p-4 p-lg-5 text-black">
 
                 <!-- Form Section -->
-                <h2 class="h1 fw-bold mb-0">Registration Page</h2>
+                <h2 class="h1 fw-bold mb-0" style="color: rgb(5, 15, 60);">Registration Page</h2>
                 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
                   <div class="form-outline mb-2">
                     <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
                                     <div class="col-sm-9" id="inputfield">
                                         <input type="text" class="form-control form-select-lg " id="name" formControlName="name" placeholder="Full Name">
-                                        <div *ngIf="isInvalid('fullName')" class="text-danger">
-                                            {{ getErrorMessage('fullName') }}
+                                        <div *ngIf="isInvalid('name')" class="text-danger">
+                                            {{ getErrorMessage('name') }}
                                         </div>
                                     </div>
                   </div>

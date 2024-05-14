@@ -14,14 +14,14 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-  login() {
-    // Logic for user login
-    this.loggedIn.next(true); // Set the login status to true
-  }
+  // login() {
+  //   // Logic for user login
+  //   this.loggedIn.next(true); // Set the login status to true
+  // }
 
-  logout() {
-    // Logic for user logout
-    this.loggedIn.next(false); // Set the login status to false
-  }
+  // logout() {
+  //   // Logic for user logout
+  //   this.loggedIn.next(false); // Set the login status to false
+  // }
 
 }

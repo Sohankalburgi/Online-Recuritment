@@ -1,12 +1,12 @@
-.job-listing {
-  margin-top: 30px;
+ .job-listing.full-width {
+  width: 100%;
 }
 
 .job-item {
-  background-color: #f2f2f2;
+  color : rgb(18, 26, 99);
+  background-color: white;
   padding: 20px;
   margin-bottom: 20px;
-  border-radius: 5px;
 }
 
 .job-item h2 {
@@ -25,3 +25,35 @@
 .job-item button {
   margin-top: 10px;
 }
+
+
+.rounded-end {
+  border-radius: 0 5px 5px 0;
+}
+
+#sidebar {
+  position: relative;
+  height: 100%;
+}
+
+#sponsorcard, #wisecard {
+
+  border-radius: 2rem;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+.job-div{
+  /* background-color: rgba(214, 215, 218,0.4); */
+  background-color: rgb(215, 226, 238);
+  padding-top: 50px;
+}
+
+
+
+.rounded-start {
+  border-radius: 5px 5px 5px 5px;
+}
+
+

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="text-center mb-4">Available Jobs</h1>
+      <div class="job-listing">
+        <div class="job-item">
+          <h2>International Voice Process (Technical)</h2>
+          <!-- <p>Company: Wipro</p> -->
+          <p>Rating: 3.8 (out of 40989 reviews)</p>
+          <p>Experience: 0-3 years</p>
+          <p>Salary: 50,000-2 Lacs P.A.</p>
+          <p>Location: Kolkata</p>
+          <p>Time and Venue: 15th May - 16th May, 9.30 AM - 5.30PM at Wipro, Kolkata, Sector V</p>
+          <p>Contact: Ipshita Sarkar</p>
+          <button class="btn btn-primary">Apply Now</button>
+        </div>
+      </div>
+      <h2 class="text-center mt-5">Jobs you might be interested in</h2>
+      <div class="job-listing">
+        <div class="job-item" *ngFor="let job of jobs">
+          <h3>{{ job.title }}</h3>
+          <p>Company: {{ job.company }}</p>
+          <p>Rating: {{ job.rating }} (out of {{ job.reviews }} reviews)</p>
+          <p>Location: {{ job.location }}</p>
+          <p>Time and Venue: {{ job.time }}</p>
+          <button class="btn btn-primary">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

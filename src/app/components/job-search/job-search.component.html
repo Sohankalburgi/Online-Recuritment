@@ -1,0 +1,49 @@
+<div class="container">
+  <h1 class="my-4 text-center" style="color: #113f5f; font-weight:700;">Find your dream job now
+    <p class="my-2 lead" style="font-size: 15px; color: #113f5f; font-weight : 500;">Your journey to a better job starts here.</p>
+  </h1>
+
+  <div class="row mb-3">
+      <div class="col">
+          <input type="text" class="form-control" placeholder="Enter skills/designations/companies" [(ngModel)]="searchTerm">
+      </div>
+      <div class="col">
+        <select class="form-select" [(ngModel)]="selectedExperience">
+            <option value="" selected hidden disabled>Experience</option>
+            <option *ngFor="let experience of experiences" [value]="experience">{{ experience }}</option>
+        </select>
+    </div>
+      <div class="col">
+          <input type="text" class="form-control" placeholder="Enter location" [(ngModel)]="location">
+      </div>
+      <div class="col-auto">
+          <button class="btn btn-primary" (click)="search()" [disabled]="!isLoggedIn" >Search</button>
+      </div>
+  </div>
+
+  <!-- Filter buttons -->
+  <div class="d-flex flex-wrap mb-4">
+      <button type="button" class="btn btn-outline-secondary m-2" style="color: #050101;" *ngFor="let filter of filters">{{ filter }}</button>
+  </div>
+
+  <!-- Companies section -->
+  <div class="mb-5">
+      <h2 class="my-4 text-center" style="color: #113f5f;">Top companies hiring now</h2>
+      <div class="row row-cols-5">
+          <div class="col" *ngFor="let company of companies">
+              <div class="card mb-3">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-center">
+                          <img [src]="company.logo" alt="Company Logo" class="me-2" style="width: auto; height: 100%;">
+                      </div>
+                      <h5 class="card-title text-center">{{ company.name }}</h5>
+                      <p class="card-text text-center">{{ company.description }}</p>
+                      <div class="d-flex justify-content-center">
+                          <button routerLink="" class="btn btn-primary mt-3" [disabled]="!isLoggedIn">View more</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.button-group .btn {
+    margin-right: 20px; /* Adjust this value as needed */
+}
+
+.bg-div{
+  background-image: url('./homeImage/demo-bg.jpg');
+
+  min-height: 100vh;
+    width: 100%;
+
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  /* background-image:url(Images/bg.jpg); */
+    /* background-size: cover; */
+  /* background-repeat: no-repeat; */
+}
+
+.my-element {
+	/* Use a flexbox layout */
+	display: flex;
+
+	/* Make a horizontal flexbox (the default) */
+	flex-direction: row;
+
+	/* The important part: vertically center the items */
+	align-items: center;
+}

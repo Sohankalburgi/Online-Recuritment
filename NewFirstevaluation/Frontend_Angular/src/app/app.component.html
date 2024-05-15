@@ -1,57 +1,70 @@
-
-
 <div style="position: static;">
   <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
-      <div class="container-fluid">
-          <a class="navbar-brand" routerLink="/home">Online Recruitment System</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <a class="navbar-brand mx-auto" routerLink="/home">Online Recruitment System</a>
 
-                  <li class="nav-item" *ngIf="currentRoute !== '/home'">
-                      <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-                  </li>
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-                  <li class="nav-item" *ngIf="currentRoute !== '/app-job-search'">
-                    <a class="nav-link" routerLink="/app-job-search" routerLinkActive="active">Apply for Jobs</a>
-                </li>
-
-                <li class="nav-item" *ngIf="currentRoute !== '/login'">
-                  <a class="nav-link" routerLink="/login" routerLinkActive="active">Jobs for you</a>
-              </li>
-
-              <li class="nav-item" *ngIf="currentRoute !== '/login'">
-                <a class="nav-link" routerLink="/login" routerLinkActive="active">About Us</a>
-            </li>
-
-            <li class="nav-item" *ngIf="currentRoute !== '/login'">
-              <a class="nav-link" routerLink="/login" routerLinkActive="active">Blog</a>
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
           </li>
 
-          <li class="nav-item" *ngIf="currentRoute !== '/login'">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active">Contact Us</a>
-        </li>
+          <!-- Post Jobs -->
+          <!-- <li class="nav-item" *ngIf="currentRoute !== '/job-register'">
+            <a class="nav-link" routerLink="/job-register" routerLinkActive="active">Apply for Jobs</a>
+          </li> -->
 
-        <li class="nav-item" *ngIf="currentRoute !== '/login'">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active">Admin</a>
-      </li>
+          <!-- Search Jobs -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/job-search" routerLinkActive="active">Jobs for you</a>
+          </li>
 
 
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
 
 
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
 
-                  <li class="nav-item" *ngIf="currentRoute !== '/login'">
-                      <a class="nav-link" routerLink="/login" routerLinkActive="active">Login/Register</a>
-                  </li>
 
-                  <!-- <li class="nav-item" *ngIf="currentRoute !== '/register'">
-                      <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
-                  </li> -->
-              </ul>
-          </div>
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+          <!-- Log In -->
+          <!-- <li class="nav-item" *ngIf="currentRoute !== '/login'">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+          </li> -->
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
+    </div>
   </nav>
 </div>
 <router-outlet (activate)="onActivate($event)"></router-outlet>

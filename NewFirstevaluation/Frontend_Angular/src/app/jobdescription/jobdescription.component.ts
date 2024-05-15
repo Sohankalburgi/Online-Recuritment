@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobDescription } from './Model/jobDescription.model';
 import { JobdescriptionserviceService } from './service/jobdescriptionservice.service';
 import { companyDescription } from './Model/companyDescription.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-jobdescription',
@@ -19,7 +19,9 @@ export class JobdescriptionComponent implements OnInit {
   studentId:string | undefined;
   
 
-  constructor(private jobdescriptionservice:JobdescriptionserviceService,private router:ActivatedRoute){
+  constructor(private jobdescriptionservice:JobdescriptionserviceService,private router:ActivatedRoute,
+    private route:Router
+  ){
   }
 
   ngOnInit(): void {
@@ -49,7 +51,7 @@ export class JobdescriptionComponent implements OnInit {
   Apply(){
     console.log(this.jobId);
     console.log(this.studentId)
-    console.log("the application is submitted")
+    this.route.navigate([`/job-seeker/${this.studentId}/${this.jobId}`])
   }
   
 

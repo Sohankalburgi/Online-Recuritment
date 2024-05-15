@@ -49,7 +49,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'job-seeker',
+    path: 'job-seeker/:roleIdString/:jobId',
     component: JobSeekerComponent
   },
 
@@ -74,7 +74,7 @@ const routes: Routes = [
   },
 
   {
-    path:'appointment',
+    path:'appointment/:roleIdString/:jobId',
     component:AppointmentComponent
   },
   {

@@ -1,0 +1,5 @@
+package com.example.OnlineRecruitment.Security;
+
+public class SecurityConfig {
+
+}

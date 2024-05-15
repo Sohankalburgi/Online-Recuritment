@@ -1,17 +1,28 @@
-<p>jobdescription works!</p>
+<div class="card">
+    <div class="card-body align-items-center text-center">
+      <h1 class="card-title fw-bold display-4">{{companyDescriptionData?.companyName}}</h1>
+      <div class="display-4"><h1>
+        &emsp; {{jobDescriptionData?.jobId}} - {{jobDescriptionData?.jobType}}</h1>
+      </div>
+      <h6 class="display-6 fw-bold">Job Description </h6>
+      <div>{{jobDescriptionData?.jobDescription}}</div>
 
-<div>
-    <h3>{{jobDescriptionData?.jobType}}</h3>
-    <h3>{{jobDescriptionData?.jobName}}</h3>
-    <h3>{{jobDescriptionData?.jobSalary}}</h3>
-    <h3>{{jobDescriptionData?.jobVacancy}}</h3>
-    <h3>{{jobDescriptionData?.jobId}}</h3>
-</div>
+      <p class="fw-bolder d-inline">Job Vacancy: {{jobDescriptionData?.jobVacancy}}</p>
+      <p class="fw-bolder">Salary: {{jobDescriptionData?.jobSalary}}</p>
 
-<div>
-    <h3>{{companyDescriptionData?.companyName}}</h3>
-    <h3>{{companyDescriptionData?.companyDescription}}</h3>
-    <h3>{{companyDescriptionData?.companyAddress}}</h3>
-    <h3>{{companyDescriptionData?.companyType}}</h3>
-    <h3>{{companyDescriptionData?.companySize}}</h3>
-</div>
+      <h2 class="display-4 fw-bold">Company Details</h2>
+      <div class="display-6 fw-semibold">Company Description<div></div></div>
+      <div>{{companyDescriptionData?.companyDescription}}</div>
+      
+      <div class="display-6 fw-semibold">Company Address</div>
+      <div><address>{{companyDescriptionData?.companyAddress}}</address></div>
+      <p class="fw-bolder d-inline">Company Type : {{companyDescriptionData?.companyType}}</p>
+      <p class="fw-bolder ">Company size : {{companyDescriptionData?.companySize}}</p>
+      <button class="btn btn-success" (click)="Apply()">Apply</button>
+    </div>
+    
+  </div>
+
+  
+
+

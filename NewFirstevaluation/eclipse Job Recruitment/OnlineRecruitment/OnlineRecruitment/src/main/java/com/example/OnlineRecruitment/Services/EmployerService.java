@@ -35,4 +35,23 @@ public class EmployerService {
 			return true;
 		}
 	}
+
+	public String updateEmployer(String roleId, Employer employer) {
+		// TODO Auto-generated method stub
+		Employer emp = employerRepository.getByRoleId(roleId);
+		emp.setCompanyAddress(employer.getCompanyAddress());
+		emp.setCompanyDescription(employer.getCompanyDescription());
+		emp.setCompanyName(employer.getCompanyName());
+		emp.setCompanySize(employer.getCompanySize());
+		emp.setCompanyType(employer.getCompanyType());
+		emp.setRoleInCompany(employer.getRoleInCompany());
+		return "updated";
+	}
+
+	public String deleteEmployer(String roleId) {
+		// TODO Auto-generated method stub
+		Employer employer = employerRepository.getByRoleId(roleId);
+		employerRepository.delete(employer);
+		return "deleted";
+	}
 }

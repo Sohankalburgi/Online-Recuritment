@@ -75,6 +75,23 @@ public class GraduateService {
 		return "saved";
 	}
 
+	public String updateService(Graduate graduate, String roleId) {
+		// TODO Auto-generated method stub
+		Graduate grad = graduateRepository.getByRoleId(roleId);
+		grad.setCgpa(graduate.getCgpa());
+		grad.setCity(graduate.getCity());
+		grad.setState(graduate.getState());
+		grad.setYearOfPassing(graduate.getYearOfPassing());
+		return "updated";
+	}
+
+	public String deleteGraduate(String roleId) {
+		// TODO Auto-generated method stub
+		Graduate graduate = graduateRepository.getByRoleId(roleId);
+		graduateRepository.delete(graduate);
+		return "deleted";
+	}
+
 //	public List<Job> getListofJobsofGraduateById(String roleId) {
 //		List<Job> Jobs = graduateRepository.find
 //		return null;

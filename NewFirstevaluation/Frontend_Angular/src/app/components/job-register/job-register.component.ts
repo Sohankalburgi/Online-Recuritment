@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { JobregisterserviceService } from './jobregisterservice/jobregisterservice.service';
 
 @Component({
   selector: 'app-job-register',
   templateUrl: './job-register.component.html',
   styleUrl: './job-register.component.css'
 })
-export class JobRegisterComponent {
+export class JobRegisterComponent implements OnInit{
 
   jobRegisterForm !: FormGroup;
   roleIdString: string | null = null;
 
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
-    constructor(private fb:FormBuilder,private router:ActivatedRoute){
+    constructor(private fb:FormBuilder,private router:ActivatedRoute,private jobregisterService:JobregisterserviceService,
+      private route:Router
+    ){
       
     }
 
@@ -27,7 +30,7 @@ export class JobRegisterComponent {
 
       this.jobRegisterForm = this.fb.group({
         jobName : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
-        jobSalary : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
+        jobSalary : ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
         jobType : ['', Validators.required],
         jobDescription: ['', Validators.required],
         jobVacancy : ['', Validators.required],
@@ -41,6 +44,10 @@ export class JobRegisterComponent {
         // Handle form submission logic here, e.g., sending data to server
         console.log(this.roleIdString);
         console.log(this.jobRegisterForm.value);
+
+        this.jobregisterService.savejob(this.jobRegisterForm.value).subscribe();
+        alert("submitted")
+        this.route.navigate([`home/${this.roleIdString}`]);
       }
     }
 

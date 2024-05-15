@@ -39,4 +39,6 @@ export class LoginServiceService {
     console.log(url);
     return this.http.get(url);
   }
+
+ 
 }

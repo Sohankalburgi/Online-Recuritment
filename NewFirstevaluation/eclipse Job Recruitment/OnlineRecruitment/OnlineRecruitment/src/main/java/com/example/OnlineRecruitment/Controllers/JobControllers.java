@@ -32,12 +32,13 @@ public class JobControllers {
 	
 	@PostMapping("/jobs")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public String saveJobs(@Valid @RequestBody Job job,BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
-			return bindingResult.toString();
-		}
-		
+	public String saveJobs(@Valid @RequestBody Job job){
+		try {
 		jobService.createJob(job);
+		}
+		catch(Exception e){
+			System.out.println("the exception occured"+e.getMessage());
+		}
 		return "saved";
 	}
 	
@@ -57,11 +58,7 @@ public class JobControllers {
 		return "deleted Job";
 	}
 	@PutMapping("/updatejob/{id}")
-	public String updateJobId(@PathVariable Integer id,@Valid @RequestBody Job job,
-			BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
-			return bindingResult.toString();
-		}
+	public String updateJobId(@PathVariable Integer id,@Valid @RequestBody Job job) {
 		jobService.updateJobById(id, job);
 		return "updated job";
 	}

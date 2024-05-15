@@ -40,11 +40,8 @@ public class RoleController {
 	}
 	
 	@PutMapping("/updaterole/{id}")
-	public String updateRoleById(@PathVariable String id,@Valid @RequestBody Role role,
-			BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
-			return bindingResult.toString();
-		}
+	public String updateRoleById(@PathVariable String id,@Valid @RequestBody Role role) {
+		
 		roleService.updateRoleById(id, role);
 		return "update Role";
 	}

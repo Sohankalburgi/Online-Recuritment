@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,6 +42,16 @@ public class EmployerControllers {
 		return employerService.checkEmployerExist(roleId);
 	}
 	
+	@PutMapping("/updateemployer/{roleId}")
+	public String updateEmployer(@PathVariable String roleId,@RequestBody
+			Employer employer) {
+		return employerService.updateEmployer(roleId,employer);
+	}
+	
+	@DeleteMapping("/deleteemployer/{roleId}")
+	public String deleteEmployer(@PathVariable String roleId) {
+		return employerService.deleteEmployer(roleId);
+	}
 	
 	
 }

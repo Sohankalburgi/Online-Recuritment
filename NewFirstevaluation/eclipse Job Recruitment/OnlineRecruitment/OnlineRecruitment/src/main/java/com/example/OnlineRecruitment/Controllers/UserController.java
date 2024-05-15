@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,13 +37,14 @@ public class UserController {
 
 	
 	@PostMapping("/user")
-	public String saveUser(@Valid @RequestBody User user,BindingResult bindingResult) {
-		
-		if(bindingResult.hasErrors()) {
-			return bindingResult.toString();
-		}
+	public String saveUser(@Valid @RequestBody User user){
+		try {
 		System.out.println("the enter to backend");
 		userService.saveUser(user);
+		}
+		catch(Exception e) {
+			System.out.println("the exception occured"+e.getMessage());;
+		}
 		return "Created";
 	}
 	
@@ -63,20 +64,24 @@ public class UserController {
 		return "User Deleted";
 	}
 	@PutMapping("/userupdate/{id}")
-	public String userUpdateById(@PathVariable Integer id,@Valid @RequestBody User user,
-			BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
-			return bindingResult.toString();
-		}
+	public String userUpdateById(@PathVariable Integer id,@Valid @RequestBody User user) {
+		
 		userService.updateUserById(id, user);
 		return "Updated";
 	}
 	
 	@PostMapping("/userlogin")
-	public boolean checkUserexist(@RequestBody Email email) throws Exception {
+	public boolean checkUserexist(@RequestBody Email email) {
+		try {
 		System.out.println(email.toString());
 		return userService.checkUserexist(email);
+		}
+		catch(Exception e) {
+			System.out.println("the Exception occured"+e.getMessage());
+			return false;
+		}
 	}
+	
 	
 	
 }

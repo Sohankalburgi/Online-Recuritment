@@ -14,6 +14,7 @@ import { StudRegisterComponent } from './components/stud-register/stud-register.
 import { JobSeekerComponent } from './components/job-seeker/job-seeker.component';
 import { JobRegisterComponent } from './components/job-register/job-register.component';
 import { JobdescriptionComponent } from './jobdescription/jobdescription.component';
+import { JoblistComponent } from './joblist/joblist.component';
 
 
 
@@ -63,7 +64,7 @@ const routes: Routes = [
     redirectTo: '/home', pathMatch: 'full',
   },
   {
-    path: 'stud-register',
+    path: 'stud-register/:roleIdString',
     component: StudRegisterComponent
   },
 
@@ -79,6 +80,10 @@ const routes: Routes = [
   {
     path:'jobdescription/:roleIdString/:jobId',
     component:JobdescriptionComponent
+  },
+  {
+    path:'jobsearch',
+    component:JoblistComponent
   }
 ];
 

@@ -41,8 +41,8 @@
             <div class="form-outline mb-2">
               <label for="jobType" class="col-sm-3 col-form-label">Job Type</label>
               <div class="col-sm-9" id="inputfield">
-                  <select id="jobType" formControlName="jobType" class="form-select form-select-lg" required>
-                      <!-- <option  value="" selected>Select Year</option> -->
+                  <select id="jobType" formControlName="jobType" class="form-select form-select-lg" placeholder="Select the Type" required>
+                     
 
                       <option value="value1">Software Developer</option>
                       <option value="value2">Java Developer</option>
@@ -65,7 +65,7 @@
              <div class="form-outline mb-2">
               <label for="jobDescription" class="col-sm-3 col-form-label">Job Description:</label>
                               <div class="col-sm-9" id="inputfield">
-                                <textarea rows="5" class="form-control form-select-lg" id="jobDescription" formControlName="jobDescription" placeholder="Project"></textarea>
+                                <textarea rows="5" class="form-control form-select-lg" id="jobDescription" formControlName="jobDescription" placeholder="Job Description"></textarea>
                                   <!-- <input type="text" class="form-control form-select-lg " id="jobDescription" formControlName="jobDescription" placeholder="Language"> -->
                                   <div *ngIf="isInvalid('jobDescription')" class="text-danger">
                                     {{ getErrorMessage('jobDescription') }}
@@ -77,9 +77,9 @@
 
             <!-- vacancy -->
             <div class="form-outline mb-2">
-              <label for="jobVacancy" class="col-sm-3 col-form-label">Phone No:</label>
+              <label for="jobVacancy" class="col-sm-3 col-form-label">Job Vacancy:</label>
                               <div class="col-sm-9" id="inputfield">
-                                  <input type="number" class="form-control form-select-lg " id="jobVacancy" formControlName="jobVacancy" placeholder="Phone">
+                                  <input type="number" class="form-control form-select-lg " id="jobVacancy" formControlName="jobVacancy" placeholder="Vacancy">
                                   <div *ngIf="isInvalid('jobVacancy')" class="text-danger">
                                     {{ getErrorMessage('jobVacancy') }}
                                   </div>
@@ -176,7 +176,7 @@
 
           <div>
               <div>
-                  <button type="submit" class="btn btn-primary w-100" >Post </button>
+                  <button type="submit" class="btn btn-primary w-100" >Post the Job</button>
               </div>
           </div>
         </form>

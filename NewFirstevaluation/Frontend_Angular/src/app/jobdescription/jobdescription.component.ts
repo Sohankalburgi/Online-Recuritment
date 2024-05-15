@@ -16,12 +16,18 @@ export class JobdescriptionComponent implements OnInit {
 
   jobId!:number;
  
+  studentId:string | undefined;
   
 
   constructor(private jobdescriptionservice:JobdescriptionserviceService,private router:ActivatedRoute){
   }
 
   ngOnInit(): void {
+
+    this.router.paramMap.subscribe(params=>{
+      this.studentId = String(params.get('roleIdString'));
+    });
+
 
     this.router.paramMap.subscribe(params=>{
       this.jobId = Number(params.get('jobId'));
@@ -38,14 +44,13 @@ export class JobdescriptionComponent implements OnInit {
       });
     }
     );
-
-   
-
-  
-    
-    
   }
 
+  Apply(){
+    console.log(this.jobId);
+    console.log(this.studentId)
+    console.log("the application is submitted")
+  }
   
 
   

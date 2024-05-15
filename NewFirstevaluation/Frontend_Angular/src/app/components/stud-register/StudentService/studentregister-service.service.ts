@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Student } from '../../Model/student.model';
 import { Observable } from 'rxjs';
+import { College } from '../Model/college.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,15 @@ export class StudentregisterServiceService {
     
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(`${this.baseUrl}/graduate`,student,this.httpOptions);
+  }
+
+  savecollege(college:College):Observable<any>{
+
+    if (college.roleId && typeof college.roleId.roleId !== 'string') {
+      college.roleId.roleId = String(college.roleId.roleId);
+    }
+    console.log(college)
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(`${this.baseUrl}/college`,college,this.httpOptions);
   }
 }

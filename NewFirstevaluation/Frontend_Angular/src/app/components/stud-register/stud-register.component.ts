@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentregisterServiceService } from './StudentService/studentregister-service.service';
+import { College } from './Model/college.model';
+import { Student } from '../Model/student.model';
 
 
 @Component({
@@ -13,7 +15,8 @@ export class StudRegisterComponent {
 
   studRegisterForm!:FormGroup;
   roleIdString: string | null = null;
-
+  collegeRegister!:College;
+  studentRegister!:Student;
 
   constructor(private fb: FormBuilder,private router:ActivatedRoute,
     private studentservice:StudentregisterServiceService,private route:Router
@@ -34,24 +37,41 @@ export class StudRegisterComponent {
       pinCode: ['', Validators.required],
       collegeName : ['', Validators.required],
       collegeAddress : ['', Validators.required],
+      collegeDescription:['',Validators.required],
       yearOfPassing : ['', Validators.required],
       cgpa : ['', Validators.required],
       roleId:{
         roleId:[this.roleIdString]}
     });
+
   }
 
   onSubmit(): void {
+    this.collegeRegister = {
+      collegeName: this.studRegisterForm.value.collegeName,
+      collegeAddress: this.studRegisterForm.value.collegeAddress,
+      collegeDescription: this.studRegisterForm.value.collegeDescription,
+      roleId:{
+        roleId:this.studRegisterForm.value.roleId.roleId
+      }
+    };
+
+    this.studentRegister = {
+      roleId:{
+        roleId:this.studRegisterForm.value.roleId.roleId
+      },
+      city:this.studRegisterForm.value.city,
+      cgpa:this.studRegisterForm.value.cgpa,
+      pinCode:this.studRegisterForm.value.pinCode,
+      yearOfPassing:this.studRegisterForm.value.yearOfPassing,
+      state:this.studRegisterForm.value.state
+    }
+
     if (this.studRegisterForm.valid) {
       // Handle form submission logic here, e.g., sending data to server
-      console.log(this.studRegisterForm.value);
-      this.studentservice.savestudent(this.studRegisterForm.value).subscribe(
-        Response=>{
-          if(Response){
-            alert("success");
-          }
-        }
-      )
+     
+      this.studentservice.savestudent(this.studentRegister).subscribe();
+      this.studentservice.savecollege(this.collegeRegister).subscribe();
       this.route.navigate([`/home/${this.roleIdString}`]);
     }
 

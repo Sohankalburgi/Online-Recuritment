@@ -11,7 +11,7 @@ describe('StudRegisterComponent', () => {
       declarations: [StudRegisterComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(StudRegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

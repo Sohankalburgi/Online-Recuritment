@@ -13,8 +13,8 @@ import { StudLoginComponent } from './components/stud-login/stud-login.component
 import { StudRegisterComponent } from './components/stud-register/stud-register.component';
 import { JobSeekerComponent } from './components/job-seeker/job-seeker.component';
 import { JobRegisterComponent } from './components/job-register/job-register.component';
-import { JobdescriptionComponent } from './jobdescription/jobdescription.component';
-import { JoblistComponent } from './joblist/joblist.component';
+import { JobSearchComponent } from './components/job-search/job-search.component';
+import { JobDescComponent } from './components/job-desc/job-desc.component';
 
 
 
@@ -32,29 +32,36 @@ const routes: Routes = [
     component: ForgotpasswordComponent
   },
   {
-    path: 'home/:roleIdString',
+    path: 'home',
     component: HomeComponent,
-  },
-  {
-    path:'home',
-    component:HomeComponent,
   },
   {
     path: 'login-success',
     component: LoginSuccessComponent,
   },
+
+  {
+    path: 'job-search',
+    component: JobSearchComponent
+  },
+
+  {
+    path:'job-desc',
+    component: JobDescComponent
+  },
+
   {
     path: 'email',
     component:EmailVerificationComponent
   },
 
   {
-    path: 'job-seeker/:roleIdString/:jobId',
+    path: 'job-seeker',
     component: JobSeekerComponent
   },
 
   {
-    path: 'job-register/:roleIdString',
+    path: 'job-register',
     component: JobRegisterComponent
 
   },
@@ -63,31 +70,33 @@ const routes: Routes = [
     path:'',
     redirectTo: '/home', pathMatch: 'full',
   },
+
   {
-    path: 'stud-register/:roleIdString',
-    component: StudRegisterComponent
+    path:'stud-login',
+    component: StudLoginComponent
   },
 
   {
-    path: 'emp-register/:roleIdString',
+    path: 'stud-register',
+    // /:roleIdString
+    component: StudRegisterComponent
+  },
+
+
+  {
+    path: 'emp-login',
+    component: EmpLoginComponent
+  },
+
+  {
+    path: 'emp-register',
+    // /:roleIdString
     component:EmpRegisterComponent
   },
 
   {
-    path:'appointment/:roleIdString/:jobId',
+    path:'appointment',
     component:AppointmentComponent
-  },
-  {
-    path:'jobdescription/:roleIdString/:jobId',
-    component:JobdescriptionComponent
-  },
-  {
-    path:'jobsearch',
-    component:JoblistComponent
-  },
-  {
-    path:'jobsearch/:roleIdString',
-    component:JoblistComponent
   }
 ];
 

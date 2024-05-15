@@ -22,7 +22,7 @@ export class EmpRegisterComponent implements OnInit {
       this.roleIdString = params.get('roleIdString');
       console.log('RoleIdString:',this.roleIdString);
     });
-
+    
     this.empRegisterForm = this.formBuilder.group({
       roleInCompany: ['', Validators.required],
       companyName: ['', Validators.required],
@@ -62,12 +62,15 @@ export class EmpRegisterComponent implements OnInit {
         if(Response){
           alert("successful")
         }
+        
       })
-      this.route.navigate(['/home']);
+      this.route.navigate([`job-register/${this.roleIdString}`]);
+      console.log(this.roleIdString);
+      
     } else {
       // Handle form validation errors here
       console.log('Form is invalid');
     }
   }
-
+  
 }

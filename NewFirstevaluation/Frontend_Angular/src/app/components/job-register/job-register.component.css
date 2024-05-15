@@ -1,15 +1,13 @@
 .top-div {
   margin: 0;
   padding: 0;
-  /* background-color: #b8cbd9; */
-  background-color: hsl(217, 25%, 90%);
+  background-color: #3c6a8b;
   background-size: cover;
   height: 100%;
 }
 
 #formcard {
-  background-color:#7ea3bc;
-  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   border-radius: 2rem;
   padding: 20px;

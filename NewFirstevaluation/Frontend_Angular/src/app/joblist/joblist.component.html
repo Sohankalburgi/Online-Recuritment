@@ -1,33 +1,39 @@
-<p>joblist works!</p>
 <div class="main">
-    <h1>Jobs For You</h1>
-   <div class="filter-container">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText">
-            <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" (click)="clearSearch()">Clear</button>
-            </div>
+    <h1 class="text-center">Jobs For You</h1>
+
+        <div class=" d-flex flex-row-reverse">
+        <div class="col-0 mx-2">
+            <button class="btn btn-success" type="button" (click)="search()" >Search</button>
         </div>
-        <!-- <ul>
-            <li *ngFor="let job of joblist | filter: searchText">
-            {{ job }}
-            </li>
-        </ul> -->
-   </div>
-    <table>
-        <tr>
-            <th>Company Name</th>
-            <th>Job Role</th>
-            <th>Skills</th>
-            <th>Job Type</th>            
-            <th></th>
-        </tr>
-        <tr *ngFor="let job of jobs">
-            <td>{{ job.company }}</td>
-            <td>{{ job.role }}</td>
-            <td>{{ job.skills }}</td>
-            <td>{{ job.type }}</td>
-            <td><button (click)="applyJob(job)">Apply</button></td>
-        </tr>
-    </table>
+        <div class="col-4">
+        <input type="text" class="form-control" id="search" placeholder="Search" [(ngModel)]="searchValue">
+        </div>
+        
+        </div>
+        <div class="col-12 align-items-center align-text-center">
+        <table class="mt-2">
+            <tr>
+                <th>Company Name:</th>
+                <th>Job Name:</th>
+                <th>Job Vacancy:</th>
+                <th>Job Type:</th>
+                <th>Salary:</th>
+                <th>Company Address:</th>
+                <th>Apply:</th>
+            </tr>
+            <tr *ngFor="let job of jobs">
+            <td>{{job.companyName}}</td>
+            <td>{{job.jobName}}</td>
+            <td>{{job.jobVacancy}}</td>
+            <td>{{job.jobType}}</td>
+            <td>{{job.jobSalary}}</td>
+            <td>{{job.companyAddress}}</td>
+            <td><button (click)="Apply(job.jobId)" >Apply Now</button></td>
+            </tr>
+        </table>
+
+       
+
+   
+   
 </div>

@@ -4304,3 +4304,8 @@
 2024-05-14 20:10:00,580 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2024-05-14 20:10:00,589 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\online Recruitment final\Online-Recuritment\NewFirstevaluation\eclipse Job Recruitment\OnlineRecruitment\OnlineRecruitment\src\test\resources
 2024-05-15 09:42:39,604 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-05-15 10:11:47,262 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-05-15 10:38:52,862 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-05-15 10:39:30,465 [Worker-6: Launching OnlineRecruitment - OnlineRecruitmentApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-05-15 10:39:30,499 [Worker-6: Launching OnlineRecruitment - OnlineRecruitmentApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-05-15 10:39:30,525 [Worker-6: Launching OnlineRecruitment - OnlineRecruitmentApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\online Recruitment final\Online-Recuritment\NewFirstevaluation\eclipse Job Recruitment\OnlineRecruitment\OnlineRecruitment\src\test\resources

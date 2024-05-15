@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { JobListService } from './Service/job-list.service';
+import { HttpClient } from '@angular/common/http';
+import { jobList } from './Model/jobList.model';
+import { FormControl, FormControlName } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-joblist',
@@ -7,28 +11,45 @@ import { JobListService } from './Service/job-list.service';
   styleUrl: './joblist.component.css'
 })
 export class JoblistComponent {
-  searchText: string = '';
-  jobs: any[] = [];
-  joblist: any;
 
-  constructor(public joblistservice:JobListService) {}
+  searchValue!:string;
+  jobs:jobList[] = [];
+  roleIdString: string | null = null;
 
-  ngOnInit() {
-    this.getJobList();
-  }
-
-  getJobList() {
-    this.joblistservice.joblistsearch("full").subscribe((data: any) => {
-      console.warn("data",data)
-      this.jobs = data;
+  constructor(private http: HttpClient,private joblistservice:JobListService,private router:ActivatedRoute
+    ,private route:Router
+  ) { }
+  ngOnInit(): void {
+    this.router.paramMap.subscribe(params=>{
+      this.roleIdString = params.get('roleIdString');
+      console.log('RoleIdString:',this.roleIdString);
     });
   }
+  getCompaniesForJobs() {
+    this.jobs.forEach(job => {
+        this.joblistservice.getCompanyByRoleId(job.roleId.roleId).subscribe(company => {
+            // Assign company details to respective job
+            job.companyName = company.companyName;
+            job.companyAddress = company.companyAddress;
+        });
+    });
 
-  applyJob(job: any) {
-    // Implementation for applying to a job
   }
 
-  clearSearch() {
-    this.searchText = '';
+  search(){
+    this.joblistservice.getJobs(this.searchValue).subscribe(jobs=>{
+    this.jobs = jobs;
+    this.getCompaniesForJobs();}
+   );
+  }
+
+  Apply(jobId:number){
+    if(this.roleIdString==null){
+      alert("Please Login to apply")
+      this.route.navigate(['/login']);
+    }
+    else{
+      this.route.navigate([`/jobdescription/${this.roleIdString}/${jobId}`]);
+    }
   }
 }

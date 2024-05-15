@@ -84,6 +84,10 @@ const routes: Routes = [
   {
     path:'jobsearch',
     component:JoblistComponent
+  },
+  {
+    path:'jobsearch/:roleIdString',
+    component:JoblistComponent
   }
 ];
 

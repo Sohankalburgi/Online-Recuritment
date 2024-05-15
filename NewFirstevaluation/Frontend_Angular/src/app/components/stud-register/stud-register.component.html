@@ -11,9 +11,9 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
 
               <!-- City -->
               <div class="form-outline mb-2">
-                <label for="city" class="col-sm-3 col-form-label fw-bolder ">College Name:</label>
+                <label for="city" class="col-sm-3 col-form-label fw-bolder ">City:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg " id="city" formControlName="city" placeholder="Enter College Name">
+                                    <input type="text" class="form-control form-select-lg " id="city" formControlName="city" placeholder="Enter City">
                                     <div *ngIf="isInvalid('city')" class="text-danger">
                                         {{ getErrorMessage('city') }}
                                     </div>
@@ -70,7 +70,16 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                                 </div>
               </div>
 
-
+                  <!-- COLLEGE description -->
+                  <div class="form-outline mb-2">
+                    <label for="collegeDescription" class="col-sm- col-form-label fw-bolder">College Description:</label>
+                                    <div class="col-sm-9" id="inputfield">
+                                       <textarea rows="3" class="form-control form-select-lg" id="collegeDescription" formControlName="collegeDescription" placeholder="Enter College Description"></textarea>
+                                        <div *ngIf="isInvalid('collegeDescription')" class="text-danger">
+                                            {{ getErrorMessage('collegeDescription') }}
+                                        </div>
+                                    </div>
+                  </div>
 
 
               <!--YOP + drop-down-->
@@ -98,75 +107,7 @@ background-size: 1920px 1200px; background-repeat: no-repeat;">
                 </div>
               </div>
 
-              <!-- CONFIRM PASSWORD -->
-              <!-- <div class="form-outline mb-2">
-                <label for="confirmpassword" class="col-sm-3 col-form-label">Confirm Password:</label>
-                <div class="col-sm-9" id="inputfield">
-                  <input type="password" class="form-control form-select-lg" id="confirmpassword" formControlName="confirmpassword" placeholder="Re Enter Password">
-                  <div *ngIf="registrationForm && registrationForm.get('confirmpassword')?.invalid && (registrationForm.get('confirmpassword')?.dirty || registrationForm.get('confirmpassword')?.touched)" class="text-danger">
-                    {{ getErrorMessage('confirmpassword') }}
-                  </div>
-
-                </div>
-              </div> -->
-
-
-              <!-- DOB -->
-              <!-- <div class="form-outline mb-2">
-                <label for="dOB" class="col-sm-3 col-form-label" >Date Of Birth:</label>
-                                <div class="col-sm-9" id="inputfield">
-                                    <input type="date" class="form-control form-select-lg" id="dOB" formControlName="dOB" placeholder="Date Of Birth">
-                                    <div *ngIf="isInvalid('dOB')" class="text-danger">
-                                        {{ getErrorMessage('dOB') }}
-                                    </div>
-                                </div>
-              </div> -->
-
-
-              <!-- NATIONALITY -->
-              <!-- <div class="form-outline mb-2">
-                <label for="nationality" class="form-label" id="inputfield">Nationality:</label>
-                <select id="nationality" formControlName="nationality" class="form-select form-select-lg" aria-placeholder="Select Nationality" required>
-                  <option value=""  disabled selected>Select Nationality</option>
-                  <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
-                </select>
-                <div *ngIf="isInvalid('nationality')" class="text-danger">
-                  {{ getErrorMessage('nationality') }}
-              </div>
-              </div> -->
-
-
-              <!-- SIGN AS -->
-              <!-- <div class="form-outline mb-2">
-                <label for="signas" class="form-label" id="inputfield">Sign As:(Role)</label>
-                <select id="signas" formControlName="signas" class="form-select form-select-lg" aria-placeholder="signas" required>
-                  <option value=""  disabled selected>Select Role </option>
-                  <option value="graduate">Graduate</option>
-                  <option value="employer">Employer</option>
-                </select>
-                <div *ngIf="isInvalid('signas')" class="text-danger">
-                  {{ getErrorMessage('signas') }}
-              </div>
-              </div> -->
-
-
-              <!-- GENDER -->
-              <!-- <div class="form-outline mb-2">
-                <label for="gender" class="form-label" id="inputfield">Gender</label><br>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gender" id="male" formControlName="gender" value="male">
-                  <label class="form-check-label" for="male">Male</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gender" id="female" formControlName="gender" value="female">
-                  <label class="form-check-label" for="female">Female</label>
-                </div>
-                <div *ngIf="registrationForm.get('gender')?.invalid && (registrationForm.get('gender')?.dirty || registrationForm.get('gender')?.touched)" class="text-danger">
-                  <div *ngIf="registrationForm.get('gender')?.errors?.['required']">
-                    Gender is required.
-                  </div>
-                </div>
-              </div> -->
+     
              
               <button type="submit" class="btn btn-primary mt-4" id="inputfield" [disabled]="!studRegisterForm.valid" >Register</button>
               

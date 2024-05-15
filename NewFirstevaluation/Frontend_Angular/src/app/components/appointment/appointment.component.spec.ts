@@ -1,6 +1,4 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { core } from 'web3';
-import { ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppointmentComponent } from './appointment.component';
 
@@ -13,7 +11,7 @@ describe('AppointmentComponent', () => {
       declarations: [AppointmentComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(AppointmentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -11,7 +11,7 @@ describe('JobSeekerComponent', () => {
       declarations: [JobSeekerComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(JobSeekerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

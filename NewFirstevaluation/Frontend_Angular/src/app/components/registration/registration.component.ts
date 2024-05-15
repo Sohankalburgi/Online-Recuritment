@@ -37,7 +37,6 @@ export class RegistrationComponent implements OnInit {
     'Zimbabwe'
 ];
 
-imagePath: string = "./regImage/pic-reg.png";
 
 registrationForm: FormGroup;
 emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";

@@ -24,7 +24,6 @@ import { JobSeekerComponent } from './components/job-seeker/job-seeker.component
 import { JobRegisterComponent } from './components/job-register/job-register.component';
 import { JobdescriptionComponent } from './jobdescription/jobdescription.component';
 import { JoblistComponent } from './joblist/joblist.component';
-import { JobDescComponent } from './components/job-desc/job-desc.component';
 
 
 
@@ -47,8 +46,7 @@ import { JobDescComponent } from './components/job-desc/job-desc.component';
     JobSeekerComponent,
     JobRegisterComponent,
     JobdescriptionComponent,
-    JoblistComponent,
-    JobDescComponent
+    JoblistComponent
   ],
   imports: [
     BrowserModule,

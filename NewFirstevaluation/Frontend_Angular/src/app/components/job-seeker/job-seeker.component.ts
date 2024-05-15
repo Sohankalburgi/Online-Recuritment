@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -8,44 +9,55 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   styleUrl: './job-seeker.component.css'
 })
 export class JobSeekerComponent {
-
+  
 
 
   jobSeekerForm!:FormGroup;
 
     emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
+  studentId!: string;
+  jobId!: number;
 
-    constructor(private fb:FormBuilder){
+    constructor(private fb:FormBuilder,private router:ActivatedRoute,private route:Router){
       this.jobSeekerForm = this.fb.group({
         'name' : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
         'email': ['', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
         'phone' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
-        'yearOfPassing' : ['', [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
+        'yearOfPassing' : ['', [Validators.required]],
         'cgpa' : ['', Validators.required],
         'language' : ['', Validators.required],
         'keySkill' : ['', Validators.required],
         'project' : ['' , Validators.required],
-        'resume' : ['', Validators.required],
+        'resume' : [''],
         'areasOfInterest' : ['', Validators.required]
 
       });
     }
 
     ngOnInit(): void {
-
+      this.router.paramMap.subscribe(params=>{
+        this.studentId = String(params.get('roleIdString'));
+      });
+  
+  
+      this.router.paramMap.subscribe(params=>{
+        this.jobId = Number(params.get('jobId'));
+      });
     }
 
     onSubmit(): void {
       if (this.jobSeekerForm.valid) {
-        // Handle form submission logic here, e.g., sending data to server
+        console.log(this.studentId)
+        console.log(this.jobId)
         console.log(this.jobSeekerForm.value);
+        this.route.navigate([`/appointment/${this.studentId}/${this.jobId}`])
       }
+
     }
 
     isInvalid(controlName: string): boolean {
       const control = this.jobSeekerForm.get(controlName);
-      console.log(`Checking validity for ${controlName}:`, control);
-
+    
       return control ? control.invalid && (control.dirty || control.touched) : false;
     }
 

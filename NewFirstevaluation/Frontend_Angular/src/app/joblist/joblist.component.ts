@@ -12,10 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class JoblistComponent {
 
-  searchValue!:string;
+  searchValue:string | null = null;
   jobs:jobList[] = [];
   roleIdString: string | null = null;
-
+  searchredirect :string | null = null;
   constructor(private http: HttpClient,private joblistservice:JobListService,private router:ActivatedRoute
     ,private route:Router
   ) { }
@@ -24,6 +24,16 @@ export class JoblistComponent {
       this.roleIdString = params.get('roleIdString');
       console.log('RoleIdString:',this.roleIdString);
     });
+
+    this.router.paramMap.subscribe(params=>{
+      this.searchValue = params.get('searchvalue');
+      console.log('searchvalue:',this.searchValue);
+    });
+    
+    if(this.searchValue!=null){
+      this.search();
+    }
+    
   }
   getCompaniesForJobs() {
     this.jobs.forEach(job => {

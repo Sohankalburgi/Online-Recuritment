@@ -16,7 +16,7 @@ export class JobListService {
     return this.http.get(`${this.url}/${search}`);
   }
 
-  getJobs(searchValue: string): Observable<jobList[]> {
+  getJobs(searchValue: string|null): Observable<jobList[]> {
     return this.http.get<jobList[]>(`http://localhost:8080/jobsBysearch/${searchValue}`);
   }
 

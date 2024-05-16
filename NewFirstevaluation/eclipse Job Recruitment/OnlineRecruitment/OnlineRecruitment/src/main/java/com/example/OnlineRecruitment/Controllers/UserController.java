@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.OnlineRecruitment.Classes.Email;
+import com.example.OnlineRecruitment.Classes.ForgotPassword;
 import com.example.OnlineRecruitment.Entities.Role;
 import com.example.OnlineRecruitment.Entities.User;
 
@@ -82,6 +83,10 @@ public class UserController {
 		}
 	}
 	
+	@PutMapping("/updatepassword")
+	public boolean updatePassword(@RequestBody ForgotPassword forgotPass) {
+		return userService.setForgotPassword(forgotPass);
+	}
 	
 	
 }

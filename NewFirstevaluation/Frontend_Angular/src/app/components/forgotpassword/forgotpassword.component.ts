@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ForgotpasswordserviceService } from './Service/forgotpasswordservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -14,7 +16,9 @@ export class ForgotpasswordComponent {
   passwordPattern:string ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private forgotPasswordService:ForgotpasswordserviceService,
+    private route:Router
+  ) {
     this.forgotpasswordform = this.fb.group({
       'email': [null, [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
       'currentPassword': [null, [Validators.required,Validators.pattern(this.passwordPattern)]],
@@ -28,11 +32,16 @@ export class ForgotpasswordComponent {
   onSubmit() {
     if (this.forgotpasswordform.valid) {
       console.log('Form submitted with values:', this.forgotpasswordform.value);
-      // Reset error message
-      this.errorMessage = null;
-    } else {
-      this.errorMessage = 'Please correct the validation errors and try again.';
-    }
+      this.forgotPasswordService.changePassword(this.forgotpasswordform.value).subscribe(Response =>{
+        if(Response){
+          alert("the password is changed")
+          this.route.navigate(['/login']);
+        }
+        else{
+          alert("Check the form details")
+        }
+      })
+    } 
   }
 
   isInvalid(controlName: string): boolean {

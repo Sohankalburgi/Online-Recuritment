@@ -2,10 +2,14 @@ package com.example.OnlineRecruitment.Services;
 
 import java.util.List;
 
+import org.eclipse.angus.mail.iap.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.example.OnlineRecruitment.Classes.Email;
+import com.example.OnlineRecruitment.Classes.ForgotPassword;
 import com.example.OnlineRecruitment.EmailService.RoleIDService;
 import com.example.OnlineRecruitment.Entities.Graduate;
 import com.example.OnlineRecruitment.Entities.Role;
@@ -94,7 +98,7 @@ public class UserService implements UserServiceInterface{
 			return false;
 		}
 		else {
-			if(!user.getPassword().equals(user.getPassword())) {
+			if(!user.getPassword().equals(email.getPassword())){
 				return false;
 			}
 			else if(!user.getRole().getRoleId().equals(email.getRoleId())){
@@ -105,4 +109,23 @@ public class UserService implements UserServiceInterface{
 		return true;
 	}
 
+	public boolean setForgotPassword(ForgotPassword forgotPass){
+		User user = userRepository.findByEmail(forgotPass.getEmail()).orElse(null);
+		if(user==null) {
+			return false;
+		}
+		else {
+			if(forgotPass.getNewPassword().equals(forgotPass.getConfirmPassword()))
+			{
+				if(forgotPass.getCurrentPassword().equals(user.getPassword())){
+					user.setPassword(forgotPass.getNewPassword());
+					userRepository.save(user);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	
 }

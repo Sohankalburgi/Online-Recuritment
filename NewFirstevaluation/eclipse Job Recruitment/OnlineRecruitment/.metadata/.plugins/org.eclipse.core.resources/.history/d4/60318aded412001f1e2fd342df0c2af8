@@ -1,0 +1,13 @@
+package com.example.OnlineRecruitment.Classes;
+
+public class ForgotPassword {
+
+	private String email;
+	
+	private String currentPassword;
+	
+	private String newPassword;
+	
+	private String confirmPassword;
+	
+}

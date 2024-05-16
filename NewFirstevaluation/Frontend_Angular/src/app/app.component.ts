@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,27 @@ import { Router } from '@angular/router';
 export class AppComponent {
   currentRoute!: string;
 
-  constructor(private router: Router) {}
+  constructor(private route: Router,private router:ActivatedRoute) {}
+  // ngOnInit(): void {
+  //   this.router.paramMap.subscribe(params=>{
+  //     this.roleIdString = String(params.get('roleIdString'));
+  //   });
+  // }
 
   onActivate(event: any) {
-    this.currentRoute = this.router.url;
+    this.currentRoute = this.route.url;
   }
+
+  // roleIdString:string|null = null;
+
+  // post(){
+  //   console.log(this.roleIdString);
+  //   if(this.roleIdString){
+  //     alert("Please login")
+  //   }
+  //   else{
+  //     this.route.navigate([`/job-register/${this.roleIdString}`])
+  //   }
+  // }
+  
 }

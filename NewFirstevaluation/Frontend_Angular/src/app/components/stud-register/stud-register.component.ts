@@ -66,13 +66,14 @@ export class StudRegisterComponent {
       yearOfPassing:this.studRegisterForm.value.yearOfPassing,
       state:this.studRegisterForm.value.state
     }
-
+    console.log(this.studentRegister)
+    console.log(this.collegeRegister)
     if (this.studRegisterForm.valid) {
       // Handle form submission logic here, e.g., sending data to server
      
       this.studentservice.savestudent(this.studentRegister).subscribe();
       this.studentservice.savecollege(this.collegeRegister).subscribe();
-      this.route.navigate([`/home/${this.roleIdString}`]);
+      this.route.navigate([`/gradhome/${this.roleIdString}`]);
     }
 
   }

@@ -88,17 +88,5 @@ public class UserController {
 		return userService.setForgotPassword(forgotPass);
 	}
 	
-	@PostMapping("/userregistercheck/{email}")
-	public boolean checkUserexistforregister(@PathVariable String email) {
-		try {
-			System.out.println(email);
-			return userService.checkUserexistforregister(email);
-			}
-			catch(Exception e) {
-				System.out.println("the Exception occured"+e.getMessage());
-				return false;
-			}
-	}
-	
 	
 }

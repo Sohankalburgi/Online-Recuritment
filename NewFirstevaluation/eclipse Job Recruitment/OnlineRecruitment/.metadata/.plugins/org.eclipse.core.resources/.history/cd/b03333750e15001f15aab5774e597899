@@ -127,9 +127,9 @@ public class UserService implements UserServiceInterface{
 		return false;
 	}
 
-	public boolean checkUserexistforregister(String email) {
+	public boolean checkUserexistforregister(Email email) {
 		// TODO Auto-generated method stub
-		User user = userRepository.findByEmail(email).orElse(null);
+		User user = userRepository.findByEmail(email.getEmail()).orElse(null);
 		
 		if(user==null) {
 			return false;

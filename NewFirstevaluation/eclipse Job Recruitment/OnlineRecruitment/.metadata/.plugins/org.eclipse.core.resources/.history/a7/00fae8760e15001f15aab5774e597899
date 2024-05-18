@@ -87,11 +87,10 @@ public class UserController {
 	public boolean updatePassword(@RequestBody ForgotPassword forgotPass) {
 		return userService.setForgotPassword(forgotPass);
 	}
-	
-	@PostMapping("/userregistercheck/{email}")
-	public boolean checkUserexistforregister(@PathVariable String email) {
+	@PostMapping("/userregistercheck")
+	public boolean checkUserexistforregister(@RequestBody Email email) {
 		try {
-			System.out.println(email);
+			System.out.println(email.toString());
 			return userService.checkUserexistforregister(email);
 			}
 			catch(Exception e) {

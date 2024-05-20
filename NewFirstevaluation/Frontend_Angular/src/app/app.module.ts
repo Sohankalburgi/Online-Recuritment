@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -24,6 +23,7 @@ import { JobSeekerComponent } from './components/job-seeker/job-seeker.component
 import { JobRegisterComponent } from './components/job-register/job-register.component';
 import { JobdescriptionComponent } from './jobdescription/jobdescription.component';
 import { JoblistComponent } from './joblist/joblist.component';
+import { AppliedJobListComponent } from './components/applied-job-list/applied-job-list.component';
 
 
 
@@ -46,7 +46,8 @@ import { JoblistComponent } from './joblist/joblist.component';
     JobSeekerComponent,
     JobRegisterComponent,
     JobdescriptionComponent,
-    JoblistComponent
+    JoblistComponent,
+    AppliedJobListComponent
   ],
   imports: [
     BrowserModule,

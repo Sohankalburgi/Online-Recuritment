@@ -17,6 +17,7 @@ import { JobdescriptionComponent } from './jobdescription/jobdescription.compone
 import { JoblistComponent } from './joblist/joblist.component';
 import { HomeComponent } from './components/home/home.component';
 import { JobSearchComponent } from './components/job-search/job-search.component';
+import { AppliedJobListComponent } from './components/applied-job-list/applied-job-list.component';
 
 
 
@@ -48,6 +49,11 @@ const routes: Routes = [
   {
     path: 'email',
     component:EmailVerificationComponent
+  },
+
+  {
+    path: 'applied-job-list',
+    component : AppliedJobListComponent
   },
 
   {
@@ -99,7 +105,7 @@ const routes: Routes = [
     path:'gradhome',
     component:JobSearchComponent
   }
-  
+
 ];
 
 @NgModule({

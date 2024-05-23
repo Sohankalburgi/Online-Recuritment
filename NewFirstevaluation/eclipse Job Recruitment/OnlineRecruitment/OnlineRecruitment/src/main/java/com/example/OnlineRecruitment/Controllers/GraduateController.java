@@ -65,4 +65,9 @@ public class GraduateController {
 //	public List<Job> getListOfJobsByGraduateById(@PathVariable String roleId){
 //		return graduateService.getListofJobsofGraduateById(roleId);
 //	}
+	
+	@GetMapping("/getstudentid/{roleId}")
+	public Long getstudentId(@PathVariable String roleId) {
+		return graduateService.getStudentId(roleId);
+	}
 }

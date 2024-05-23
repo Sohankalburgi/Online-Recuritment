@@ -63,11 +63,11 @@ public class JobControllers {
 		return "updated job";
 	}
 	
-	@GetMapping("/listgraduatejobId/{roleId}")
-	public List<Graduate> listallgraduateswithId(@PathVariable String roleId)
-	{
-		return jobService.listOfAllgraduateById(roleId);
-	}
+//	@GetMapping("/listgraduatejobId/{roleId}")
+//	public List<Graduate> listallgraduateswithId(@PathVariable String roleId)
+//	{
+//		return jobService.listOfAllgraduateById(roleId);
+//	}
 	
 	@GetMapping("/jobsByIntegerId/{id}")
 	public Job getjobsByInteger(@PathVariable Integer id) {

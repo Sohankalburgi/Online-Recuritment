@@ -47,10 +47,10 @@ public class JobService {
 		jobRepository.save(updateJob);
 	}
 
-	public List<Graduate> listOfAllgraduateById(String roleId) {
-		Job job = jobRepository.getByRoleId(roleId);
-		return job.getGraduate();
-	}
+//	public List<Graduate> listOfAllgraduateById(String roleId) {
+//		Job job = jobRepository.getByRoleId(roleId);
+//		return job.getGraduate();
+//	}
 
 	public Job getJobsByIntegerId(Integer id) {
 		// TODO Auto-generated method stub

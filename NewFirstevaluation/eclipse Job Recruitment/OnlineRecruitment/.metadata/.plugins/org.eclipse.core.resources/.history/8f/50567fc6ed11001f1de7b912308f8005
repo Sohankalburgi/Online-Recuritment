@@ -1,5 +1,0 @@
-package com.example.OnlineRecruitment.Security;
-
-public class MyUserDetailsService {
-
-}

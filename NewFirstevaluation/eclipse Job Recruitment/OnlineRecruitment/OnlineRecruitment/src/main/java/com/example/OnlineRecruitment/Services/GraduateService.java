@@ -54,10 +54,10 @@ public class GraduateService {
 		Graduate graduate = graduateRepository.getByRoleId(graduateJob.getRoleId());
 		Job job = jobRepository.getById(graduateJob.getJobId());
 		
-		if(graduate.getJobs()==null) {
-			graduate.setJobs(job);
-		}
-		else {
+//		if(graduate.getJobs()==null) {
+//			graduate.setJobs(job);
+//		}
+//		else {
 			Graduate newgrad = new Graduate();
 			newgrad.setCgpa(graduate.getCgpa());
 			newgrad.setCity(graduate.getCity());
@@ -65,14 +65,14 @@ public class GraduateService {
 			newgrad.setRoleId(graduate.getRoleId());
 			newgrad.setState(graduate.getState());
 			newgrad.setYearOfPassing(graduate.getYearOfPassing());
-			newgrad.setJobs(job);
+//			newgrad.setJobs(job);
 			graduateRepository.save(newgrad);
 			return "new Grad";
-		}
+//		}
 		
 		
-		graduateRepository.save(graduate);
-		return "saved";
+//		graduateRepository.save(graduate);
+//		return "saved";
 	}
 
 	public String updateService(Graduate graduate, String roleId) {
@@ -90,6 +90,11 @@ public class GraduateService {
 		Graduate graduate = graduateRepository.getByRoleId(roleId);
 		graduateRepository.delete(graduate);
 		return "deleted";
+	}
+
+	public Long getStudentId(String roleId) {
+		// TODO Auto-generated method stub
+		return graduateRepository.getByRoleId(roleId).getStudentId();
 	}
 
 //	public List<Job> getListofJobsofGraduateById(String roleId) {

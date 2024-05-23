@@ -24,6 +24,11 @@ import { JobRegisterComponent } from './components/job-register/job-register.com
 import { JobdescriptionComponent } from './jobdescription/jobdescription.component';
 import { JoblistComponent } from './joblist/joblist.component';
 import { AppliedJobListComponent } from './components/applied-job-list/applied-job-list.component';
+import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
+import { GradDashComponent } from './components/grad-dash/grad-dash.component';
+import { EmpDashComponent } from './components/emp-dash/emp-dash.component';
+import { JobDashComponent } from './components/job-dash/job-dash.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 
 
@@ -47,7 +52,12 @@ import { AppliedJobListComponent } from './components/applied-job-list/applied-j
     JobRegisterComponent,
     JobdescriptionComponent,
     JoblistComponent,
-    AppliedJobListComponent
+    AppliedJobListComponent,
+    AdminDashComponent,
+    GradDashComponent,
+    EmpDashComponent,
+    JobDashComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,

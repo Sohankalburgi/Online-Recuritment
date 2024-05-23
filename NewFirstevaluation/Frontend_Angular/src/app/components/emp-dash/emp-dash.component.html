@@ -1,0 +1,51 @@
+<!-- <div>
+  <h2>Employers</h2>
+  <button (click)="createEmployer()">Add Employer</button>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let employer of employers">
+      <td>{{ employer.name }}</td>
+      <td>{{ employer.email }}</td>
+      <td>
+        <button (click)="editEmployer(employer)">Edit</button>
+        <button (click)="deleteEmployer(employer.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div> -->
+
+
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Employers Information</h2>
+    <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
+    <table class="table">
+      <!-- Table Header -->
+      <thead>
+        <tr>
+          <th>EMP ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+        <!-- Table Rows -->
+        <tr *ngFor="let employer of employers">
+          <td>{{ employer.id}}</td>
+          <td>{{ employer.name }}</td>
+          <td>{{ employer.email }}</td>
+          <td>
+            <button (click)="editEmployer(employer)">Edit</button>
+            <button (click)="deleteEmployer(employer.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

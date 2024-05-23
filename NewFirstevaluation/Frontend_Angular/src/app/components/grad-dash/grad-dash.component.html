@@ -1,0 +1,54 @@
+<!-- <div>
+  <h2>Graduates</h2>
+  <button (click)="createGraduate()">Add Graduate</button>
+  <table> -->
+    <!-- Table Header -->
+    <!-- <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr> -->
+    <!-- Table Rows -->
+    <!-- <tr *ngFor="let graduate of graduates">
+      <td>{{ graduate.name }}</td>
+      <td>{{ graduate.email }}</td>
+      <td>
+        <button (click)="editGraduate(graduate)">Edit</button>
+        <button (click)="deleteGraduate(graduate.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div> -->
+
+
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Graduates Information</h2>
+    <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
+    <table class="table">
+      <!-- Table Header -->
+      <thead>
+        <tr>
+          <th>Grad ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+        <!-- Table Rows -->
+        <tr *ngFor="let graduate of graduates">
+          <td>{{ graduate.id}}</td>
+          <td>{{ graduate.name }}</td>
+          <td>{{ graduate.email }}</td>
+          <td>
+            <button class="btn btn-info" (click)="editGraduate(graduate)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteGraduate(graduate.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

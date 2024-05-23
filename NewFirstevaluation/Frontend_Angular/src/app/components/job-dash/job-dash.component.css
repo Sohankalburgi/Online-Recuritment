@@ -1,0 +1,20 @@
+.card-body {
+  text-align: center;
+}
+
+.card {
+  margin: auto; /* Center the card horizontally */
+  margin-top: 50px; /* Add some top margin for spacing */
+  max-width: 800px; 
+  background-color: #113f5f;
+  color: white;/* Limit the maximum width of the card */
+}
+
+.card-body {
+  padding: 20px; /* Add padding to the card body */
+}
+
+.table {
+  margin-top: 20px; /* Add some top margin to the table */
+}
+

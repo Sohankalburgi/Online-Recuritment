@@ -44,7 +44,8 @@ public class UserController {
 		userService.saveUser(user);
 		}
 		catch(Exception e) {
-			System.out.println("the exception occured"+e.getMessage());;
+			System.out.println("the exception occured"+e.getMessage());
+			return "Not created";
 		}
 		return "Created";
 	}

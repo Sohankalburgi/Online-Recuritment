@@ -24,7 +24,7 @@ import jakarta.validation.constraints.NotEmpty;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Job {
 
-
+	
 	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
 	@JoinColumn(name = "roleId")
 	private Role roleId;
@@ -46,10 +46,13 @@ public class Job {
 	@Max(value = 2147483647,message = "max vacancy can be 2147483647")
 	private Integer jobVacancy;
 	
+//	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "job")
+//	@JsonIgnore
+//	private List<Graduate> graduate = new ArrayList<Graduate>();
+	
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "job")
 	@JsonIgnore
-	private List<Graduate> graduate = new ArrayList<Graduate>();
-	
+	private List<JobSeeker> jobSeeker = new ArrayList<JobSeeker>();
 	
 	public Job() {
 		super();
@@ -65,13 +68,21 @@ public class Job {
 		this.jobVacancy = jobVacancy;
 	}
 	
-	public List<Graduate> getGraduate() {
-		return graduate;
+//	public List<Graduate> getGraduate() {
+//		return graduate;
+//	}
+//	public void setGraduate(List<Graduate> graduate) {
+//		this.graduate = graduate;
+//	}
+
+
+
+	public List<JobSeeker> getJobSeeker() {
+		return jobSeeker;
 	}
-	public void setGraduate(List<Graduate> graduate) {
-		this.graduate = graduate;
+	public void setJobSeeker(List<JobSeeker> jobSeeker) {
+		this.jobSeeker = jobSeeker;
 	}
-	
 	
 	public Role getRoleId() {
 		return roleId;

@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   hide = true; // To toggle password visibility
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
   passwordPattern:string ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+  roleIdString: any;
 
 
   constructor(private fb: FormBuilder,private router:Router,private loginservice:LoginServiceService) {
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/stud-register', roleIdString]);
             }
           } else {
-            this.router.navigate([`/home/${roleIdString}`]);
+            this.router.navigate([`/gradhome/${roleIdString}`]);
           }
         });
       } else {

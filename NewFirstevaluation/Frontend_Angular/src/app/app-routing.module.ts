@@ -91,7 +91,7 @@ const routes: Routes = [
 
   {
     path:'',
-    redirectTo: '/home', pathMatch: 'full',
+    redirectTo: 'home', pathMatch: 'full',
   },
   {
     path: 'stud-register/:roleIdString',
@@ -127,8 +127,14 @@ const routes: Routes = [
   {
     path:'gradhome',
     component:JobSearchComponent
+<<<<<<< HEAD
   }
 
+=======
+  },
+  
+  
+>>>>>>> 016f5902e7fff2465701dd2d4cc613c009e77415
 ];
 
 @NgModule({

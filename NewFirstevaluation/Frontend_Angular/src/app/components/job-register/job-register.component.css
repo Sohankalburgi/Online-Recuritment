@@ -25,3 +25,91 @@
   padding: 20px;
   margin-top: 20px;
 }
+.navbar {
+  background: linear-gradient(to right, #6a1b9a, #00b4d9);
+  color: white;
+}
+
+.navbar-brand, .nav-link {
+  color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: #ddd;
+}
+
+.nav-link.active {
+  color: #ffffff; /* Bright white color */
+  font-weight: bold; /* Bold text */
+}
+/* Custom CSS for Logout link */
+.logout-link {
+  font-size: 1rem;
+ 
+  padding: 0.5rem 1rem;
+}
+
+.logout-link:hover {
+  text-decoration: underline;
+  color: lightgrey;
+}
+
+/* Ensuring the form and sidebar have adequate spacing and look good on all screen sizes */
+#formcard {
+  padding: 20px;
+
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar {
+  background: #113f5f;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .logout-link {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+
+  #formcard,
+  #sidebar {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logout-link {
+    font-size: 0.75rem;
+    padding: 0.25rem;
+  }
+
+  #formcard,
+  #sidebar {
+    margin-top: 10px;
+  }
+}
+
+button{
+  margin-top: 20px;
+  width: 75%;
+}
+.navbar {
+    background: linear-gradient(to right, #6a1b9a, #00b4d9);
+    color: white;
+}
+
+.navbar-brand, .nav-link {
+    color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #ddd;
+}
+
+.nav-link.active {
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
+}

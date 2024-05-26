@@ -1,3 +1,67 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <a class="navbar-brand mx-auto" routerLink="/home">Online Recruitment System</a>
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" *ngIf="studentId?.startsWith('GRAD')" routerLink="/gradhome/{{studentId}}" routerLinkActive="active">Home</a>
+      
+          </li>
+
+         
+         
+
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+          <li class="nav-item" >
+            <a class="nav-link"  *ngIf="!studentId?.startsWith('GRAD')"  routerLinkActive="active">Login</a>
+          </li>
+
+          <li>
+            <a class="nav-link" *ngIf="!(studentId?.startsWith('GRAD'))" routerLink="/register"  routerLinkActive="active">Register</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+      <a class="nav-link" *ngIf="(studentId?.startsWith('GRAD'))"  routerLink="/home" >Logout</a>
+    </div>
+  </nav>
+</div>
+
+
 <section class="job-div">
   <div class="container-fluid py-2">
     <div class="row">

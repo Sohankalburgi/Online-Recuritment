@@ -15,7 +15,7 @@ public class CollegeService {
 	
 	public String saveRepository(College college) {
 		collegeRepository.save(college);
-		return " College created";
+		return "College created";
 	}
 	
 	public College getCollegeByRoleID(String roleId) {

@@ -41,6 +41,7 @@ export class RegistrationComponent implements OnInit {
 registrationForm: FormGroup;
 emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 passwordPattern:string ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+roleIdString: any;
 
 
 constructor(private fb: FormBuilder,private router: Router,
@@ -69,11 +70,26 @@ onSubmit(): void {
   if (this.registrationForm.valid) {
     console.log('Form submitted with values:', this.registrationForm.value);
     console.log(this.registrationForm.value.email)
+    
+
     const email = this.registrationForm.get('email')?.value;
-    this.emailService.generateOtp(email).subscribe(
-     respone=> alert("Please Verify Your Email, Kindly Check your Mail")
+    this.emailService.checkUserExist(email).subscribe( response =>
+      {
+        if(response==true){
+          alert("You have already registered, Please Kindly Login")
+          this.router.navigate(['/login']);
+        }
+        else{
+          this.emailService.generateOtp(email).subscribe(
+            respone=> {alert("Please Verify Your Email, Kindly Check your Mail")
+             console.log(respone)
+            }
+           )
+           this.router.navigate(['/email'], { state: { formData: this.registrationForm.value } });
+        }
+      }
     )
-    this.router.navigate(['/email'], { state: { formData: this.registrationForm.value } });
+    
   }
 }
 
@@ -97,7 +113,7 @@ getErrorMessage(controlName: string): string {
   const control = this.registrationForm.get(controlName);
 
   if (!control) {
-    console.log(`Control ${controlName} not found.`);
+    // console.log(`Control ${controlName} not found.`);
     return '';
   }
 

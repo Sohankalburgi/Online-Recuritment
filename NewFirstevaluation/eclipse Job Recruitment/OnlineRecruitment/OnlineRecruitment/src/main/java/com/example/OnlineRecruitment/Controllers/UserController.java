@@ -44,7 +44,8 @@ public class UserController {
 		userService.saveUser(user);
 		}
 		catch(Exception e) {
-			System.out.println("the exception occured"+e.getMessage());;
+			System.out.println("the exception occured"+e.getMessage());
+			return "Not created";
 		}
 		return "Created";
 	}
@@ -86,6 +87,18 @@ public class UserController {
 	@PutMapping("/updatepassword")
 	public boolean updatePassword(@RequestBody ForgotPassword forgotPass) {
 		return userService.setForgotPassword(forgotPass);
+	}
+	
+	@PostMapping("/userregistercheck/{email}")
+	public boolean checkUserexistforregister(@PathVariable String email) {
+		try {
+			System.out.println(email);
+			return userService.checkUserexistforregister(email);
+			}
+			catch(Exception e) {
+				System.out.println("the Exception occured"+e.getMessage());
+				return false;
+			}
 	}
 	
 	

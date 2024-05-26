@@ -14,7 +14,6 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Employer{
 
-
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "roleId")
 	private Role roleId;
@@ -40,10 +39,15 @@ public class Employer{
 		super();
 	}
 	
-	public Employer(Role roleId, String roleInCompany, String companyName, String companyType,
-			String companyDescription, String companyAddress, Integer companySize) {
+
+	public Employer(Role roleId, Long employeeId, @NotEmpty(message = "Enter the roleInCompany") String roleInCompany,
+			@NotEmpty(message = "Enter the companyName") String companyName,
+			@NotEmpty(message = "Enter the companyType") String companyType,
+			@NotEmpty(message = "Enter the companyDescription") String companyDescription,
+			@NotEmpty(message = "Enter the CompanyAddress") String companyAddress, Integer companySize) {
 		super();
 		this.roleId = roleId;
+		this.employeeId = employeeId;
 		this.roleInCompany = roleInCompany;
 		this.companyName = companyName;
 		this.companyType = companyType;
@@ -51,7 +55,6 @@ public class Employer{
 		this.companyAddress = companyAddress;
 		this.companySize = companySize;
 	}
-	
 	
 	
 	public Role getRoleId() {

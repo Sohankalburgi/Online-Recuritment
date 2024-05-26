@@ -79,7 +79,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'admin-dash', 
+    path: 'admin-dash',
     component: AdminDashComponent, children: [
       { path: 'graduates', component: GradDashComponent },
       { path: 'employers', component: EmpDashComponent },
@@ -104,7 +104,8 @@ const routes: Routes = [
   },
 
   {
-    path:'appointment/:roleIdString/:jobId',
+    path:'appointment',
+    // /:roleIdString/:jobId
     component:AppointmentComponent
   },
   {

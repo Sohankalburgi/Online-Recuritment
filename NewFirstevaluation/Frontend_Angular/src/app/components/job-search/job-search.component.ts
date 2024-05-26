@@ -43,7 +43,10 @@ export class JobSearchComponent {
   }
 
   search() {
-    if(this.roleIdString==null){
+    if(this.searchTerm===''){
+      alert("Enter the search");
+    }
+    else if(this.roleIdString==null){
     this.route.navigate([`/jobsearch/${this.searchTerm}`]);
     }
     else{

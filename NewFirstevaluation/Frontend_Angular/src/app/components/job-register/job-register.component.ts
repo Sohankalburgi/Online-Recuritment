@@ -11,7 +11,7 @@ import { JobregisterserviceService } from './jobregisterservice/jobregisterservi
 export class JobRegisterComponent implements OnInit{
 
   jobRegisterForm !: FormGroup;
-  roleIdString: string | null = null;
+  roleIdString!: string;
 
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
@@ -21,11 +21,12 @@ export class JobRegisterComponent implements OnInit{
       
     }
 
+    
     ngOnInit(): void {
 
-      this.router.paramMap.subscribe(params=>{
-        this.roleIdString = params.get('roleIdString');
-        console.log('RoleIdString:',this.roleIdString);
+      this.router.paramMap.subscribe(params => {
+        this.roleIdString = String(params.get('roleIdString'));
+        console.log(this.roleIdString);
       });
 
       this.jobRegisterForm = this.fb.group({
@@ -58,7 +59,14 @@ export class JobRegisterComponent implements OnInit{
       return control ? control.invalid && (control.dirty || control.touched) : false;
     }
 
-
+    post(){
+      console.log(this.roleIdString);
+      if (this.roleIdString === 'null' || this.roleIdString === null) { 
+        alert('Please login');
+      } else {
+        this.route.navigate([`/job-register/${this.roleIdString}`]);
+      }
+    }
 
     getErrorMessage(controlName: string): string {
       const control = this.jobRegisterForm.get(controlName);
@@ -96,9 +104,6 @@ export class JobRegisterComponent implements OnInit{
       if (control.errors?.['minlength']) {
         return `Minimum length should be ${(control.errors as any).minlength.requiredLength}`;
       }
-
-
-
       return '';
     }
 

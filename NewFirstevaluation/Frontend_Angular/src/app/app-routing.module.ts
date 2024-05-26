@@ -17,6 +17,12 @@ import { JobdescriptionComponent } from './jobdescription/jobdescription.compone
 import { JoblistComponent } from './joblist/joblist.component';
 import { HomeComponent } from './components/home/home.component';
 import { JobSearchComponent } from './components/job-search/job-search.component';
+import { AppliedJobListComponent } from './components/applied-job-list/applied-job-list.component';
+import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
+import { GradDashComponent } from './components/grad-dash/grad-dash.component';
+import { EmpDashComponent } from './components/emp-dash/emp-dash.component';
+import { JobDashComponent } from './components/job-dash/job-dash.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 
 
@@ -51,6 +57,17 @@ const routes: Routes = [
   },
 
   {
+    path: 'applied-job-list',
+    component : AppliedJobListComponent
+  },
+
+  {
+    path: 'admin-login',
+    component : AdminLoginComponent
+  },
+
+
+  {
     path: 'job-seeker/:roleIdString/:jobId',
     component: JobSeekerComponent
   },
@@ -60,6 +77,17 @@ const routes: Routes = [
     component: JobRegisterComponent
 
   },
+
+  {
+    path: 'admin-dash',
+    component: AdminDashComponent, children: [
+      { path: 'graduates', component: GradDashComponent },
+      { path: 'employers', component: EmpDashComponent },
+      { path: 'jobs', component: JobDashComponent },
+      { path: '', redirectTo: 'graduates', pathMatch: 'full' },
+    ]
+  },
+
 
   {
     path:'',
@@ -76,7 +104,8 @@ const routes: Routes = [
   },
 
   {
-    path:'appointment/:roleIdString/:jobId',
+    path:'appointment',
+    // /:roleIdString/:jobId
     component:AppointmentComponent
   },
   {
@@ -98,9 +127,14 @@ const routes: Routes = [
   {
     path:'gradhome',
     component:JobSearchComponent
+<<<<<<< HEAD
+  }
+
+=======
   },
   
   
+>>>>>>> 016f5902e7fff2465701dd2d4cc613c009e77415
 ];
 
 @NgModule({

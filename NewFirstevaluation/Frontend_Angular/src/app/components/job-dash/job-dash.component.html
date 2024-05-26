@@ -1,0 +1,53 @@
+<!-- <div>
+  <h2>Jobs</h2>
+  <button (click)="createJob()">Add Job</button>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let job of jobs">
+      <td>{{ job.title }}</td>
+      <td>{{ job.description }}</td>
+      <td>
+        <button (click)="editJob(job)">Edit</button>
+        <button (click)="deleteJob(job.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div> -->
+
+
+
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Jobs Information</h2>
+    <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
+    <table class="table">
+      <!-- Table Header -->
+      <thead>
+        <tr>
+          <th>Job ID</th>
+          <th>Job Name</th>
+          <th>Job Vacancy</th>
+          <th>Job Description</th>
+        </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+        <!-- Table Rows -->
+        <tr *ngFor="let job of jobs">
+          <td>{{ job.id }}</td>
+          <td>{{ job.name }}</td>
+          <td>{{ job.vacancy }}</td>
+          <td>{{ job.description }}</td>
+          <td>
+            <button (click)="editJob(job)">Edit</button>
+            <button (click)="deleteJob(job.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

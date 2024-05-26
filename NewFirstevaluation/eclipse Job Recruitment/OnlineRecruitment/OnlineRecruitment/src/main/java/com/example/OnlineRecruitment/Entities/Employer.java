@@ -14,9 +14,6 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Employer{
 
-
-	
-
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "roleId")
 	private Role roleId;

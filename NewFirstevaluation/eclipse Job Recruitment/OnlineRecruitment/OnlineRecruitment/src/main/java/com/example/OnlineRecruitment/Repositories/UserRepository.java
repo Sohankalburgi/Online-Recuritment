@@ -3,6 +3,7 @@ package com.example.OnlineRecruitment.Repositories;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.example.OnlineRecruitment.Entities.User;
@@ -11,5 +12,8 @@ import com.example.OnlineRecruitment.Entities.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	Optional<User> findByEmail(String email);
+	
+	@Query("SELECT u.email FROM User u WHERE u.role.roleId = :roleId")
+	String findByEmailRoleId(String roleId);
 
 }

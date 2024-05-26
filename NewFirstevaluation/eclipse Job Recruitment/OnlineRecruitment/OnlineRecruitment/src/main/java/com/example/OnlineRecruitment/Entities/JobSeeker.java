@@ -1,9 +1,12 @@
 package com.example.OnlineRecruitment.Entities;
 
+import org.hibernate.annotations.Type;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
@@ -34,17 +38,19 @@ public class JobSeeker {
 	
 	private String cgpa;
 	
+	private String language;
+	
 	private String keySkill;
 	
 	private String areaOfInterest;
 	
 	private String project;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
 	@JoinColumn(name="job")
 	private Job job;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
 	@JoinColumn(name="graduate")
 	private Graduate graduate;
 
@@ -52,14 +58,18 @@ public class JobSeeker {
 	@JoinColumn(name="appointmentId")
 	private Appointment appointment;
 	
+	@Lob
+	@Column(name="resume",length = 1000000)
+    private byte[] resume;
+	
 	public JobSeeker() {
 		super();
 	}
 
 
 	public JobSeeker(Long id, String fullName, String email, String phone, String yearOfPassing, String cgpa,
-			String keySkill, String areaOfInterest, String project, Job job, Graduate graduate,
-			Appointment appointment) {
+			String language, String keySkill, String areaOfInterest, String project, Job job, Graduate graduate,
+			Appointment appointment, byte[] resume) {
 		super();
 		this.id = id;
 		this.fullName = fullName;
@@ -67,13 +77,31 @@ public class JobSeeker {
 		this.phone = phone;
 		this.yearOfPassing = yearOfPassing;
 		this.cgpa = cgpa;
+		this.language = language;
 		this.keySkill = keySkill;
 		this.areaOfInterest = areaOfInterest;
 		this.project = project;
 		this.job = job;
 		this.graduate = graduate;
 		this.appointment = appointment;
+		this.resume = resume;
 	}
+
+
+
+
+	public byte[] getResume() {
+		return resume;
+	}
+
+
+
+
+	public void setResume(byte[] resume) {
+		this.resume = resume;
+	}
+
+
 	
 	public Long getId() {
 		return id;
@@ -171,5 +199,25 @@ public class JobSeeker {
 	public void setAppointment(Appointment appointment) {
 		this.appointment = appointment;
 	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	@Override
+	public String toString() {
+		return "JobSeeker [id=" + id + ", fullName=" + fullName + ", email=" + email + ", phone=" + phone
+				+ ", yearOfPassing=" + yearOfPassing + ", cgpa=" + cgpa + ", language=" + language + ", keySkill="
+				+ keySkill + ", areaOfInterest=" + areaOfInterest + ", project=" + project + ", job=" + job
+				+ ", graduate=" + graduate + ", appointment=" + appointment + "]";
+	}
+
+
 	
+
 }

@@ -12,12 +12,12 @@
 
             <!-- Full Name -->
             <div class="form-outline mb-2">
-              <label for="name" class="col-sm-3 col-form-label">Name:</label>
+              <label for="fullName" class="col-sm-3 col-form-label">Name:</label>
                               <div class="col-sm-9" id="inputfield">
-                                  <input type="text" class="form-control form-select-lg " id="name" formControlName="name" placeholder="Full Name">
+                                  <input type="text" class="form-control form-select-lg " id="name" formControlName="fullName" placeholder="Full Name">
 
-                                  <div *ngIf="isInvalid('name')" class="text-danger">
-                                    {{ getErrorMessage('name') }}
+                                  <div *ngIf="isInvalid('fullName')" class="text-danger">
+                                    {{ getErrorMessage('fullName') }}
                                   </div>
 
                               </div>
@@ -55,12 +55,12 @@
                   <select id="yearOfPassing" formControlName="yearOfPassing" class="form-select form-select-lg" required>
                       <option  value="" disabled selected>Select Year</option>
 
-                      <option value="value1">2019</option>
-                      <option value="value2">2020</option>
-                      <option value="value3">2021</option>
-                      <option value="value4">2022</option>
-                      <option value="value5">2023</option>
-                      <option value="value6">2024</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
 
 
                   </select>
@@ -78,15 +78,15 @@
               <div class="col-sm-9" id="inputfield">
                   <select id="cgpa" formControlName="cgpa" class="form-select form-select-lg" required>
                       <option  value="" disabled selected>Select CGPA</option>
-                      <option value="value1">1 - 2</option>
-                      <option value="value2">2 - 3</option>
-                      <option value="value3">3 - 4</option>
-                      <option value="value4">4 - 5</option>
-                      <option value="value5">5 - 6</option>
-                      <option value="value6">6 - 7</option>
-                      <option value="value7">7 - 8</option>
-                      <option value="value8">8 - 9</option>
-                      <option value="value9">9 - 10</option>
+                      <option value="1-2">1 - 2</option>
+                      <option value="2-3">2 - 3</option>
+                      <option value="3-4">3 - 4</option>
+                      <option value="4-5">4 - 5</option>
+                      <option value="5-6">5 - 6</option>
+                      <option value="6-7">6 - 7</option>
+                      <option value="7-8">7 - 8</option>
+                      <option value="8-9">8 - 9</option>
+                      <option value="9-10">9 - 10</option>
 
                   </select>
                   <div *ngIf="isInvalid('cgpa')" class="text-danger">
@@ -123,11 +123,11 @@
 
             <!-- Areas of Interest -->
             <div class="form-outline mb-2">
-              <label for="areasOfInterest" class="col-sm-3 col-form-label">Areas of Interest:</label>
+              <label for="areaOfInterest" class="col-sm-3 col-form-label">Areas of Interest:</label>
                               <div class="col-sm-9" id="inputfield">
-                                  <input type="text" class="form-control form-select-lg " id="areasOfInterest" formControlName="areasOfInterest" placeholder="Language">
-                                  <div *ngIf="isInvalid('areasOfInterest')" class="text-danger">
-                                    {{ getErrorMessage('areasOfInterest') }}
+                                  <input type="text" class="form-control form-select-lg " id="areaOfInterest" formControlName="areaOfInterest" placeholder="area of interest">
+                                  <div *ngIf="isInvalid('areaOfInterest')" class="text-danger">
+                                    {{ getErrorMessage('areaOfInterest') }}
                                   </div>
                               </div>
             </div>
@@ -153,10 +153,8 @@
             <div class="form-outline mb-2">
               <label for="resume" class="col-sm-3 col-form-label">Upload Your Resume:</label>
               <div class="col-sm-9" id="inputfield">
-                  <input type="file" class="form-control form-select-md" id="resume" formControlName="resume">
-                  <div *ngIf="isInvalid('resume')" class="text-danger">
-                      {{ getErrorMessage('resume') }}
-                  </div>
+                  <input type="file" class="form-control form-select-md" id="resume" (change)="onFileChange($event)" accept=".pdf">
+                
               </div>
           </div>
 

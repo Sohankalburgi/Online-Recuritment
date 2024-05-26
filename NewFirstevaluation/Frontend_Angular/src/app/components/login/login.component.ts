@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/stud-register', roleIdString]);
             }
           } else {
-            this.router.navigate([`/home/${roleIdString}`]);
+            this.router.navigate([`/gradhome/${roleIdString}`]);
           }
         });
       } else {

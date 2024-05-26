@@ -61,4 +61,7 @@ public class JobService {
 		return jobRepository.findTheJobsOnSearch(prefix);
 	}
 	
+	public String getRoleIdbYjobId(Integer id) {
+		return jobRepository.getOne(id).getRoleId().getRoleId();
+	}
 }

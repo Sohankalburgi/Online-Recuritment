@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { JobseekerserviceService } from './Service/jobseekerservice.service';
 
 
 @Component({
@@ -15,42 +16,83 @@ export class JobSeekerComponent {
   jobSeekerForm!:FormGroup;
 
     emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
-  studentId!: string;
+  roleIdString!: string;
   jobId!: number;
+  studentId!:number;
+  selectedFile!: File;
 
-    constructor(private fb:FormBuilder,private router:ActivatedRoute,private route:Router){
-      this.jobSeekerForm = this.fb.group({
-        'name' : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
-        'email': ['', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
-        'phone' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
-        'yearOfPassing' : ['', [Validators.required]],
-        'cgpa' : ['', Validators.required],
-        'language' : ['', Validators.required],
-        'keySkill' : ['', Validators.required],
-        'project' : ['' , Validators.required],
-        'resume' : [''],
-        'areasOfInterest' : ['', Validators.required]
-
-      });
+    constructor(private fb:FormBuilder,private router:ActivatedRoute,private route:Router,private jobseekerservice:JobseekerserviceService){
+      
     }
 
     ngOnInit(): void {
       this.router.paramMap.subscribe(params=>{
-        this.studentId = String(params.get('roleIdString'));
+        this.roleIdString = String(params.get('roleIdString'));
       });
   
   
       this.router.paramMap.subscribe(params=>{
         this.jobId = Number(params.get('jobId'));
       });
+
+      this.jobseekerservice.getStudentId(this.roleIdString).subscribe(data=>{
+        console.log(data);
+        this.studentId = Number(data);
+        console.log(this.studentId)
+        
+      })
+
+      this.jobSeekerForm = this.fb.group({
+        fullName : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
+        email: ['', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
+        phone : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
+        yearOfPassing : ['', [Validators.required]],
+        cgpa : ['', Validators.required],
+        language : ['', Validators.required],
+        keySkill : ['', Validators.required],
+        project : ['' , Validators.required],
+        
+        areaOfInterest : ['', Validators.required],
+        job:{
+          jobId:this.jobId
+        },
+        graduate:{
+          studentId:this.studentId,
+          roleId:{
+            roleId:this.roleIdString
+          },
+        }  
+      });
+    }
+
+    onFileChange(event: any): void {
+      const file = event.target.files[0];
+      if (file && file.type === 'application/pdf') {
+        this.selectedFile = file;
+      } else {
+        alert('Please select a valid PDF file.');
+      }
     }
 
     onSubmit(): void {
       if (this.jobSeekerForm.valid) {
-        console.log(this.studentId)
+        console.log(this.roleIdString)
+        this.jobSeekerForm.value.graduate.studentId = this.studentId;
         console.log(this.jobId)
+       console.log("this is studentId:"+this.studentId)
         console.log(this.jobSeekerForm.value);
-        this.route.navigate([`/appointment/${this.studentId}/${this.jobId}`])
+       const applicantId = this.roleIdString+this.jobId;
+        const formData:FormData = new FormData();
+        formData.append('file',this.selectedFile);
+
+      this.jobseekerservice.savejobseeker(this.jobSeekerForm.value).subscribe(Response=>{
+        if(Response===true){
+          this.jobseekerservice.uploadFile(formData,applicantId).subscribe();
+        }
+      });
+      
+
+        // this.route.navigate([`/appointment/${this.roleIdString}/${this.jobId}`])
       }
 
     }
@@ -67,7 +109,7 @@ export class JobSeekerComponent {
       const control = this.jobSeekerForm.get(controlName);
 
       if (!control) {
-        console.log(`Control ${controlName} not found.`);
+        // console.log(`Control ${controlName} not found.`);
         return '';
       }
 

@@ -137,6 +137,10 @@ public class UserService implements UserServiceInterface{
 		
 		return true;
 	}
+	
+	public String findByEmailRoleId(String roleId) {
+		return userRepository.findByEmailRoleId(roleId);
+	}
 
 	
 }

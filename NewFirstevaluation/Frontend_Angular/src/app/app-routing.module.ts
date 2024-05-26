@@ -25,10 +25,6 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  // {
-  //   path: 'home/:roleIdString', 
-  //   component: HomeComponent
-  // },
   {
     path: 'register',
     component: RegistrationComponent
@@ -67,7 +63,7 @@ const routes: Routes = [
 
   {
     path:'',
-    redirectTo: '/home', pathMatch: 'full',
+    redirectTo: 'home', pathMatch: 'full',
   },
   {
     path: 'stud-register/:roleIdString',

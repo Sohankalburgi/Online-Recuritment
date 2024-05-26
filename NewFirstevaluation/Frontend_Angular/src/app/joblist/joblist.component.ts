@@ -54,10 +54,13 @@ export class JoblistComponent {
   }
 
   Apply(jobId:number){
-    if(this.roleIdString==null){
+    if(this.roleIdString==null || this.roleIdString==='null'){
       alert("Please Login to apply")
       this.route.navigate(['/login']);
     }
+   else if(this.roleIdString.startsWith("EMP")){
+    alert("this is only to apply for Job Applier")
+   }
     else{
       this.route.navigate([`/jobdescription/${this.roleIdString}/${jobId}`]);
     }

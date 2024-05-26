@@ -5533,3 +5533,16 @@
 2024-05-26 11:26:19,703 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped Server@1175dc74{STOPPING}[10.0.15,sto=0]
 2024-05-26 11:26:19,826 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@54a281b3{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
 2024-05-26 11:26:19,937 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6bfa8b66{/help,null,STOPPED}
+2024-05-26 16:39:36,516 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-05-26 16:43:07,451 [Worker-18: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2024-05-26 16:43:09,330 [Worker-18: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:OnlineRecruitment:0.0.1-SNAPSHOT @ D:\online Recruitment final\Online-Recuritment\NewFirstevaluation\eclipse Job Recruitment\OnlineRecruitment\OnlineRecruitment\pom.xml.
+2024-05-26 16:43:12,017 [Worker-18: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /OnlineRecruitment/src/main/java
+2024-05-26 16:43:12,018 [Worker-18: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /OnlineRecruitment/src/main/resources
+2024-05-26 16:43:12,018 [Worker-18: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /OnlineRecruitment/src/main/resources
+2024-05-26 16:43:12,020 [Worker-18: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /OnlineRecruitment/src/test/java
+2024-05-26 16:43:12,021 [Worker-18: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /OnlineRecruitment/src/test/resources
+2024-05-26 16:43:12,025 [Worker-18: Updating Maven Project] ERROR o.e.m.j.i.AbstractJavaProjectConfigurator - Failed to find a compatible VM for environment id 'JavaSE-17', falling back to workspace default
+2024-05-26 16:43:14,342 [Worker-18: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0.00 sec, refresh facades takes 4.00 sec, update config takes 1.00 sec 
+2024-05-26 16:43:17,248 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-05-26 16:43:17,309 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-05-26 16:43:17,392 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\online Recruitment final\Online-Recuritment\NewFirstevaluation\eclipse Job Recruitment\OnlineRecruitment\OnlineRecruitment\src\test\resources

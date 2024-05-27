@@ -12,6 +12,7 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 public class College {
 	
+	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "roleId")
 	private Role roleId;
@@ -27,6 +28,11 @@ public class College {
 	private String collegeDescription;
 	@NotBlank(message = "Enter the College Address")
 	private String collegeAddress;
+	
+	
+	public College() {
+		super();
+	}
 	
 	public College(Role roleId, Long id, @NotBlank(message = "Enter the College Name") String collegeName,
 			@NotBlank(message = "Enter the College Description") String collegeDescription,

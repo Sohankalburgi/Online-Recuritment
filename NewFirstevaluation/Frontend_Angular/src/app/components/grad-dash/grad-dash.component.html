@@ -20,35 +20,102 @@
   </table>
 </div> -->
 
-
 <div class="card">
   <div class="card-body">
     <h2 class="card-title">Graduates Information</h2>
     <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
-    <table class="table">
-      <!-- Table Header -->
-      <thead>
-        <tr>
-          <th>Grad ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <!-- Table Body -->
-      <tbody>
-        <!-- Table Rows -->
-        <tr *ngFor="let graduate of graduates">
-          <td>{{ graduate.id}}</td>
-          <td>{{ graduate.name }}</td>
-          <td>{{ graduate.email }}</td>
-          <td>
-            <button class="btn btn-info" (click)="editGraduate(graduate)">Edit</button>
-            <button class="btn btn-danger" (click)="deleteGraduate(graduate.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <!-- Table Header -->
+        <thead class="thead-dark">
+          <tr>
+            <th>Grad ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+          <!-- Table Rows -->
+          <tr *ngFor="let graduate of graduates">
+            <td>{{ graduate.roleId.roleId}}</td>
+            <td>{{ graduate.user.name}}</td>
+            <td>{{ graduate.user.email}}</td>
+            <td>{{graduate.user.address}}</td>
+            <td>{{graduate.user.phone}}</td>
+            <td>
+              <button class="btn btn-info btn-sm mx-2"(click)="infoGradute(graduate)" > More Details</button>
+              <button class="btn btn-success btn-sm mx-2" (click)="editGraduate(graduate)">Edit</button>
+              <button class="btn btn-danger btn-sm " (click)="deleteGraduate(graduate.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
+<!-- Simple Modal -->
+<div class="modal" *ngIf="selectedGraduate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h5 class="modal-title">Graduate Details</h5>
+        <button type="button" class="btn btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Grad ID:</strong> {{ selectedGraduate.roleId.roleId }}</p>
+        <p><strong>Name:</strong> {{ selectedGraduate.user.name }}</p>
+        <p><strong>Email:</strong> {{ selectedGraduate.user.email }}</p>
+        <p><strong>Address:</strong> {{ selectedGraduate.user.address }}</p>
+        <p><strong>Phone:</strong> {{ selectedGraduate.user.phone }}</p>
+        <p><strong>Nationality:</strong> {{ selectedGraduate.user.nationality }}</p>
+        <p><strong>City:</strong> {{ selectedGraduate.city }}</p>
+        <p><strong>State:</strong> {{ selectedGraduate.state }}</p>
+        <p><strong>PinCode:</strong> {{ selectedGraduate.pinCode }}</p>
+        <p><strong>YearOfPassing:</strong> {{ selectedGraduate.yearOfPassing}}</p>
+        <p><strong>Cgpa:</strong> {{ selectedGraduate.cgpa }}</p>
+        <p><strong>College Name :</strong> {{selectedGraduate.college.collegeName}}</p>
+        <p><strong>College Description :</strong> {{selectedGraduate.college.collegeDescription}}</p>
+        <p><strong>College Address :</strong> {{selectedGraduate.college.collegeAddress}}</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIt Modal -->
+<div class="modal" *ngIf="selectedGraduateforedit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h5 class="modal-title">Graduate Details</h5>
+        <button type="button" class="btn btn-close" (click)="closeModalforEdit()"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Grad ID:</strong> {{ selectedGraduateforedit.roleId.roleId }}</p>
+        <p><strong>Name:</strong> {{ selectedGraduateforedit.user.name }}</p>
+        <p><strong>Email:</strong> {{ selectedGraduateforedit.user.email }}</p>
+        <p><strong>Address:</strong> {{ selectedGraduateforedit.user.address }}</p>
+        <p><strong>Phone:</strong> {{ selectedGraduateforedit.user.phone }}</p>
+        <p><strong>Nationality:</strong> {{ selectedGraduateforedit.user.nationality }}</p>
+        <p><strong>City:</strong> {{ selectedGraduateforedit.city }}</p>
+        <p><strong>State:</strong> {{ selectedGraduateforedit.state }}</p>
+        <p><strong>PinCode:</strong> {{ selectedGraduateforedit.pinCode }}</p>
+        <p><strong>YearOfPassing:</strong> {{ selectedGraduateforedit.yearOfPassing}}</p>
+        <p><strong>Cgpa:</strong> {{ selectedGraduateforedit.cgpa }}</p>
+        <p><strong>College Name :</strong> {{selectedGraduateforedit.college.collegeName}}</p>
+        <p><strong>College Description :</strong> {{selectedGraduateforedit.college.collegeDescription}}</p>
+        <p><strong>College Address :</strong> {{selectedGraduateforedit.college.collegeAddress}}</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

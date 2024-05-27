@@ -1,22 +1,3 @@
-<!-- <div>
-  <h2>Employers</h2>
-  <button (click)="createEmployer()">Add Employer</button>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Actions</th>
-    </tr>
-    <tr *ngFor="let employer of employers">
-      <td>{{ employer.name }}</td>
-      <td>{{ employer.email }}</td>
-      <td>
-        <button (click)="editEmployer(employer)">Edit</button>
-        <button (click)="deleteEmployer(employer.id)">Delete</button>
-      </td>
-    </tr>
-  </table>
-</div> -->
 
 
 <div class="card">
@@ -28,8 +9,11 @@
       <thead>
         <tr>
           <th>EMP ID</th>
+          <th>Company</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Phone</th>
+          <th>Nationality</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -37,15 +21,48 @@
       <tbody>
         <!-- Table Rows -->
         <tr *ngFor="let employer of employers">
-          <td>{{ employer.id}}</td>
-          <td>{{ employer.name }}</td>
-          <td>{{ employer.email }}</td>
+
+          <td>{{ employer.roleId.roleId}}</td>
+          <td>{{employer.companyName}}</td>
+          <td>{{ employer.user.name }}</td>
+          <td>{{ employer.user.email }}</td>
+          <td>{{employer.user.phone}}</td>
+          <td>{{employer.user.nationality}}</td>
           <td>
-            <button (click)="editEmployer(employer)">Edit</button>
-            <button (click)="deleteEmployer(employer.id)">Delete</button>
+            <button class="btn btn-info btn-sm mx-2" (click)="infoEmployer(employer)"> More Details</button>
+            <button class="btn btn-success btn-sm mx-2" >Edit</button>
+            <button class="btn btn-danger btn-sm " >Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<!-- Simple Modal -->
+<div class="modal" *ngIf="selectedEmployer">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h5 class="modal-title">Employer Details</h5>
+        <button type="button" class="btn btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Grad ID:</strong> {{ selectedEmployer.roleId.roleId }}</p>
+        <p><strong>Name:</strong> {{ selectedEmployer.user.name }}</p>
+        <p><strong>Email:</strong> {{ selectedEmployer.user.email }}</p>
+        <p><strong>Address:</strong> {{ selectedEmployer.user.address }}</p>
+        <p><strong>Phone:</strong> {{ selectedEmployer.user.phone }}</p>
+        <p><strong>Nationality:</strong> {{ selectedEmployer.user.nationality }}</p>
+        <p><strong>Company Name:</strong> {{selectedEmployer.companyName}}</p>
+        <p><strong>Company Type:</strong> {{selectedEmployer.companyType}}</p>
+        <p><strong>Company Size:</strong> {{selectedEmployer.companySize}}</p>
+        <p><strong>Company Address:</strong> {{selectedEmployer.companyAddress}}</p>
+        <p><strong>Company Description:</strong> {{selectedEmployer.companyDescription}}</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
   </div>
 </div>

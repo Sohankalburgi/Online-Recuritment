@@ -142,10 +142,5 @@ public class UserService implements UserServiceInterface{
 		return userRepository.findByEmailRoleId(roleId);
 	}
 
-	public User getUserByRoleId(String roleId) {
-		// TODO Auto-generated method stub
-		return userRepository.findUserByRoleId(roleId);
-	}
-
 	
 }

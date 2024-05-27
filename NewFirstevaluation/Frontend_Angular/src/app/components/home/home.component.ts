@@ -22,7 +22,7 @@ export class HomeComponent {
   post(){
     console.log(this.roleIdString);
     if (this.roleIdString === 'null' || this.roleIdString === null) { 
-      alert('Please login');
+      alert('Please login As Employer');
     } else {
       this.route.navigate([`/job-register/${this.roleIdString}`]);
     }

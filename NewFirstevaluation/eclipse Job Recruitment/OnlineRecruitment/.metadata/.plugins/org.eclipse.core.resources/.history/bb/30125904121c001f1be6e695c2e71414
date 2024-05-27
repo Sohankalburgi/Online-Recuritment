@@ -101,8 +101,5 @@ public class UserController {
 			}
 	}
 	
-	@GetMapping("/getUserbyRoleId/{roleId}")
-	public User getUserbyRoleId(@PathVariable String roleId) {
-		return userService.getUserByRoleId(roleId);
-	}
+	
 }

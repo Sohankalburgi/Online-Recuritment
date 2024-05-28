@@ -2,6 +2,7 @@ package com.example.OnlineRecruitment.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Appointment {
 	
 	private boolean isSet;
 	@JsonIgnore
-	@OneToOne(fetch = FetchType.LAZY,mappedBy = "appointment")
+	@OneToOne(fetch = FetchType.LAZY,mappedBy = "appointment",cascade = CascadeType.ALL)
 	@JoinColumn(name="jobSeeker")
 	private JobSeeker jobSeeker;
 	

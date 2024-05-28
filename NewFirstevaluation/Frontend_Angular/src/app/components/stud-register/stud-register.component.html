@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
     <div class="container-fluid">
       <!-- Centered brand -->
-      <a class="navbar-brand mx-auto" routerLink="/home">Online Recruitment System</a>
+      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub </a>
 
       <!-- Toggler button for small screens -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -13,10 +13,10 @@
       <!-- Navigation items -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
-          
 
-         
-         
+
+
+
 
           <!-- Search Jobs -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
@@ -56,13 +56,13 @@
 </div>
 
 
-<section  class="stud-div" >
+<section  class="stud-div" style="background-image: url('https://e0.pxfuel.com/wallpapers/12/182/desktop-wallpaper-business-best-business-and-on-chat-corporate-meeting.jpg'); background-size: cover; background-repeat: no-repeat; backdrop-filter: blur(5px); ">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">
-        <div class="card" style="border-radius: 2rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); width: 60%; margin: auto;">
+        <div class="card" style="border-radius: 2rem; background-color: rgba(255, 255, 255, 0.5);  backdrop-filter: blur(10px); width: 60%; margin: auto;">
           <div class="card-body p-4 p-lg-5 text-black">
-            <h2 class="h1 fw-bold mb-0">Student Details</h2>
+            <h2 class="h1 fw-bold mb-0" style="color: rgb(5, 15, 60);">Student Details</h2>
             <form [formGroup]="studRegisterForm" (ngSubmit)="onSubmit()" novalidate>
 
 
@@ -70,7 +70,7 @@
               <div class="form-outline mb-2">
                 <label for="city" class="col-sm-3 col-form-label fw-bolder ">City:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg " id="city" formControlName="city" placeholder="Enter City">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="city" formControlName="city" placeholder="Enter City">
                                     <div *ngIf="isInvalid('city')" class="text-danger">
                                         {{ getErrorMessage('city') }}
                                     </div>
@@ -82,7 +82,7 @@
               <div class="form-outline mb-2">
                 <label for="state" class="col-sm-3 col-form-label fw-bolder">State:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg " id="state" formControlName="state" placeholder="Enter State">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="state" formControlName="state" placeholder="Enter State">
                                     <div *ngIf="isInvalid('state')" class="text-danger">
                                         {{ getErrorMessage('state') }}
                                     </div>
@@ -94,7 +94,7 @@
               <div class="form-outline mb-2">
                 <label for="pinCode" class="col-sm-3 col-form-label fw-bolder">Pin Code:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg " id="pinCode" formControlName="pinCode" placeholder="Enter Pin code">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="pinCode" formControlName="pinCode" placeholder="Enter Pin code">
                                     <div *ngIf="isInvalid('pinCode')" class="text-danger">
                                         {{ getErrorMessage('pinCode') }}
                                     </div>
@@ -109,7 +109,7 @@
               <div class="form-outline mb-2">
                 <label for="collegeName" class="col-sm-3 col-form-label fw-bolder">College Name:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg " id="collegeName" formControlName="collegeName" placeholder="Enter College Name">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="collegeName" formControlName="collegeName" placeholder="Enter College Name">
                                     <div *ngIf="isInvalid('collegeName')" class="text-danger">
                                         {{ getErrorMessage('collegeName') }}
                                     </div>
@@ -120,7 +120,7 @@
               <div class="form-outline mb-2">
                 <label for="collegeAddress" class="col-sm- col-form-label fw-bolder">College Address:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="text" class="form-control form-select-lg" id="collegeAddress" formControlName="collegeAddress" placeholder="Enter College Address">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="collegeAddress" formControlName="collegeAddress" placeholder="Enter College Address">
                                     <div *ngIf="isInvalid('collegeAddress')" class="text-danger">
                                         {{ getErrorMessage('collegeAddress') }}
                                     </div>
@@ -131,7 +131,7 @@
                   <div class="form-outline mb-2">
                     <label for="collegeDescription" class="col-sm- col-form-label fw-bolder">College Description:</label>
                                     <div class="col-sm-9" id="inputfield">
-                                       <textarea rows="3" class="form-control form-select-lg" id="collegeDescription" formControlName="collegeDescription" placeholder="Enter College Description"></textarea>
+                                       <textarea rows="3" class="form-control form-select-lg input-outline" id="collegeDescription" formControlName="collegeDescription" placeholder="Enter College Description"></textarea>
                                         <div *ngIf="isInvalid('collegeDescription')" class="text-danger">
                                             {{ getErrorMessage('collegeDescription') }}
                                         </div>
@@ -143,7 +143,7 @@
               <div class="form-outline mb-2">
                 <label for="yearOfPassing" class="col-sm- col-form-label fw-bolder">Year of Passing:</label>
                                 <div class="col-sm-9" id="inputfield">
-                                    <input type="number" class="form-control form-select-lg" id="yearOfPassing" formControlName="yearOfPassing" placeholder="Enter Year of Passing">
+                                    <input type="number" class="form-control form-select-lg input-outline" id="yearOfPassing" formControlName="yearOfPassing" placeholder="Enter Year of Passing">
                                     <div *ngIf="isInvalid('yearOfPassing')" class="text-danger">
                                         {{ getErrorMessage('yearOfPassing') }}
                                     </div>
@@ -155,7 +155,7 @@
               <div class="form-outline mb-2">
                 <label for="cgpa" class="col-sm-3 col-form-label fw-bolder" >CGPA:</label>
                   <div class="col-sm-9" id="inputfield">
-                  <input type="number" class="form-control form-select-lg" id="cgpa" formControlName="cgpa" placeholder="Enter CGPA">
+                  <input type="number" class="form-control form-select-lg input-outline" id="cgpa" formControlName="cgpa" placeholder="Enter CGPA">
 
                   <div *ngIf="isInvalid('cgpa')" class="text-danger">
                   {{ getErrorMessage('cgpa') }}
@@ -164,10 +164,10 @@
                 </div>
               </div>
 
-     
-             
+
+
               <button type="submit" class="btn btn-primary mt-4" id="inputfield" [disabled]="!studRegisterForm.valid" >Register</button>
-              
+
 
             </form>
           </div>

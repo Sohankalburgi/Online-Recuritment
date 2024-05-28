@@ -23,9 +23,9 @@ import { GradDashComponent } from './components/grad-dash/grad-dash.component';
 import { EmpDashComponent } from './components/emp-dash/emp-dash.component';
 import { JobDashComponent } from './components/job-dash/job-dash.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
-import { ScheduledComponent } from './scheduled/scheduled.component';
-import { NotScheduledComponent } from './not-scheduled/not-scheduled.component';
-import { EmpHomePageComponent } from './emp-home-page/emp-home-page.component';
+import { EmpHomePageComponent } from './components/emp-home-page/emp-home-page.component';
+import { NotScheduledComponent } from './components/not-scheduled/not-scheduled.component';
+import { ScheduledComponent } from './components/scheduled/scheduled.component';
 
 
 
@@ -82,6 +82,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'job-register',
+    component: JobRegisterComponent
+
+  },
+
+  {
     path: 'admin-dash',
     component: AdminDashComponent, children: [
       { path: 'graduates', component: GradDashComponent },
@@ -102,6 +108,16 @@ const routes: Routes = [
 
   {
     path: 'emp-register/:roleIdString',
+    component:EmpRegisterComponent
+  },
+
+  {
+    path: 'stud-register',
+    component: StudRegisterComponent
+  },
+
+  {
+    path: 'emp-register',
     component:EmpRegisterComponent
   },
 
@@ -131,8 +147,9 @@ const routes: Routes = [
     component:JobSearchComponent
   },
   {
-    path: 'emp-home-page', component: EmpHomePageComponent, children: [
-      { path: 'post-jobs', component: JobRegisterComponent },
+    path: 'emp-home-page', component: EmpHomePageComponent,
+    children: [
+      { path: 'job-register', component: JobRegisterComponent },
       { path: 'scheduled', component: ScheduledComponent },
       { path: 'not-scheduled', component: NotScheduledComponent },
       { path: '', redirectTo: 'post-jobs', pathMatch: 'full' }

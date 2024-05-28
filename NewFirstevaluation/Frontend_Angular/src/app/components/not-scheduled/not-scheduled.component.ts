@@ -21,9 +21,8 @@ interface Student {
   templateUrl: './not-scheduled.component.html',
   styleUrl: './not-scheduled.component.css'
 })
+export class NotScheduledComponent implements OnInit{
 
-
-export class NotScheduledComponent implements OnInit {
   students: Student[] = [];
   selectedStudent: Student | null = null;
 
@@ -50,4 +49,5 @@ export class NotScheduledComponent implements OnInit {
   appointStudent(student: Student): void {
     // Logic for appointing student
   }
+
 }

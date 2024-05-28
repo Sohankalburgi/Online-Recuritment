@@ -23,6 +23,9 @@ import { GradDashComponent } from './components/grad-dash/grad-dash.component';
 import { EmpDashComponent } from './components/emp-dash/emp-dash.component';
 import { JobDashComponent } from './components/job-dash/job-dash.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { ScheduledComponent } from './scheduled/scheduled.component';
+import { NotScheduledComponent } from './not-scheduled/not-scheduled.component';
+import { EmpHomePageComponent } from './emp-home-page/emp-home-page.component';
 
 
 
@@ -126,6 +129,18 @@ const routes: Routes = [
   {
     path:'gradhome',
     component:JobSearchComponent
+  },
+  {
+    path: 'emp-home-page', component: EmpHomePageComponent, children: [
+      { path: 'post-jobs', component: JobRegisterComponent },
+      { path: 'scheduled', component: ScheduledComponent },
+      { path: 'not-scheduled', component: NotScheduledComponent },
+      { path: '', redirectTo: 'post-jobs', pathMatch: 'full' }
+    ]
+  },
+  {
+    path: 'email-verification',
+    component: EmailVerificationComponent
   }
 
 ];

@@ -3,13 +3,13 @@
       <div class="container-fluid">
         <!-- Centered brand -->
         <a class="navbar-brand mx-auto" routerLink="/home">Online Recruitment System</a>
-  
+
         <!-- Toggler button for small screens -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-  
+
         <!-- Navigation items -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
@@ -19,40 +19,40 @@
               <a class="nav-link" *ngIf="roleIdString?.startsWith('GRAD')" routerLink="/gradhome/{{roleIdString}}" routerLinkActive="active">Home</a>
               <a class="nav-link" *ngIf="roleIdString?.startsWith('EMP')" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
             </li>
-  
-           
-           
-  
-  
+
+
+
+
+
             <!-- Services -->
             <!-- *ngIf="currentRoute !== '/job-search'" -->
             <li class="nav-item">
               <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
             </li>
-  
-  
+
+
             <!-- Blog  -->
             <!-- *ngIf="currentRoute !== '/job-search'" -->
             <li class="nav-item" >
               <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
             </li>
-  
-  
+
+
             <!-- About Us -->
             <!-- *ngIf="currentRoute !== '/login'" -->
             <li class="nav-item" >
               <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
             </li>
-  
+
             <li class="nav-item" >
               <a class="nav-link"  *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLinkActive="active">Login</a>
             </li>
-  
+
             <li>
               <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/register"  routerLinkActive="active">Register</a>
             </li>
           </ul>
-  
+
           <!-- Green dot for logged-in status -->
           <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
         </div>
@@ -61,7 +61,7 @@
     </nav>
   </div>
 <div class="main">
-    <h1 class="text-center">Jobs For You</h1>
+    <h1 class="text-center">Available Jobs</h1>
 
         <div class=" d-flex flex-row-reverse">
         <div class="col-0 mx-2">
@@ -70,7 +70,7 @@
         <div class="col-4">
         <input type="text" class="form-control" id="search" placeholder="Search" [(ngModel)]="searchValue">
         </div>
-        
+
         </div>
         <div class="col-12 align-items-center align-text-center">
         <table class="mt-2">
@@ -94,8 +94,8 @@
             </tr>
         </table>
 
-       
 
-   
-   
+
+
+
 </div>

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JobSearchComponent } from './components/job-search/job-search.component';
@@ -29,7 +28,10 @@ import { GradDashComponent } from './components/grad-dash/grad-dash.component';
 import { EmpDashComponent } from './components/emp-dash/emp-dash.component';
 import { JobDashComponent } from './components/job-dash/job-dash.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
-
+import { EmpHomePageComponent } from './emp-home-page/emp-home-page.component';
+import { ScheduledComponent } from './scheduled/scheduled.component';
+import { NotScheduledComponent } from './not-scheduled/not-scheduled.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 
 
@@ -57,14 +59,17 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
     GradDashComponent,
     EmpDashComponent,
     JobDashComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    EmpHomePageComponent,
+    ScheduledComponent,
+    NotScheduledComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
     FontAwesomeModule,
     HttpClientModule
   ],

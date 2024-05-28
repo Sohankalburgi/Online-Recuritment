@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 bg-dark sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/emp-home-page/job-register">Post Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/emp-home-page/scheduled">Scheduled</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/emp-home-page/not-scheduled">Not Scheduled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
+      <h2>Not Scheduled</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Year of Passing</th>
+              <th>CGPA</th>
+              <th>Language</th>
+              <th>Key Skill</th>
+              <th>Area of Interest</th>
+              <th>Resume</th>
+              <th>Location</th>
+              <th>Time</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of students">
+              <td>{{ student.fullName }}</td>
+              <td>{{ student.email }}</td>
+              <td>{{ student.phone }}</td>
+              <td>{{ student.yearOfPassing }}</td>
+              <td>{{ student.cgpa }}</td>
+              <td>{{ student.language }}</td>
+              <td>{{ student.keySkill }}</td>
+              <td>{{ student.areaOfInterest }}</td>
+              <td>
+                <button class="btn btn-link" (click)="openResume(student)">View Resume</button>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="student.location" placeholder="Enter Location">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="student.time" placeholder="Enter Time">
+              </td>
+              <td>
+                <button class="btn btn-primary" (click)="appointStudent(student)">Appoint</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Resume Modal -->
+      <div *ngIf="selectedStudent" class="modal">
+        <div class="modal-content">
+          <span class="close" (click)="closeResume()">&times;</span>
+          <h4>Resume of {{ selectedStudent.fullName }}</h4>
+          <div [innerHtml]="selectedStudent.resume | safeHtml"></div>
+          <button class="btn btn-secondary" (click)="closeResume()">Close</button>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+</div>

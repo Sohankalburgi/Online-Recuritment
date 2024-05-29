@@ -28,12 +28,11 @@ import { GradDashComponent } from './components/grad-dash/grad-dash.component';
 import { EmpDashComponent } from './components/emp-dash/emp-dash.component';
 import { JobDashComponent } from './components/job-dash/job-dash.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
-import { EmpHomePageComponent } from './emp-home-page/emp-home-page.component';
-import { ScheduledComponent } from './scheduled/scheduled.component';
-import { NotScheduledComponent } from './not-scheduled/not-scheduled.component';
+import { EmpHomePageComponent } from './components/emp-home-page/emp-home-page.component';
+import { ScheduledComponent } from './components/scheduled/scheduled.component';
+import { NotScheduledComponent } from './components/not-scheduled/not-scheduled.component';
+
 import { SafeHtmlPipe } from './safe-html.pipe';
-
-
 
 @NgModule({
   declarations: [

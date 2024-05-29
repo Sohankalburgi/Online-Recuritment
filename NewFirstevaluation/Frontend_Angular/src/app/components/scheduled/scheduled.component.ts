@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface ScheduledStudent {
+interface Student {
   id: number;
   fullName: string;
   email: string;
@@ -12,10 +12,9 @@ interface ScheduledStudent {
   keySkill: string;
   areaOfInterest: string;
   resume: string;
-  scheduledDate: string;
-  scheduledTime: string;
+  date: string;
+  time: string;
 }
-
 
 @Component({
   selector: 'app-scheduled',
@@ -24,7 +23,9 @@ interface ScheduledStudent {
 })
 
 export class ScheduledComponent implements OnInit {
-  scheduledStudents: ScheduledStudent[] = [];
+
+  scheduledStudents: Student[] = [];
+  selectedStudent: Student | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -33,13 +34,16 @@ export class ScheduledComponent implements OnInit {
   }
 
   fetchScheduledStudents(): void {
-    this.http.get<ScheduledStudent[]>('your-backend-api-url').subscribe(data => {
+    this.http.get<Student[]>('your-backend-api-url').subscribe(data => {
       this.scheduledStudents = data;
     });
   }
 
-  viewResume(resumeUrl: string): void {
-    // Logic to open a new tab to view resume
-    window.open(resumeUrl, '_blank');
+  openResume(student: Student): void {
+    this.selectedStudent = student;
+  }
+
+  closeResume(): void {
+    this.selectedStudent = null;
   }
 }

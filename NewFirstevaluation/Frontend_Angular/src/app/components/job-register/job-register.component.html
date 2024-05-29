@@ -1,84 +1,19 @@
-<div style="position: static;">
-  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
-    <div class="container-fluid">
-      <!-- Centered brand -->
-      <a class="navbar-brand mx-auto" routerLink="/home">Online Recruitment System</a>
-
-      <!-- Toggler button for small screens -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Navigation items -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
-          <!-- Home -->
-          <!-- *ngIf="currentRoute !== '/home'" -->
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
-          </li>
-
-          <a class="nav-link"  routerLink="/job-register/{{roleIdString}}" routerLinkActive="active">Post Jobs</a> 
-         
-
-          <!-- Search Jobs -->
-          <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <!-- <li class="nav-item" >
-            <a class="nav-link" routerLink="/gradhome" routerLinkActive="active">Jobs for you</a>
-          </li> -->
 
 
-          <!-- Services -->
-          <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
-          </li>
-
-
-          <!-- Blog  -->
-          <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
-          </li>
-
-
-          <!-- About Us -->
-          <!-- *ngIf="currentRoute !== '/login'" -->
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
-          </li>
-
-         
-
-          <li class="nav-item" >
-            
-          </li>
-        </ul>
-
-        <!-- Green dot for logged-in status -->
-        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
-      </div>
-      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" routerLink="/home" >Logout</a>
-    </div>
-  </nav>
-</div>
-
-
+<!--
 <section class="top-div">
-  <div class="container-fluid py-5" >
-    <div class="row">
-      <div class="col-md-8">
-        <div id="formcard" class="mx-auto">
-          <!-- Your appointment form content -->
-          <h3 style="font-weight: bolder;">Post your Job here !! </h3>
-          <form [formGroup]="jobRegisterForm" (ngSubmit)="onSubmit()" novalidate >
+  <div class="container py-5" >
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 style="font-weight: bolder;">Post your Job here !! </h3>
+            <form [formGroup]="jobRegisterForm" (ngSubmit)="onSubmit()" novalidate >
 
-            <!-- Job Name -->
-            <div class="form-outline mb-2">
-              <label for="jobName" class="col-sm-3 col-form-label">Job Name:</label>
-                              <div class="col-sm-9" id="inputfield">
-                                  <input type="text" class="form-control form-select-lg " id="jobName" formControlName="jobName" placeholder="Enter Job Name">
+            <div class="form-outline mb-3">
+              <label for="jobName" class="col-form-label">Job Name:</label>
+                              <div id="inputfield">
+                                  <input type="text" class="form-control" id="jobName" formControlName="jobName" placeholder="Enter Job Name">
 
                                   <div *ngIf="isInvalid('jobName')" class="text-danger">
                                     {{ getErrorMessage('jobName') }}
@@ -88,198 +23,145 @@
             </div>
 
 
-            <!-- Job Salary  -->
-            <div class="form-outline mb-2">
-              <label for="jobSalary" class="col-sm-3 col-form-label">Salary</label>
-                      <div class="col-sm-9" id="inputfield">
-                       <input type="number" class="form-control form-select-lg " id="jobSalary" formControlName="jobSalary" placeholder="Enter the Salary">
-
-                       <div *ngIf="isInvalid('jobSalary')" class="text-danger">
-                        {{ getErrorMessage('jobSalary') }}
-                      </div>
-                   </div>
+            <div class="form-outline mb-3">
+              <label for="jobSalary" class="col-form-label">Salary</label>
+              <div id="inputfield">
+                <input type="number" class="form-control" id="jobSalary" formControlName="jobSalary" placeholder="Enter the Salary">
+                <div *ngIf="isInvalid('jobSalary')" class="text-danger">
+                  {{ getErrorMessage('jobSalary') }}
+                </div>
+              </div>
             </div>
 
+            <div class="form-outline mb-3">
+              <label for="jobType" class="col-form-label">Job Type</label>
+              <div id="inputfield">
+                <select id="jobType" formControlName="jobType" class="form-select" placeholder="Select the Type" required>
+                  <option value="Software Developer">Software Developer</option>
+                  <option value="Java Developer">Java Developer</option>
+                  <option value="AI Engineer">AI Engineer</option>
+                  <option value="ML Engineer">ML Engineer</option>
+                  <option value="Data Scientist">Data Scientist</option>
+                  <option value="Data Analyst">Data Analyst</option>
+                </select>
+                <div *ngIf="isInvalid('jobType')" class="text-danger">
+                  {{ getErrorMessage('jobType') }}
+                </div>
+              </div>
+            </div>
 
-            <!-- Job Type -->
-            <div class="form-outline mb-2">
-              <label for="jobType" class="col-sm-3 col-form-label">Job Type</label>
-              <div class="col-sm-9" id="inputfield">
-                  <select id="jobType" formControlName="jobType" class="form-select form-select-lg" placeholder="Select the Type" required>
-                     
+            <div class="form-outline mb-3">
+              <label for="jobDescription" class="col-form-label">Job Description:</label>
+              <div id="inputfield">
+                <textarea rows="5" class="form-control" id="jobDescription" formControlName="jobDescription" placeholder="Job Description"></textarea>
+                <div *ngIf="isInvalid('jobDescription')" class="text-danger">
+                  {{ getErrorMessage('jobDescription') }}
+                </div>
+              </div>
+            </div>
 
-                      <option value="Software Developer">Software Developer</option>
-                      <option value="Java Developer">Java Developer</option>
-                      <option value="AI Engineer">AI Engineer</option>
-                      <option value="ML Engineer">ML Engineer</option>
-                      <option value="Data Scientist">Data Scientist</option>
-                      <option value="Data Analyst">Data Analyst</option>
+            <div class="form-outline mb-3">
+              <label for="jobVacancy" class="col-form-label">Job Vacancy:</label>
+              <div id="inputfield">
+                <input type="number" class="form-control" id="jobVacancy" formControlName="jobVacancy" placeholder="Vacancy">
+                <div *ngIf="isInvalid('jobVacancy')" class="text-danger">
+                  {{ getErrorMessage('jobVacancy') }}
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn" style="background-color : #113f5f; color : white;">Post Job</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section> -->
 
 
+
+
+<section class="background vh-100">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 offset-md-2"> <!-- Adjusted column size and added offset -->
+        <div class="card">
+          <div class="card-body">
+            <h3 style="font-weight: bolder;">Post your Job here !!</h3>
+            <form [formGroup]="jobRegisterForm" (ngSubmit)="onSubmit()" novalidate>
+              <!-- Job Name -->
+              <div class="form-outline mb-3">
+                <label for="jobName" class="col-form-label" style="font-weight: 600;">Job Name:</label>
+                <div id="inputfield">
+                  <input type="text" class="form-control input-outline" id="jobName" formControlName="jobName" placeholder="Enter Job Name">
+                  <div *ngIf="isInvalid('jobName')" class="text-danger">
+                    {{ getErrorMessage('jobName') }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Job Salary  -->
+              <div class="form-outline mb-3">
+                <label for="jobSalary" class="col-form-label" style="font-weight: 600;">Salary</label>
+                <div id="inputfield">
+                  <input type="number" class="form-control input-outline" id="jobSalary" formControlName="jobSalary" placeholder="Enter the Salary">
+                  <div *ngIf="isInvalid('jobSalary')" class="text-danger">
+                    {{ getErrorMessage('jobSalary') }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Job Type -->
+              <div class="form-outline mb-3">
+                <label for="jobType" class="col-form-label" style="font-weight: 600;"> Job Type</label>
+                <div id="inputfield">
+                  <select id="jobType" formControlName="jobType" class="form-select input-outline" placeholder="Select the Type" required>
+                    <option  value="" disabled selected>Select Job Type</option>
+                    <option value="Software Developer">Software Developer</option>
+                    <option value="Java Developer">Java Developer</option>
+                    <option value="AI Engineer">AI Engineer</option>
+                    <option value="ML Engineer">ML Engineer</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Data Analyst">Data Analyst</option>
                   </select>
                   <div *ngIf="isInvalid('jobType')" class="text-danger">
-                      {{ getErrorMessage('jobType') }}
+                    {{ getErrorMessage('jobType') }}
                   </div>
+                </div>
               </div>
-            </div>
 
-
-
-             <!-- Job Description -->
-             <div class="form-outline mb-2">
-              <label for="jobDescription" class="col-sm-3 col-form-label">Job Description:</label>
-                              <div class="col-sm-9" id="inputfield">
-                                <textarea rows="5" class="form-control form-select-lg" id="jobDescription" formControlName="jobDescription" placeholder="Job Description"></textarea>
-                                  <!-- <input type="text" class="form-control form-select-lg " id="jobDescription" formControlName="jobDescription" placeholder="Language"> -->
-                                  <div *ngIf="isInvalid('jobDescription')" class="text-danger">
-                                    {{ getErrorMessage('jobDescription') }}
-                                  </div>
-                              </div>
-            </div>
-
-
-
-            <!-- vacancy -->
-            <div class="form-outline mb-2">
-              <label for="jobVacancy" class="col-sm-3 col-form-label">Job Vacancy:</label>
-                              <div class="col-sm-9" id="inputfield">
-                                  <input type="number" class="form-control form-select-lg " id="jobVacancy" formControlName="jobVacancy" placeholder="Vacancy">
-                                  <div *ngIf="isInvalid('jobVacancy')" class="text-danger">
-                                    {{ getErrorMessage('jobVacancy') }}
-                                  </div>
-
-                              </div>
-            </div>
-
-
-
-
-
-
-            <!-- Percentage -->
-            <!-- <div class="form-outline mb-2">
-              <label for="cgpa" class="col-sm-3 col-form-label">CGPA</label>
-              <div class="col-sm-9" id="inputfield">
-                  <select id="cgpa" formControlName="cgpa" class="form-select form-select-lg" required>
-                      <option  value="" disabled selected>Select CGPA</option>
-                      <option value="value1">1 - 2</option>
-                      <option value="value2">2 - 3</option>
-                      <option value="value3">3 - 4</option>
-                      <option value="value4">4 - 5</option>
-                      <option value="value5">5 - 6</option>
-                      <option value="value6">6 - 7</option>
-                      <option value="value7">7 - 8</option>
-                      <option value="value8">8 - 9</option>
-                      <option value="value9">9 - 10</option>
-
-                  </select>
-                  <div *ngIf="isInvalid('cgpa')" class="text-danger">
-                      {{ getErrorMessage('cgpa') }}
+              <!-- Job Description -->
+              <div class="form-outline mb-3">
+                <label for="jobDescription" class="col-form-label" style="font-weight: 600;">Job Description:</label>
+                <div id="inputfield">
+                  <textarea rows="5" class="form-control input-outline" id="jobDescription" formControlName="jobDescription" placeholder="Job Description"></textarea>
+                  <div *ngIf="isInvalid('jobDescription')" class="text-danger">
+                    {{ getErrorMessage('jobDescription') }}
                   </div>
+                </div>
               </div>
-            </div> -->
 
-
-
-
-
-
-
-
-            <!-- Key Skill -->
-            <!-- <div class="form-outline mb-2">
-              <label for="keyskill" class="col-sm-3 col-form-label">Key Skill</label>
-                              <div class="col-sm-9" id="inputfield">
-                                  <input type="text" class="form-control form-select-lg " id="keyskill" formControlName="keySkill" placeholder="Key Skill">
-                                  <div *ngIf="isInvalid('keySkill')" class="text-danger">
-                                    {{ getErrorMessage('keySkill') }}
-                                  </div>
-                              </div>
-            </div> -->
-
-
-            <!-- Areas of Interest -->
-            <!-- <div class="form-outline mb-2">
-              <label for="areasOfInterest" class="col-sm-3 col-form-label">Areas of Interest:</label>
-                              <div class="col-sm-9" id="inputfield">
-                                  <input type="text" class="form-control form-select-lg " id="areasOfInterest" formControlName="areasOfInterest" placeholder="Language">
-                                  <div *ngIf="isInvalid('areasOfInterest')" class="text-danger">
-                                    {{ getErrorMessage('areasOfInterest') }}
-                                  </div>
-                              </div>
-            </div> -->
-
-
-
-
-            <!-- Project -->
-            <!-- <div class="form-outline mb-2">
-              <label for="project" class="col-sm-3 col-form-label">Project </label>
-                              <div class="col-sm-9" id="inputfield">
-                                  <textarea rows="5" cols="33" class="form-control form-select-lg " id="project" formControlName="project" placeholder="Project"></textarea>
-                                  <div *ngIf="isInvalid('project')" class="text-danger">
-                                    {{ getErrorMessage('project') }}
-                                  </div>
-                              </div>
-            </div> -->
-
-
-<!-- 
-            Resume
-            <div class="form-outline mb-2">
-              <label for="jobFile" class="col-sm-3 col-form-label">Upload Job Description(optional):</label>
-              <div class="col-sm-9" id="inputfield">
-                  <input type="file" class="form-control form-select-md" id="jobFile" formControlName="jobFile">
-                  <div *ngIf="isInvalid('jobFile')" class="text-danger">
-                      {{ getErrorMessage('jobFile') }}
+              <!-- Vacancy -->
+              <div class="form-outline mb-3">
+                <label for="jobVacancy" class="col-form-label" style="font-weight: 600;">Job Vacancy:</label>
+                <div id="inputfield">
+                  <input type="number" class="form-control input-outline" id="jobVacancy" formControlName="jobVacancy" placeholder="Vacancy">
+                  <div *ngIf="isInvalid('jobVacancy')" class="text-danger">
+                    {{ getErrorMessage('jobVacancy') }}
                   </div>
+                </div>
               </div>
-          </div> -->
-
-
-
-          <div>
-              <div>
-                  <button type="submit" class="btn btn-primary" >Post  Job</button>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Post Job</button>
               </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
+    </div>
   </div>
-  <div class="col-md-4">
-      <div id="sidebar" style="color: azure;">
-          <!-- Sponsor card and Wise card content -->
-          <h1 class="h2 fw-bold mb-0 px-0 py-0 mb-4">Sponsors</h1>
-          <ul type="none">
-              <li>HCL Technology</li>
-              <li> Over 6,000+ Premium Jobs</li>
-              <hr>
-              <li>Infosys</li>
-              <li>Premium Jobs</li>
-              <hr>
-              <li>Wipro</li>
-              <li>Premium Jobs</li>
-              <hr>
-              <li>Accenture</li>
-              <li>Premium Jobs</li>
-              <hr>
-              <li>Atos</li>
-              <li>Premium Jobs</li>
-              <hr>
-              <li>TCS</li>
-              <li>Premium Jobs</li>
-              <hr>
-          </ul>
-
-          <h1 class="h2 fw-bold mb-0 px-0 py-0 mb-4">Wise Words</h1>
-          "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it."
-          <br>
-          <p align="right">-Steve Jobs</p>
-      </div>
-  </div>
-</div>
-</div>
 </section>
-
 
 

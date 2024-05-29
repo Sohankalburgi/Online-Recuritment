@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.OnlineRecruitment.Entities.College;
+import com.example.OnlineRecruitment.Entities.Role;
 import com.example.OnlineRecruitment.Repositories.CollegeRepository;
 
 @Service
@@ -28,6 +29,7 @@ public class CollegeService {
 		college2.setCollegeAddress(college.getCollegeAddress());
 		college2.setCollegeDescription(college.getCollegeDescription());
 		college2.setCollegeName(college.getCollegeName());
+		
 		collegeRepository.save(college2);
 		return "updated";
 	}

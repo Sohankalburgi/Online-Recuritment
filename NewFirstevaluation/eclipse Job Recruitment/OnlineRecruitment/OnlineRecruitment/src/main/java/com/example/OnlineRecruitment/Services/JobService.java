@@ -37,6 +37,7 @@ public class JobService {
 	}
 	
 	public void updateJobById(Integer id,Job job) {
+		System.out.println(id+"tjhis");
 		Job updateJob = jobRepository.getById(id);
 		updateJob.setJobDescription(job.getJobDescription());
 		updateJob.setJobName(job.getJobName());

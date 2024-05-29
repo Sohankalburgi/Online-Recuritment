@@ -18,7 +18,7 @@ export interface User{
     password:string,
     address:string,
     nationality:string,
-    phone:string
+    phone:string,
 }
 
 export interface College{
@@ -29,3 +29,4 @@ export interface College{
     collegeDescription:string,
     collegeAddress:string
 }
+

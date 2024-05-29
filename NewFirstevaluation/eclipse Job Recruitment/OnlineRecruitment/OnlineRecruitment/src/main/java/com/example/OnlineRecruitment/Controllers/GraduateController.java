@@ -53,6 +53,7 @@ public class GraduateController {
 	@PutMapping("/updategraduate/{roleId}")
 	public String updateGraduate(@RequestBody Graduate graduate,
 			@PathVariable String roleId) {
+		System.out.println(graduate.toString());
 		return graduateService.updateService(graduate,roleId);
 	}
 	

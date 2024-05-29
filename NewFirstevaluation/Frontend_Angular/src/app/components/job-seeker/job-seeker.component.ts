@@ -79,9 +79,9 @@ export class JobSeekerComponent {
         console.log(this.roleIdString)
         this.jobSeekerForm.value.graduate.studentId = this.studentId;
         console.log(this.jobId)
-       console.log("this is studentId:"+this.studentId)
+        console.log("this is studentId:"+this.studentId)
         console.log(this.jobSeekerForm.value);
-       const applicantId = this.roleIdString+this.jobId;
+        const applicantId = this.roleIdString+this.jobId;
         const formData:FormData = new FormData();
         formData.append('file',this.selectedFile);
 

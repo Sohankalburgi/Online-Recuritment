@@ -27,6 +27,7 @@ import jakarta.validation.constraints.NotEmpty;
 public class Role {
 
 	
+	
 	@Id
 	private String roleId;
 	@NotEmpty(message = "Invalid RoleTitle")
@@ -73,5 +74,9 @@ public class Role {
 		this.roleDescription = roleDescription;
 		this.user = user;
 	}
-	
+	@Override
+	public String toString() {
+		return "Role [roleId=" + roleId + ", roleTitle=" + roleTitle + ", roleDescription=" + roleDescription
+				+ ", user=" + user + "]";
+	}
 }

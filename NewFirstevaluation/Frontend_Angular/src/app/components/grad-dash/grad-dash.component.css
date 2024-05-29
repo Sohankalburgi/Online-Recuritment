@@ -54,6 +54,7 @@
   align-items: center;
   padding-left: 10px;
   width: 100%;
+  overflow: auto;
   padding-right:10px;
 }
 
@@ -63,9 +64,10 @@
   align-items: center;
   justify-content: center;
   width: auto;
-  max-width: 500px;
+  max-width:900px;
   margin: 0;
-  padding: 10px;
+  padding-left: 30px;
+  overflow: auto;
 }
 
 /* Modal Content */
@@ -130,4 +132,9 @@
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
+}
+
+#inputfield{
+
+  /* outline: 2px; */
 }

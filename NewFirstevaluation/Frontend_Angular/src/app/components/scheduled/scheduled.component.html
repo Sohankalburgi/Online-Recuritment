@@ -1,0 +1,107 @@
+ <div class="container mt-4">
+  <h2>Scheduled Appointments</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Passing Year</th>
+          <th>CGPA</th>
+          <th>Language</th>
+          <th>Key Skill</th>
+          <th>Area of Interest</th>
+          <th>Resume</th>
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of scheduledStudents">
+          <td>{{ student.fullName }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.phone }}</td>
+          <td>{{ student.yearOfPassing }}</td>
+          <td>{{ student.cgpa }}</td>
+          <td>{{ student.language }}</td>
+          <td>{{ student.keySkill }}</td>
+          <td>{{ student.areaOfInterest }}</td>
+          <td>
+            <button class="btn btn-link" (click)="openResume(student)">View Resume</button>
+          </td>
+          <td>{{ student.date }}</td>
+          <td>{{ student.time }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="selectedStudent" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeResume()">&times;</span>
+      <h4>Resume of {{ selectedStudent.fullName }}</h4>
+      <div [innerHtml]="selectedStudent.resume | safeHtml"></div>
+      <button class="btn btn-secondary" (click)="closeResume()">Close</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+          <h2>Scheduled Appointments</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Year of Passing</th>
+                  <th>CGPA</th>
+                  <th>Language</th>
+                  <th>Key Skill</th>
+                  <th>Area of Interest</th>
+                  <th>Resume</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of scheduledStudents">
+                  <td>{{ student.fullName }}</td>
+                  <td>{{ student.email }}</td>
+                  <td>{{ student.phone }}</td>
+                  <td>{{ student.yearOfPassing }}</td>
+                  <td>{{ student.cgpa }}</td>
+                  <td>{{ student.language }}</td>
+                  <td>{{ student.keySkill }}</td>
+                  <td>{{ student.areaOfInterest }}</td>
+                  <td>
+                    <button class="btn btn-link" (click)="openResume(student)">View Resume</button>
+                  </td>
+                  <td>{{ student.date }}</td>
+                  <td>{{ student.time }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div *ngIf="selectedStudent" class="modal">
+            <div class="modal-content">
+              <span class="close" (click)="closeResume()">&times;</span>
+              <h4>Resume of {{ selectedStudent.fullName }}</h4>
+              <div [innerHtml]="selectedStudent.resume | safeHtml"></div>
+              <button class="btn btn-secondary" (click)="closeResume()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

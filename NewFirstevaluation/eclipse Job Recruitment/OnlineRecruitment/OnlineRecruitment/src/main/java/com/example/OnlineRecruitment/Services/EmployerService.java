@@ -38,6 +38,8 @@ public class EmployerService {
 
 	public String updateEmployer(String roleId, Employer employer) {
 		// TODO Auto-generated method stub
+		System.out.println(roleId+" inside the serivce");
+		System.out.println(employer.toString());
 		Employer emp = employerRepository.getByRoleId(roleId);
 		emp.setCompanyAddress(employer.getCompanyAddress());
 		emp.setCompanyDescription(employer.getCompanyDescription());
@@ -45,6 +47,7 @@ public class EmployerService {
 		emp.setCompanySize(employer.getCompanySize());
 		emp.setCompanyType(employer.getCompanyType());
 		emp.setRoleInCompany(employer.getRoleInCompany());
+		employerRepository.save(emp);
 		return "updated";
 	}
 

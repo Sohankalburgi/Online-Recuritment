@@ -21,7 +21,7 @@ import com.example.OnlineRecruitment.ServiceInterface.UserServiceInterface;
 
 
 @Service
-public class UserService implements UserServiceInterface{
+public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -32,10 +32,19 @@ public class UserService implements UserServiceInterface{
 	@Autowired
 	private RoleIDService roleIDService;
 	
+	@Autowired
+	private GraduateService graduateService;
+	
+	@Autowired
+	private CollegeService collegeService;
+	
+	@Autowired
+	private EmployerService employerService;
+	
 //	@Autowired
 //	private GraduateService graduateService;
 //	
-	@Override
+
 	public void saveUser(User user) {
 		// TODO Auto-generated method stub
 		
@@ -62,32 +71,32 @@ public class UserService implements UserServiceInterface{
 		roleIDService.sendEmail(user.getEmail(),user.getRole().getRoleId(),user.getName(),user.getPassword());
 	}
 
-	@Override
 	public User getUserById(Integer id) {
 		// TODO Auto-generated method stub
 		return  userRepository.getById(id);
 		
 	}
-	@Override
+	
 	public List<User> getAllUsers(){
 		return userRepository.findAll();
 	}
-	@Override
-	public void deleteUser(Integer id) {
-		userRepository.deleteById(id);
-	}
-	@Override
-	public void updateUserById(Integer id,User user) {
-		User updateUser = userRepository.getById(id);
-		updateUser.setAddress(user.getAddress());
-
-		updateUser.setEmail(user.getEmail());
 	
+	public void deleteUser(String id) {
+		User user = userRepository.findUserByRoleId(id);
+		if(id.startsWith("GRAD")) {
+		graduateService.deleteGraduate(id);
+		collegeService.deleteCollegeByRoleId(id);
+		}
+		employerService.deleteEmployer(id);
+		userRepository.delete(user);
+	}
+	
+	public void updateUserById(String roleid,User user) {
+		User updateUser = userRepository.findUserByRoleId(roleid);
+		updateUser.setAddress(user.getAddress());
 		updateUser.setName(user.getName());
 		updateUser.setNationality(user.getNationality());
-		updateUser.setPassword(user.getPassword());
 		updateUser.setPhone(user.getPhone());
-		updateUser.setRole(user.getRole());
 		userRepository.save(updateUser);
 	}
 	

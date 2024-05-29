@@ -2,6 +2,7 @@ package com.example.OnlineRecruitment.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.example.OnlineRecruitment.Services.RoleService;
 import jakarta.validation.Valid;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class RoleController {
 
 	@Autowired
@@ -35,6 +37,7 @@ public class RoleController {
 	
 	@DeleteMapping("/deleterole/{id}")
 	public String deleteRoleById(@PathVariable String id) {
+		System.out.println(id);
 		roleService.deleteRoleById(id);
 		return "Role Deleted";
 	}

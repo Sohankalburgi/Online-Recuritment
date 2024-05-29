@@ -77,11 +77,13 @@ public class GraduateService {
 
 	public String updateService(Graduate graduate, String roleId) {
 		// TODO Auto-generated method stub
+		System.out.println(roleId);
 		Graduate grad = graduateRepository.getByRoleId(roleId);
 		grad.setCgpa(graduate.getCgpa());
 		grad.setCity(graduate.getCity());
 		grad.setState(graduate.getState());
 		grad.setYearOfPassing(graduate.getYearOfPassing());
+		graduateRepository.save(grad);
 		return "updated";
 	}
 

@@ -1,5 +1,6 @@
 package com.example.OnlineRecruitment.Entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import jakarta.validation.constraints.NotBlank;
 public class College {
 	
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "roleId")
 	private Role roleId;
 	

@@ -2,6 +2,7 @@
   <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
     <div class="container-fluid">
       <!-- Centered brand -->
+      <img src="" alt="">
       <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
 
       <!-- Toggler button for small screens -->
@@ -124,8 +125,9 @@
                       </select>
 
                       </div>
+                      <div class="col-3 mx-3">
                       <input type="text" class="form-control col-sm-3 w-20 input-outline" formControlName="roleId" name="roleId" id="roleId" placeholder="Enter the ID">
-
+                    </div>
                     </div>
                     <div *ngIf="isInvalid('roleId')" class="text-danger">
                       {{ getErrorMessage('roleId') }}

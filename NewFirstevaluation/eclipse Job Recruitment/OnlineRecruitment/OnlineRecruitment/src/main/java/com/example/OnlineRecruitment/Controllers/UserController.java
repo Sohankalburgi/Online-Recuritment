@@ -61,14 +61,16 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/userdelete/{id}")
-	public String userDeleteById(@PathVariable Integer id) {
+	public String userDeleteById(@PathVariable String id) {
 		userService.deleteUser(id);
 		return "User Deleted";
 	}
-	@PutMapping("/userupdate/{id}")
-	public String userUpdateById(@PathVariable Integer id,@Valid @RequestBody User user) {
+	@PutMapping("/userupdate/{roleid}")
+	public String userUpdateById(@PathVariable String  roleid,@Valid @RequestBody User user) {
 		
-		userService.updateUserById(id, user);
+		System.out.println(user.toString());
+		
+		userService.updateUserById(roleid, user);
 		return "Updated";
 	}
 	

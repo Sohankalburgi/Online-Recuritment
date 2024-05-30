@@ -7,6 +7,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.example.OnlineRecruitment.Classes.FileUtil;
 import com.example.OnlineRecruitment.Entities.Appointment;
 import com.example.OnlineRecruitment.Repositories.AppointmentRepository;
 @Service
@@ -43,13 +44,14 @@ public class AppointmentService {
 	        javaMailSender.send(message);
 	    }
 
-	public List<Appointment> getAllAppointmentNotSet() {
-		return appointmentRepository.getAllAppointmentNotSet();
+	public List<Appointment> getAllAppointmentNotSet(String roleId) {
+		return appointmentRepository.getAllAppointmentNotSet(roleId);
 		
 	}
 
-	public List<Appointment> getAllAppointmentSet() {
-		return appointmentRepository.getAllAppointmentSet();
+	public List<Appointment> getAllAppointmentSet(String roleId) {
+		System.out.println(roleId);
+		return appointmentRepository.getAllAppointmentSet(roleId);
 	}
 
 	public String rejectAppointment(String applicantId) {
@@ -61,6 +63,12 @@ public class AppointmentService {
 		String Subject ="Appointment Rejected"; 
 		sendEmail(appoint.getJobSeeker().getEmail(),text,Subject);
 		return "deleted";
+	}
+
+	public byte[] download(String applicantId) {
+		Appointment appoint = appointmentRepository.getById(applicantId);
+		
+		return FileUtil.decompressFile(appoint.getJobSeeker().getResume());
 	}
 	    
 }

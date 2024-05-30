@@ -90,9 +90,9 @@ export class JobSeekerComponent {
           this.jobseekerservice.uploadFile(formData,applicantId).subscribe();
         }
       });
-      
+      alert("submitted")
 
-        // this.route.navigate([`/appointment/${this.roleIdString}/${this.jobId}`])
+        this.route.navigate([`/gradhome/${this.roleIdString}`])
       }
 
     }

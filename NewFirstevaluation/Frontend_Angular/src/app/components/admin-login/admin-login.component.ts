@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminloginService } from './Services/adminlogin.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-login',
   templateUrl: './admin-login.component.html',
@@ -12,10 +14,10 @@ export class AdminLoginComponent implements OnInit{
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
   passwordPattern:string ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder,private adminservice:AdminloginService,private route:Router){
     this.adminLoginForm = this.fb.group({
       'email': ['', [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
-      'password': ['', [Validators.required, Validators.minLength(8),Validators.pattern(this.passwordPattern)]]
+      'password': ['', [Validators.required]]
       // 'userID' : ['', [Validators.required, Validators.pattern('^[789]\\d{9}$')]]
     });
   }
@@ -26,7 +28,15 @@ export class AdminLoginComponent implements OnInit{
   onSubmit(): void {
     if (this.adminLoginForm.valid) {
       // Handle form submission logic here, e.g., sending data to server
-      console.log(this.adminLoginForm.value);
+      this.adminservice.checkAdminExist(this.adminLoginForm.value).subscribe(Response=>{
+        if(Response===true){
+          alert("login sucessful")
+        this.route.navigate([`/admin-dash`]);
+        }
+        else{
+          alert("incorrect password or email")
+        }
+      });
     }
   }
   isInvalid(controlName: string): boolean {

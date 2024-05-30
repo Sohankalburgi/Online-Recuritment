@@ -11,9 +11,9 @@ import com.example.OnlineRecruitment.Entities.Appointment;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, String> {
 
-	@Query("SELECT a FROM Appointment a WHERE a.isSet = false")
-	List<Appointment> getAllAppointmentNotSet();
+	@Query("SELECT a FROM Appointment a WHERE a.isSet = false AND a.jobSeeker.job.roleId.roleId =:roleId")
+	List<Appointment> getAllAppointmentNotSet(String roleId);
 	
-	@Query("SELECT a FROM Appointment a WHERE a.isSet = true")
-	List<Appointment> getAllAppointmentSet();
+	@Query("SELECT a FROM Appointment a WHERE a.jobSeeker.job.roleId.roleId =:roleId AND a.isSet = true")
+	List<Appointment> getAllAppointmentSet(String roleId);
 }

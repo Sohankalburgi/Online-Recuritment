@@ -24,8 +24,9 @@ public class JobService {
 		jobRepository.save(job);
 	}
 	
-	public void deleteJob(Integer id) {
-		jobRepository.deleteById(id);
+	public void deleteJob(String id) {
+		List<Job> job = jobRepository.findAllJobsById(id);
+		jobRepository.deleteAll(job);
 	}
 	
 	public List<Job> getJobById(String roleId) {
@@ -64,5 +65,10 @@ public class JobService {
 	
 	public String getRoleIdbYjobId(Integer id) {
 		return jobRepository.getOne(id).getRoleId().getRoleId();
+	}
+
+	public void deleteJobById(Integer id) {
+		 jobRepository.deleteById(id);
+		
 	}
 }

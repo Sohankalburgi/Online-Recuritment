@@ -30,7 +30,7 @@ export class JobserviceService {
 
   deleteJobByjobId(jobId: number) {
     console.log(jobId+"this is from delete")
-    return this.http.delete(`${this.baseUrl}/deletejob/${jobId}`);
+    return this.http.delete(`${this.baseUrl}/deletejobbyId/${jobId}`);
   }
   
 }

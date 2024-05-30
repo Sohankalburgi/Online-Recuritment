@@ -12,6 +12,7 @@ import com.example.OnlineRecruitment.Classes.Email;
 import com.example.OnlineRecruitment.Classes.ForgotPassword;
 import com.example.OnlineRecruitment.EmailService.RoleIDService;
 import com.example.OnlineRecruitment.Entities.Graduate;
+import com.example.OnlineRecruitment.Entities.Job;
 import com.example.OnlineRecruitment.Entities.Role;
 import com.example.OnlineRecruitment.Entities.User;
 import com.example.OnlineRecruitment.Repositories.RoleRepository;
@@ -40,6 +41,9 @@ public class UserService {
 	
 	@Autowired
 	private EmployerService employerService;
+	
+	@Autowired
+	private JobService jobService;
 	
 //	@Autowired
 //	private GraduateService graduateService;
@@ -86,9 +90,14 @@ public class UserService {
 		if(id.startsWith("GRAD")) {
 		graduateService.deleteGraduate(id);
 		collegeService.deleteCollegeByRoleId(id);
-		}
-		employerService.deleteEmployer(id);
 		userRepository.delete(user);
+		}
+		else {
+		employerService.deleteEmployer(id);
+		jobService.deleteJob(id);
+		userRepository.delete(user);
+		}
+		
 	}
 	
 	public void updateUserById(String roleid,User user) {

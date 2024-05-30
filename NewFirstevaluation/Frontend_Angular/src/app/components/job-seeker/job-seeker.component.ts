@@ -87,9 +87,20 @@ export class JobSeekerComponent {
 
       this.jobseekerservice.savejobseeker(this.jobSeekerForm.value).subscribe(Response=>{
         if(Response===true){
-          this.jobseekerservice.uploadFile(formData,applicantId).subscribe();
+          this.jobseekerservice.uploadFile(formData,applicantId).subscribe((response)=>{
+            alert("fileUploaded");
+          },
+          (error)=>{
+            console.log("err")
+            alert("Internal Server Error OR Duplicate Entry")
+          }
+        );
         }
-      });
+      },
+      error=>{
+        alert("Internal Server Error OR Duplicate Entry")
+      }
+    );
       alert("submitted")
 
         this.route.navigate([`/gradhome/${this.roleIdString}`])

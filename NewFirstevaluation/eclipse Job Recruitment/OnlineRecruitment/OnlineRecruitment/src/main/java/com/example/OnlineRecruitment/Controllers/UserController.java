@@ -38,16 +38,16 @@ public class UserController {
 
 	
 	@PostMapping("/user")
-	public String saveUser(@Valid @RequestBody User user){
+	public ResponseEntity<String> saveUser(@Valid @RequestBody User user){
 		try {
 		System.out.println("the enter to backend");
 		userService.saveUser(user);
 		}
 		catch(Exception e) {
 			System.out.println("the exception occured"+e.getMessage());
-			return "Not created";
+			return new ResponseEntity<String>("error",HttpStatus.BAD_REQUEST);
 		}
-		return "Created";
+		return new ResponseEntity<String>("Created",HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/user/{id}")

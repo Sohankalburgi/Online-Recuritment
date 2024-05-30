@@ -46,7 +46,10 @@ export class JobRegisterComponent implements OnInit{
         console.log(this.roleIdString);
         console.log(this.jobRegisterForm.value);
 
-        this.jobregisterService.savejob(this.jobRegisterForm.value).subscribe();
+        this.jobregisterService.savejob(this.jobRegisterForm.value).subscribe((response)=>{
+          alert("submitted");
+        }
+      );
         alert("submitted")
         this.route.navigate([`home/${this.roleIdString}`]);
       }

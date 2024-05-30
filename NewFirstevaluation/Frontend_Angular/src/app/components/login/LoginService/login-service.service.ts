@@ -29,7 +29,7 @@ export class LoginServiceService {
   checkGraduateExist(roleIdString:string,idName:string):Observable<any>{
     console.log("this is roleID form checkgradute"+roleIdString);
     let type = "";
-    if(idName="GRAD"){
+    if(idName=="GRAD"){
       type = "graduate";
     }
     else{

@@ -35,8 +35,9 @@ public class JobSeekerController {
 	}
 	
 	@PostMapping("/jobseeker/{applicationId}")
-	public String uploadResume(@RequestPart MultipartFile file,@PathVariable String applicationId) {
+	public  String uploadResume(@RequestPart MultipartFile file,@PathVariable String applicationId) {
 		return jobSeekerService.uploadResume(file,applicationId);
+		
 	}
 	
 	@GetMapping("/jobseekerall")

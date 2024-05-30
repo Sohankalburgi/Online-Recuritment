@@ -44,8 +44,7 @@ public class GraduateService {
 			return false;
 		}
 		else {
-			System.out.println(graduate.toString());
-			System.out.println("this is the check graduate"+true);
+			
 			return true;
 		}
 	}

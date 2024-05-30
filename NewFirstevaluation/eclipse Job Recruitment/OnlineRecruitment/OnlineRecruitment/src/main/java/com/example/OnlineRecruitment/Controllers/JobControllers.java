@@ -22,6 +22,7 @@ import com.example.OnlineRecruitment.Entities.Job;
 import com.example.OnlineRecruitment.Services.JobService;
 
 import jakarta.validation.Valid;
+import lombok.experimental.PackagePrivate;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
@@ -53,10 +54,17 @@ public class JobControllers {
 	}
 	
 	@DeleteMapping("/deletejob/{id}")
-	public String deleteJobById(@PathVariable Integer id) {
+	public String deleteJobByRoleId(@PathVariable String id) {
 		jobService.deleteJob(id);
 		return "deleted Job";
 	}
+	
+	@DeleteMapping("/deletejobbyId/{id}")
+	public String deleJob(@PathVariable Integer id) {
+		jobService.deleteJobById(id);
+		return "deleted Job";
+	}
+	
 	@PutMapping("/updatejob/{id}")
 	public String updateJobId(@PathVariable Integer id,@Valid @RequestBody Job job) {
 		jobService.updateJobById(id, job);

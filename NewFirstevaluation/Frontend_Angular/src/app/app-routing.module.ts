@@ -147,12 +147,12 @@ const routes: Routes = [
     component:JobSearchComponent
   },
   {
-    path: 'emp-home-page', component: EmpHomePageComponent,
+    path: 'emp-home-page/:roleIdString', component: EmpHomePageComponent,
     children: [
-      { path: 'job-register', component: JobRegisterComponent },
-      { path: 'scheduled', component: ScheduledComponent },
-      { path: 'not-scheduled', component: NotScheduledComponent },
-      { path: '', redirectTo: 'post-jobs', pathMatch: 'full' }
+      { path: 'job-register/:roleIdString', component: JobRegisterComponent },
+      { path: 'scheduled/:roleIdString', component: ScheduledComponent },
+      { path: 'not-scheduled/:roleIdString', component: NotScheduledComponent },
+     
     ]
   },
   {

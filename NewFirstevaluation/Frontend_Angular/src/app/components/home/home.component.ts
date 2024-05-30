@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
   roleIdString!:string;
   constructor(private route: Router,private router:ActivatedRoute) {
     
@@ -27,6 +28,15 @@ export class HomeComponent {
       this.route.navigate([`/job-register/${this.roleIdString}`]);
     }
   }
+
+  postappoint() {
+    console.log(this.roleIdString);
+    if (this.roleIdString === 'null' || this.roleIdString === null) { 
+      alert('Please login As Employer');
+    } else {
+      this.route.navigate([`/emp-home-page/${this.roleIdString}`]);
+    }
+    }
 
   jobsforyou(){
     console.log(this.roleIdString);

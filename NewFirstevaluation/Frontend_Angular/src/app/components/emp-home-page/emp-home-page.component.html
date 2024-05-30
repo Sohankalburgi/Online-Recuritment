@@ -90,24 +90,18 @@
         <h5 class="text-white text-center py-3">Appointment Menu</h5>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/emp-home-page/job-register">Post Jobs</a>
+            <a class="nav-link text-white" routerLink="/emp-home-page/{{roleIdString}}/scheduled/{{roleIdString}}">Scheduled</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/emp-home-page/scheduled">Scheduled</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/emp-home-page/not-scheduled">Not Scheduled</a>
+            <a class="nav-link text-white" routerLink="/emp-home-page/{{roleIdString}}/not-scheduled/{{roleIdString}}">Not Scheduled</a>
           </li>
         </ul>
       </div>
     </div>
 
     <!-- Main content -->
-    <div class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4" style=" background-image: url('https://wallpapers.com/images/hd/minimalist-aesthetic-actuary-work-laptop-wtvol12uoktgz31i.jpg'); background-size: cover; background-repeat: no-repeat; backdrop-filter: blur(5px); background-position: center;
-    background-attachment: fixed; width: 100%;
-    height: 100%">
-      <h5 style="color: red;"> Welcome Employer ! This is your dashboard</h5>
+   
       <router-outlet></router-outlet>
-    </div>
-  </div>
+   
+ 
 </div>

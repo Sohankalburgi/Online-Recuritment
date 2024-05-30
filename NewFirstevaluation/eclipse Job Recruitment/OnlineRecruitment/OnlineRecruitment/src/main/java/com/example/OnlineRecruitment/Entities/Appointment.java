@@ -22,7 +22,7 @@ public class Appointment {
 	private String location;
 	
 	private boolean isSet;
-	@JsonIgnore
+	
 	@OneToOne(fetch = FetchType.LAZY,mappedBy = "appointment",cascade = CascadeType.ALL)
 	@JoinColumn(name="jobSeeker")
 	private JobSeeker jobSeeker;

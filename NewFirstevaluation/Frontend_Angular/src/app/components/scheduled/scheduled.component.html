@@ -1,107 +1,78 @@
- <div class="container mt-4">
-  <h2>Scheduled Appointments</h2>
+<div class="container mt-6 mb-4">
+
+
+  <h2>Not Scheduled</h2>
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by Applicant ID"
+      [(ngModel)]="searchTerm"
+      (change)="filterAppointments()"
+    />
+  </div>
+
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
           <th>Full Name</th>
           <th>Email</th>
-          <th>Phone</th>
-          <th>Passing Year</th>
-          <th>CGPA</th>
-          <th>Language</th>
-          <th>Key Skill</th>
-          <th>Area of Interest</th>
-          <th>Resume</th>
-          <th>Date</th>
-          <th>Time</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of scheduledStudents">
-          <td>{{ student.fullName }}</td>
-          <td>{{ student.email }}</td>
-          <td>{{ student.phone }}</td>
-          <td>{{ student.yearOfPassing }}</td>
-          <td>{{ student.cgpa }}</td>
-          <td>{{ student.language }}</td>
-          <td>{{ student.keySkill }}</td>
-          <td>{{ student.areaOfInterest }}</td>
+        <tr *ngFor="let student of scheduledappoints">
+          <td>{{ student.jobSeeker.fullName }}</td>
+          <td>{{ student.jobSeeker.email }}</td>
           <td>
-            <button class="btn btn-link" (click)="openResume(student)">View Resume</button>
+            <button class="btn btn-primary" (click)="infobutton(student)" >MoreInfo</button>
           </td>
-          <td>{{ student.date }}</td>
-          <td>{{ student.time }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div *ngIf="selectedStudent" class="modal">
+<!-- Simple Modal -->
+<div class="modal" *ngIf="flag==true">
+  <div class="modal-dialog">
     <div class="modal-content">
-      <span class="close" (click)="closeResume()">&times;</span>
-      <h4>Resume of {{ selectedStudent.fullName }}</h4>
-      <div [innerHtml]="selectedStudent.resume | safeHtml"></div>
-      <button class="btn btn-secondary" (click)="closeResume()">Close</button>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- <div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-md-10">
-      <div class="card">
-        <div class="card-body">
-          <h2>Scheduled Appointments</h2>
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Full Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Year of Passing</th>
-                  <th>CGPA</th>
-                  <th>Language</th>
-                  <th>Key Skill</th>
-                  <th>Area of Interest</th>
-                  <th>Resume</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let student of scheduledStudents">
-                  <td>{{ student.fullName }}</td>
-                  <td>{{ student.email }}</td>
-                  <td>{{ student.phone }}</td>
-                  <td>{{ student.yearOfPassing }}</td>
-                  <td>{{ student.cgpa }}</td>
-                  <td>{{ student.language }}</td>
-                  <td>{{ student.keySkill }}</td>
-                  <td>{{ student.areaOfInterest }}</td>
-                  <td>
-                    <button class="btn btn-link" (click)="openResume(student)">View Resume</button>
-                  </td>
-                  <td>{{ student.date }}</td>
-                  <td>{{ student.time }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div *ngIf="selectedStudent" class="modal">
-            <div class="modal-content">
-              <span class="close" (click)="closeResume()">&times;</span>
-              <h4>Resume of {{ selectedStudent.fullName }}</h4>
-              <div [innerHtml]="selectedStudent.resume | safeHtml"></div>
-              <button class="btn btn-secondary" (click)="closeResume()">Close</button>
-            </div>
-          </div>
+      <div class="modal-header">
+        <h5 class="modal-title">Graduate Details</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <p class="col-3"><strong>Appointment ID:</strong> {{ selectedAppoint.applicantId }}</p>
+        <p class="col-3"><strong>Name :</strong> {{ selectedAppoint.jobSeeker.fullName }}</p>
+        <p class="col-3"><strong>Email :</strong> {{ selectedAppoint.jobSeeker.email }}</p>
         </div>
+        <div class="row">
+        <p class="col-3"><strong>Phone:</strong> {{ selectedAppoint.jobSeeker.phone }}</p>
+        <p class="col-3"><strong>YearOfPassing:</strong> {{ selectedAppoint.jobSeeker.yearOfPassing}}</p>
+        <p class="col-3"><strong>Cgpa:</strong> {{ selectedAppoint.jobSeeker.cgpa }}</p>
+        </div>
+        <div class="row">
+        <p class="col-3"><strong>Language:</strong> {{ selectedAppoint.jobSeeker.language }}</p>
+        <p class="col-3"><strong>keySkill:</strong> {{ selectedAppoint.jobSeeker.keySkill }}</p>
+        <p class="col-3"><strong>AreaOfInterest:</strong> {{ selectedAppoint.jobSeeker.areaOfInterest }}</p>
+        </div>
+        <div class="row">
+        <p class="col-3"><strong>Project:</strong> {{ selectedAppoint.jobSeeker.project }}</p>
+        <p class="col-3"><strong>Applied For JobId:</strong> {{selectedAppoint.jobSeeker.job.jobId}}</p>
+        <p class="col-4"><strong>Applied For Job Name:</strong> {{selectedAppoint.jobSeeker.job.jobName}}</p>
+      </div>
+      <div class="row">
+        <p class="col-6"><strong>Date:</strong> {{ selectedAppoint.date }}</p>
+        <p class="col-6"><strong>Location:</strong> {{selectedAppoint.location</p>
+      </div>
+      <div>
+        <button class="btn btn-link" (click)="openResume(selectedAppoint)">View Resume</button>
+      </div>
+      </div>
+     
+      <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>  

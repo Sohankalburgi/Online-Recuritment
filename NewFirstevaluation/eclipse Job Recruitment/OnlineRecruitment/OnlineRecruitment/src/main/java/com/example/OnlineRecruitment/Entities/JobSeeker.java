@@ -2,6 +2,7 @@ package com.example.OnlineRecruitment.Entities;
 
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.annotation.Generated;
@@ -54,12 +55,14 @@ public class JobSeeker {
 	@JoinColumn(name="graduate")
 	private Graduate graduate;
 
+	@JsonIgnore
+	@JsonIgnoreProperties
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name="appointmentId")
 	private Appointment appointment;
 	
 	@Lob
-	@Column(name="resume",length = 1000000)
+	@Column(name="resume",columnDefinition = "LONGBLOB")
     private byte[] resume;
 	
 	public JobSeeker() {

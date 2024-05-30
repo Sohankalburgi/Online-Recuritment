@@ -1,20 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NotscheduledService } from './Services/notscheduled.service';
 
-interface Student {
-  id: number;
-  fullName: string;
-  email: string;
-  phone: string;
-  yearOfPassing: string;
-  cgpa: string;
-  language: string;
-  keySkill: string;
-  areaOfInterest: string;
-  resume: string;
-  date: string;
-  time: string;
-}
+import { Appointment } from '../not-scheduled/Model/Appointment.model';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-scheduled',
@@ -24,26 +15,68 @@ interface Student {
 
 export class ScheduledComponent implements OnInit {
 
-  scheduledStudents: Student[] = [];
-  selectedStudent: Student | null = null;
+selectedAppoint: any=null;
+flag = false;
 
-  constructor(private http: HttpClient) {}
+filteredAppointments: Appointment[] = [];
+searchTerm: string = '';
+scheduledappoints: any[]=[];
+selectedStudent : any =null;
+roleIdString: string|null=null;
+
+  constructor(private http: HttpClient,private appointservice:NotscheduledService,
+    private router:ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.router.paramMap.subscribe(params=>{
+      this.roleIdString = params.get('roleIdString');
+      console.log('RoleIdString:',this.roleIdString);
+    });
     this.fetchScheduledStudents();
+    
+  }
+  filterAppointments() {
+    if (this.searchTerm) {
+      console.log(this.searchTerm)
+      
+      this.filteredAppointments = this.scheduledappoints.filter(appoint =>
+        appoint.applicantId.includes(this.searchTerm)
+      );
+      console.log(this.filteredAppointments)
+      this.scheduledappoints = this.filteredAppointments;
+    } else {
+      this.fetchScheduledStudents();
+    }
   }
 
   fetchScheduledStudents(): void {
-    this.http.get<Student[]>('your-backend-api-url').subscribe(data => {
-      this.scheduledStudents = data;
+    this.appointservice.getAllScheduled(this.roleIdString).subscribe(data => {
+      this.scheduledappoints = data;
+      
+      console.log(this.filteredAppointments)
+      console.log(this.roleIdString);
+      console.log(data);
     });
   }
 
-  openResume(student: Student): void {
-    this.selectedStudent = student;
+  openResume(appoint: Appointment): void {
+    this.selectedStudent = appoint;
+    console.log(appoint.applicantId)
+    this.appointservice.downloadResume(appoint.applicantId).subscribe(response => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+    })
   }
+  infobutton(appoint: any) {
+    this.selectedAppoint = appoint;
+    this.flag=true;
+    }
 
-  closeResume(): void {
-    this.selectedStudent = null;
-  }
+  closeModal():void{
+      this.selectedAppoint = null;
+      this.flag = false;
+    }
+ 
 }

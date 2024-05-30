@@ -37,10 +37,11 @@ export class ForgotpasswordComponent {
           alert("the password is changed")
           this.route.navigate(['/login']);
         }
-        else{
-          alert("Check the form details")
-        }
-      })
+      },
+      (error)=>{
+        alert("Internal Server Error");
+      }
+    )
     } 
   }
 

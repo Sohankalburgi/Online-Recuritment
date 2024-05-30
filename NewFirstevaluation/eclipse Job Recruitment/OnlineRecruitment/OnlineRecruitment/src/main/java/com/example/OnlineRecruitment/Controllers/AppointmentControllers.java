@@ -28,11 +28,15 @@ public class AppointmentControllers {
 	private AppointmentService appointmentService;
 
 	@PostMapping("/saveappointment/{applicantId}")
-	public String saveAppointment(@PathVariable String applicantId,
+	public ResponseEntity<String>saveAppointment(@PathVariable String applicantId,
 			@RequestBody Appointment appointment ){
-
+			try {
 			appointmentService.saveAppointment(applicantId,appointment);
-			return "saved";
+			}
+			catch(Exception e) {
+				return new ResponseEntity<>("error",HttpStatus.BAD_REQUEST);
+			}
+			return new ResponseEntity<>("saved",HttpStatus.OK);
 	}
 	
 	@GetMapping("/getAppointmentAllNotSet/{roleId}")
@@ -48,8 +52,14 @@ public class AppointmentControllers {
 	}
 	
 	@DeleteMapping("/rejectAppointment/{applicantId}")
-	public String rejectAppointment(@PathVariable String applicantId) {
-		return appointmentService.rejectAppointment(applicantId);
+	public ResponseEntity<String> rejectAppointment(@PathVariable String applicantId) {
+		try { 
+		appointmentService.rejectAppointment(applicantId);
+		}
+		catch(Exception e) {
+			return new ResponseEntity<>("error",HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<String>("reject",HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/getResume/{applicantId}")

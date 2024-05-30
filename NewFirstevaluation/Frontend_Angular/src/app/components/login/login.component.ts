@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
       if (response === true) {
         alert("Login Successful");
         this.loginservice.checkGraduateExist(roleIdString,this.loginForm.value.idName).subscribe(Response => {
+          console.log(Response);
           if (Response === false) {
             if (this.loginForm.value.idName === "EMP") {
               this.router.navigate(['/emp-register', roleIdString]);
@@ -50,7 +51,12 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/stud-register', roleIdString]);
             }
           } else {
-            this.router.navigate([`/gradhome/${roleIdString}`]);
+            if(this.loginForm.value.idName === "EMP"){
+              this.router.navigate(['/home',roleIdString])
+            }
+            else{
+            this.router.navigate(['/gradhome',roleIdString]);
+            }
           }
         });
       } else {

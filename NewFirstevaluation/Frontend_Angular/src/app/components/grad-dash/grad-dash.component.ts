@@ -145,9 +145,30 @@ export class GradDashComponent implements OnInit {
 
      
       
-      this.graduateservice.updateUser(this.user,this.selectedGraduateforedit.roleId.roleId).subscribe();
-      this.graduateservice.updateCollege(this.college,this.selectedGraduateforedit.roleId.roleId).subscribe();
-      this.graduateservice.updateGraduate(this.graduate,this.selectedGraduateforedit.roleId.roleId).subscribe();
+      this.graduateservice.updateUser(this.user,this.selectedGraduateforedit.roleId.roleId).subscribe(
+        (response)=>{
+        console.log("submitted");
+        },
+        (error)=>{
+          alert("Internal Server Error");
+        }
+      );
+      this.graduateservice.updateCollege(this.college,this.selectedGraduateforedit.roleId.roleId).subscribe(
+        (response)=>{
+          console.log("submitted");
+          },
+          (error)=>{
+            alert("Internal Server Error");
+          }
+      );
+      this.graduateservice.updateGraduate(this.graduate,this.selectedGraduateforedit.roleId.roleId).subscribe(
+        (response)=>{
+          console.log("submitted");
+          },
+          (error)=>{
+            alert("Internal Server Error");
+          }
+      );
       alert("submitted")
       this.closeModalforEdit();
       this.loadGraduates();
@@ -155,7 +176,12 @@ export class GradDashComponent implements OnInit {
   }
 
   deleteGraduatebyrole() {
-    this.graduateservice.deleteUserByRole(this.selectedGraduatefordelete).subscribe();
+    this.graduateservice.deleteUserByRole(this.selectedGraduatefordelete).subscribe((response)=>{
+      console.log("submitted");
+      },
+      (error)=>{
+        alert("Internal Server Error");
+      });
     alert("deleted");
     this.closeModalforDelete();
     this.loadGraduates();

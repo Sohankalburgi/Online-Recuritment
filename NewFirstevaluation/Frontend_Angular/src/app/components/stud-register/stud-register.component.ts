@@ -71,8 +71,20 @@ export class StudRegisterComponent {
     if (this.studRegisterForm.valid) {
       // Handle form submission logic here, e.g., sending data to server
      
-      this.studentservice.savestudent(this.studentRegister).subscribe();
-      this.studentservice.savecollege(this.collegeRegister).subscribe();
+      this.studentservice.savestudent(this.studentRegister).subscribe(response=>{
+        console.log("submitted")
+        alert("Submitted");
+      }
+    );
+      this.studentservice.savecollege(this.collegeRegister).subscribe(
+        response=>{
+          console.log("submitted")
+          alert("Submitted");
+        },
+        (error)=>{
+          console.log("err");
+        }
+      );
       this.route.navigate([`/gradhome/${this.roleIdString}`]);
     }
 

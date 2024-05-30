@@ -106,9 +106,23 @@ export class EmpDashComponent implements OnInit {
 
       }
 
-      this.employerservice.updateUser(this.user,this.selectedEmployerforedit.roleId.roleId).subscribe();
-      this.employerservice.updateEmployer(this.employer,this.selectedEmployerforedit.roleId.roleId).subscribe();
-      alert("submiited");
+      this.employerservice.updateUser(this.user,this.selectedEmployerforedit.roleId.roleId).subscribe((response)=>{
+        console.log("updatedUser")
+      },
+      (error)=>{
+        alert("Internal Server Error")
+      }
+    );
+      this.employerservice.updateEmployer(this.employer,this.selectedEmployerforedit.roleId.roleId).subscribe(
+        (response)=>{
+          console.log("updatedEmployer")
+          alert("submiited");
+        },
+        (error)=>{
+          alert("Internal Server Error")
+        }
+      );
+      
       this.closeModalforEdit();
       this.loadEmployers();
     }

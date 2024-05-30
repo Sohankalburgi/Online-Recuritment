@@ -54,7 +54,14 @@ export class EmailVerificationComponent {
           console.log(user);
           console.log(this.formData)
           this.registrationService.registerUser(user).subscribe(
-              response => console.log("success")
+              response =>{
+                if(response==="Created"){
+                  alert("submitted");
+                }
+                else{
+                  alert("Internal Error")
+                }
+              } 
             );
           alert("Otp verified");
           this.router.navigateByUrl("/home");

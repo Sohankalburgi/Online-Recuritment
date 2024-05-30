@@ -2,22 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-dash',
-  templateUrl: './admin-dash.component.html',
-  styleUrl: './admin-dash.component.css'
+  selector: 'app-blogs',
+  templateUrl: './blogs.component.html',
+  styleUrl: './blogs.component.css'
 })
-export class AdminDashComponent {
+export class BlogsComponent {
   roleIdString!:string;
 
   constructor(private router: Router) {}
-
-  navigate(path: string) {
-    this.router.navigate([`/admin-dash/${path}`]);
-  }
-
-  isActive(route: string): boolean {
-    return this.router.isActive(route, false);
-  }
 
   post(){
     console.log(this.roleIdString);
@@ -41,6 +33,4 @@ export class AdminDashComponent {
     console.log(this.roleIdString);
     this.router.navigate([`/gradhome/${this.roleIdString}`])
   }
-
 }
-

@@ -1,7 +1,6 @@
-#inputfield{
+/* #inputfield{
     width: 100%;
-    /* outline: 2px; */
-}
+} */
 
 .input-outline{
   border: 1px solid #050e17; /* Change the color as needed */
@@ -42,4 +41,17 @@
 .nav-link.active {
   color: #ffffff; /* Bright white color */
   font-weight: bold; /* Bold text */
+}
+
+
+.nav-item.active a, .nav-item a:hover , .input-group-append .btn:hover, .input-group-append .btn.active  {
+  background-color: white;
+  color: #113f5f;
+  border-radius: 5px;
+  margin : 5px;
+}
+
+.nav-link, .text-1{
+  color: rgb(250, 248, 248);
+  font-weight: bold;
 }

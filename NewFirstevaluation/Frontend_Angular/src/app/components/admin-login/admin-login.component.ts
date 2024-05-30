@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AdminLoginComponent implements OnInit{
 
   adminLoginForm: FormGroup;
+  roleIdString!:string;
 
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
   passwordPattern:string ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
@@ -39,6 +40,30 @@ export class AdminLoginComponent implements OnInit{
       });
     }
   }
+
+  post(){
+    console.log(this.roleIdString);
+    if (this.roleIdString === 'null' || this.roleIdString === null) {
+      alert('Please login As Employer');
+    } else {
+      this.route.navigate([`/job-register/${this.roleIdString}`]);
+    }
+  }
+
+  postappoint() {
+    console.log(this.roleIdString);
+    if (this.roleIdString === 'null' || this.roleIdString === null) {
+      alert('Please login As Employer');
+    } else {
+      this.route.navigate([`/emp-home-page/${this.roleIdString}`]);
+    }
+    }
+
+  jobsforyou(){
+    console.log(this.roleIdString);
+    this.route.navigate([`/gradhome/${this.roleIdString}`])
+  }
+
   isInvalid(controlName: string): boolean {
     const control = this.adminLoginForm.get(controlName);
     console.log(`Checking validity for ${controlName}:`, control);

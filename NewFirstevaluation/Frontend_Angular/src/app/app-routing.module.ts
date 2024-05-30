@@ -26,6 +26,8 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { EmpHomePageComponent } from './components/emp-home-page/emp-home-page.component';
 import { NotScheduledComponent } from './components/not-scheduled/not-scheduled.component';
 import { ScheduledComponent } from './components/scheduled/scheduled.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { BlogsComponent } from './components/blogs/blogs.component';
 
 
 
@@ -85,6 +87,15 @@ const routes: Routes = [
     path: 'job-register',
     component: JobRegisterComponent
 
+  },
+  {
+    path : 'blogs',
+    component: BlogsComponent
+  },
+
+  {
+    path : 'about-us',
+    component: AboutUsComponent
   },
 
   {
@@ -152,7 +163,7 @@ const routes: Routes = [
       { path: 'job-register/:roleIdString', component: JobRegisterComponent },
       { path: 'scheduled/:roleIdString', component: ScheduledComponent },
       { path: 'not-scheduled/:roleIdString', component: NotScheduledComponent },
-     
+
     ]
   },
   {

@@ -1,0 +1,175 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <img src="" alt="">
+      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
+          </li>
+
+
+
+
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="post()">Post Jobs</a>
+          </li>
+
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="postappoint()">Appointments</a>
+          </li>
+
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="jobsforyou()">Explore Jobs</a>
+          </li>
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/about-us" routerLinkActive="active">About Us</a>
+          </li>
+
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/login"  routerLinkActive="active">Login</a>
+          </li>
+
+          <li>
+            <a class="nav-link"  routerLink="/register"  routerLinkActive="active">Register</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+
+  <section class="top-div">
+    <div class="container">
+    <section class="blog-content">
+      <div class="blog-section">
+          <!-- Career Advice -->
+    <h2 class="category-title">Career Advice</h2>
+    <div class="blog-category">
+      <div class="category-header">
+        <div class="header-box">
+          <img src="assets/icon1.jpeg" alt="Career Advice Icon" class="category-icon">
+          <h4 class="subheader">Crafting an Effective Resume</h4>
+          <p class="header-description">Learn how to tailor your resume to highlight your key skills and experiences.</p>
+        </div>
+      <div class="header-box">
+        <img src="assets/icon1.jpeg" alt="Career Advice Icon" class="category-icon">
+        <h4 class="subheader">Networking Tips</h4>
+        <p class="header-description">Discover effective networking strategies to expand your professional connections.</p>
+      </div>
+      <div class="header-box">
+        <img src="assets/icon1.jpeg" alt="Career Insights Icon" class="category-icon">
+        <h4 class="subheader">Building a Personal Brand</h4>
+        <p class="header-description">Learn how to establish a strong personal brand to stand out in your industry.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Interview Advice -->
+  <h2 class="category-title">Interview Advice</h2>
+  <div class="blog-category">
+    <div class="category-header">
+      <div class="header-box">
+        <img src="assets/icon2.jpeg" alt="Interview Advice Icon" class="category-icon">
+        <h4 class="subheader">Research the Company</h4>
+        <p class="header-description">Learn about the company's mission, values, and recent projects to show your interest during the interview.</p>
+      </div>
+      <div class="header-box">
+        <img src="assets/icon2.jpeg" alt="Career Insights Icon" class="category-icon">
+        <h4 class="subheader">Practice Common Interview Questions</h4>
+        <p class="header-description">Practice answering common interview questions to articulate your skills and experiences confidently.</p>
+      </div>
+      <div class="header-box">
+        <img src="assets/icon2.jpeg" alt="Career Insights Icon" class="category-icon">
+        <h4 class="subheader">Dress Appropriately</h4>
+        <p class="header-description">Choose professional attire that aligns with the company's culture and dress code.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interview Questions -->
+  <h2 class="category-title">Interview Questions</h2>
+  <div class="blog-category">
+    <div class="category-header">
+
+      <div class="header-box">
+        <img src="assets/icon3.jpeg" alt="Career Insights Icon" class="category-icon" width="80" height="80">
+        <h4 class="subheader">Tell Me About Yourself</h4>
+        <p class="header-description">Craft a concise yet compelling story that highlights your relevant experiences and achievements.</p>
+      </div>
+      <div class="header-box">
+        <img src="assets/icon3.jpeg" alt="Career Insights Icon" class="category-icon" width="80" height="80">
+        <h4 class="subheader">What Are Your Strengths and Weaknesses?</h4>
+        <p class="header-description">Discuss your strengths with concrete examples and demonstrate how you're working to improve your weaknesses.</p>
+      </div>
+      <div class="header-box">
+        <img src="assets/icon3.jpeg" alt="Career Insights Icon" class="category-icon" width="80" height="80">
+        <h4 class="subheader">Where Do You See Yourself in 5 Years?</h4>
+        <p class="header-description">Share your career goals and aspirations, emphasizing your interest in growth and development within the company.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Career Insights -->
+  <h2 class="category-title">Career Insights</h2>
+  <div class="blog-category">
+    <div class="category-header">
+      <div class="header-box">
+        <img src="assets/icon1.jpeg" alt="Career Insights Icon" class="category-icon">
+        <h4 class="subheader">Continuous Learning</h4>
+        <p class="header-description">Stay curious and open to learning new skills and knowledge to adapt to changing industry demands.</p>
+      </div>
+      <div class="header-box">
+        <img src="assets/icon1.jpeg" alt="Career Insights Icon" class="category-icon">
+        <h4 class="subheader">Networking</h4>
+        <p class="header-description">Cultivate meaningful relationships with professionals in your field to uncover new opportunities and insights.</p>
+      </div>
+      <div class="header-box">
+        <img src="assets/icon1.jpeg" alt="Career Insights Icon" class="category-icon">
+        <h4 class="subheader">Goal Setting</h4>
+        <p class="header-description">Set clear and achievable career goals to guide your professional development and progress.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+
+  <section>

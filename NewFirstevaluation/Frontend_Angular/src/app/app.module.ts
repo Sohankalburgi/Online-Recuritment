@@ -33,6 +33,9 @@ import { ScheduledComponent } from './components/scheduled/scheduled.component';
 import { NotScheduledComponent } from './components/not-scheduled/not-scheduled.component';
 
 import { SafeHtmlPipe } from './safe-html.pipe';
+import { ServicesComponent } from './components/services/services.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { BlogsComponent } from './components/blogs/blogs.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { SafeHtmlPipe } from './safe-html.pipe';
     EmpHomePageComponent,
     ScheduledComponent,
     NotScheduledComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ServicesComponent,
+    AboutUsComponent,
+    BlogsComponent
   ],
   imports: [
     BrowserModule,

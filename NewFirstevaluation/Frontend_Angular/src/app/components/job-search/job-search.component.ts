@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './job-search.component.css'
 })
 export class JobSearchComponent {
+
   searchTerm: string = '';
   selectedExperience: string = '';
   location: string = '';
@@ -59,6 +60,30 @@ export class JobSearchComponent {
       window.open(link, '_blank');
     }
   }
+
+  post(){
+    console.log(this.roleIdString);
+    if (this.roleIdString === 'null' || this.roleIdString === null) {
+      alert('Please login As Employer');
+    } else {
+      this.route.navigate([`/job-register/${this.roleIdString}`]);
+    }
+  }
+
+  postappoint() {
+    console.log(this.roleIdString);
+    if (this.roleIdString === 'null' || this.roleIdString === null) {
+      alert('Please login As Employer');
+    } else {
+      this.route.navigate([`/emp-home-page/${this.roleIdString}`]);
+    }
+    }
+
+  jobsforyou(){
+    console.log(this.roleIdString);
+    this.route.navigate([`/gradhome/${this.roleIdString}`])
+  }
+
   }
 
 

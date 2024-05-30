@@ -2,9 +2,9 @@
 
 .sidebar {
   padding: 80 0 0;
-  width: 150px;  
-  border-radius: 0 30px 30px 0; 
-   
+  width: 150px;
+  border-radius: 0 30px 30px 0;
+
 }
 
 
@@ -42,12 +42,7 @@
 }
 
 .main-content {
-  padding-left: 240px; 
-}
-
-.nav-link, .text-1{
-  color: rgb(250, 248, 248);
-  font-weight: bold;
+  padding-left: 240px;
 }
 
 .input-group-append {
@@ -64,9 +59,12 @@
   background-color:#113f5f;
   color : white;
   font-weight: bold;
-  height: 50px; 
-  margin: 0 10px 0; 
+  height: 50px;
+  margin: 0 10px 0;
 }
+
+
+
 
 
 .input-group {
@@ -77,7 +75,11 @@
 .nav-item.active a, .nav-item a:hover , .input-group-append .btn:hover, .input-group-append .btn.active  {
   background-color: white;
   color: #113f5f;
-  border-radius: 10px;
+  border-radius: 5px;
   margin : 5px;
 }
 
+.nav-link, .text-1{
+  color: rgb(250, 248, 248);
+  font-weight: bold;
+}

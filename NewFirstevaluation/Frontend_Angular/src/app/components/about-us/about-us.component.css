@@ -1,0 +1,97 @@
+.navbar {
+    background: linear-gradient(to right, #6a1b9a, #00b4d9);
+    color: white;
+  }
+
+  .navbar-brand, .nav-link {
+    color: white;
+  }
+
+  .navbar-brand:hover, .nav-link:hover {
+    color: #ddd;
+  }
+
+  .nav-link.active {
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
+  }
+
+  .nav-item.active a, .nav-item a:hover , .input-group-append .btn:hover, .input-group-append .btn.active  {
+    background-color: white;
+    color: #113f5f;
+    border-radius: 5px;
+    margin : 5px;
+  }
+
+  .nav-link, .text-1{
+    color: rgb(250, 248, 248);
+    font-weight: bold;
+  }
+
+
+  .top-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    min-height: 100vh;
+    padding-top: 100px;
+    background-image: url('https://e0.pxfuel.com/wallpapers/12/182/desktop-wallpaper-business-best-business-and-on-chat-corporate-meeting.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .blur-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    backdrop-filter: blur(10px); /* Blur effect */
+    width: 90%; /* Adjust width as needed */
+    max-width: 1200px; /* Maximum width for large screens */
+    margin: 40px 0; /* Vertical margin for spacing */
+  }
+
+
+  .center-logo {
+    width: 200px; /* Adjust the logo size as needed */
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .website-caption {
+    font-size: 1.2em;
+    color: #333; /* Darker color for better readability on the blur box */
+  }
+
+  .heading {
+    font-size: 1.5em;
+    margin-top: 30px;
+    color: #333; /* Darker color for better readability on the blur box */
+  }
+
+  .paragraph {
+    font-size: 1em;
+    color: #444; /* Darker color for better readability on the blur box */
+    margin-bottom: 20px;
+  }
+
+  .info-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #113f5f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .info-link:hover {
+    background-color: #0d2d45;
+  }

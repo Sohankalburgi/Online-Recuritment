@@ -22,7 +22,7 @@ export class EmpRegisterComponent implements OnInit {
       this.roleIdString = params.get('roleIdString');
       console.log('RoleIdString:',this.roleIdString);
     });
-    
+
     this.empRegisterForm = this.formBuilder.group({
       roleInCompany: ['', Validators.required],
       companyName: ['', Validators.required],
@@ -62,15 +62,38 @@ export class EmpRegisterComponent implements OnInit {
         if(Response){
           alert("successful")
         }
-        
+
       })
       this.route.navigate([`job-register/${this.roleIdString}`]);
       console.log(this.roleIdString);
-      
+
     } else {
       // Handle form validation errors here
       console.log('Form is invalid');
     }
   }
-  
+
+
+  post(){
+    console.log(this.roleIdString);
+    if (this.roleIdString === 'null' || this.roleIdString === null) {
+      alert('Please login As Employer');
+    } else {
+      this.route.navigate([`/job-register/${this.roleIdString}`]);
+    }
+  }
+
+  postappoint() {
+    console.log(this.roleIdString);
+    if (this.roleIdString === 'null' || this.roleIdString === null) {
+      alert('Please login As Employer');
+    } else {
+      this.route.navigate([`/emp-home-page/${this.roleIdString}`]);
+    }
+    }
+
+  jobsforyou(){
+    console.log(this.roleIdString);
+    this.route.navigate([`/gradhome/${this.roleIdString}`])
+  }
 }

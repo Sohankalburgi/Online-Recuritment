@@ -1,10 +1,9 @@
 <div style="position: static;">
   <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
-    <!--  -->
     <div class="container-fluid">
       <!-- Centered brand -->
-      <img src="assets/ors-logo.png" alt="logo" style="height: 55px; width:190px; margin-right: 10px;">
-
+      <img src="" alt="">
+      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
 
       <!-- Toggler button for small screens -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -22,6 +21,8 @@
           </li>
 
 
+
+
           <li class="nav-item" >
             <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="post()">Post Jobs</a>
           </li>
@@ -33,13 +34,6 @@
           <li class="nav-item" >
             <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="jobsforyou()">Explore Jobs</a>
           </li>
-
-
-
-          <!-- Search Jobs -->
-          <!-- *ngIf="currentRoute !== '/job-search'" -->
-
-
 
           <!-- Services -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
@@ -61,37 +55,47 @@
             <a class="nav-link" routerLink="/about-us" routerLinkActive="active">About Us</a>
           </li>
 
-
-
           <li class="nav-item" >
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/login"  routerLinkActive="active">Login</a>
+            <a class="nav-link" routerLink="/login"  routerLinkActive="active">Login</a>
           </li>
 
           <li>
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/register"  routerLinkActive="active">Register</a>
-          </li>
-
-          <li>
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')" routerLink="/admin-login" routerLinkActive="active">Admin</a>
+            <a class="nav-link"  routerLink="/register"  routerLinkActive="active">Register</a>
           </li>
         </ul>
 
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" routerLink="/home" >Logout</a>
+
     </div>
   </nav>
 </div>
 
-<div class="container">
-  <div class="background"></div>
-  <div class="content">
-    <h1 class="animated-text">Elevate Your Career Journey</h1>
-    <h4 class="animated-text">Our platform connects talented individuals with exciting job openings, empowering you to take the next step towards professional success.</h4>
-    <h3 class="animated-text">Join us now!</h3>
+<section class="top-div">
+  <h1 style="color: #113f5f; background-color : #fff; padding:10px; border : 1px solid #113f5f; border-radius: 7px; " > Know More About Us </h1>
+  <!-- -->
+  <div class="blur-box">
+    <!-- <img src="assets/ors-logo.png" alt="Website Logo" class="center-logo"> -->
+    <p class="website-caption">Welcome to Online Recruitment System, where we connect opportunities with talent.</p>
 
+    <h2 class="heading">Vision</h2>
+    <p class="paragraph">Our vision is to revolutionize the recruitment process by leveraging innovative technologies and seamless user experiences.</p>
 
+    <h2 class="heading">Mission</h2>
+    <p class="paragraph">Our mission is to empower job seekers with the tools and resources they need to achieve their career aspirations.</p>
+    <p class="paragraph">We aim to provide employers with the best talent through a comprehensive and efficient recruitment platform.</p>
+    <p class="paragraph">Together, we build a bridge between dreams and opportunities.</p>
 
+    <h2 class="heading">Who are we?</h2>
+    <p class="paragraph">We are a team of dedicated professionals committed to transforming the job search and recruitment landscape.</p>
+    <p class="paragraph">Our platform is designed to be user-friendly, offering a range of features to make the recruitment process smoother.</p>
+    <p class="paragraph">With years of experience in the industry, we understand the challenges faced by both job seekers and employers.</p>
+    <p class="paragraph">We strive to create a space where talent meets opportunity in the most efficient and effective way.</p>
+    <p class="paragraph">Our goal is to become the go-to platform for all recruitment needs.</p>
+    <p class="paragraph">Join us on this journey and experience the future of recruitment today.</p>
+
+    <h2 class="heading">For more information about our company:</h2>
+    <a routerLink="/home" class="info-link">Go to Home Page</a>
   </div>
-</div>
+</section>

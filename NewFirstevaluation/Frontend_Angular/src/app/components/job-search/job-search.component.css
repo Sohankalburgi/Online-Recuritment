@@ -67,3 +67,28 @@
     transition: background-color 0.3s ease; /* Add transition effect */
 }
 
+.navbar {
+  background: linear-gradient(to right, #6a1b9a, #00b4d9);
+  color: white;
+}
+
+.navbar-brand, .nav-link {
+  color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: #ddd;
+}
+
+.nav-link.active {
+  color: #ffffff; /* Bright white color */
+  font-weight: bold; /* Bold text */
+}
+
+
+.nav-item.active a, .nav-item a:hover   {
+background-color: white;
+color: #113f5f;
+border-radius: 5px;
+margin : 5px;
+}

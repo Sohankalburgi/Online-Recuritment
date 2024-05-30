@@ -60,8 +60,14 @@ export class JobDashComponent implements OnInit {
     this.JobForm.value.roleId.roleId = this.selectedJobforedit.roleId.roleId;
     this.JobForm.value.jobId = this.selectedJobforedit.jobId;
     if(this.JobForm.valid){
-      this.jobservice.updateJob(this.JobForm.value).subscribe();
-      alert("submiited");
+      this.jobservice.updateJob(this.JobForm.value).subscribe((response)=>{
+        console.log("submitted");
+        alert("submiited");
+        },
+        (error)=>{
+          alert("Internal Server Error");
+        });
+      
       this.closeModalforEdit();
       this.loadJobs();
     }
@@ -69,8 +75,14 @@ export class JobDashComponent implements OnInit {
 
   deleteJobbyJobId() {
     console.log(this.selectedJobfordelete)
-    this.jobservice.deleteJobByjobId(this.selectedJobfordelete).subscribe();
-    alert("deleted");
+    this.jobservice.deleteJobByjobId(this.selectedJobfordelete).subscribe((response)=>{
+      console.log("submitted");
+      alert("deleted");
+      },
+      (error)=>{
+        alert("Internal Server Error");
+      });
+    
     this.closeModalforDelete();
     this.loadJobs();
   }

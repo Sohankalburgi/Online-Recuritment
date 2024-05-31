@@ -18,10 +18,10 @@ export class JobRegisterComponent implements OnInit{
     constructor(private fb:FormBuilder,private router:ActivatedRoute,private jobregisterService:JobregisterserviceService,
       private route:Router
     ){
-      
+
     }
 
-    
+
     ngOnInit(): void {
 
       this.router.paramMap.subscribe(params => {
@@ -64,7 +64,7 @@ export class JobRegisterComponent implements OnInit{
 
     post(){
       console.log(this.roleIdString);
-      if (this.roleIdString === 'null' || this.roleIdString === null) { 
+      if (this.roleIdString === 'null' || this.roleIdString === null) {
         alert('Please login');
       } else {
         this.route.navigate([`/job-register/${this.roleIdString}`]);
@@ -110,5 +110,12 @@ export class JobRegisterComponent implements OnInit{
       return '';
     }
 
-
+    postappoint() {
+      console.log(this.roleIdString);
+      if (this.roleIdString === 'null' || this.roleIdString === null) {
+        alert('Please login As Employer');
+      } else {
+        this.route.navigate([`/emp-home-page/${this.roleIdString}`]);
+      }
+      }
 }

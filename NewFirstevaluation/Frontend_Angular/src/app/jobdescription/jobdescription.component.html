@@ -17,11 +17,11 @@
           <!-- *ngIf="currentRoute !== '/home'" -->
           <li class="nav-item" >
             <a class="nav-link" *ngIf="studentId?.startsWith('GRAD')" routerLink="/gradhome/{{studentId}}" routerLinkActive="active">Home</a>
-      
+
           </li>
 
-         
-         
+
+
 
 
           <!-- Services -->
@@ -63,50 +63,27 @@
 
 
 <section class="job-div">
-  <div class="container-fluid py-2">
-    <div class="row">
+  <div class="container py-4">
+    <div class="row justify-content-center">
       <div class="col-md-8">
-        <div id="formcard" class="card ">
+        <div id="formcard" class="card bg-image">
+          <h1 class="text-center mt-3 fw-bold" style="color: #113f5f;">Form Details</h1>
           <div class="card-body">
-            <h1 class="card-title fw-bold">{{companyDescriptionData?.companyName}}</h1>
-            <h1 class="display-4">&emsp; {{jobDescriptionData?.jobId}} - {{jobDescriptionData?.jobType}}</h1>
-            <h6 class="display-6 fw-bold">Job Description</h6>
-            <div>{{jobDescriptionData?.jobDescription}}</div>
-            <p class="fw-bolder d-inline">Job Vacancy: {{jobDescriptionData?.jobVacancy}}</p>
-            <p class="fw-bolder">Salary: {{jobDescriptionData?.jobSalary}}</p>
-            <h2 class="display-4 fw-bold">Company Details</h2>
-            <div class="display-6 fw-semibold">Company Description</div>
-            <div>{{companyDescriptionData?.companyDescription}}</div>
-            <div class="display-6 fw-semibold">Company Address</div>
-            <address>{{companyDescriptionData?.companyAddress}}</address>
-            <p class="fw-bolder d-inline">Company Type: {{companyDescriptionData?.companyType}}</p>
-            <p class="fw-bolder">Company size: {{companyDescriptionData?.companySize}}</p>
-            <button class="btn btn-primary" (click)="Apply()">Apply</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div id="sidebar" class="card " style="color:rgb(18, 26, 99);">
-          <div class="card-body">
-            <h1 class="h2 fw-bold mb-4">Sponsors</h1>
-            <ul class="list-unstyled">
-              <li>HCL Technology - Over 6,000+ Premium Jobs</li>
-              <hr>
-              <li>Infosys - Premium Jobs</li>
-              <hr>
-              <li>Wipro - Premium Jobs</li>
-              <hr>
-              <li>Accenture - Premium Jobs</li>
-              <hr>
-              <li>Atos - Premium Jobs</li>
-              <hr>
-              <li>TCS - Premium Jobs</li>
-              <hr>
-            </ul>
-            <h1 class="h2 fw-bold mb-4">Wise Words</h1>
-            <p class="mb-0">"Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it."</p>
-            <p class="text-end">-Steve Jobs</p>
+            <h2><span class="fw-bold" style="color: #113f5f;">Company Name:</span> {{companyDescriptionData?.companyName}}</h2>
+            <h5 class="text-class">
+              <div><span class="fw-bold" style="color: #113f5f;">Company Description:</span> {{companyDescriptionData?.companyDescription}}</div>
+              <div><span class="fw-bold" style="color: #113f5f;">Company Address:</span> {{companyDescriptionData?.companyAddress}}</div>
+              <div><span class="fw-bold" style="color: #113f5f;">Company Type:</span> {{companyDescriptionData?.companyType}}</div>
+              <div><span class="fw-bold" style="color: #113f5f;">Company Size:</span> {{companyDescriptionData?.companySize}}</div>
+              <div><span class="fw-bold" style="color: #113f5f;">Job ID:</span> {{jobDescriptionData?.jobId}}</div>
+              <div><span class="fw-bold" style="color: #113f5f;">Job Name:</span> {{jobDescriptionData?.jobType}}</div>
+              <div><span class="fw-bold" style="color: #113f5f;">Job Description:</span> {{jobDescriptionData?.jobDescription}}</div>
+              <div><span class="fw-bold" style="color: #113f5f;">Job Vacancy:</span> {{jobDescriptionData?.jobVacancy}}</div>
+              <div><span class="fw-bold" style="color: #113f5f;">Job Salary:</span> {{jobDescriptionData?.jobSalary}}</div>
+            </h5>
+            <div class="text-center mt-3">
+              <button class="btn" (click)="Apply()">Apply</button>
+            </div>
           </div>
         </div>
       </div>

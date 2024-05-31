@@ -16,7 +16,7 @@ h2{
   text-align: center;
 }
 /* .card {
-  width: 18rem; 
+  width: 18rem;
 } */
 
 .card-body {
@@ -25,8 +25,8 @@ h2{
 }
 
 .card {
-  margin: auto; 
-  margin-top: 50px; 
+  margin: auto;
+  margin-top: 50px;
   width: 120%;
   background-color: #113f5f;
   color: white;
@@ -149,3 +149,5 @@ h2{
 
   /* outline: 2px; */
 }
+
+

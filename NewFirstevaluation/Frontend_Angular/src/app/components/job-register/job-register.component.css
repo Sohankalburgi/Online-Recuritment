@@ -24,6 +24,7 @@
 }
 
 .card-body {
+  /* margin-top: 50px; */
   padding: 30px;
   background-color: rgba(81, 81, 86, 0.3);
   color: #113f5f;
@@ -57,4 +58,30 @@ h3 {
   border: 1px solid #050e17; /* Change the color as needed */
   border-radius: 0.25rem;
   font-weight: 600;
+}
+
+
+
+
+/* .navbar {
+  background: linear-gradient(to right, #6a1b9a, #00b4d9);
+  color: white;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+} */
+
+.navbar-brand, .nav-link {
+  color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: #ddd;
+}
+
+.nav-link.active {
+  color: #ffffff; /* Bright white color */
+  font-weight: bold; /* Bold text */
 }

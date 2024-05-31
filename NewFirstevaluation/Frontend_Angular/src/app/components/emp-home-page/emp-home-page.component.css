@@ -34,7 +34,7 @@
 
  .sidebar {
   position: fixed;
-  top: 56px; /* Adjust this value to match the height of your navbar */
+  top: 70px; /* Adjust this value to match the height of your navbar */
   bottom: 0;
   left: 0;
   width: 210px;
@@ -69,15 +69,15 @@
 
 
 
-.navbar {
+/* .navbar {
   background: linear-gradient(to right, #6a1b9a, #00b4d9);
   color: white;
   z-index: 1000;
-  position: fixed; /* Make the navbar fixed */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-}
+} */
 
 .navbar-brand, .nav-link {
   color: white;

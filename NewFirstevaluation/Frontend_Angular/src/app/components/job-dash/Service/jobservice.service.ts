@@ -8,7 +8,7 @@ import { Job } from '../Model/Job.model';
   providedIn: 'root'
 })
 export class JobserviceService {
-  
+
   baseUrl = "http://localhost:8080";
   httpOptions = {
     headers: new HttpHeaders({
@@ -32,5 +32,5 @@ export class JobserviceService {
     console.log(jobId+"this is from delete")
     return this.http.delete(`${this.baseUrl}/deletejobbyId/${jobId}`);
   }
-  
+
 }

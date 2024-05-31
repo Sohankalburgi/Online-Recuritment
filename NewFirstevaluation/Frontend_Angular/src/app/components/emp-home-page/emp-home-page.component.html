@@ -3,6 +3,8 @@
     <!--  -->
     <div class="container-fluid">
       <!-- Centered brand -->
+      <img src="assets/ors-logo.png" alt="logo" style="height: 55px; width:190px; margin-right: 10px;">
+
       <!-- <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a> -->
       <a class="navbar-brand d-flex align-items-center mx-auto" routerLink="/home">
         <!-- <img src="assets/images/ors-logo.png" alt="RecruitHub Logo" style="height: 30px; margin-right: 10px;">
@@ -24,7 +26,11 @@
             <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
           </li>
 
-          <a class="nav-link"  (click)="post()" routerLinkActive="active">Post Jobs</a>
+
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active"  (click)="post()">Post Jobs</a>
+          </li>
+
 
 
           <!-- Search Jobs -->
@@ -100,8 +106,8 @@
     </div>
 
     <!-- Main content -->
-   
+
       <router-outlet></router-outlet>
-   
- 
+
+
 </div>

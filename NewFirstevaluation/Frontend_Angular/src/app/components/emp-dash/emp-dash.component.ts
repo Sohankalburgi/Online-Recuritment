@@ -110,7 +110,7 @@ export class EmpDashComponent implements OnInit {
         console.log("updatedUser")
       },
       (error)=>{
-        alert("Internal Server Error")
+        console.log("error")
       }
     );
       this.employerservice.updateEmployer(this.employer,this.selectedEmployerforedit.roleId.roleId).subscribe(
@@ -119,7 +119,7 @@ export class EmpDashComponent implements OnInit {
           alert("submiited");
         },
         (error)=>{
-          alert("Internal Server Error")
+          console.log("error")
         }
       );
       

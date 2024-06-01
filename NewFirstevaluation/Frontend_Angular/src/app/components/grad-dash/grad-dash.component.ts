@@ -150,7 +150,7 @@ export class GradDashComponent implements OnInit {
         console.log("submitted");
         },
         (error)=>{
-          alert("Internal Server Error");
+          console.log("error")
         }
       );
       this.graduateservice.updateCollege(this.college,this.selectedGraduateforedit.roleId.roleId).subscribe(
@@ -158,15 +158,12 @@ export class GradDashComponent implements OnInit {
           console.log("submitted");
           },
           (error)=>{
-            alert("Internal Server Error");
+            console.log("error")
           }
       );
       this.graduateservice.updateGraduate(this.graduate,this.selectedGraduateforedit.roleId.roleId).subscribe(
         (response)=>{
           console.log("submitted");
-          },
-          (error)=>{
-            alert("Internal Server Error");
           }
       );
       alert("submitted")
@@ -180,7 +177,7 @@ export class GradDashComponent implements OnInit {
       console.log("submitted");
       },
       (error)=>{
-        alert("Internal Server Error");
+        console.log("error")
       });
     alert("deleted");
     this.closeModalforDelete();

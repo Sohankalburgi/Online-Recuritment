@@ -21,24 +21,22 @@
             <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
           </li>
 
-
           <li class="nav-item" >
             <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="post()">Post Jobs</a>
           </li>
 
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="postappoint()">Appointments</a>
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active"  (click)="postappoint()">Appointments</a>
           </li>
 
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="jobsforyou()">Explore Jobs</a>
-          </li>
 
 
 
           <!-- Search Jobs -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
-
+          <li class="nav-item" >
+            <a class="nav-link" (click)=jobsforyou() routerLinkActive="active">Explore Jobs</a>
+          </li>
 
 
           <!-- Services -->
@@ -67,11 +65,11 @@
             <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/login"  routerLinkActive="active">Login</a>
           </li>
 
-          <li>
+          <li class="nav-item">
             <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/register"  routerLinkActive="active">Register</a>
           </li>
 
-          <li>
+          <li class="nav-item">
             <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')" routerLink="/admin-login" routerLinkActive="active">Admin</a>
           </li>
         </ul>

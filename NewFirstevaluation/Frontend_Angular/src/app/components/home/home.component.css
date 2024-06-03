@@ -75,6 +75,6 @@
 .nav-item.active a, .nav-item a:hover   {
   background-color: white;
   color: #113f5f;
-  border-radius: 5px;
-  margin : 5px;
+  /* border-radius: 5px;
+  margin : 5px; */
 }

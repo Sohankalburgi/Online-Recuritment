@@ -138,9 +138,21 @@ const routes: Routes = [
     component:AppointmentComponent
   },
   {
+    path:'appointment/:roleIdString/:jobId',
+    //
+    component:AppointmentComponent
+  },
+  {
     path:'jobdescription/:roleIdString/:jobId',
     component:JobdescriptionComponent
   },
+
+  {
+    path:'jobdescription',
+    // /:roleIdString/:jobId
+    component:JobdescriptionComponent
+  },
+
   {
     path:'jobsearch/:searchvalue',
     component:JoblistComponent

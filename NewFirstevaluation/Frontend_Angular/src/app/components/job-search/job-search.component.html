@@ -1,63 +1,64 @@
 <div style="position: static;">
-    <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
-      <div class="container-fluid">
-        <!-- Centered brand -->
-        <img src="assets/ors-logo.png" alt="logo" style="height: 55px; width:190px; margin-right: 10px;">
-        <!-- Toggler button for small screens -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
 
-        <!-- Navigation items -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
-            <!-- Home -->
-            <!-- *ngIf="currentRoute !== '/home'" -->
-            <li class="nav-item" >
-              <a class="nav-link" routerLink="/gradhome/{{roleIdString}}" routerLinkActive="active">Home</a>
-            </li>
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-
-
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/gradhome/{{roleIdString}}" routerLinkActive="active">Home</a>
+          </li>
 
 
-            <!-- Services -->
-            <!-- *ngIf="currentRoute !== '/job-search'" -->
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
-            </li>
 
 
-            <!-- Blog  -->
-            <!-- *ngIf="currentRoute !== '/job-search'" -->
-            <li class="nav-item" >
-              <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
-            </li>
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
 
 
-            <!-- About Us -->
-            <!-- *ngIf="currentRoute !== '/login'" -->
-            <li class="nav-item" >
-              <a class="nav-link" routerLink="/about-us" routerLinkActive="active">About Us</a>
-            </li>
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
 
-            <li class="nav-item" >
-              <a class="nav-link"  *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLinkActive="active">Login</a>
-            </li>
 
-            <li>
-              <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/register"  routerLinkActive="active">Register</a>
-            </li>
-          </ul>
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/about-us" routerLinkActive="active">About Us</a>
+          </li>
 
-          <!-- Green dot for logged-in status -->
-          <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
-        </div>
-        <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLink="/home" >Logout</a>
+          <li class="nav-item" >
+            <a class="nav-link"  *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLinkActive="active">Login</a>
+          </li>
+
+          <li>
+            <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/register"  routerLinkActive="active">Register</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-    </nav>
-  </div>
+      <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLink="/home" >Logout</a>
+    </div>
+  </nav>
+</div>
 
 
 <section class="background-section" >

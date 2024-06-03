@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OnlineRecruitment.Classes.ResponseMessage;
 import com.example.OnlineRecruitment.Entities.Appointment;
 import com.example.OnlineRecruitment.Services.AppointmentService;
 
@@ -28,15 +29,15 @@ public class AppointmentControllers {
 	private AppointmentService appointmentService;
 
 	@PostMapping("/saveappointment/{applicantId}")
-	public ResponseEntity<String>saveAppointment(@PathVariable String applicantId,
+	public ResponseEntity<?>saveAppointment(@PathVariable String applicantId,
 			@RequestBody Appointment appointment ){
 			try {
 			appointmentService.saveAppointment(applicantId,appointment);
 			}
 			catch(Exception e) {
-				return new ResponseEntity<>("error",HttpStatus.BAD_REQUEST);
+				return  ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(new ResponseMessage("error"));
 			}
-			return new ResponseEntity<>("saved",HttpStatus.OK);
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Created"));
 	}
 	
 	@GetMapping("/getAppointmentAllNotSet/{roleId}")
@@ -52,14 +53,14 @@ public class AppointmentControllers {
 	}
 	
 	@DeleteMapping("/rejectAppointment/{applicantId}")
-	public ResponseEntity<String> rejectAppointment(@PathVariable String applicantId) {
+	public ResponseEntity<?> rejectAppointment(@PathVariable String applicantId) {
 		try { 
 		appointmentService.rejectAppointment(applicantId);
 		}
 		catch(Exception e) {
-			return new ResponseEntity<>("error",HttpStatus.BAD_REQUEST);
-		}
-		return new ResponseEntity<String>("reject",HttpStatus.ACCEPTED);
+		 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}	 
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("error"));
 	}
 	
 	@GetMapping("/getResume/{applicantId}")

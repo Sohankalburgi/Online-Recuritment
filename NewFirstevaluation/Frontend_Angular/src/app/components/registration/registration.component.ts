@@ -87,6 +87,9 @@ onSubmit(): void {
            )
            this.router.navigate(['/email'], { state: { formData: this.registrationForm.value } });
         }
+      },
+      error=>{
+        alert("Internal server error")
       }
     )
     

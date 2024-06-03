@@ -22,12 +22,12 @@
         <!-- Table Rows -->
         <tr *ngFor="let employer of employers">
 
-          <td>{{ employer.roleId.roleId}}</td>
+          <td>{{ employer?.roleId?.roleId}}</td>
           <td>{{employer.companyName}}</td>
-          <td>{{ employer.user.name }}</td>
-          <td>{{ employer.user.email }}</td>
-          <td>{{employer.user.phone}}</td>
-          <td>{{employer.user.nationality}}</td>
+          <td>{{ employer?.user?.name }}</td>
+          <td>{{ employer?.user?.email }}</td>
+          <td>{{employer?.user?.phone}}</td>
+          <td>{{employer?.user?.nationality}}</td>
           <td>
             <button class="btn btn-info btn-sm mx-2" (click)="infoEmployer(employer)"> More Details</button>
             <button class="btn btn-success btn-sm mx-2" (click)="editEmployer(employer)">Edit</button>

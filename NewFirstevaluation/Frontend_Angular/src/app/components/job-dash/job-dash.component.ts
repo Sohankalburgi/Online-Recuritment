@@ -62,12 +62,10 @@ export class JobDashComponent implements OnInit {
     if(this.JobForm.valid){
       this.jobservice.updateJob(this.JobForm.value).subscribe((response)=>{
         console.log("submitted");
-        alert("submiited");
-        },
-        (error)=>{
-          alert("Internal Server Error");
+       
         });
-      
+        alert("submiited");
+        this.loadJobs();
       this.closeModalforEdit();
       this.loadJobs();
     }
@@ -78,11 +76,10 @@ export class JobDashComponent implements OnInit {
     this.jobservice.deleteJobByjobId(this.selectedJobfordelete).subscribe((response)=>{
       console.log("submitted");
       alert("deleted");
-      },
-      (error)=>{
-        alert("Internal Server Error");
+      },error=>{
+        alert("Internal server error")
       });
-    
+     
     this.closeModalforDelete();
     this.loadJobs();
   }

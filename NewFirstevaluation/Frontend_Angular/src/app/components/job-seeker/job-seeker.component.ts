@@ -86,16 +86,14 @@ export class JobSeekerComponent {
         formData.append('file',this.selectedFile);
 
       this.jobseekerservice.savejobseeker(this.jobSeekerForm.value).subscribe(Response=>{
-        if(Response===true){
           this.jobseekerservice.uploadFile(formData,applicantId).subscribe((response)=>{
-            alert("fileUploaded");
+            console.log("file uploaded")
           },
           (error)=>{
-            console.log("err")
+            
             alert("Internal Server Error OR Duplicate Entry")
           }
         );
-        }
       },
       error=>{
         alert("Internal Server Error OR Duplicate Entry")

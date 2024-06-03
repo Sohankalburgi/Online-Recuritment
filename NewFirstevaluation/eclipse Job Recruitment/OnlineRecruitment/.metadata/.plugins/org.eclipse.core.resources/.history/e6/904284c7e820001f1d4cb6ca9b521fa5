@@ -1,0 +1,78 @@
+package com.example.OnlineRecruitment.Controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.OnlineRecruitment.Classes.ResponseMessage;
+import com.example.OnlineRecruitment.Entities.Employer;
+import com.example.OnlineRecruitment.Services.EmployerService;
+
+@RestController
+@CrossOrigin("http://localhost:4200")
+public class EmployerControllers {
+	
+	@Autowired
+	EmployerService employerService;
+	
+	@PostMapping("/employer")
+	public ResponseEntity<?> saveEmployer(@RequestBody Employer employer) {
+		try {
+		employerService.saveEmployer(employer); 
+		}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("saved"));
+	}
+	
+	@GetMapping("/allemployer")
+	public List<Employer> getAllEmployer(){
+		return employerService.getAllEmployer();
+	}
+	
+	@GetMapping("/employer/{roleId}")
+	public Employer getById(@PathVariable String roleId) {
+		return employerService.getEmployerById(roleId);
+	}
+	
+	@GetMapping("/existsemployer/{roleId}")
+	public boolean existsByEmployer(@PathVariable String roleId) {
+		return employerService.checkEmployerExist(roleId);
+	}
+	
+	@PutMapping("/updateemployer/{roleId}")
+	public ResponseEntity<?> updateEmployer(@PathVariable String roleId,@RequestBody
+			Employer employer) {
+		try { 
+			employerService.updateEmployer(roleId,employer);
+		}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("saved"));
+		
+	}
+	
+	@DeleteMapping("/deleteemployer/{roleId}")
+	public ResponseEntity<?> deleteEmployer(@PathVariable String roleId) {
+		try{employerService.deleteEmployer(roleId);}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"))
+		}
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(new ResponseMessage("saved"));
+	}
+	
+	
+}

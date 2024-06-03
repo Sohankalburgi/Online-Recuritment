@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.OnlineRecruitment.Classes.ResponseMessage;
 import com.example.OnlineRecruitment.Entities.JobSeeker;
 import com.example.OnlineRecruitment.Services.JobSeekerService;
 
@@ -29,15 +30,19 @@ public class JobSeekerController {
 	private JobSeekerService jobSeekerService;
 	
 	@PostMapping("/jobseeker")
-	public boolean createJobSeeker(@RequestBody JobSeeker jobSeeker){
-		return jobSeekerService.createJobSeeker(jobSeeker);
-		
+	public ResponseEntity<?> createJobSeeker(@RequestBody JobSeeker jobSeeker){
+		try { jobSeekerService.createJobSeeker(jobSeeker);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("saved"));
 	}
 	
 	@PostMapping("/jobseeker/{applicationId}")
-	public  String uploadResume(@RequestPart MultipartFile file,@PathVariable String applicationId) {
-		return jobSeekerService.uploadResume(file,applicationId);
-		
+	public  ResponseEntity<?> uploadResume(@RequestPart MultipartFile file,@PathVariable String applicationId) {
+		jobSeekerService.uploadResume(file,applicationId);
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("saved"));
 	}
 	
 	@GetMapping("/jobseekerall")

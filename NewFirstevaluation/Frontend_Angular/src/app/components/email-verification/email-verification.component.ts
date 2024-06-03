@@ -83,12 +83,11 @@ export class EmailVerificationComponent {
           console.log(this.formData)
           this.registrationService.registerUser(user).subscribe(
               response =>{
-                if(response==="Created"){
-                  alert("submitted");
-                }
-                else{
-                  alert("Internal Error")
-                }
+               
+               
+              },
+              error=>{
+                alert("Error")
               } 
             );
           alert("Otp verified");

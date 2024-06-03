@@ -1,6 +1,8 @@
 package com.example.OnlineRecruitment.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OnlineRecruitment.Classes.ResponseMessage;
 import com.example.OnlineRecruitment.Entities.Role;
 import com.example.OnlineRecruitment.Services.RoleService;
 
@@ -36,10 +39,15 @@ public class RoleController {
 	}
 	
 	@DeleteMapping("/deleterole/{id}")
-	public String deleteRoleById(@PathVariable String id) {
+	public ResponseEntity<?> deleteRoleById(@PathVariable String id) {
 		System.out.println(id);
+		try {
 		roleService.deleteRoleById(id);
-		return "Role Deleted";
+		}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("deleted"));
 	}
 	
 	@PutMapping("/updaterole/{id}")

@@ -75,9 +75,11 @@ export class JobDashComponent implements OnInit {
     console.log(this.selectedJobfordelete)
     this.jobservice.deleteJobByjobId(this.selectedJobfordelete).subscribe((response)=>{
       console.log("submitted");
-      
-      });
       alert("deleted");
+      },error=>{
+        alert("Internal server error")
+      });
+     
     this.closeModalforDelete();
     this.loadJobs();
   }

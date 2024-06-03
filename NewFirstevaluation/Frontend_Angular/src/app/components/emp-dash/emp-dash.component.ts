@@ -109,8 +109,8 @@ export class EmpDashComponent implements OnInit {
       this.employerservice.updateUser(this.user,this.selectedEmployerforedit.roleId.roleId).subscribe((response)=>{
         console.log("updatedUser")
       },
-      (error)=>{
-        console.log("error")
+      error=>{
+        alert("internal server error")
       }
     );
       this.employerservice.updateEmployer(this.employer,this.selectedEmployerforedit.roleId.roleId).subscribe(
@@ -118,9 +118,7 @@ export class EmpDashComponent implements OnInit {
           console.log("updatedEmployer")
           alert("submiited");
         },
-        (error)=>{
-          console.log("error")
-        }
+       error=>(alert("internal server error"))
       );
       
       this.closeModalforEdit();
@@ -178,8 +176,16 @@ export class EmpDashComponent implements OnInit {
   }
 
   deleteEmployerByrole() {
-    this.employerservice.deleteUserByRole(this.selectedEmployerfordelete).subscribe();
-    alert("deleted");
+    this.employerservice.deleteUserByRole(this.selectedEmployerfordelete).subscribe(Response=>{
+      if(Response==true){
+         alert("deleted");
+      }else{
+        alert("internal server error")
+      }
+    },error=>{
+      alert("internal server error")
+    });
+   
     this.closeModalforDelete();
     this.loadEmployers();
   }

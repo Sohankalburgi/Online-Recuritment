@@ -3,6 +3,9 @@ package com.example.OnlineRecruitment.Controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OnlineRecruitment.Classes.ResponseMessage;
 import com.example.OnlineRecruitment.Entities.Employer;
 import com.example.OnlineRecruitment.Services.EmployerService;
 
@@ -23,8 +27,14 @@ public class EmployerControllers {
 	EmployerService employerService;
 	
 	@PostMapping("/employer")
-	public String saveEmployer(@RequestBody Employer employer) {
-		return employerService.saveEmployer(employer); 
+	public ResponseEntity<?> saveEmployer(@RequestBody Employer employer) {
+		try {
+		employerService.saveEmployer(employer); 
+		}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("saved"));
 	}
 	
 	@GetMapping("/allemployer")
@@ -43,14 +53,25 @@ public class EmployerControllers {
 	}
 	
 	@PutMapping("/updateemployer/{roleId}")
-	public String updateEmployer(@PathVariable String roleId,@RequestBody
+	public ResponseEntity<?> updateEmployer(@PathVariable String roleId,@RequestBody
 			Employer employer) {
-		return employerService.updateEmployer(roleId,employer);
+		try { 
+			employerService.updateEmployer(roleId,employer);
+		}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("saved"));
+		
 	}
 	
 	@DeleteMapping("/deleteemployer/{roleId}")
-	public String deleteEmployer(@PathVariable String roleId) {
-		return employerService.deleteEmployer(roleId);
+	public ResponseEntity<?> deleteEmployer(@PathVariable String roleId) {
+		try{employerService.deleteEmployer(roleId);}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(new ResponseMessage("saved"));
 	}
 	
 	

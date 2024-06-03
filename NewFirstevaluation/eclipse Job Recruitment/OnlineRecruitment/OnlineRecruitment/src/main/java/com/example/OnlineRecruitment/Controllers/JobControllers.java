@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OnlineRecruitment.Classes.ResponseMessage;
 import com.example.OnlineRecruitment.Entities.Graduate;
 import com.example.OnlineRecruitment.Entities.Job;
 import com.example.OnlineRecruitment.Services.JobService;
@@ -32,15 +34,15 @@ public class JobControllers {
 	private JobService jobService;
 	
 	@PostMapping("/jobs")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public String saveJobs(@Valid @RequestBody Job job){
+	public boolean saveJobs(@Valid @RequestBody Job job){
 		try {
 		jobService.createJob(job);
 		}
 		catch(Exception e){
 			System.out.println("the exception occured"+e.getMessage());
+			return false;
 		}
-		return "saved";
+		return true;
 	}
 	
 	@GetMapping("/alljobs")
@@ -54,21 +56,32 @@ public class JobControllers {
 	}
 	
 	@DeleteMapping("/deletejob/{id}")
-	public String deleteJobByRoleId(@PathVariable String id) {
+	public ResponseEntity<?> deleteJobByRoleId(@PathVariable String id) {
+		try {
 		jobService.deleteJob(id);
-		return "deleted Job";
+		}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Deleted"));
 	}
 	
 	@DeleteMapping("/deletejobbyId/{id}")
-	public String deleJob(@PathVariable Integer id) {
-		jobService.deleteJobById(id);
-		return "deleted Job";
+	public ResponseEntity<?> deleteJob(@PathVariable Integer id) {
+		try {
+			jobService.deleteJobById(id);
+			}
+			catch(Exception e) {
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+			}
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Deleted"));
 	}
 	
 	@PutMapping("/updatejob/{id}")
-	public String updateJobId(@PathVariable Integer id,@Valid @RequestBody Job job) {
+	public boolean updateJobId(@PathVariable Integer id,@Valid @RequestBody Job job) {
+		
 		jobService.updateJobById(id, job);
-		return "updated job";
+		return true;
 	}
 	
 //	@GetMapping("/listgraduatejobId/{roleId}")

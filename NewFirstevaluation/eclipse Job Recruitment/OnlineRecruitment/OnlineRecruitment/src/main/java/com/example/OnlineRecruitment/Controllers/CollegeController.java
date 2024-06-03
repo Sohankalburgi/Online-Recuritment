@@ -2,6 +2,8 @@ package com.example.OnlineRecruitment.Controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OnlineRecruitment.Classes.ResponseMessage;
 import com.example.OnlineRecruitment.Entities.College;
 import com.example.OnlineRecruitment.Services.CollegeService;
 
@@ -22,8 +25,14 @@ public class CollegeController {
 	private CollegeService collegeService;
 	
 	@PostMapping("/college")
-	public String saveCollege(@RequestBody College college) {
-		return collegeService.saveRepository(college);
+	public ResponseEntity<?> saveCollege(@RequestBody College college) {
+		try { 
+		collegeService.saveRepository(college);
+		}
+		catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("created"));
 	}
 	
 	
@@ -33,14 +42,24 @@ public class CollegeController {
 	}
 	
 	@PutMapping("/updatecollege/{roleId}")
-	public String updateCollege(@RequestBody College college,@PathVariable String
+	public ResponseEntity<?> updateCollege(@RequestBody College college,@PathVariable String
 			roleId) {
-		return collegeService.updateCollegeByRoleId(college,roleId);
+		try {
+		 collegeService.updateCollegeByRoleId(college,roleId);
+		}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("saved"));
 	}
 	
 	@DeleteMapping("/deletecollege/{roleId}")
-	public String deleteCollege(@PathVariable String roleId) {
-		return collegeService.deleteCollegeByRoleId(roleId);
+	public ResponseEntity<?> deleteCollege(@PathVariable String roleId) {
+		try{collegeService.deleteCollegeByRoleId(roleId);}
+		catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("saved"));
 	}
 	
 	

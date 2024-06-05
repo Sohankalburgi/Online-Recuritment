@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
      this.loginservice.checkUserExist(this.loginForm.value, roleIdString).subscribe(response => {
       if (response === true) {
         alert("Login Successful");
+        localStorage.setItem("roleIdString",roleIdString);
         this.loginservice.checkGraduateExist(roleIdString,this.loginForm.value.idName).subscribe(Response => {
           console.log(Response);
           if (Response === false) {

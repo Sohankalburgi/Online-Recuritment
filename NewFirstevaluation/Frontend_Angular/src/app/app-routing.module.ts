@@ -26,6 +26,8 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { EmpHomePageComponent } from './components/emp-home-page/emp-home-page.component';
 import { NotScheduledComponent } from './components/not-scheduled/not-scheduled.component';
 import { ScheduledComponent } from './components/scheduled/scheduled.component';
+import { MessageadminComponent } from './components/messageadmin/messageadmin.component';
+import { MessagegraduteComponent } from './components/messagegradute/messagegradute.component';
 
 
 
@@ -93,6 +95,7 @@ const routes: Routes = [
       { path: 'graduates', component: GradDashComponent },
       { path: 'employers', component: EmpDashComponent },
       { path: 'jobs', component: JobDashComponent },
+      {path:'message',component:MessageadminComponent},
       { path: '', redirectTo: 'graduates', pathMatch: 'full' },
     ]
   },
@@ -145,6 +148,10 @@ const routes: Routes = [
   {
     path:'gradhome',
     component:JobSearchComponent
+  },
+  {
+    path:'gradmessage',
+    component:MessagegraduteComponent
   },
   {
     path: 'emp-home-page/:roleIdString', component: EmpHomePageComponent,

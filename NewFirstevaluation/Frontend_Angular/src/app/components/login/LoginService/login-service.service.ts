@@ -40,5 +40,12 @@ export class LoginServiceService {
     return this.http.get(url);
   }
 
+  logout(): void {
+    localStorage.removeItem('roleIdString');
+  }
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('roleIdString') !== null;
+  }
  
 }

@@ -59,6 +59,12 @@ export class JobSearchComponent {
       window.open(link, '_blank');
     }
   }
+  logout(){
+    // window.history.pushState(null, '', '/logout');
+    window.location.replace('/login');
+  
+    // this.route.navigate(['/home'])
+  }
   }
 
 

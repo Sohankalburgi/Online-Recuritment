@@ -36,6 +36,10 @@ import { SafeHtmlPipe } from './safe-html.pipe';
 import { ServicesComponent } from './components/services/services.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
+import { GradmessageComponent } from './components/gradmessage/gradmessage.component';
+import { MessagedashComponent } from './components/messagedash/messagedash.component';
+import { GradinboxComponent } from './components/gradinbox/gradinbox.component';
+import { AdmininboxComponent } from './components/admininbox/admininbox.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +72,11 @@ import { BlogsComponent } from './components/blogs/blogs.component';
     SafeHtmlPipe,
     ServicesComponent,
     AboutUsComponent,
-    BlogsComponent
+    BlogsComponent,
+    GradmessageComponent,
+    MessagedashComponent,
+    GradinboxComponent,
+    AdmininboxComponent
   ],
   imports: [
     BrowserModule,

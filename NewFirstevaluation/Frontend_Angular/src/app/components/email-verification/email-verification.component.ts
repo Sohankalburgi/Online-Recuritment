@@ -11,15 +11,12 @@ import { RegistrationserviceService } from '../../registrationservice.service';
   styleUrl: './email-verification.component.css'
 })
 export class EmailVerificationComponent {
-
-  roleIdString!:string;
-
   emailForm: FormGroup;
   formData: any;
 
   hide = true; // To toggle password visibility
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
-
+ 
 
   constructor(
     private fb: FormBuilder,
@@ -31,7 +28,7 @@ export class EmailVerificationComponent {
       email: ['', [Validators.required, Validators.email]],
       otp: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     });
-
+    
     this.formData = this.router.getCurrentNavigation()?.extras.state?.['formData'];
   }
 
@@ -41,34 +38,9 @@ export class EmailVerificationComponent {
         email: this.formData.email
       });
     }
-
-  }
-
-
-  post(){
-    console.log(this.roleIdString);
-    if (this.roleIdString === 'null' || this.roleIdString === null) {
-      alert('Please login As Employer');
-    } else {
-      this.router.navigate([`/job-register/${this.roleIdString}`]);
-    }
-  }
-
-  postappoint() {
-    console.log(this.roleIdString);
-    if (this.roleIdString === 'null' || this.roleIdString === null) {
-      alert('Please login As Employer');
-    } else {
-      this.router.navigate([`/emp-home-page/${this.roleIdString}`]);
-    }
-    }
-
-  jobsforyou(){
-    console.log(this.roleIdString);
-    this.router.navigate([`/gradhome/${this.roleIdString}`])
+    
   }
   
-
   onConfirmEmail(): void {
     if (this.emailForm.valid) {
       const email = this.emailForm.get('email')?.value;
@@ -96,7 +68,7 @@ export class EmailVerificationComponent {
           else {
             alert("not valid ")
           }
-
+          
         },
         (        error: any) => {
           console.error('Failed to verify OTP:', error);
@@ -104,7 +76,7 @@ export class EmailVerificationComponent {
         }
       );
 
-
+    
 
 
     } else {
@@ -170,5 +142,4 @@ export class EmailVerificationComponent {
   }
 
 }
-
-
+ 

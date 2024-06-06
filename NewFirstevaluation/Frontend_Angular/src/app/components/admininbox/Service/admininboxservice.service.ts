@@ -32,4 +32,8 @@ export class AdmininboxserviceService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(`${this.baseUrl}/sendtograd`,message,this.httpOptions);
   }
+
+  deleteMessage(id:any):Observable<any>{
+    return this.http.delete<any>(`${this.baseUrl}/deletemessage/${id}`);
+  }
 }

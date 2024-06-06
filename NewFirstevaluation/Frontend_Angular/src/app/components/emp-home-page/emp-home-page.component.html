@@ -29,27 +29,19 @@
           <!-- *ngIf="currentRoute !== '/job-search'" -->
           <li class="nav-item" >
             <a class="nav-link" (click)=jobsforyou() routerLinkActive="active">Jobs for you</a>
-          </li>
-
-
-          <!-- Services -->
-          <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
-          </li>
 
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+            <a class="nav-link" routerLink="/blogs/{{roleIdString}}" routerLinkActive="active">Blogs</a>
           </li>
 
 
           <!-- About Us -->
           <!-- *ngIf="currentRoute !== '/login'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+            <a class="nav-link" routerLink="/about-us/{{roleIdString}}" routerLinkActive="active">About Us</a>
           </li>
 
 
@@ -82,10 +74,10 @@
 
 
 
-<div class="container-fluid">
+<div class="container-fluid" >
   <div class="row">
     <!-- Sidebar -->
-    <div class="col-md-2 bg-custom sidebar">
+    <div class="col-md-2 bg-custom sidebar mt-3">
       <div class="sidebar-sticky">
         <h5 class="text-white text-center py-3">Appointment Menu</h5>
         <ul class="nav flex-column">

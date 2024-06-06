@@ -63,8 +63,9 @@ public class MessageServices {
 	public void sendtograd(Message message) {
 		System.out.println(message.getId());
 		Message prevMessage = messageRepository.getById(message.getId());
-		String noti = "\n"+prevMessage.getMessage()+"\n The Reply: \n"+message.getMessage();
+		String noti = System.lineSeparator()+prevMessage.getMessage()+System.lineSeparator()+ "The Reply From: "+message.getSenderId()+System.lineSeparator()+message.getMessage();
 		message.setMessage(noti);
+		System.out.println(message.getMessage());
 		messageRepository.save(message);
 		User user = userRepository.findUserByRoleId(message.getReceiverId());
 		String text = "The Request Regarding the Message which is given below is submitted: " + message.getMessage();

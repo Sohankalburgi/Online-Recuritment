@@ -96,6 +96,14 @@ const routes: Routes = [
     path : 'blogs',
     component: BlogsComponent
   },
+  {
+    path : 'blogs/:roleIdString',
+    component: BlogsComponent
+  },
+  {
+    path: 'about-us/:roleIdString',
+    component:AboutUsComponent
+  },
 
   {
     path : 'about-us',

@@ -66,6 +66,16 @@ export class AdmininboxComponent {
 
   }
 
+  deletemessage(id:number){
+    this.admininbox.deleteMessage(id).subscribe(Response=>{
+      alert("deleted")
+      this.fetchinbox()
+    },error=>{
+      alert("error");
+    });
+ 
+  }
+
   closeModal(){
     this.flag = false;
     this.selectedSenderId = null;

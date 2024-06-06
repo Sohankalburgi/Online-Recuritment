@@ -34,8 +34,9 @@ public class Job {
 	private Integer jobId;
 	@NotEmpty(message = "Invalid Job Name")
 	private String jobName;
-	@Max(value = 2147483647,message = "max salary can be 2147483647")
-	private Integer jobSalary;
+	
+	@NotEmpty(message = "Invalid Job Salary")
+	private String jobSalary;
 	
 	@NotEmpty(message = "Invalid Job Type")
 	private String jobType;
@@ -57,7 +58,7 @@ public class Job {
 	public Job() {
 		super();
 	}
-	public Job(Integer jobId, String jobName, Integer jobSalary, String jobType, String jobDescription,
+	public Job(Integer jobId, String jobName, String jobSalary, String jobType, String jobDescription,
 			Integer jobVacancy) {
 		super();
 		this.jobId = jobId;
@@ -103,10 +104,10 @@ public class Job {
 	public void setJobName(String jobName) {
 		this.jobName = jobName;
 	}
-	public Integer getJobSalary() {
+	public String getJobSalary() {
 		return jobSalary;
 	}
-	public void setJobSalary(Integer jobSalary) {
+	public void setJobSalary(String jobSalary) {
 		this.jobSalary = jobSalary;
 	}
 	public String getJobType() {

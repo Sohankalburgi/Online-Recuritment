@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-job-search',
@@ -33,7 +34,7 @@ export class JobSearchComponent {
 
   roleIdString: string|null=null;
 
-  constructor(private route: Router,private router:ActivatedRoute){
+  constructor(private route: Router,private router:ActivatedRoute,private authService:AuthServiceService){
   }
 
   ngOnInit() {
@@ -84,6 +85,9 @@ export class JobSearchComponent {
     this.route.navigate([`/gradhome/${this.roleIdString}`])
   }
 
+  logout(){
+    this.authService.logout();
+  }
   }
 
 

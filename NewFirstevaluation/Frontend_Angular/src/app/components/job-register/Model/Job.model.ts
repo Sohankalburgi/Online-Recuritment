@@ -4,7 +4,7 @@ export interface Job{
         roleId:string
     },
     jobName:string,
-    jobSalary:number,
+    jobSalary:string,
     jobType:string,
     jobDescription:string,
     jobVacancy:number

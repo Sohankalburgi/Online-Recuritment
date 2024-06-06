@@ -31,8 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-/.gitignore
-/.metadata/
-/.mvn/
-/mvnw
-/mvnw.cmd

@@ -1,10 +1,8 @@
 <div style="position: static;">
   <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
-    <!--  -->
     <div class="container-fluid">
       <!-- Centered brand -->
-      <img src="assets/ors-logo.png" alt="logo" style="height: 55px; width:190px; margin-right: 10px;">
-
+      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
 
       <!-- Toggler button for small screens -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -18,27 +16,17 @@
           <!-- Home -->
           <!-- *ngIf="currentRoute !== '/home'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
+            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
           </li>
 
-
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="post()">Post Jobs</a>
-          </li>
-
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="postappoint()">Appointments</a>
-          </li>
-
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="jobsforyou()">Explore Jobs</a>
-          </li>
 
 
 
           <!-- Search Jobs -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
-
+          <!-- <li class="nav-item" >
+            <a class="nav-link" routerLink="/gradhome" routerLinkActive="active">Jobs for you</a>
+          </li> -->
 
 
           <!-- Services -->
@@ -62,24 +50,12 @@
           </li>
 
 
-
-          <li class="nav-item" >
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/login"  routerLinkActive="active">Login</a>
-          </li>
-
-          <li>
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/register"  routerLinkActive="active">Register</a>
-          </li>
-
-          <li>
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')" routerLink="/admin-login" routerLinkActive="active">Admin</a>
-          </li>
         </ul>
 
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" routerLink="/home" >Logout</a>
+
     </div>
   </nav>
 </div>
@@ -102,7 +78,7 @@
 </div> -->
 
 
-<body id="back">
+<!-- <body id="back">
 
   <div class="container py-5 h-50">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -138,7 +114,7 @@
   </div>
 </div>
 
-</body>
+</body> -->
 
 
 
@@ -147,7 +123,10 @@
 
 
 
-<!-- section style="background-image: url('https://e0.pxfuel.com/wallpapers/12/182/desktop-wallpaper-business-best-business-and-on-chat-corporate-meeting.jpg'); background-size: cover; background-repeat: no-repeat; width: 100%; backdrop-filter : blur(10px); ">
+
+
+
+<section style="background-image: url('https://e0.pxfuel.com/wallpapers/12/182/desktop-wallpaper-business-best-business-and-on-chat-corporate-meeting.jpg'); background-size: cover; background-repeat: no-repeat; width: 100%; backdrop-filter : blur(10px); ">
   <div class="container" >
     <div class="card"  style="background-color: #f0f0f0;">
       <div class="card-body">
@@ -178,4 +157,4 @@
     </div>
   </div>
 
-</section> -->
+</section>

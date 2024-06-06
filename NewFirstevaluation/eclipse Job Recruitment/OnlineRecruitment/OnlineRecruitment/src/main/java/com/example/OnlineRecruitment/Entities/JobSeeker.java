@@ -29,6 +29,7 @@ public class JobSeeker {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	
 	private String fullName;
 	
 	private String email;

@@ -28,6 +28,10 @@ import { NotScheduledComponent } from './components/not-scheduled/not-scheduled.
 import { ScheduledComponent } from './components/scheduled/scheduled.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
+import { GradmessageComponent } from './components/gradmessage/gradmessage.component';
+import { MessagedashComponent } from './components/messagedash/messagedash.component';
+import { GradinboxComponent } from './components/gradinbox/gradinbox.component';
+import { AdmininboxComponent } from './components/admininbox/admininbox.component';
 
 
 
@@ -92,6 +96,14 @@ const routes: Routes = [
     path : 'blogs',
     component: BlogsComponent
   },
+  {
+    path : 'blogs/:roleIdString',
+    component: BlogsComponent
+  },
+  {
+    path: 'about-us/:roleIdString',
+    component:AboutUsComponent
+  },
 
   {
     path : 'about-us',
@@ -104,6 +116,7 @@ const routes: Routes = [
       { path: 'graduates', component: GradDashComponent },
       { path: 'employers', component: EmpDashComponent },
       { path: 'jobs', component: JobDashComponent },
+      { path: 'admininbox',component:AdmininboxComponent},
       { path: '', redirectTo: 'graduates', pathMatch: 'full' },
     ]
   },
@@ -181,7 +194,14 @@ const routes: Routes = [
   {
     path: 'email-verification',
     component: EmailVerificationComponent
-  }
+  },
+  {
+    path:'gradmessage/:roleIdString',component:MessagedashComponent,
+    children:[
+    { path:'sendmessage/:roleIdString',component:GradmessageComponent},
+    { path:'gradinbox/:roleIdString',component:GradinboxComponent}
+    ]
+  },
 
 ];
 

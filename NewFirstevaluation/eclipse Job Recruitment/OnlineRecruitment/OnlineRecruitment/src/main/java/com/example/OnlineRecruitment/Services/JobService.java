@@ -60,6 +60,7 @@ public class JobService {
 	}
 	
 	public List<Job> getJobsBySearch(String prefix){
+		prefix = prefix+"%";
 		return jobRepository.findTheJobsOnSearch(prefix);
 	}
 	

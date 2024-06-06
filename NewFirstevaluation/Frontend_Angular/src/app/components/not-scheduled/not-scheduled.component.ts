@@ -80,13 +80,14 @@ alert("apppointed");
 
   reject(appoint:Appointment) {
     this.selectedforreject = appoint;
-    
+   
     }
 
     deleteappointbyId(applicantId:string) {
       this.appointmentservice.rejectAppointment(applicantId).subscribe();
       alert("rejected");
       this.closeModalforreject();
+      this.closeModal();
       this.fetchStudents();
     }
 

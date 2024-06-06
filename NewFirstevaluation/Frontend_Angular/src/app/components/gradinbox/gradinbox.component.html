@@ -1,11 +1,11 @@
 <div class=" p-5">
     <h2 class="mb-4">Inbox</h2>
-    <div *ngFor="let message of messages" class="mb-3">
+    <div *ngFor="let message of messages">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title fs-5">Sent By: {{ message.senderId }}</h5>
           <p class="card-text">Message:</p>
-          <p class="card-text">{{ message.message }}</p>
+          <p class="card-text fw-bolder" [innerHtml] = "message.message | newlineToBr"> </p>
           <button class="btn btn-danger " (click)="deletemessage(message.id)">Delete</button>
         </div>
       </div>

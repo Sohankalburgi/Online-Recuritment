@@ -40,6 +40,7 @@ import { GradmessageComponent } from './components/gradmessage/gradmessage.compo
 import { MessagedashComponent } from './components/messagedash/messagedash.component';
 import { GradinboxComponent } from './components/gradinbox/gradinbox.component';
 import { AdmininboxComponent } from './components/admininbox/admininbox.component';
+import { NewlineToBrPipe } from './components/gradinbox/newline-to-br.pipe';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { AdmininboxComponent } from './components/admininbox/admininbox.componen
     GradmessageComponent,
     MessagedashComponent,
     GradinboxComponent,
-    AdmininboxComponent
+    AdmininboxComponent,
+    NewlineToBrPipe
   ],
   imports: [
     BrowserModule,

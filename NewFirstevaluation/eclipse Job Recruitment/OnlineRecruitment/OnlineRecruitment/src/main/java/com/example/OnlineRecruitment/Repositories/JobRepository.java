@@ -20,6 +20,8 @@ public interface JobRepository extends JpaRepository<Job,Integer>{
 	
 	@Query("SELECT j FROM Job j WHERE j.jobType LIKE :prefix OR j.jobName LIKE :prefix OR j.jobSalary LIKE :prefix")
 	List<Job> findTheJobsOnSearch(@Param("prefix") String prefix );
+
+	
 	
 	
 }

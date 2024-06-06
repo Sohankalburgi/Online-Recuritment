@@ -138,3 +138,19 @@
 
   /* outline: 2px; */
 }
+.table-responsive {
+  max-height: 300px; /* Set your desired max-height */
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 10px;
+  margin-right: 200px;
+
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 12px;
+  padding-left: 10px;
+  border: 1px solid #ddd;
+}
+

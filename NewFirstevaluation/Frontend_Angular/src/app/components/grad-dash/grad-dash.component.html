@@ -24,7 +24,7 @@
   <div class="card-body">
     <h2 class="card-title">Graduates Information</h2>
     <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
-    <div class="table-responsive">
+    <div class="">
       <table class="table table-bordered">
         <!-- Table Header -->
         <thead class="thead-dark">
@@ -92,16 +92,37 @@
           <p class="col-4"><strong>College Address :</strong> {{selectedGraduate.college.collegeAddress}}</p>
           <p class="col-8"><strong>College Description :</strong> {{selectedGraduate.college.collegeDescription}}</p>
         </div>
+
+       
       </div>
       <div class="modal-footer">
-        
+
+        <h5 style="margin-right:665px;">Applied Jobs By Graduate</h5>
+        <div class="table-responsive">
+        <table class="table mx-3">
+          <tr >
+            <th>Job Id:</th>
+            <th>Job Name:</th>
+            <th>Job Type:</th>
+            <th>Job Salary:</th>
+            <th>Job Description:</th>
+          </tr>
+          <tr *ngFor="let js of selectedGraduate.jobSeeker">
+            <td>{{js.job.jobId}}</td>
+            <td>{{js.job.jobName}}</td>
+            <td>{{js.job.jobType}}</td>
+            <td>{{js.job.jobSalary}}</td>
+            <td>{{js.job.jobDescription}}</td>
+          </tr>
+        </table>
+      </div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- EDIt Modal -->
-<div class="modal w-100" *ngIf="selectedGraduateforedit">
+<!-- <div class="modal w-100" *ngIf="selectedGraduateforedit">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -233,7 +254,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <!-- Delete Confirmation Modal -->
@@ -244,7 +265,7 @@
         <h5 class="modal-title">Confirm Delete</h5>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete this item?</p>
+        <p>Are you sure you want to delete this Gradute?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModalforDelete()">Cancel</button>

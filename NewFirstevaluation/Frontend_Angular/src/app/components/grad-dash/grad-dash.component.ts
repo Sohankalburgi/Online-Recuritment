@@ -42,10 +42,11 @@ export class GradDashComponent implements OnInit {
   selectedGraduateforedit: any = null;
   graduateForm!: FormGroup;
   graduates: any[] = []; // Replace with your actual type
-
+  jobSeeker:any[] = [];
   user!:User;
   college!:College;
   graduate!:Graduate;
+  
   selectedGraduatefordelete: any=null;
 
   constructor(private graduateservice:GraduateserviceService,private fb:FormBuilder){}
@@ -84,6 +85,11 @@ export class GradDashComponent implements OnInit {
       this.graduateservice.getCollegeByroleId(i.roleId.roleId).subscribe(college=>{
         i.college = college;
       })
+
+      this.graduateservice.getJobSeekerById(i.roleId.roleId).subscribe(js=>{
+        i.jobSeeker = js;
+      })
+
       })
       console.log(this.graduates)
     })
@@ -106,7 +112,7 @@ export class GradDashComponent implements OnInit {
 
   infoGradute(graduate: any) {
     this.selectedGraduate = graduate;
-    
+    console.log(this.selectedGraduate);
   }
 
   onSubmit() {

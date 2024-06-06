@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.OnlineRecruitment.Classes.FileUtil;
 import com.example.OnlineRecruitment.Entities.Appointment;
+import com.example.OnlineRecruitment.Entities.Message;
 import com.example.OnlineRecruitment.Repositories.AppointmentRepository;
+import com.example.OnlineRecruitment.Repositories.MessageRepository;
 @Service
 public class AppointmentService {
 	
@@ -18,7 +20,10 @@ public class AppointmentService {
 	
 	@Autowired
 	private JavaMailSender javaMailSender;
-
+	
+	@Autowired
+	private MessageRepository messageRepository;
+	
 	public void saveAppointment(String applicantId, Appointment appointment) {
 		// TODO Auto-generated method stub
 		Appointment appoint = appointmentRepository.getById(applicantId);
@@ -26,11 +31,19 @@ public class AppointmentService {
 		appoint.setLocation(appointment.getLocation());
 		appoint.setSet(true);
 		appointmentRepository.save(appoint);
+		
 		String email = appoint.getJobSeeker().getEmail();
 		String JobName = appoint.getJobSeeker().getJob().getJobName();
 		String JobDescription = appoint.getJobSeeker().getJob().getJobDescription();
 		String text = "Your Application/appointmentId is : "+applicantId+" "+"Appointment Date is :"+appointment.getDate()+" "+
 				 "Location :"+appointment.getLocation()+" "+"Job Name :"+JobName+" "+"Job Description :"+JobDescription;
+		
+		Message message = new Message();
+		message.setMessage(text);
+		message.setSenderId("admin");
+		message.setReceiverId(appoint.getJobSeeker().getGraduate().getRoleId().getRoleId());
+		
+		
 		sendEmail(email,text,"Appointment Scheduled AND Location");
 		
 	}
@@ -56,11 +69,20 @@ public class AppointmentService {
 
 	public String rejectAppointment(String applicantId) {
 		Appointment appoint = appointmentRepository.getById(applicantId);
+		String text = "This Email is regarding that Your Application :"+" "+appoint.getApplicantId()+" "+
+				"is rejected by the Employer Due to not satisfied requirement to the Company";
+				String Subject ="Appointment Rejected";
+				
+		Message message = new Message();
+		message.setMessage(Subject+"\n"+text);
+		message.setSenderId("admin");
+		message.setReceiverId(appoint.getJobSeeker().getGraduate().getRoleId().getRoleId());
+	
+		
 		System.out.println(appoint.getJobSeeker().getEmail());
 		appointmentRepository.delete(appoint);
-		String text = "This Email is regarding that Your Application :"+" "+appoint.getApplicantId()+" "+
-		"is rejected by the Employer Due to not satisfied requirement to the Company";
-		String Subject ="Appointment Rejected"; 
+		messageRepository.save(message);
+		
 		sendEmail(appoint.getJobSeeker().getEmail(),text,Subject);
 		return "deleted";
 	}

@@ -30,7 +30,6 @@
           <td>{{employer?.user?.nationality}}</td>
           <td>
             <button class="btn btn-info btn-sm mx-2" (click)="infoEmployer(employer)"> More Details</button>
-            <button class="btn btn-success btn-sm mx-2" (click)="editEmployer(employer)">Edit</button>
             <button class="btn btn-danger btn-sm " (click)="deleteEmployer(employer.roleId.roleId)">Delete</button>
           </td>
         </tr>
@@ -49,19 +48,50 @@
         <button type="button" class="btn btn-close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
-        <p><strong>Grad ID:</strong> {{ selectedEmployer.roleId.roleId }}</p>
-        <p><strong>Name:</strong> {{ selectedEmployer.user.name }}</p>
-        <p><strong>Email:</strong> {{ selectedEmployer.user.email }}</p>
-        <p><strong>Address:</strong> {{ selectedEmployer.user.address }}</p>
-        <p><strong>Phone:</strong> {{ selectedEmployer.user.phone }}</p>
-        <p><strong>Nationality:</strong> {{ selectedEmployer.user.nationality }}</p>
-        <p><strong>Company Name:</strong> {{selectedEmployer.companyName}}</p>
-        <p><strong>Company Type:</strong> {{selectedEmployer.companyType}}</p>
-        <p><strong>Company Size:</strong> {{selectedEmployer.companySize}}</p>
-        <p><strong>Company Address:</strong> {{selectedEmployer.companyAddress}}</p>
-        <p><strong>Company Description:</strong> {{selectedEmployer.companyDescription}}</p>
+        <div class="row">
+        <p class="col-4"><strong>EMP ID:</strong> {{ selectedEmployer.roleId.roleId }}</p>
+        <p class="col-4"><strong>Name:</strong> {{ selectedEmployer.user.name }}</p>
+        <p class="col-4"><strong>Email:</strong> {{ selectedEmployer.user.email }}</p>
+        </div>
+        <div class="row">
+        <p class="col-4"><strong>Address:</strong> {{ selectedEmployer.user.address }}</p>
+        <p class="col-4"><strong>Phone:</strong> {{ selectedEmployer.user.phone }}</p>
+        <p class="col-4"><strong>Nationality:</strong> {{ selectedEmployer.user.nationality }}</p>
+        </div>
+        <div class="row">
+        <p class="col-4"><strong>Company Name:</strong> {{selectedEmployer.companyName}}</p>
+        <p class="col-4"><strong>Company Type:</strong> {{selectedEmployer.companyType}}</p>
+        <p class="col-4"><strong>Company Size:</strong> {{selectedEmployer.companySize}}</p>
+        </div>
+        <div class="row">
+        <p class="col-4"><strong>Company Address:</strong> {{selectedEmployer.companyAddress}}</p>
+        <p class="col-8"><strong>Company Description:</strong> {{selectedEmployer.companyDescription}}</p>
+        </div>
       </div>
       <div class="modal-footer">
+        <h5 style="margin-right:665px;" >Job Created By Employer</h5>
+        <div class="table-responsive">
+        <table class="table table-bordered ">
+          <tr>
+            <th>Job ID</th>
+            <th>Job Name</th>
+            <th>Job Type</th>
+            <th>Job Vacancy</th>
+            <th>Job Salary</th>
+            <th>Job Description</th>
+            <th>Action</th>
+          </tr>
+          <tr *ngFor="let j of selectedEmployer.jobs">
+            <td>{{j.jobId}}</td>
+            <td>{{j.jobName}}</td>
+            <td>{{j.jobType}}</td>
+            <td>{{j.jobVacancy}}</td>
+            <td>{{j.jobSalary}}</td>
+            <td>{{j.jobDescription}}</td>
+            <td> <button class="btn btn-danger btn-sm " (click)="deleteJob(j.jobId)" >Delete</button></td>
+          </tr>
+        </table>
+        </div>
       </div>
     </div>
   </div>
@@ -202,11 +232,28 @@
         <h5 class="modal-title">Confirm Delete</h5>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete this item?</p>
+        <p>Are you sure you want to delete this Employer?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModalforDelete()">Cancel</button>
         <button type="button" class="btn btn-danger" (click)="deleteEmployerByrole()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" *ngIf="selectedJobfordelete">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this Job?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModalforDeleteofJob()">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="deleteJobbyJobId()">Delete</button>
       </div>
     </div>
   </div>

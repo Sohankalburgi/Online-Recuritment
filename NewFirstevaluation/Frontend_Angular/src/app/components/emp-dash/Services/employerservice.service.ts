@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employer, User } from '../Model/Employer.model';
+import { Job } from '../../job-dash/Model/Job.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class EmployerserviceService {
     return this.http.put(`${this.baseUrl}/userupdate/${roleId}`,user,this.httpOptions);
   }
 
+  getAllJobs(roleId:any):Observable<Job[]>{
+    return this.http.get<Job[]>(`${this.baseUrl}/jobs/${roleId}`);
+  }
+
   updateEmployer(employer:Employer,roleId:string):Observable<any>{
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/updateemployer/${roleId}`,employer,this.httpOptions);
@@ -38,5 +43,10 @@ export class EmployerserviceService {
   deleteUserByRole(id:string){
     console.log(id+"this is inside the dleete");
     return this.http.delete(`${this.baseUrl}/userdelete/${id}`);
+  }
+
+  deleteJobByjobId(jobId: number) {
+    console.log(jobId+"this is from delete")
+    return this.http.delete(`${this.baseUrl}/deletejobbyId/${jobId}`);
   }
 }

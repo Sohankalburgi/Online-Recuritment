@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title fs-5">Sent By: {{ message.senderId }}</h5>
           <p class="card-text">Message:</p>
-          <p class="card-text">{{ message.message }}</p>
+          <p class="card-text fw-bolder" [innerHtml] = "message.message | newlineToBr" >{{ message.message }}</p>
           <div class="buttons">
           <button class="btn btn-dark mx-2 " (click)="Replymessage(message)">Reply</button>
           <button class="btn btn-danger " (click)="deletemessage(message.id)">Delete</button>

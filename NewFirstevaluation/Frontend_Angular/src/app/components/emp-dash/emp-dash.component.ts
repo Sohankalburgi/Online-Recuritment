@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { EmployerserviceService } from './Services/employerservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employer, User } from './Model/Employer.model';
+import { Job } from '../job-dash/Model/Job.model';
 
 @Component({
   selector: 'app-emp-dash',
@@ -45,6 +46,10 @@ export class EmpDashComponent implements OnInit {
   employer!:Employer
   user!:User
   selectedEmployerfordelete: any=null;
+  jobs: any[] = []; 
+  job!: Job;
+  selectedJobfordelete: any=null;
+
   constructor(private employerservice:EmployerserviceService,private fb:FormBuilder){}
 
 
@@ -75,12 +80,37 @@ export class EmpDashComponent implements OnInit {
         this.employerservice.getUserbyroleId(i.roleId.roleId).subscribe(user=>{
           i.user = user;
         })
+        this.employerservice.getAllJobs(i.roleId.roleId).subscribe(j=>{
+          i.jobs = j;
+        })
       })
       console.log(this.employers)
     })
   }
 
+  deleteJob(id: number) {
+    // Delete the job
+    console.log(id);
+    this.selectedJobfordelete = id;
+    console.log(this.selectedJobfordelete);
+  }
 
+  deleteJobbyJobId() {
+    console.log(this.selectedJobfordelete)
+    this.employerservice.deleteJobByjobId(this.selectedJobfordelete).subscribe((response)=>{
+      console.log("submitted");
+      alert("deleted");
+      },error=>{
+        alert("Internal server error")
+      });
+    this.closeModalforDeleteofJob();
+    this.closeModalforDelete();
+    this.loadEmployers();
+  }
+
+  closeModalforDeleteofJob():void{
+    this.selectedJobfordelete = null;
+  }
   onSubmit(){
     if(this.EmployerForm.valid){
       const formValues = this.EmployerForm.value;
@@ -185,7 +215,6 @@ export class EmpDashComponent implements OnInit {
     },error=>{
       alert("internal server error")
     });
-   
     this.closeModalforDelete();
     this.loadEmployers();
   }

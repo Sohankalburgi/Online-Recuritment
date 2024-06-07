@@ -52,4 +52,9 @@ export class GraduateserviceService {
     return this.http.delete(`${this.baseUrl}/userdelete/${id}`);
   }
 
+  getJobSeekerById(id:string):Observable<any>{
+    console.log(id+"this is jobseeker");
+    return this.http.get<any>(`${this.baseUrl}/jobseekergraduate/${id}`)
+  }
+
 }

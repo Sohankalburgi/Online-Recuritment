@@ -63,7 +63,7 @@ public class MessageServices {
 	public void sendtograd(Message message) {
 		System.out.println(message.getId());
 		Message prevMessage = messageRepository.getById(message.getId());
-		String noti = System.lineSeparator()+prevMessage.getMessage()+System.lineSeparator()+ "The Reply From: "+message.getSenderId()+System.lineSeparator()+message.getMessage();
+		String noti =prevMessage.getMessage()+"\n"+ "The Reply From:"+"admin"+"\n"+message.getMessage();
 		message.setMessage(noti);
 		System.out.println(message.getMessage());
 		messageRepository.save(message);

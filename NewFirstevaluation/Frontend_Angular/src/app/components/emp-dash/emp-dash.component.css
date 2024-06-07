@@ -1,27 +1,20 @@
-/* .container {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-} */
-
-/* .card {
-  width: 18rem; 
-} */
-
-.card-body {
-  text-align: center;
 }
 
 .card {
-  margin: auto; 
-  margin-top: 50px; 
+  margin: auto;
+  margin-top: 50px;
   width: 120%;
   background-color: #113f5f;
   color: white;
 }
 
 .card-body {
+  text-align: center;
   padding: 10px; /* Add padding to the card body */
 }
 
@@ -52,10 +45,8 @@
   background-color: rgba(0,0,0,0.4);
   justify-content: center;
   align-items: center;
-  padding-left: 10px;
-  width: 100%;
+  padding: 10px;
   overflow: auto;
-  padding-right:10px;
 }
 
 /* Modal Dialog */
@@ -64,9 +55,8 @@
   align-items: center;
   justify-content: center;
   width: auto;
-  max-width:900px;
+  max-width: 1000px;
   margin: 0;
-  padding-left: 30px;
   overflow: auto;
 }
 
@@ -78,7 +68,7 @@
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   width: 100%;
-  display:inline-block;
+  max-width: 1000px;
   animation: fadeIn 0.3s;
   position: relative;
 }
@@ -126,6 +116,7 @@
   border-top: 1px solid #ddd;
   padding-top: 10px;
   margin-top: 20px;
+  overflow-y: auto;
 }
 
 /* Fade-in animation */
@@ -134,3 +125,16 @@
   to {opacity: 1;}
 }
 
+.table-responsive {
+  max-height: 300px; /* Set your desired max-height */
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 20px;
+  margin-right: 100px;
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #ddd;
+}

@@ -9,6 +9,8 @@
   
   .card-text {
     color: #495057;
+    margin: 0px;
+    padding: 0px;
   }
   
   .btn-danger {
@@ -26,23 +28,5 @@
     color: #343a40;
   }
   
-  .mb-4 {
-    margin-bottom: 1.5rem;
-  }
   
-  .mb-3 {
-    margin-bottom: 1rem;
-  }
-  
-  .mt-2 {
-    margin-top: 0.5rem;
-  }
-  
-  .p-5 {
-    padding: 3rem !important;
-  }
-  
-  .p-5 .card {
-    margin-bottom: 1.5rem;
-  }
   

@@ -24,7 +24,7 @@
   <div class="card-body">
     <h2 class="card-title">Graduates Information</h2>
     <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
-    <div class="table-responsive">
+    <div class="">
       <table class="table table-bordered">
         <!-- Table Header -->
         <thead class="thead-dark">
@@ -48,7 +48,7 @@
             <td>{{graduate?.user?.phone}}</td>
             <td>
               <button class="btn btn-info btn-sm mx-2"(click)="infoGradute(graduate)" > More Details</button>
-              <button class="btn btn-success btn-sm mx-2" (click)="editGraduate(graduate)">Edit</button>
+              <!-- <button class="btn btn-success btn-sm mx-2" (click)="editGraduate(graduate)">Edit</button> -->
               <button class="btn btn-danger btn-sm " (click)="deleteGraduate(graduate.roleId.roleId)">Delete</button>
             </td>
           </tr>
@@ -68,29 +68,61 @@
         <button type="button" class="btn btn-close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
-        <p><strong>Grad ID:</strong> {{ selectedGraduate.roleId.roleId }}</p>
-        <p><strong>Name:</strong> {{ selectedGraduate.user?.name }}</p>
-        <p><strong>Email:</strong> {{ selectedGraduate.user.email }}</p>
-        <p><strong>Address:</strong> {{ selectedGraduate.user.address }}</p>
-        <p><strong>Phone:</strong> {{ selectedGraduate.user.phone }}</p>
-        <p><strong>Nationality:</strong> {{ selectedGraduate.user.nationality }}</p>
-        <p><strong>City:</strong> {{ selectedGraduate.city }}</p>
-        <p><strong>State:</strong> {{ selectedGraduate.state }}</p>
-        <p><strong>PinCode:</strong> {{ selectedGraduate.pinCode }}</p>
-        <p><strong>YearOfPassing:</strong> {{ selectedGraduate.yearOfPassing}}</p>
-        <p><strong>Cgpa:</strong> {{ selectedGraduate.cgpa }}</p>
-        <p><strong>College Name :</strong> {{selectedGraduate.college.collegeName}}</p>
-        <p><strong>College Description :</strong> {{selectedGraduate.college.collegeDescription}}</p>
-        <p><strong>College Address :</strong> {{selectedGraduate.college.collegeAddress}}</p>
+        <div class="row">
+        <p class="col-4"><strong>Grad ID:</strong> {{ selectedGraduate.roleId.roleId }}</p>
+        <p class="col-4"><strong>Name:</strong> {{ selectedGraduate.user?.name }}</p>
+        <p class="col-4"><strong>Email:</strong> {{ selectedGraduate.user.email }}</p>
+        </div>
+        <div class="row">
+        <p class="col-4"><strong>Address:</strong> {{ selectedGraduate.user.address }}</p>
+        <p class="col-4"><strong>Phone:</strong> {{ selectedGraduate.user.phone }}</p>
+        <p class="col-4"><strong>Nationality:</strong> {{ selectedGraduate.user.nationality }}</p>
+        </div>
+        <div class="row">
+        <p class="col-4"><strong>City:</strong> {{ selectedGraduate.city }}</p>
+        <p class="col-4"><strong>State:</strong> {{ selectedGraduate.state }}</p>
+        <p class="col-4"><strong>PinCode:</strong> {{ selectedGraduate.pinCode }}</p>
+        </div>
+        <div class="row">
+        <p class="col-4"><strong>YearOfPassing:</strong> {{ selectedGraduate.yearOfPassing}}</p>
+        <p class="col-4"><strong>Cgpa:</strong> {{ selectedGraduate.cgpa }}</p>
+        <p class="col-4"><strong>College Name :</strong> {{selectedGraduate.college.collegeName}}</p>
+        </div>
+        <div class="row">
+          <p class="col-4"><strong>College Address :</strong> {{selectedGraduate.college.collegeAddress}}</p>
+          <p class="col-8"><strong>College Description :</strong> {{selectedGraduate.college.collegeDescription}}</p>
+        </div>
+
+       
       </div>
       <div class="modal-footer">
+
+        <h5 style="margin-right:665px;">Applied Jobs By Graduate</h5>
+        <div class="table-responsive">
+        <table class="table mx-3">
+          <tr >
+            <th>Job Id:</th>
+            <th>Job Name:</th>
+            <th>Job Type:</th>
+            <th>Job Salary:</th>
+            <th>Job Description:</th>
+          </tr>
+          <tr *ngFor="let js of selectedGraduate.jobSeeker">
+            <td>{{js.job.jobId}}</td>
+            <td>{{js.job.jobName}}</td>
+            <td>{{js.job.jobType}}</td>
+            <td>{{js.job.jobSalary}}</td>
+            <td>{{js.job.jobDescription}}</td>
+          </tr>
+        </table>
+      </div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- EDIt Modal -->
-<div class="modal w-100" *ngIf="selectedGraduateforedit">
+<!-- <div class="modal w-100" *ngIf="selectedGraduateforedit">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -222,7 +254,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <!-- Delete Confirmation Modal -->
@@ -233,7 +265,7 @@
         <h5 class="modal-title">Confirm Delete</h5>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete this item?</p>
+        <p>Are you sure you want to delete this Gradute?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModalforDelete()">Cancel</button>

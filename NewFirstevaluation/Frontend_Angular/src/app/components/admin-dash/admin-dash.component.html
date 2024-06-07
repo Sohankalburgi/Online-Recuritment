@@ -15,24 +15,9 @@
       <!-- Navigation items -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
-          <!-- Home -->
-          <!-- *ngIf="currentRoute !== '/home'" -->
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
-          </li>
 
 
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="post()">Post Jobs</a>
-          </li>
 
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="postappoint()">Appointments</a>
-          </li>
-
-          <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="jobsforyou()">Explore Jobs</a>
-          </li>
 
 
 
@@ -42,10 +27,6 @@
 
 
           <!-- Services -->
-          <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
-          </li>
 
 
           <!-- Blog  -->
@@ -63,23 +44,13 @@
 
 
 
-          <li class="nav-item" >
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/login"  routerLinkActive="active">Login</a>
-          </li>
 
-          <li>
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/register"  routerLinkActive="active">Register</a>
-          </li>
-
-          <li>
-            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')" routerLink="/admin-login" routerLinkActive="active">Admin</a>
-          </li>
         </ul>
 
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" routerLink="/home" >Logout</a>
+      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" (click)="logout()" >Logout</a>
     </div>
   </nav>
 </div>
@@ -92,7 +63,7 @@
       <div class="sidebar-sticky">
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-1">
-          <span routerLink="/home">MENU</span>
+          <span >MENU</span>
         </h6>
 
 
@@ -106,8 +77,11 @@
           <li class="nav-item" [class.active]="isActive('/admin-dash/employers')">
             <a class="nav-link" routerLink="/admin-dash/employers">Employers</a>
           </li>
-          <li class="nav-item" [class.active]="isActive('/admin-dash/jobs')">
+          <!-- <li class="nav-item" [class.active]="isActive('/admin-dash/jobs')">
             <a class="nav-link" routerLink="/admin-dash/jobs">Jobs</a>
+          </li> -->
+          <li class="nav-item" [class.active]="isActive('/admin-dash/inbox')">
+            <a class="nav-link" routerLink="/admin-dash/admininbox">Inbox</a>
           </li>
 
         </ul>

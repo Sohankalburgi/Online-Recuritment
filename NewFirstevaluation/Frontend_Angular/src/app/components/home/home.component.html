@@ -22,11 +22,11 @@
           </li>
 
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" (click)="post()">Post Jobs</a>
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" *ngIf="roleIdString.startsWith('EMP')" (click)="post()">Post Jobs</a>
           </li>
 
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}"  (click)="postappoint()">Appointments</a>
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" *ngIf="roleIdString.startsWith('EMP')" (click)="postappoint()">Appointments</a>
           </li>
 
 
@@ -35,28 +35,28 @@
           <!-- Search Jobs -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
           <li class="nav-item" >
-            <a class="nav-link" (click)=jobsforyou() routerLinkActive="active">Explore Jobs</a>
+            <a class="nav-link" (click)=jobsforyou()  routerLinkActive="active">Explore Jobs</a>
           </li>
 
 
           <!-- Services -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
-          </li>
+          </li> -->
 
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+            <a class="nav-link" routerLink="/blogs/{{roleIdString}}" routerLinkActive="active">Blogs</a>
           </li>
 
 
           <!-- About Us -->
           <!-- *ngIf="currentRoute !== '/login'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/about-us" routerLinkActive="active">About Us</a>
+            <a class="nav-link" routerLink="/about-us/{{roleIdString}}" routerLinkActive="active">About Us</a>
           </li>
 
 
@@ -77,7 +77,7 @@
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" routerLink="/home" >Logout</a>
+      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" (click)="logout()" >Logout</a>
     </div>
   </nav>
 </div>

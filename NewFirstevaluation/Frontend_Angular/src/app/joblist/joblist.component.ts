@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { jobList } from './Model/jobList.model';
 import { FormControl, FormControlName } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthServiceService } from '../components/ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-joblist',
@@ -17,7 +18,7 @@ export class JoblistComponent {
   roleIdString: string | null = null;
   searchredirect :string | null = null;
   constructor(private http: HttpClient,private joblistservice:JobListService,private router:ActivatedRoute
-    ,private route:Router
+    ,private route:Router, private authservice:AuthServiceService
   ) { }
   ngOnInit(): void {
     this.router.paramMap.subscribe(params=>{
@@ -64,5 +65,9 @@ export class JoblistComponent {
     else{
       this.route.navigate([`/jobdescription/${this.roleIdString}/${jobId}`]);
     }
+  }
+
+  logout(){
+    this.authservice.logout();
   }
 }

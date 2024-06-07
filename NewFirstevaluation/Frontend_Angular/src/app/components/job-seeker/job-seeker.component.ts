@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobseekerserviceService } from './Service/jobseekerservice.service';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { JobseekerserviceService } from './Service/jobseekerservice.service';
   styleUrl: './job-seeker.component.css'
 })
 export class JobSeekerComponent {
-  
+
 
 
   jobSeekerForm!:FormGroup;
@@ -21,16 +22,16 @@ export class JobSeekerComponent {
   studentId!:number;
   selectedFile!: File;
 
-    constructor(private fb:FormBuilder,private router:ActivatedRoute,private route:Router,private jobseekerservice:JobseekerserviceService){
-      
+    constructor(private fb:FormBuilder,private router:ActivatedRoute,private route:Router,private jobseekerservice:JobseekerserviceService, private authService:AuthServiceService){
+
     }
 
     ngOnInit(): void {
       this.router.paramMap.subscribe(params=>{
         this.roleIdString = String(params.get('roleIdString'));
       });
-  
-  
+
+
       this.router.paramMap.subscribe(params=>{
         this.jobId = Number(params.get('jobId'));
       });
@@ -39,7 +40,7 @@ export class JobSeekerComponent {
         console.log(data);
         this.studentId = Number(data);
         console.log(this.studentId)
-        
+
       })
 
       this.jobSeekerForm = this.fb.group({
@@ -51,7 +52,7 @@ export class JobSeekerComponent {
         language : ['', Validators.required],
         keySkill : ['', Validators.required],
         project : ['' , Validators.required],
-        
+
         areaOfInterest : ['', Validators.required],
         job:{
           jobId:this.jobId
@@ -61,7 +62,7 @@ export class JobSeekerComponent {
           roleId:{
             roleId:this.roleIdString
           },
-        }  
+        }
       });
     }
 
@@ -90,7 +91,7 @@ export class JobSeekerComponent {
             console.log("file uploaded")
           },
           (error)=>{
-            
+
             alert("Internal Server Error OR Duplicate Entry")
           }
         );
@@ -108,7 +109,7 @@ export class JobSeekerComponent {
 
     isInvalid(controlName: string): boolean {
       const control = this.jobSeekerForm.get(controlName);
-    
+
       return control ? control.invalid && (control.dirty || control.touched) : false;
     }
 
@@ -156,5 +157,9 @@ export class JobSeekerComponent {
       return '';
     }
 
+
+    logout(){
+      this.authService.logout();
+    }
 
 }

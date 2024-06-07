@@ -2,8 +2,8 @@
   <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
     <div class="container-fluid">
       <!-- Centered brand -->
-      <img src="" alt="">
-      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
+      <img src="assets/ors-logo.png" alt="logo" style="height: 55px; width:190px; margin-right: 10px;">
+
 
       <!-- Toggler button for small screens -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -17,18 +17,18 @@
           <!-- Home -->
           <!-- *ngIf="currentRoute !== '/home'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
+            <a class="nav-link" (click)="home()" routerLinkActive="active">Home</a>
           </li>
 
 
 
 
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="post()">Post Jobs</a>
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" *ngIf="roleIdString.startsWith('EMP')" routerLinkActive="active" (click)="post()">Post Jobs</a>
           </li>
 
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" (click)="postappoint()">Appointments</a>
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active" *ngIf="roleIdString.startsWith('EMP')" (click)="postappoint()">Appointments</a>
           </li>
 
           <li class="nav-item" >
@@ -37,38 +37,37 @@
 
           <!-- Services -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
-          </li>
+
 
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+            <a class="nav-link" routerLink="/blogs/{{roleIdString}}" routerLinkActive="active">Blogs</a>
           </li>
 
 
           <!-- About Us -->
           <!-- *ngIf="currentRoute !== '/login'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/about-us" routerLinkActive="active">About Us</a>
+            <a class="nav-link" routerLink="/about-us/{{roleIdString}}" routerLinkActive="active">About Us</a>
           </li>
 
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/login"  routerLinkActive="active">Login</a>
+            <a class="nav-link" routerLink="/login" *ngIf="!(roleIdString.startsWith('EMP') || roleIdString.startsWith('GRAD'))" routerLinkActive="active">Login</a>
           </li>
 
           <li>
-            <a class="nav-link"  routerLink="/register"  routerLinkActive="active">Register</a>
+            <a class="nav-link"  routerLink="/register"  *ngIf="!(roleIdString.startsWith('EMP') || roleIdString.startsWith('GRAD'))" routerLinkActive="active">Register</a>
           </li>
         </ul>
 
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-
+      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" (click)="logout()" >Logout</a>
     </div>
+
   </nav>
 </div>
 

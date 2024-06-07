@@ -1,15 +1,36 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.css'
 })
-export class AboutUsComponent {
+export class AboutUsComponent implements OnInit{
   roleIdString!:string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private route:ActivatedRoute, private authService:AuthServiceService) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.roleIdString = String(params.get('roleIdString'));
+      console.log(this.roleIdString);
+    });
+  }
+
+
+  home(){
+    if(this.roleIdString.startsWith("EMP")){
+      this.router.navigate([`/home/${this.roleIdString}`]);
+    }
+    else if(this.roleIdString.startsWith("GRAD")){
+      this.router.navigate([`/gradhome/${this.roleIdString}`])
+    }
+    else{
+      this.router.navigate(['/home']);
+    }
+  }
 
   post(){
     console.log(this.roleIdString);
@@ -32,6 +53,11 @@ export class AboutUsComponent {
   jobsforyou(){
     console.log(this.roleIdString);
     this.router.navigate([`/gradhome/${this.roleIdString}`])
+  }
+
+
+  logout(){
+    this.authService.logout();
   }
 
 }

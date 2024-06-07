@@ -1,0 +1,21 @@
+
+  
+
+  <div class="background pt-5">
+    <div class="card">
+      <div class="card-body mt-3">
+        <h2 class="card-title display-2">Contact Us</h2>
+        <div class="fs-4"><strong>Email: {{ adminEmail }}</strong></div>
+  
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea formControlName="message" id="message" cols="30" rows="6" class="form-control"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary mt-3" [disabled]="!contactForm.valid">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

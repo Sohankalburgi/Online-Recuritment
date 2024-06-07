@@ -59,7 +59,7 @@ public class User {
 	@Transient
 	private String signas;
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
 	@JoinColumn(name="roleId")
 	private Role role;
 	

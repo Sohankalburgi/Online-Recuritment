@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployerregistrationserviceService } from './Services/employerregistrationservice.service';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-emp-register',
@@ -13,7 +14,7 @@ export class EmpRegisterComponent implements OnInit {
   roleIdString: string | null = null;
 
   constructor(private formBuilder: FormBuilder,private router:ActivatedRoute,
-    private employerservice:EmployerregistrationserviceService,private route:Router
+    private employerservice:EmployerregistrationserviceService,private route:Router, private authService:AuthServiceService
   ) { }
 
   ngOnInit(): void {
@@ -95,5 +96,9 @@ export class EmpRegisterComponent implements OnInit {
   jobsforyou(){
     console.log(this.roleIdString);
     this.route.navigate([`/gradhome/${this.roleIdString}`])
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }

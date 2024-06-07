@@ -6,6 +6,10 @@ height: 1px;
 background: #eee;
 }
 
+.container{
+  margin-left: 15%;
+}
+
 .input-outline{
   border: 1px solid #050e17; /* Change the color as needed */
   border-radius: 0.25rem;

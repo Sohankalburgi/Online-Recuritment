@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-admin-dash',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class AdminDashComponent {
   roleIdString!:string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService:AuthServiceService) {}
 
   navigate(path: string) {
     this.router.navigate([`/admin-dash/${path}`]);
@@ -40,6 +41,11 @@ export class AdminDashComponent {
   jobsforyou(){
     console.log(this.roleIdString);
     this.router.navigate([`/gradhome/${this.roleIdString}`])
+  }
+
+
+  logout(){
+    this.authService.logout();
   }
 
 }

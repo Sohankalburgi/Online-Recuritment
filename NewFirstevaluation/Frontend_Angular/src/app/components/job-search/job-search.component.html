@@ -20,6 +20,7 @@
           </li>
 
 
+<<<<<<< HEAD
 
 
 
@@ -28,21 +29,28 @@
           <!-- *ngIf="currentRoute !== '/job-search'" -->
           <li class="nav-item">
             <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+=======
+          <li class="nav-item" >
+            <a class="nav-link"  *ngIf="roleIdString?.startsWith('GRAD')" routerLink="/gradmessage/{{roleIdString}}" routerLinkActive="active">Contact Us</a>
+>>>>>>> c454c7a9931695cb2f004311a4a1ec65702e29e9
           </li>
 
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+            <a class="nav-link" routerLink="/blogs/{{roleIdString}}" routerLinkActive="active">Blogs</a>
           </li>
 
 
           <!-- About Us -->
           <!-- *ngIf="currentRoute !== '/login'" -->
           <li class="nav-item" >
-            <a class="nav-link" routerLink="/about-us" routerLinkActive="active">About Us</a>
+            <a class="nav-link" routerLink="/about-us/{{roleIdString}}" routerLinkActive="active">About Us</a>
           </li>
+          
+         
+
 
 
           <li class="nav-item" >
@@ -65,8 +73,12 @@
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
+<<<<<<< HEAD
 
       <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLink="/home" >Logout</a>
+=======
+      <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" (click)="logout()" >Logout</a>
+>>>>>>> c454c7a9931695cb2f004311a4a1ec65702e29e9
     </div>
   </nav>
 </div>
@@ -89,10 +101,7 @@
           </div>
       </div>
 
-      <!-- Filter buttons -->
-      <div class="d-flex flex-wrap mb-4">
-          <button type="button" class="btn btn-outline-secondary m-2" style="color: #050101;" *ngFor="let filter of filters">{{ filter }}</button>
-      </div>
+   
 
       <!-- Companies section -->
       <div class="mb-5">

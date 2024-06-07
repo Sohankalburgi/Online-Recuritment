@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StudentregisterServiceService } from './StudentService/studentregister-service.service';
 import { College } from './Model/college.model';
 import { Student } from '../Model/student.model';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 
 @Component({
@@ -19,8 +20,8 @@ export class StudRegisterComponent {
   studentRegister!:Student;
 
   constructor(private fb: FormBuilder,private router:ActivatedRoute,
-    private studentservice:StudentregisterServiceService,private route:Router
-    
+    private studentservice:StudentregisterServiceService,private route:Router, private authService:AuthServiceService
+
   ){
   }
 
@@ -30,7 +31,7 @@ export class StudRegisterComponent {
       this.roleIdString = params.get('roleIdString');
       console.log('RoleIdString:',this.roleIdString);
     });
-    
+
     this.studRegisterForm = this.fb.group({
       city : ['', Validators.required],
       state: ['', Validators.required],
@@ -70,7 +71,7 @@ export class StudRegisterComponent {
     console.log(this.collegeRegister)
     if (this.studRegisterForm.valid) {
       // Handle form submission logic here, e.g., sending data to server
-     
+
       this.studentservice.savestudent(this.studentRegister).subscribe(response=>{
         console.log("submitted")
         alert("Submitted");
@@ -142,4 +143,8 @@ export class StudRegisterComponent {
   }
 
 
+
+  logout(){
+    this.authService.logout();
+  }
 }

@@ -1,0 +1,111 @@
+/* Add some basic styles for the card */
+.card {
+    max-width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+    backdrop-filter: blur(0.5px); /* Optional: adds a blur effect behind the card */
+    margin: auto;
+    border-color: #0056b3;
+    margin-left: 30%;
+}
+
+/* Style the card body */
+.card-body {
+    padding: 20px;
+}
+
+/* Style the card title */
+.card-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Style the email text */
+.fs-4 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Style the form group */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Style the form label */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Style the textarea */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+/* Style the submit button */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Add some margin to the top of the submit button */
+.mt-3 {
+    margin-top: 1rem;
+}
+.background{
+    
+   
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 1000px;
+    height: 100vh;
+    
+}
+.navbar {
+    background: linear-gradient(to right, #6a1b9a, #00b4d9);
+    color: white;
+  }
+
+  .navbar-brand, .nav-link {
+    color: white;
+  }
+
+  .navbar-brand:hover, .nav-link:hover {
+    color: #ddd;
+  }
+
+  .nav-link.active {
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
+  }
+
+  .background-section {
+    background-color: rgb(215, 226, 238);
+    padding-top: 5px; /* Adjust as needed */
+  }
+

@@ -80,7 +80,10 @@
   }
   
   .nav-link, .text-1{
-    color: rgb(250, 248, 248);
+    color: rgb(250, 250, 250);
     font-weight: bold;
   }
-  
+  .nav-link.active {
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
+  }

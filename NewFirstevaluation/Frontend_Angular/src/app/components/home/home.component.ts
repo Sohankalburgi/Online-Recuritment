@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomeComponent {
 
   roleIdString!:string;
-  constructor(private route: Router,private router:ActivatedRoute) {
+  constructor(private route: Router,private router:ActivatedRoute,private authService:AuthServiceService) {
     
   }
   
@@ -41,5 +42,9 @@ export class HomeComponent {
   jobsforyou(){
     console.log(this.roleIdString);
     this.route.navigate([`/gradhome/${this.roleIdString}`])
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }

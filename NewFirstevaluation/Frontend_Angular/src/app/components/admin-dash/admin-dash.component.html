@@ -31,14 +31,14 @@
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <li class="nav-item" >
+          <li class="nav-item">
             <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
           </li>
 
 
           <!-- About Us -->
           <!-- *ngIf="currentRoute !== '/login'" -->
-          <li class="nav-item" >
+          <li class="nav-item">
             <a class="nav-link" routerLink="/about-us" routerLinkActive="active">About Us</a>
           </li>
 
@@ -50,7 +50,7 @@
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" (click)="logout()" >Logout</a>
+      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" (click)="logout()">Logout</a>
     </div>
   </nav>
 </div>
@@ -63,7 +63,7 @@
       <div class="sidebar-sticky">
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-1">
-          <span >MENU</span>
+          <span>MENU</span>
         </h6>
 
 
@@ -90,24 +90,23 @@
 
     <!-- Main content -->
 
-<div class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
-  <!-- style=" background-image: url('https://wallpapers.com/images/hd/minimalist-aesthetic-actuary-work-laptop-wtvol12uoktgz31i.jpg'); background-size: cover; background-repeat: no-repeat; backdrop-filter: blur(5px); background-position: center;
+    <div class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
+      <!-- style=" background-image: url('https://wallpapers.com/images/hd/minimalist-aesthetic-actuary-work-laptop-wtvol12uoktgz31i.jpg'); background-size: cover; background-repeat: no-repeat; backdrop-filter: blur(5px); background-position: center;
   background-attachment: fixed; width: 100%;
   height: 100%" -->
-  <!-- Search bar -->
-  <div class="input-group mb-3 align-items-stretch">
-    <div class="input-group-append ml-auto align-items-stretch">
-      <span class="input-group-text align-items-stretch"> Welcome Admin !
-        <!-- Admin logo -->
-        <img src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="Admin Logo" class="admin-logo">
-      </span>
+      <!-- Search bar -->
+      <div class="input-group mb-3 align-items-stretch">
+        <div class="input-group-append ml-auto align-items-stretch">
+          <span class="input-group-text align-items-stretch"> Welcome Admin !
+            <!-- Admin logo -->
+            <img src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="Admin Logo"
+              class="admin-logo">
+          </span>
+        </div>
+      </div>
+
+      <!-- Main content for each section will be displayed here -->
+      <router-outlet></router-outlet>
     </div>
   </div>
-
-  <!-- Main content for each section will be displayed here -->
-  <router-outlet></router-outlet>
 </div>
-</div>
-</div>
-
-

@@ -47,7 +47,7 @@
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" *ngIf="(studentId?.startsWith('GRAD'))"  routerLink="/home" >Logout</a>
+      <a class="nav-link" *ngIf="(studentId?.startsWith('GRAD'))"  (click)="logout()" >Logout</a>
     </div>
   </nav>
 </div>

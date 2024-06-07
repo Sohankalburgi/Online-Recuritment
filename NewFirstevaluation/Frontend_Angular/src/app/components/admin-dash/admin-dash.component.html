@@ -15,10 +15,10 @@
       <!-- Navigation items -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
-          
 
 
-         
+
+
 
 
           <!-- Search Jobs -->
@@ -27,7 +27,7 @@
 
 
           <!-- Services -->
-       
+
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
@@ -44,13 +44,13 @@
 
 
 
-         
+
         </ul>
 
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" routerLink="/home" >Logout</a>
+      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" (click)="logout()" >Logout</a>
     </div>
   </nav>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobregisterserviceService } from './jobregisterservice/jobregisterservice.service';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-job-register',
@@ -16,7 +17,7 @@ export class JobRegisterComponent implements OnInit{
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
     constructor(private fb:FormBuilder,private router:ActivatedRoute,private jobregisterService:JobregisterserviceService,
-      private route:Router
+      private route:Router, private authService:AuthServiceService
     ){
 
     }
@@ -121,6 +122,13 @@ export class JobRegisterComponent implements OnInit{
     jobsforyou(){
       console.log(this.roleIdString);
       this.route.navigate([`/gradhome/${this.roleIdString}`])
+    }
+
+
+
+
+    logout(){
+      this.authService.logout();
     }
 
 }

@@ -41,7 +41,7 @@
 
 
 
-          
+
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
@@ -74,7 +74,7 @@
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" routerLink="/home" >Logout</a>
+      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" (click)="logout()" >Logout</a>
     </div>
   </nav>
 </div>

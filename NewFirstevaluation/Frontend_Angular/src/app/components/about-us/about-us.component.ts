@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-about-us',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AboutUsComponent implements OnInit{
   roleIdString!:string;
 
-  constructor(private router: Router,private route:ActivatedRoute) {}
+  constructor(private router: Router,private route:ActivatedRoute, private authService:AuthServiceService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -52,6 +53,11 @@ export class AboutUsComponent implements OnInit{
   jobsforyou(){
     console.log(this.roleIdString);
     this.router.navigate([`/gradhome/${this.roleIdString}`])
+  }
+
+
+  logout(){
+    this.authService.logout();
   }
 
 }

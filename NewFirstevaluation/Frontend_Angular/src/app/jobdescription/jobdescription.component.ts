@@ -3,6 +3,7 @@ import { JobDescription } from './Model/jobDescription.model';
 import { JobdescriptionserviceService } from './service/jobdescriptionservice.service';
 import { companyDescription } from './Model/companyDescription.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthServiceService } from '../components/ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-jobdescription',
@@ -10,17 +11,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './jobdescription.component.css'
 })
 export class JobdescriptionComponent implements OnInit {
-  
+
   jobDescriptionData : JobDescription | undefined;
   companyDescriptionData :companyDescription | undefined
 
   jobId!:number;
- 
+
   studentId:string | undefined;
-  
+
 
   constructor(private jobdescriptionservice:JobdescriptionserviceService,private router:ActivatedRoute,
-    private route:Router
+    private route:Router, private authService:AuthServiceService
   ){
   }
 
@@ -40,7 +41,7 @@ export class JobdescriptionComponent implements OnInit {
     this.jobdescriptionservice.getJobDescription(this.jobId).subscribe(data=>{
       this.jobDescriptionData=data;
       const employerId = data.roleId.roleId;
-      
+
       this.jobdescriptionservice.getCompanyDescription(employerId).subscribe(data=>{
         this.companyDescriptionData = data;
       });
@@ -53,8 +54,11 @@ export class JobdescriptionComponent implements OnInit {
     console.log(this.studentId)
     this.route.navigate([`/job-seeker/${this.studentId}/${this.jobId}`])
   }
-  
 
-  
+
+  logout(){
+    this.authService.logout();
+  }
+
 
 }

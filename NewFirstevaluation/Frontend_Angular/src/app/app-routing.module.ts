@@ -169,6 +169,12 @@ const routes: Routes = [
     path:'gradhome',
     component:JobSearchComponent
   },
+
+  {
+    path: 'job-seeker',
+    component: JobSeekerComponent
+  },
+
   {
     path: 'emp-home-page/:roleIdString', component: EmpHomePageComponent,
     children: [

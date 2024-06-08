@@ -233,6 +233,19 @@
                   </div>
                 </div>
               </div>
+
+              <div class="form-outline mb-3">
+                <label for="jobLocation" class="col-form-label" style="font-weight: 600;">Job Location:</label>
+                <div id="inputfield">
+                  <input type="text" class="form-control input-outline" id="jobLocation" formControlName="jobLocation" placeholder="Location">
+                  <div *ngIf="isInvalid('jobLocation')" class="text-danger">
+                    {{ getErrorMessage('jobLocation') }}
+                  </div>
+                </div>
+              </div>
+
+
+
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Post Job</button>
               </div>

@@ -79,6 +79,7 @@
             <th>Job Vacancy</th>
             <th>Job Salary</th>
             <th>Job Description</th>
+            <th>Job Location</th>
             <th>Action</th>
           </tr>
           <tr *ngFor="let j of selectedEmployer.jobs">
@@ -88,6 +89,7 @@
             <td>{{j.jobVacancy}}</td>
             <td>{{j.jobSalary}}</td>
             <td>{{j.jobDescription}}</td>
+            <td>{{j.jobLocation}}</td>
             <td> <button class="btn btn-danger btn-sm " (click)="deleteJob(j.jobId)" >Delete</button></td>
           </tr>
         </table>

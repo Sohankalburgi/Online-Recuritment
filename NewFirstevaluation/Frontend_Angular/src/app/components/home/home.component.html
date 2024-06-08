@@ -39,12 +39,9 @@
           </li>
 
 
-          <!-- Services -->
-          <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
-          </li> -->
-
+          <li class="nav-item" >
+            <a class="nav-link"  *ngIf="roleIdString?.startsWith('EMP')" routerLink="/gradmessage/{{roleIdString}}" routerLinkActive="active">Contact Us/Notification</a>
+          </li>
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.example.OnlineRecruitment.Entities.Graduate;
 import com.example.OnlineRecruitment.Entities.Job;
@@ -45,6 +46,7 @@ public class JobService {
 		updateJob.setJobSalary(job.getJobSalary());
 		updateJob.setJobType(job.getJobType());
 		updateJob.setJobVacancy(job.getJobVacancy());
+		updateJob.setJobLocation(job.getJobLocation());
 		
 		jobRepository.save(updateJob);
 	}
@@ -60,8 +62,19 @@ public class JobService {
 	}
 	
 	public List<Job> getJobsBySearch(String prefix){
+		boolean numeric = true;
+		System.out.println(prefix);
+		numeric = prefix.matches("-?\\d+(\\.\\d+)?");
+		
+		if(numeric) {
+			System.out.println("true");
+			return jobRepository.findBySalary(Integer.parseInt(prefix));
+		}
+		else {
 		prefix = prefix+"%";
+		System.out.println("false");
 		return jobRepository.findTheJobsOnSearch(prefix);
+		}
 	}
 	
 	public String getRoleIdbYjobId(Integer id) {

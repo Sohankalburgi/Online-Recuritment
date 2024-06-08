@@ -14,8 +14,10 @@ import com.example.OnlineRecruitment.Classes.FileUtil;
 import com.example.OnlineRecruitment.Entities.Appointment;
 import com.example.OnlineRecruitment.Entities.Job;
 import com.example.OnlineRecruitment.Entities.JobSeeker;
+import com.example.OnlineRecruitment.Entities.Message;
 import com.example.OnlineRecruitment.Repositories.JobRepository;
 import com.example.OnlineRecruitment.Repositories.JobSeekerRepository;
+import com.example.OnlineRecruitment.Repositories.MessageRepository;
 @Service
 public class JobSeekerService {
 
@@ -33,6 +35,9 @@ public class JobSeekerService {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private MessageRepository messageRepository;
+	
 
 	public boolean createJobSeeker(JobSeeker jobSeeker) {
 		String gradId = jobSeeker.getGraduate().getRoleId().getRoleId();
@@ -43,6 +48,7 @@ public class JobSeekerService {
 		String applicantId = gradId.concat(jobId);
 		
 		appointment.setApplicantId(applicantId);
+		appointment.setStatus("Pending");
 		
 		jobSeeker.setAppointment(appointment);
 		
@@ -53,44 +59,62 @@ public class JobSeekerService {
 		
 		String roleStringId = jobService.getRoleIdbYjobId(jobSeeker.getJob().getJobId());
 		
-		JobSeeker jobseeker2 = jobSeekerRepository.getAllJobseekerByemployeeId(roleStringId).get(0);
+  	 JobSeeker jobseeker2 = jobSeekerRepository.getByAppointmentId(applicantId);
 		
 		String employeeEmail = userService.findByEmailRoleId(roleStringId);
 		
 		Job job2 = jobService.getJobsByIntegerId(Integer.valueOf(jobId));
 		
+	
 		//this is for the graduate
-		sendEmailtoGraduate(jobSeeker.getEmail(),jobSeeker,roleStringId,job2);
+		sendEmailtoGraduate(jobSeeker.getEmail(),jobSeeker,roleStringId,job2,gradId);
 		// this is for the employer
-		sendEmailtoEmployer(employeeEmail,jobseeker2,job2);
+		sendEmailtoEmployer(employeeEmail,jobseeker2,job2,roleStringId,gradId);
 		
 		return true;
 	}
 	
-	private void sendEmailtoGraduate(String email,JobSeeker jobSeeker,String roleStringId,Job job) {
+	private void sendEmailtoGraduate(String email,JobSeeker jobSeeker,String roleStringId,Job job,String gradId) {
         SimpleMailMessage message = new SimpleMailMessage();
         String text = "Your Application Id is :"+jobSeeker.getAppointment().getApplicantId()+
-        		"Company Name:"+ employerService.getEmployerById(roleStringId).getCompanyName()+
-        		"JobName:"+job.getJobName()+"Applicant Name:"+jobSeeker
-        		.getFullName()+"Job Type:"+job.getJobType()+"email:"+jobSeeker.getEmail();
+        		"\n Company Name:"+ employerService.getEmployerById(roleStringId).getCompanyName()+
+        		"\n JobName:"+job.getJobName()+"\n Applicant Name:"+jobSeeker
+        		.getFullName()+"\n Job Type:"+job.getJobType()+"\n Job Location:"+job.getJobLocation()+"\n email:"+jobSeeker.getEmail();
         
         message.setTo(email);
         message.setSubject("Job Application Submitted");
         message.setText(text);
+        
+        // to grad notification
+        Message m1 = new Message();
+        m1.setMessage("Job Application Submitted Notification :\n"+text);
+        m1.setReceiverId(gradId);
+        m1.setSenderId(roleStringId);
+        
+        messageRepository.save(m1);
+        
         javaMailSender.send(message);
     }
 	
-	private void sendEmailtoEmployer(String email,JobSeeker jobSeeker,Job job) {
+	private void sendEmailtoEmployer(String email,JobSeeker jobSeeker,Job job,String roleStringId,String gradId) {
 		 SimpleMailMessage message = new SimpleMailMessage();
 		 String text = "The Application Id is :"+jobSeeker.getAppointment().getApplicantId()+
-				 "The Job Id :"+job.getJobId()+"The Job Type:"+job.getJobType()+
-				 "The Job Name:"+job.getJobName()+"The Student Details \n"+"Name:"+
-				 jobSeeker.getFullName()+ "Phone:"+jobSeeker.getPhone()+"Email:"+jobSeeker.getEmail()+"CGPA:"+
-				 jobSeeker.getCgpa()+"Year Of Passing :"+jobSeeker.getYearOfPassing()+"KeySkills:"+jobSeeker.getKeySkill()+
-				 "Project:"+jobSeeker.getProject();
+				 "\n The Job Id :"+job.getJobId()+"\n The Job Type:"+job.getJobType()+
+				 "\n The Job Name:"+job.getJobName()+"\n The Student Details"+"\n Name:"+
+				 jobSeeker.getFullName()+ "\n Phone:"+jobSeeker.getPhone()+"\n Email:"+jobSeeker.getEmail()+"\n CGPA:"+
+				 jobSeeker.getCgpa()+"\n Year Of Passing :"+jobSeeker.getYearOfPassing()+"\n KeySkills:"+jobSeeker.getKeySkill()+
+				 "\n Project:"+jobSeeker.getProject();
 		 	message.setTo(email);
 	        message.setSubject("Job Application Submitted");
 	        message.setText(text);
+	        
+	        Message m1 = new Message();
+	        m1.setMessage("Job Application Submitted :\n"+text);
+	        m1.setReceiverId(roleStringId);
+	        m1.setSenderId(gradId);
+	        
+	        messageRepository.save(m1);
+	        
 	        javaMailSender.send(message);
 		 
 	}

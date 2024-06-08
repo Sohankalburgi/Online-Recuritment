@@ -36,7 +36,7 @@ public class Job {
 	private String jobName;
 	
 	@NotEmpty(message = "Invalid Job Salary")
-	private String jobSalary;
+	private Integer jobSalary;
 	
 	@NotEmpty(message = "Invalid Job Type")
 	private String jobType;
@@ -46,6 +46,9 @@ public class Job {
 	
 	@Max(value = 2147483647,message = "max vacancy can be 2147483647")
 	private Integer jobVacancy;
+	
+	@NotEmpty(message = "Invalid Job Location")
+	private String jobLocation;
 	
 //	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "job")
 //	@JsonIgnore
@@ -58,8 +61,8 @@ public class Job {
 	public Job() {
 		super();
 	}
-	public Job(Integer jobId, String jobName, String jobSalary, String jobType, String jobDescription,
-			Integer jobVacancy) {
+	public Job(Integer jobId, String jobName, Integer jobSalary, String jobType, String jobDescription,
+			Integer jobVacancy,String jobLocation) {
 		super();
 		this.jobId = jobId;
 		this.jobName = jobName;
@@ -67,6 +70,7 @@ public class Job {
 		this.jobType = jobType;
 		this.jobDescription = jobDescription;
 		this.jobVacancy = jobVacancy;
+		this.jobLocation = jobLocation;
 	}
 	
 //	public List<Graduate> getGraduate() {
@@ -104,10 +108,10 @@ public class Job {
 	public void setJobName(String jobName) {
 		this.jobName = jobName;
 	}
-	public String getJobSalary() {
+	public Integer getJobSalary() {
 		return jobSalary;
 	}
-	public void setJobSalary(String jobSalary) {
+	public void setJobSalary(Integer jobSalary) {
 		this.jobSalary = jobSalary;
 	}
 	public String getJobType() {
@@ -128,9 +132,17 @@ public class Job {
 	public void setJobVacancy(Integer jobVacancy) {
 		this.jobVacancy = jobVacancy;
 	}
+	public String getJobLocation() {
+		return jobLocation;
+	}
+	public void setJobLocation(String jobLocation) {
+		this.jobLocation = jobLocation;
+	}
 	@Override
 	public String toString() {
-		return "Job [jobId=" + jobId + ", jobName=" + jobName + ", jobSalary=" + jobSalary + ", jobType=" + jobType
-				+ ", jobDescription=" + jobDescription + ", jobVacancy=" + jobVacancy + "]";
+		return "Job [roleId=" + roleId + ", jobId=" + jobId + ", jobName=" + jobName + ", jobSalary=" + jobSalary
+				+ ", jobType=" + jobType + ", jobDescription=" + jobDescription + ", jobVacancy=" + jobVacancy
+				+ ", jobLocation=" + jobLocation + ", jobSeeker=" + jobSeeker + "]";
 	}
+	
 }

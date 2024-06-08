@@ -9,7 +9,8 @@ export interface jobList{
     jobDescription:string,
     jobVacancy:string,
     companyName: string,
-    companyAddress: string
+    companyAddress: string,
+    jobLocation:string,
 }
 
 export interface Company {

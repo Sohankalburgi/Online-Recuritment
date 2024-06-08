@@ -75,7 +75,7 @@
                 <th>Job Vacancy:</th>
                 <th>Job Type:</th>
                 <th>Salary:</th>
-                <th>Company Address:</th>
+                <th>Job Location:</th>
                 <th>Apply:</th>
             </tr>
             <tr *ngFor="let job of jobs">
@@ -84,7 +84,7 @@
             <td>{{job.jobVacancy}}</td>
             <td>{{job.jobType}}</td>
             <td>{{job.jobSalary}}</td>
-            <td>{{job.companyAddress}}</td>
+            <td>{{job.jobLocation}}</td>
             <td><button (click)="Apply(job.jobId)" >Apply Now</button></td>
             </tr>
         </table>

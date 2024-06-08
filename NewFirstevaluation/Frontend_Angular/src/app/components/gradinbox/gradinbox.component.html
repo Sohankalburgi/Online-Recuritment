@@ -3,7 +3,7 @@
     <div *ngFor="let message of messages">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title fs-5">Sent By: {{ message.senderId }}</h5>
+          <h5 class="card-title fs-5">Sent By: {{ message.senderId }} to {{message.receiverId}}</h5>
           <p class="card-text">Message:</p>
           <p class="card-text fw-bolder" [innerHtml] = "message.message | newlineToBr"> </p>
           <button class="btn btn-danger " (click)="deletemessage(message.id)">Delete</button>

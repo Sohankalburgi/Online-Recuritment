@@ -36,6 +36,7 @@ export class JobRegisterComponent implements OnInit{
         jobType : ['', Validators.required],
         jobDescription: ['', Validators.required],
         jobVacancy : ['', Validators.required],
+        jobLocation :['', Validators.required],
         roleId:{
           roleId:[this.roleIdString]}
       });

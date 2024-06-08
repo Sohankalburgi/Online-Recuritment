@@ -30,6 +30,7 @@ public class AppointmentService {
 		appoint.setDate(appointment.getDate());
 		appoint.setLocation(appointment.getLocation());
 		appoint.setSet(true);
+		appoint.setStatus("Accepted");
 		appointmentRepository.save(appoint);
 		
 		String email = appoint.getJobSeeker().getEmail();
@@ -40,9 +41,10 @@ public class AppointmentService {
 		
 		Message message = new Message();
 		message.setMessage(text);
-		message.setSenderId("admin");
+		message.setSenderId(appoint.getJobSeeker().getJob().getRoleId().getRoleId());
 		message.setReceiverId(appoint.getJobSeeker().getGraduate().getRoleId().getRoleId());
 		
+		messageRepository.save(message);
 		
 		sendEmail(email,text,"Appointment Scheduled AND Location");
 		
@@ -71,19 +73,22 @@ public class AppointmentService {
 		Appointment appoint = appointmentRepository.getById(applicantId);
 		String text = "This Email is regarding that Your Application :"+" "+appoint.getApplicantId()+" "+
 				"is rejected by the Employer Due to not satisfied requirement to the Company";
-				String Subject ="Appointment Rejected";
+		String Subject ="Appointment Rejected";
 				
 		Message message = new Message();
 		message.setMessage(Subject+"\n"+text);
-		message.setSenderId("admin");
+		message.setSenderId(appoint.getJobSeeker().getJob().getRoleId().getRoleId());
 		message.setReceiverId(appoint.getJobSeeker().getGraduate().getRoleId().getRoleId());
-	
+		
+		appoint.setStatus("Rejected");
 		
 		System.out.println(appoint.getJobSeeker().getEmail());
-		appointmentRepository.delete(appoint);
+		sendEmail(appoint.getJobSeeker().getEmail(),text,Subject);
 		messageRepository.save(message);
 		
-		sendEmail(appoint.getJobSeeker().getEmail(),text,Subject);
+		
+		appointmentRepository.save(appoint);
+		
 		return "deleted";
 	}
 

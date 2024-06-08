@@ -84,8 +84,12 @@ alert("apppointed");
     }
 
     deleteappointbyId(applicantId:string) {
-      this.appointmentservice.rejectAppointment(applicantId).subscribe();
-      alert("rejected");
+      this.appointmentservice.rejectAppointment(applicantId).subscribe(response=>{
+        alert("rejected");
+      },error=>{
+        alert("error")
+      });
+  
       this.closeModalforreject();
       this.closeModal();
       this.fetchStudents();

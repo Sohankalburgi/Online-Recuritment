@@ -60,7 +60,7 @@ public class AppointmentControllers {
 		catch(Exception e) {
 		 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("error"));
 		}	 
-		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("error"));
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("rejected"));
 	}
 	
 	@GetMapping("/getResume/{applicantId}")

@@ -106,6 +106,7 @@
             <th>Job Type:</th>
             <th>Job Salary:</th>
             <th>Job Description:</th>
+            <th>Job Location</th>
           </tr>
           <tr *ngFor="let js of selectedGraduate.jobSeeker">
             <td>{{js.job.jobId}}</td>
@@ -113,6 +114,7 @@
             <td>{{js.job.jobType}}</td>
             <td>{{js.job.jobSalary}}</td>
             <td>{{js.job.jobDescription}}</td>
+            <td>{{js.job.jobLocation}}</td>
           </tr>
         </table>
       </div>

@@ -17,6 +17,7 @@ export class JoblistComponent {
   jobs:jobList[] = [];
   roleIdString: string | null = null;
   searchredirect :string | null = null;
+
   constructor(private http: HttpClient,private joblistservice:JobListService,private router:ActivatedRoute
     ,private route:Router, private authservice:AuthServiceService
   ) { }
@@ -30,11 +31,11 @@ export class JoblistComponent {
       this.searchValue = params.get('searchvalue');
       console.log('searchvalue:',this.searchValue);
     });
-    
+
     if(this.searchValue!=null){
       this.search();
     }
-    
+
   }
   getCompaniesForJobs() {
     this.jobs.forEach(job => {

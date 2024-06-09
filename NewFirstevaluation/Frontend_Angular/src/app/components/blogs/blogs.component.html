@@ -20,8 +20,9 @@
             <a class="nav-link" (click)="home()" routerLinkActive="active">Home</a>
           </li>
 
-
-
+          <li class="nav-item" >
+            <a class="nav-link"  *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/gradmessage/{{roleIdString}}" routerLinkActive="active">Contact Us/Notification</a>
+          </li>
 
           <li class="nav-item" >
             <a class="nav-link" routerLink="/home/{{roleIdString}}" *ngIf="roleIdString.startsWith('EMP')" routerLinkActive="active" (click)="post()">Post Jobs</a>

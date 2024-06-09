@@ -76,66 +76,66 @@ margin : 5px;
 }
 
 
-
+  
   .job-listing.full-width {
     width: 100%;
   }
-
+  
   .job-item {
     color : rgb(18, 26, 99);
     background-color: white;
     padding: 20px;
     margin-bottom: 20px;
   }
-
+  
   .job-item h2 {
     margin-top: 0;
   }
-
+  
   .job-item h3 {
     margin-top: 0;
     margin-bottom: 10px;
   }
-
+  
   .job-item p {
     margin-bottom: 10px;
   }
-
+  
   .job-item button {
     margin-top: 10px;
   }
-
-
+  
+  
   .rounded-end {
     border-radius: 0 5px 5px 0;
   }
-
+  
   #sidebar {
     position: relative;
     height: 100%;
   }
-
+  
   #sponsorcard, #wisecard {
-
+  
     border-radius: 2rem;
     padding: 20px;
     margin-top: 20px;
   }
-
-
+  
+  
   .job-div{
     /* background-color: rgba(214, 215, 218,0.4); */
     background-color: rgba(35, 101, 171, 0.365);
     padding-top: 0px;
   }
-
-
-
+  
+  
+  
   .rounded-start {
     border-radius: 5px 5px 5px 5px;
   }
-
-
+  
+  
   .navbar {
     background: linear-gradient(to right, #6a1b9a, #00b4d9);
     color: white;
@@ -154,15 +154,3 @@ margin : 5px;
     font-weight: bold; /* Bold text */
 }
 
-.background {
-  background-image: url('https://wallpapers.com/images/hd/minimalist-aesthetic-actuary-work-laptop-wtvol12uoktgz31i.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  width: 100%;
-}
-
-
-.input-text {
-  border: 1px solid black;
-}

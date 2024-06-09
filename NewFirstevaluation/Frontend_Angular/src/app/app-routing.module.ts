@@ -32,10 +32,6 @@ import { GradmessageComponent } from './components/gradmessage/gradmessage.compo
 import { MessagedashComponent } from './components/messagedash/messagedash.component';
 import { GradinboxComponent } from './components/gradinbox/gradinbox.component';
 import { AdmininboxComponent } from './components/admininbox/admininbox.component';
-import { GradAppliedComponent } from './grad-applied/grad-applied.component';
-import { GradPendingComponent } from './grad-pending/grad-pending.component';
-import { GradSchedComponent } from './grad-sched/grad-sched.component';
-import { GradStatusComponent } from './grad-status/grad-status.component';
 
 
 
@@ -186,12 +182,6 @@ const routes: Routes = [
     path:'gradhome',
     component:JobSearchComponent
   },
-
-  {
-    path: 'job-seeker',
-    component: JobSeekerComponent
-  },
-
   {
     path: 'emp-home-page/:roleIdString', component: EmpHomePageComponent,
     children: [
@@ -212,31 +202,6 @@ const routes: Routes = [
     { path:'gradinbox/:roleIdString',component:GradinboxComponent}
     ]
   },
-  {
-    path: 'grad-status',
-    component: GradStatusComponent,
-    children: [
-      {
-        path: 'pending',
-        component: GradPendingComponent
-      },
-      {
-        path: 'scheduled',
-        component: GradSchedComponent
-      },
-      {
-        path: 'applied',
-        component: GradAppliedComponent
-      },
-      {
-        path: '',
-        redirectTo: 'pending',
-        pathMatch: 'full'
-      }
-    ]
-  }
-
-
 
 ];
 

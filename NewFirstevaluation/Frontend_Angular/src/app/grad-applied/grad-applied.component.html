@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <h2>Applied Jobs</h2>
+  <div *ngIf="appliedJobs.length === 0">
+    <h4>
+      Please read below and It will display <strong>Job Name and Job ID</strong>
+     </h4>
+     <ul>
+       <li>Click on Pending/Applied/Scheduled</li>
+       <li>Add navbar please</li>
+       <li>Backend not connected</li>
+       <li>Remove these Lines once you read (only H4 and Li)</li>
+     </ul>
+
+     <!-- DO NOT DELETE BELOW CODE -->
+    <p>No applied jobs.</p>
+  </div>
+  <div *ngFor="let job of appliedJobs">
+
+    <p><strong>Job Name:</strong> {{ job.jobName }}</p>
+    <p><strong>Job ID:</strong> {{ job.jobId }}</p>
+  </div>
+</div>

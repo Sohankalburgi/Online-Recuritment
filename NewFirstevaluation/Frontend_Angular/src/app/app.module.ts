@@ -41,6 +41,10 @@ import { MessagedashComponent } from './components/messagedash/messagedash.compo
 import { GradinboxComponent } from './components/gradinbox/gradinbox.component';
 import { AdmininboxComponent } from './components/admininbox/admininbox.component';
 import { NewlineToBrPipe } from './components/gradinbox/newline-to-br.pipe';
+import { GradStatusComponent } from './grad-status/grad-status.component';
+import { GradPendingComponent } from './grad-pending/grad-pending.component';
+import { GradSchedComponent } from './grad-sched/grad-sched.component';
+import { GradAppliedComponent } from './grad-applied/grad-applied.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +82,11 @@ import { NewlineToBrPipe } from './components/gradinbox/newline-to-br.pipe';
     MessagedashComponent,
     GradinboxComponent,
     AdmininboxComponent,
-    NewlineToBrPipe
+    NewlineToBrPipe,
+    GradStatusComponent,
+    GradPendingComponent,
+    GradSchedComponent,
+    GradAppliedComponent
   ],
   imports: [
     BrowserModule,

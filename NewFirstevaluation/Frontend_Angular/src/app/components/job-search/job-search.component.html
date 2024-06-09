@@ -15,26 +15,26 @@
         <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
           <!-- Home -->
           <!-- *ngIf="currentRoute !== '/home'" -->
-          <li class="nav-item" >
+          <li class="nav-item">
             <a class="nav-link"  (click)="home()" routerLinkActive="active">Home</a>
           </li>
 
 
           <li class="nav-item" >
-            <a class="nav-link"  *ngIf="roleIdString?.startsWith('GRAD')" routerLink="/gradmessage/{{roleIdString}}" routerLinkActive="active">Contact Us/Notification</a>
+            <a class="nav-link"  *ngIf="roleIdString?.startsWith('GRAD')" routerLink="/gradmessage/{{roleIdString}}" routerLinkActive="active">Contact Us</a>
           </li>
 
 
           <!-- Blog  -->
           <!-- *ngIf="currentRoute !== '/job-search'" -->
-          <li class="nav-item" >
+          <li class="nav-item">
             <a class="nav-link" routerLink="/blogs/{{roleIdString}}" routerLinkActive="active">Blogs</a>
           </li>
 
 
           <!-- About Us -->
           <!-- *ngIf="currentRoute !== '/login'" -->
-          <li class="nav-item" >
+          <li class="nav-item">
             <a class="nav-link" routerLink="/about-us/{{roleIdString}}" routerLinkActive="active">About Us</a>
           </li>
           
@@ -45,63 +45,195 @@
          
 
 
-          <li class="nav-item" >
-            <a class="nav-link"  *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLinkActive="active">Login</a>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"
+              routerLink="/home"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" padding="5px"
+                margin="10px" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                <path
+                  d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+              </svg> </a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"
+              routerLinkActive="active">Login</a>
           </li>
 
           <li>
-            <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/register"  routerLinkActive="active">Register</a>
+            <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"
+              routerLink="/register" routerLinkActive="active">Register</a>
           </li>
         </ul>
 
         <!-- Green dot for logged-in status -->
         <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
       </div>
-      <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" (click)="logout()" >Logout</a>
+      <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"
+        (click)="logout()">Logout</a>
     </div>
   </nav>
 </div>
 
 
-<section class="background-section" >
+<section class="background-section">
 
-    <div class="container">
-      <h1 class="my-4 text-center" style="color: #113f5f; font-weight:700;">Find your dream job now
-        <p class="my-2 lead" style="font-size: 15px; color: #113f5f; font-weight : 500;">Your journey to a better job starts here.</p>
-      </h1>
+  <div class="container">
+    <h1 class="my-4 text-center" style="color: #113f5f; font-weight:700;">Find your dream job now
+      <p class="my-2 lead" style="font-size: 15px; color: #113f5f; font-weight : 500;">Your journey to a better job
+        starts here.</p>
+    </h1>
 
-      <div class="row mb-3">
-          <div class="col">
-              <input type="text" class="form-control" placeholder="Enter skills/designations" [(ngModel)]="searchTerm">
-          </div>
-
-          <div class="col-auto">
-              <button class="btn btn-primary" (click)="search()" >Search</button>
-          </div>
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Enter skills/designations" [(ngModel)]="searchTerm" style="padding: 10px;">
       </div>
 
-   
-
-      <!-- Companies section -->
-      <div class="mb-5">
-          <h2 class="my-4 text-center" style="color: #113f5f;">Top companies hiring now</h2>
-          <div class="row row-cols-5">
-              <div class="col" *ngFor="let company of companies">
-                <div class="card mb-3" (click)="openLink(company.link)">
-                  <div class="card-body" [ngClass]="{'hover-effect': company.name === 'Infosys'}">
-                    <div class="d-flex justify-content-center">
-                        <img [src]="company.logo" [alt]="company.logo" class="me-2" style="width: auto; height: 100%;">
-                    </div>
-                          <h5 class="card-title text-center">{{ company.name }}</h5>
-                          <p class="card-text text-center">{{ company.description }}</p>
-
-                      </div>
-                  </div>
-              </div>
-          </div>
+      <div class="col-auto">
+        <button class="btn btn-primary" (click)="search()" style="padding: 10px;">Search</button>
       </div>
     </div>
+
+  </div>
   </section>
+
+  <div class="modal w-100" *ngIf="selectedGraduateforedit!=null ">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Graduate Details</h5>
+        </div>
+        <div class="modal-body" >
+          <form class="row" [formGroup]="graduateForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="roleId" class="col-form-label">Grad ID</label>
+                <div>
+                <input type="text" class="form-control" id="inputfield" value="{{selectedGraduateforedit}}" disabled>
+              </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="name" class="col-form-label">Name</label>
+                <input id="name" type="text" class="form-control" formControlName="name" id="inputfield" placeholder="Name">
+                <div *ngIf="isInvalid('name')" class="text-danger">
+                  {{ getErrorMessage('name') }}
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="nationality" class="form-label" id="inputfield">Nationality:</label>
+                  <select id="nationality" formControlName="nationality" class="form-select" aria-placeholder="Select Nationality" required>
+                    <option value=""  disabled selected>Select Nationality</option>
+                    <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
+                  </select>
+                  <div *ngIf="isInvalid('nationality')" class="text-danger">
+                    {{ getErrorMessage('nationality') }}
+                    </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="phone" class="col-form-label">Phone</label>
+                <input id="phone" type="text" class="form-control" formControlName="phone" id="inputfield" placeholder="Phone">
+                <div *ngIf="isInvalid('phone')" class="text-danger">
+                  {{ getErrorMessage('phone') }}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="address" class="col-form-label">Address</label>
+                <input id="address" type="textarea" class="form-control " formControlName="address" placeholder="Address">
+                <div *ngIf="isInvalid('address')" class="text-danger">
+                  {{ getErrorMessage('address') }}
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                
+                <label for="city" class="col-form-label">City</label>
+                <input id="city" type="text" class="form-control" formControlName="city" placeholder="City">
+                <div *ngIf="isInvalid('city')" class="text-danger">
+                  {{ getErrorMessage('city') }}
+                </div>
+              </div>
+              
+            </div>
+            <div class="row">
+              
+              <div class="form-group col-md-6">
+                <label for="state" class="col-form-label">State</label>
+                <input id="state" type="text" class="form-control" formControlName="state" placeholder="State">
+                <div *ngIf="isInvalid('state')" class="text-danger">
+                  {{ getErrorMessage('state') }}
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="pinCode" class="col-form-label">Pin Code</label>
+                <input id="pinCode" type="text" class="form-control" formControlName="pinCode" placeholder="PinCode">
+                <div *ngIf="isInvalid('pinCode')" class="text-danger">
+                  {{ getErrorMessage('pinCode') }}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="cgpa" class="col-form-label">CGPA</label>
+                <input id="cgpa" type="text" class="form-control" formControlName="cgpa" placeholder="Cgpa">
+                <div *ngIf="isInvalid('cgpa')" class="text-danger">
+                  {{ getErrorMessage('cgpa') }}
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="yearOfPassing" class="col-form-label">Year of Passing</label>
+                <input id="yearOfPassing" type="text" class="form-control" formControlName="yearOfPassing" placeholder="Year Of Passing">
+                <div *ngIf="isInvalid('yearOfPassing')" class="text-danger">
+                  {{ getErrorMessage('yearOfPassing') }}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              
+              <div class="form-group col-md-6">
+                <label for="collegeName" class="col-form-label">College Name</label>
+                <input id="collegeName" type="text" class="form-control" formControlName="collegeName" placeholder="CollegeName">
+                <div *ngIf="isInvalid('collegeName')" class="text-danger">
+                  {{ getErrorMessage('collegeName') }}
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="collegeAddress" class="col-form-label">College Address</label>
+                <input id="collegeAddress" type="text" class="form-control" formControlName="collegeAddress" placeholder="College Address">
+                <div *ngIf="isInvalid('collegeAddress')" class="text-danger">
+                  {{ getErrorMessage('collegeAddress') }}
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="collegeDescription" class="col-form-label">College Description</label>
+                <textarea id="collegeDescription" row="3" class="form-control" formControlName="collegeDescription" placeholder="College Description" ></textarea>
+                <div *ngIf="isInvalid('collegeDescription')" class="text-danger">
+                  {{ getErrorMessage('collegeDescription') }}
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                
+              </div>
+            </div>
+            <div class="row">
+            <button type="submit" class="btn btn-primary mt-2 mb-2 col-6">Update</button>
+            <button class="btn btn-danger mt-2 mb-2 col-6"(click)="closeModalforEdit()">Close</button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div> 
 
   <div class="modal w-100" *ngIf="selectedGraduateforedit!=null ">
     <div class="modal-dialog">

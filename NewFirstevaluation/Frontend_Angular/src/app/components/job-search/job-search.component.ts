@@ -88,6 +88,16 @@ export class JobSearchComponent {
   logout(){
     this.authService.logout();
   }
+
+  home(){
+    if(this.roleIdString?.startsWith('EMP')){
+      this.route.navigate([`/home/${this.roleIdString}`])
+    }
+    else{
+      this.route.navigate([`/gradhome/${this.roleIdString}`])
+    }
+  }
+
   }
 
 

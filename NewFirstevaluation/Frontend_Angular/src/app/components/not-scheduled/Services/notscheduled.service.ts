@@ -34,6 +34,7 @@ export class NotscheduledService {
   }
 
   rejectAppointment(applicantId:string){
+    console.log(applicantId)
     return this.http.delete(`${this.baseUrl}/rejectAppointment/${applicantId}`)
   }
 

@@ -128,13 +128,24 @@
 .table-responsive {
   max-height: 300px; /* Set your desired max-height */
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x:hidden;
   margin-top: 20px;
-  margin-right: 100px;
+  max-width: 900px;
+  margin-right: 200px;
+  margin: auto;
+  
 }
 
 .table th, .table td {
   text-align: left;
   padding: 12px;
   border: 1px solid #ddd;
+ 
+}
+
+th {
+  top: 0;
+  position: sticky;
+  background: #e5d2f1;
+  color: black;
 }

@@ -9,5 +9,6 @@ export interface JobDescription{
     jobSalary:number,
     jobType:string,
     jobDescription:string,
-    jobVacancy:number
+    jobVacancy:number,
+    jobLocation:string
 }

@@ -23,6 +23,8 @@ public class Appointment {
 	
 	private boolean isSet;
 	
+	private String status;
+	
 	@OneToOne(fetch = FetchType.LAZY,mappedBy = "appointment",cascade = CascadeType.ALL)
 	@JoinColumn(name="jobSeeker")
 	private JobSeeker jobSeeker;
@@ -30,13 +32,14 @@ public class Appointment {
 	public Appointment() {
 		super();
 	}
-	public Appointment(String applicantId, String date, String location, boolean isSet, JobSeeker jobSeeker) {
+	public Appointment(String applicantId, String date, String location, boolean isSet, JobSeeker jobSeeker,String status) {
 		super();
 		this.applicantId = applicantId;
 		this.date = date;
 		this.location = location;
 		this.isSet = isSet;
 		this.jobSeeker = jobSeeker;
+		this.status = status;
 	}
 	public String getApplicantId() {
 		return applicantId;
@@ -68,4 +71,11 @@ public class Appointment {
 	public void setJobSeeker(JobSeeker jobSeeker) {
 		this.jobSeeker = jobSeeker;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 }

@@ -77,6 +77,7 @@
 
         <h5 style="margin-right:665px;">Applied Jobs By Graduate</h5>
         <div class="table-responsive">
+<<<<<<< HEAD
           <table class="table mx-3">
             <tr>
               <th>Job Id:</th>
@@ -94,6 +95,27 @@
             </tr>
           </table>
         </div>
+=======
+        <table class="table mx-3">
+          <tr >
+            <th>Job Id:</th>
+            <th>Job Name:</th>
+            <th>Job Type:</th>
+            <th>Job Salary:</th>
+            <th>Job Description:</th>
+            <th>Job Location</th>
+          </tr>
+          <tr *ngFor="let js of selectedGraduate.jobSeeker">
+            <td>{{js.job.jobId}}</td>
+            <td>{{js.job.jobName}}</td>
+            <td>{{js.job.jobType}}</td>
+            <td>{{js.job.jobSalary}}</td>
+            <td>{{js.job.jobDescription}}</td>
+            <td>{{js.job.jobLocation}}</td>
+          </tr>
+        </table>
+      </div>
+>>>>>>> 22a88880947597aa5c5a64a72df56958ee383b1a
       </div>
     </div>
   </div>

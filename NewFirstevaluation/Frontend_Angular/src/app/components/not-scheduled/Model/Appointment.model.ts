@@ -2,7 +2,8 @@ export interface Appointment{
     applicantId:string,
     date:string,
     location:string,
-    isSet:boolean
+    isSet:boolean,
+    status:string,
     jobSeeker:{
         fullName:string,
         email:string,

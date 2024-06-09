@@ -29,7 +29,7 @@ public class AppointmentService {
 		Appointment appoint = appointmentRepository.getById(applicantId);
 		appoint.setDate(appointment.getDate());
 		appoint.setLocation(appointment.getLocation());
-		appoint.setSet(true);
+		appoint.setSet(1);
 		appoint.setStatus("Accepted");
 		appointmentRepository.save(appoint);
 		
@@ -69,27 +69,29 @@ public class AppointmentService {
 		return appointmentRepository.getAllAppointmentSet(roleId);
 	}
 
-	public String rejectAppointment(String applicantId) {
+	public void rejectAppointment(String applicantId) {
 		Appointment appoint = appointmentRepository.getById(applicantId);
 		String text = "This Email is regarding that Your Application :"+" "+appoint.getApplicantId()+" "+
 				"is rejected by the Employer Due to not satisfied requirement to the Company";
 		String Subject ="Appointment Rejected";
-				
+		
 		Message message = new Message();
 		message.setMessage(Subject+"\n"+text);
 		message.setSenderId(appoint.getJobSeeker().getJob().getRoleId().getRoleId());
 		message.setReceiverId(appoint.getJobSeeker().getGraduate().getRoleId().getRoleId());
-		
+		appoint.setSet(2);
 		appoint.setStatus("Rejected");
-		
+		appoint.setDate("null");
+		appoint.setLocation("null");
+		System.out.println(appoint.getApplicantId());
+		System.out.println(appoint.getStatus());
 		System.out.println(appoint.getJobSeeker().getEmail());
-		sendEmail(appoint.getJobSeeker().getEmail(),text,Subject);
-		messageRepository.save(message);
 		
 		
 		appointmentRepository.save(appoint);
-		
-		return "deleted";
+		messageRepository.save(message);
+		sendEmail(appoint.getJobSeeker().getEmail(),text,Subject);
+
 	}
 
 	public byte[] download(String applicantId) {
@@ -97,5 +99,22 @@ public class AppointmentService {
 		
 		return FileUtil.decompressFile(appoint.getJobSeeker().getResume());
 	}
+
+	public List<Appointment> getAppointmentpending(String roleId) {
+		// TODO Auto-generated method stub
+		return appointmentRepository.getAppointmentpending(roleId);
+	}
+
+	public List<Appointment> getAppointmentaccepted(String roleId) {
+		// TODO Auto-generated method stub
+		return appointmentRepository.getAllappointmentaccpeted(roleId);
+	}
+
+	public List<Appointment> getAppointmentrejected(String roleId) {
+		// TODO Auto-generated method stub
+		return appointmentRepository.getAppointmentrejected(roleId);
+	}
+
+	
 	    
 }

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from '../ServiceAuth/auth-service.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GraduateserviceService } from '../grad-dash/Services/graduateservice.service';
+import { College, Graduate, User } from '../grad-dash/Models/graduate.model';
 
 @Component({
   selector: 'app-job-search',
@@ -8,6 +11,13 @@ import { AuthServiceService } from '../ServiceAuth/auth-service.service';
   styleUrl: './job-search.component.css'
 })
 export class JobSearchComponent {
+
+
+  selectedGraduateforedit: any = null;
+  graduateForm!: FormGroup;
+  user!:User;
+  college!:College;
+  graduate!:Graduate;
 
   searchTerm: string = '';
   selectedExperience: string = '';
@@ -32,9 +42,38 @@ export class JobSearchComponent {
     { name: 'Sunrise Group', logo: 'https://dynamic.placementindia.com/recruiter_comp_logo/943507_20210310064415.jpg', description: 'Global professional E-commerce services.', link: 'https://www.sunriseintegration.com/services/ecommerce-development' }
   ];
 
-  roleIdString: string|null=null;
+  nationalities = [
+    'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia',
+    'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium',
+    'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria',
+    'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad',
+    'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czechia',
+    'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea',
+    'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia',
+    'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras',
+    'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan',
+    'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kosovo', 'Kuwait', 'Kyrgyzstan',
+    'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Madagascar',
+    'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico',
+    'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia',
+    'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Macedonia', 'Norway',
+    'Oman', 'Pakistan', 'Palau', 'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines',
+    'Poland', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia',
+    'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal',
+    'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia',
+    'South Africa', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria',
+    'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia',
+    'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom',
+    'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia',
+    'Zimbabwe'
+];
 
-  constructor(private route: Router,private router:ActivatedRoute,private authService:AuthServiceService){
+
+  roleIdString: string|null = null;
+
+  constructor(private route: Router,private router:ActivatedRoute,private authService:AuthServiceService,
+    private graduateservice:GraduateserviceService,private fb:FormBuilder
+  ){
   }
 
   ngOnInit() {
@@ -42,7 +81,102 @@ export class JobSearchComponent {
       this.roleIdString = params.get('roleIdString');
       console.log('RoleIdString:',this.roleIdString);
     });
+
+    
+    this.graduateForm = this.fb.group({
+      roleId: [{ value: '', disabled: true }],
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],
+      nationality: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      pinCode: ['', [Validators.required, Validators.pattern('^[1-9][0-9]{5}$')]],
+      yearOfPassing: ['', [Validators.required, Validators.pattern('^[0-9]{4}$')]],
+      cgpa: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$')]],
+      collegeName: ['', Validators.required],
+      collegeDescription: ['', Validators.required],
+      collegeAddress: ['', Validators.required],
+    });
   }
+
+  editGraduate(graduate: any) {
+    console.log(graduate)
+    this.selectedGraduateforedit = graduate
+    console.log(this.selectedGraduateforedit)
+  }
+
+  onSubmit() {
+    if (this.graduateForm.valid) {
+    
+     
+      const formValues = this.graduateForm.value;
+      const roleId = this.roleIdString;
+      
+      this.user = {
+        ...this.user,
+        roleId: { roleId: formValues.roleId},
+        address: formValues.address,
+        name: formValues.name,
+        nationality: formValues.nationality,
+        phone: formValues.phone,
+      };
+
+      this.college = {
+        ...this.college,
+        roleId: { roleId: formValues.roleId },
+        collegeName: formValues.collegeName,
+        collegeDescription: formValues.collegeDescription,
+        collegeAddress: formValues.collegeAddress
+      };
+
+      this.graduate = {
+        ...this.graduate,
+        roleId: { roleId: formValues.roleId },
+        cgpa: formValues.cgpa,
+        city: formValues.city,
+        pinCode: formValues.pinCode,
+        state: formValues.state,
+        yearOfPassing: formValues.yearOfPassing
+      };
+
+     
+      
+      this.graduateservice.updateUser(this.user,this.selectedGraduateforedit).subscribe(
+        (response)=>{
+        console.log("submitted");
+        },
+        (error)=>{
+         alert("internal server error")
+        }
+      );
+      this.graduateservice.updateCollege(this.college,this.selectedGraduateforedit).subscribe(
+        (response)=>{
+          console.log("submitted");
+          },
+          (error)=>{
+            alert("internal server error")
+          }
+      );
+      this.graduateservice.updateGraduate(this.graduate,this.selectedGraduateforedit).subscribe(
+        (response)=>{
+          console.log("submitted");
+          },
+          error=>{
+            alert("internal server error")
+          }
+      );
+      alert("submitted")
+      this.closeModalforEdit();
+      
+    }
+  }
+
+  closeModalforEdit():void{
+    this.selectedGraduateforedit = null;
+  }
+
+  
 
   search() {
     if(this.searchTerm===''){
@@ -96,6 +230,25 @@ export class JobSearchComponent {
     else{
       this.route.navigate([`/gradhome/${this.roleIdString}`])
     }
+  }
+
+  isInvalid(controlName: string): boolean {
+    const control = this.graduateForm.get(controlName);
+    return control ? control.invalid && (control.dirty || control.touched) : false;
+  }
+
+  getErrorMessage(controlName: string): string {
+    const control = this.graduateForm.get(controlName);
+    if (control && control.errors) {
+      if (control.errors['required']) {
+        return `${controlName} is required.`;
+      } else if (control.errors['email']) {
+        return `Invalid email address.`;
+      } else if (control.errors['pattern']) {
+        return `Invalid ${controlName}.`;
+      }
+    }
+    return '';
   }
 
   }

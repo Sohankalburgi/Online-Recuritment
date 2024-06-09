@@ -48,6 +48,7 @@ public class JobSeekerService {
 		String applicantId = gradId.concat(jobId);
 		
 		appointment.setApplicantId(applicantId);
+		appointment.setSet(0);
 		appointment.setStatus("Pending");
 		
 		jobSeeker.setAppointment(appointment);

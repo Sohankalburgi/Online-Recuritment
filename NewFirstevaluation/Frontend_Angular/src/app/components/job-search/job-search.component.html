@@ -38,6 +38,10 @@
             <a class="nav-link" routerLink="/about-us/{{roleIdString}}" routerLinkActive="active">About Us</a>
           </li>
           
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/appointstatus/{{roleIdString}}" *ngIf="roleIdString?.startsWith('GRAD')" routerLinkActive="active">Appointment Status</a>
+          </li>
+          
          
 
 

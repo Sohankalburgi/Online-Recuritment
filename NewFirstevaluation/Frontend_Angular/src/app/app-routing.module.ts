@@ -32,6 +32,10 @@ import { GradmessageComponent } from './components/gradmessage/gradmessage.compo
 import { MessagedashComponent } from './components/messagedash/messagedash.component';
 import { GradinboxComponent } from './components/gradinbox/gradinbox.component';
 import { AdmininboxComponent } from './components/admininbox/admininbox.component';
+import { StatusappointComponent } from './components/statusappoint/statusappoint.component';
+import { PendingappointComponent } from './components/pendingappoint/pendingappoint.component';
+import { AcceptedappointComponent } from './components/acceptedappoint/acceptedappoint.component';
+import { RejectedappointComponent } from './components/rejectedappoint/rejectedappoint.component';
 
 
 
@@ -202,6 +206,14 @@ const routes: Routes = [
     { path:'gradinbox/:roleIdString',component:GradinboxComponent}
     ]
   },
+  {
+    path:'appointstatus/:roleIdString',component:StatusappointComponent,
+    children:[
+      {path:'appointpending/:roleIdString',component:PendingappointComponent},
+      {path:'acceptappoint/:roleIdString',component:AcceptedappointComponent},
+      {path:'rejectappoint/:roleIdString',component:RejectedappointComponent}
+    ]
+  }
 
 ];
 

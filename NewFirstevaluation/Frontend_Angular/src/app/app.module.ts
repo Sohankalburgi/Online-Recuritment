@@ -42,6 +42,11 @@ import { GradinboxComponent } from './components/gradinbox/gradinbox.component';
 import { AdmininboxComponent } from './components/admininbox/admininbox.component';
 import { NewlineToBrPipe } from './components/gradinbox/newline-to-br.pipe';
 
+import { StatusappointComponent } from './components/statusappoint/statusappoint.component';
+import { PendingappointComponent } from './components/pendingappoint/pendingappoint.component';
+import { AcceptedappointComponent } from './components/acceptedappoint/acceptedappoint.component';
+import { RejectedappointComponent } from './components/rejectedappoint/rejectedappoint.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +83,11 @@ import { NewlineToBrPipe } from './components/gradinbox/newline-to-br.pipe';
     MessagedashComponent,
     GradinboxComponent,
     AdmininboxComponent,
-    NewlineToBrPipe
+    NewlineToBrPipe,
+    StatusappointComponent,
+    PendingappointComponent,
+    AcceptedappointComponent,
+    RejectedappointComponent
   ],
   imports: [
     BrowserModule,

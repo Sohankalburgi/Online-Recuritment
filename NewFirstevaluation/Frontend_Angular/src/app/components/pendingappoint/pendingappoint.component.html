@@ -1,0 +1,72 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Application Id</th>
+          <th>Job Id</th>
+          <th>Job Name</th>
+          
+          <th>Job Location</th>
+          
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of appoints">
+          <td>{{ student.applicantId }}</td>
+          <td>{{student.jobSeeker.job.jobId}}</td>
+          <td>{{student.jobSeeker.job.jobName}}</td>
+          <td>{{student.jobSeeker.job.jobLocation}}</td>
+          <td>{{student.status}}</td>
+          <td>{{ student.jobSeeker.email }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="infobutton(student)" >MoreInfo</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<!-- Simple Modal -->
+<div class="modal" *ngIf="flag==true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Appointment Details</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <p class="col-3"><strong>Appointment ID:</strong> {{ selectedAppoint.applicantId }}</p>
+        <p class="col-3"><strong>Name :</strong> {{ selectedAppoint.jobSeeker.fullName }}</p>
+        <p class="col-3"><strong>Email :</strong> {{ selectedAppoint.jobSeeker.email }}</p>
+        </div>
+        <div class="row">
+        <p class="col-3"><strong>Phone:</strong> {{ selectedAppoint.jobSeeker.phone }}</p>
+        <p class="col-3"><strong>YearOfPassing:</strong> {{ selectedAppoint.jobSeeker.yearOfPassing}}</p>
+        <p class="col-3"><strong>Cgpa:</strong> {{ selectedAppoint.jobSeeker.cgpa }}</p>
+        </div>
+        <div class="row">
+        <p class="col-3"><strong>Language:</strong> {{ selectedAppoint.jobSeeker.language }}</p>
+        <p class="col-3"><strong>keySkill:</strong> {{ selectedAppoint.jobSeeker.keySkill }}</p>
+        <p class="col-3"><strong>AreaOfInterest:</strong> {{ selectedAppoint.jobSeeker.areaOfInterest }}</p>
+        </div>
+        <div class="row">
+        <p class="col-3"><strong>Project:</strong> {{ selectedAppoint.jobSeeker.project }}</p>
+        <p class="col-3"><strong>Applied For JobId:</strong> {{selectedAppoint.jobSeeker.job.jobId}}</p>
+        <p class="col-4"><strong>Applied For Job Name:</strong> {{selectedAppoint.jobSeeker.job.jobName}}</p>
+      </div>
+      <div class="row">
+        <p><strong>Application Status:</strong> {{selectedAppoint.status}}</p>
+        <p class="col-6" *ngIf="selectedAppoint.status!='Pending'"><strong>Date:</strong> {{ selectedAppoint.date }}</p>
+        <p class="col-6" *ngIf="selectedAppoint.status!='Pending'"><strong>Location:</strong> {{selectedAppoint.location}}</p>
+      </div>
+      
+      </div>
+
+      <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

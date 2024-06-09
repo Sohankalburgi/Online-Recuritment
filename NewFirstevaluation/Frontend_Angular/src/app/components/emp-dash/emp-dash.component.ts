@@ -50,6 +50,8 @@ export class EmpDashComponent implements OnInit {
   job!: Job;
   selectedJobfordelete: any=null;
 
+  filteredAppointments: any[] = [];
+  searchTerm: string = '';
   constructor(private employerservice:EmployerserviceService,private fb:FormBuilder){}
 
 
@@ -71,6 +73,19 @@ export class EmpDashComponent implements OnInit {
     });
   }
 
+  filterEmployer() {
+    if (this.searchTerm) {
+      console.log(this.searchTerm)
+      
+      this.filteredAppointments = this.employers.filter(employer =>
+        employer.roleId.roleId.includes(this.searchTerm)
+      );
+      console.log(this.filteredAppointments)
+      this.employers = this.filteredAppointments;
+    } else {
+      this.loadEmployers();
+    }
+  }
 
   loadEmployers() {
     // Fetch employers from the server

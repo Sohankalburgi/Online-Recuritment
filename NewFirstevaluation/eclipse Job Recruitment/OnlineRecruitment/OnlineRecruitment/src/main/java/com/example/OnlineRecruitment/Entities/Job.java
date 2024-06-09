@@ -35,7 +35,7 @@ public class Job {
 	@NotEmpty(message = "Invalid Job Name")
 	private String jobName;
 	
-	@NotEmpty(message = "Invalid Job Salary")
+	@Max(value = 2147483647,message = "max Salary can be 2147483647")
 	private Integer jobSalary;
 	
 	@NotEmpty(message = "Invalid Job Type")

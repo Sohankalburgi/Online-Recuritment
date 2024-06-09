@@ -92,3 +92,96 @@ color: #113f5f;
 border-radius: 5px;
 margin : 5px;
 }
+
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  width: 100%;
+  overflow: auto;
+  padding-right:10px;
+}
+
+/* Modal Dialog */
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width:1000px;
+  margin: 0;
+  padding-left: 30px;
+  overflow: auto;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  border: 1px solid #888;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 1000px;
+  display:inline-block;
+  animation: fadeIn 0.3s;
+  position: relative;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Close Button */
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+}
+
+/* Modal Body */
+.modal-body {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

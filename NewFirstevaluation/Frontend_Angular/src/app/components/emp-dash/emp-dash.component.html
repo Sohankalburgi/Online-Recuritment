@@ -3,6 +3,15 @@
 <div class="card">
   <div class="card-body">
     <h2 class="card-title">Employers Information</h2>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by EMP ID"
+        [(ngModel)]="searchTerm"
+        (change)="filterEmployer()"
+      />
+    </div>
     <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
     <table class="table">
       <!-- Table Header -->

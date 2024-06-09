@@ -46,7 +46,8 @@ export class GradDashComponent implements OnInit {
   user!:User;
   college!:College;
   graduate!:Graduate;
-  
+  filteredGraduate: any[] = [];
+searchTerm: string = '';
   selectedGraduatefordelete: any=null;
 
   constructor(private graduateservice:GraduateserviceService,private fb:FormBuilder){}
@@ -73,10 +74,25 @@ export class GradDashComponent implements OnInit {
   
   }
 
+
+  filterGraduate(){
+    if (this.searchTerm) {
+      console.log(this.searchTerm);
+      this.filteredGraduate = this.graduates.filter(grad => {
+        console.log(grad.roleId.roleId + " this is filter");
+        return grad.roleId.roleId.includes(this.searchTerm);
+      });
+      this.graduates = this.filteredGraduate;
+    } else {
+      this.loadGraduates();
+    }
+  }
+
   loadGraduates() {
     // Fetch graduates from the server
     this.graduateservice.getListOfGraduates().subscribe(data=>{
       this.graduates = data;
+     
       this.graduates.forEach(i=>{
         this.graduateservice.getUserbyroleId(i.roleId.roleId).subscribe(user=>{
           i.user = user;

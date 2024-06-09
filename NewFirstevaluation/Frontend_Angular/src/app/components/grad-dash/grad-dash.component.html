@@ -1,28 +1,17 @@
-<!-- <div>
-  <h2>Graduates</h2>
-  <button (click)="createGraduate()">Add Graduate</button>
-  <table> -->
-    <!-- Table Header -->
-    <!-- <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Actions</th>
-    </tr> -->
-    <!-- Table Rows -->
-    <!-- <tr *ngFor="let graduate of graduates">
-      <td>{{ graduate.name }}</td>
-      <td>{{ graduate.email }}</td>
-      <td>
-        <button (click)="editGraduate(graduate)">Edit</button>
-        <button (click)="deleteGraduate(graduate.id)">Delete</button>
-      </td>
-    </tr>
-  </table>
-</div> -->
+
 
 <div class="card">
   <div class="card-body">
     <h2 class="card-title">Graduates Information</h2>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by GRADUATE ID"
+        [(ngModel)]="searchTerm"
+        (change)="filterGraduate()" 
+      />
+    </div>
     <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
     <div class="">
       <table class="table table-bordered">

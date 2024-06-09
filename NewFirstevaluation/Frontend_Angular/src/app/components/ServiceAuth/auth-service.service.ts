@@ -19,10 +19,10 @@ export class AuthServiceService {
   clearStorage() {
     localStorage.clear();
     sessionStorage.clear();
-    
+
   }
 
- 
+
 
   preventBackNavigation = (event: PopStateEvent) => {
     history.pushState(null, '', window.location.href);

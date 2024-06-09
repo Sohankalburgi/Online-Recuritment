@@ -18,6 +18,7 @@ export class JobdescriptionComponent implements OnInit {
   jobId!:number;
 
   studentId:string | undefined;
+  roleIdString!:string;
 
 
   constructor(private jobdescriptionservice:JobdescriptionserviceService,private router:ActivatedRoute,

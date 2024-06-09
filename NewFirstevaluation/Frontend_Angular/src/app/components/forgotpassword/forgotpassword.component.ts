@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ForgotpasswordserviceService } from './Service/forgotpasswordservice.service';
 import { Router } from '@angular/router';
+import { AuthServiceService } from '../ServiceAuth/auth-service.service';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -14,10 +15,12 @@ export class ForgotpasswordComponent {
   errorMessage: string | null = null;
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
   passwordPattern:string ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+  roleIdString!:string;
+  router: any;
 
 
   constructor(private fb: FormBuilder,private forgotPasswordService:ForgotpasswordserviceService,
-    private route:Router
+    private route:Router, private authService:AuthServiceService
   ) {
     this.forgotpasswordform = this.fb.group({
       'email': [null, [Validators.required, Validators.email,Validators.pattern(this.emailPattern)]],
@@ -28,6 +31,11 @@ export class ForgotpasswordComponent {
 
     console.log('Initial form state:', this.forgotpasswordform);
   }
+
+
+
+
+
 
   onSubmit() {
     if (this.forgotpasswordform.valid) {
@@ -42,7 +50,7 @@ export class ForgotpasswordComponent {
         alert("Internal Server Error");
       }
     )
-    } 
+    }
   }
 
   isInvalid(controlName: string): boolean {

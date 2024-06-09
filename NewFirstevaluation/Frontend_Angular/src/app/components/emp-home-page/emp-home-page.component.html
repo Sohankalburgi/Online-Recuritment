@@ -37,6 +37,10 @@
             <a class="nav-link" routerLink="/blogs/{{roleIdString}}" routerLinkActive="active">Blogs</a>
           </li>
 
+          <li class="nav-item" >
+            <a class="nav-link"  *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/gradmessage/{{roleIdString}}" routerLinkActive="active">Contact Us/Notification</a>
+          </li>
+
 
           <!-- About Us -->
           <!-- *ngIf="currentRoute !== '/login'" -->

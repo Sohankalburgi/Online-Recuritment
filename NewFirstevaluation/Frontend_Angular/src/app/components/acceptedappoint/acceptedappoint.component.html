@@ -1,29 +1,24 @@
-<div class="container mt-6 mb-4">
-
-
-  <h2> Scheduled</h2>
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Search by Applicant ID"
-      [(ngModel)]="searchTerm"
-      (change)="filterAppointments()"
-    />
-  </div>
-
-  <div class="table-responsive">
+<div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
-          <th>Full Name</th>
-          <th>Email</th>
+          <th>Application Id</th>
+          <th>Job Id</th>
+          <th>Job Name</th>
+          
+          <th>Job Location</th>
+          
+          <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of scheduledappoints">
-          <td>{{ student.jobSeeker.fullName }}</td>
+        <tr *ngFor="let student of appoints">
+          <td>{{ student.applicantId }}</td>
+          <td>{{student.jobSeeker.job.jobId}}</td>
+          <td>{{student.jobSeeker.job.jobName}}</td>
+          <td>{{student.jobSeeker.job.jobLocation}}</td>
+          <td>{{student.status}}</td>
           <td>{{ student.jobSeeker.email }}</td>
           <td>
             <button class="btn btn-primary" (click)="infobutton(student)" >MoreInfo</button>
@@ -38,7 +33,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Graduate Details</h5>
+        <h5 class="modal-title">Appointment Details</h5>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -61,13 +56,14 @@
         <p class="col-3"><strong>Applied For JobId:</strong> {{selectedAppoint.jobSeeker.job.jobId}}</p>
         <p class="col-4"><strong>Applied For Job Name:</strong> {{selectedAppoint.jobSeeker.job.jobName}}</p>
       </div>
-      <div class="row">
-        <p class="col-6"><strong>Date:</strong> {{ selectedAppoint.date }}</p>
-        <p class="col-6"><strong>Location:</strong> {{selectedAppoint.location}}</p>
+      <div class="row mb-2">
+        <p><strong>Application Status:</strong> {{selectedAppoint.status}}</p>
+    </div>
+    <div class="row">
+        <p class="col-6" *ngIf="selectedAppoint.status!='Pending'"><strong>Date:</strong> {{ selectedAppoint.date }}</p>
+        <p class="col-6" *ngIf="selectedAppoint.status!='Pending'"><strong>Location:</strong> {{selectedAppoint.location}}</p>
       </div>
-      <div>
-        <button class="btn btn-link" (click)="openResume(selectedAppoint)">View Resume</button>
-      </div>
+      
       </div>
 
       <div class="modal-footer">

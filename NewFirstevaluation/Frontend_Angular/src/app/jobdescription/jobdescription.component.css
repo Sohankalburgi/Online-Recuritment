@@ -1,63 +1,64 @@
-/*
 
+  
   .job-listing.full-width {
     width: 100%;
   }
-
+  
   .job-item {
     color : rgb(18, 26, 99);
     background-color: white;
     padding: 20px;
     margin-bottom: 20px;
   }
-
+  
   .job-item h2 {
     margin-top: 0;
   }
-
+  
   .job-item h3 {
     margin-top: 0;
     margin-bottom: 10px;
   }
-
+  
   .job-item p {
     margin-bottom: 10px;
   }
-
+  
   .job-item button {
     margin-top: 10px;
   }
-
-
+  
+  
   .rounded-end {
     border-radius: 0 5px 5px 0;
   }
-
+  
   #sidebar {
     position: relative;
     height: 100%;
   }
-
+  
   #sponsorcard, #wisecard {
-
+  
     border-radius: 2rem;
     padding: 20px;
     margin-top: 20px;
   }
-
-
+  
+  
   .job-div{
+    /* background-color: rgba(214, 215, 218,0.4); */
     background-color: rgb(215, 226, 238);
     padding-top: 50px;
   }
-
-
-
+  
+  
+  
   .rounded-start {
     border-radius: 5px 5px 5px 5px;
   }
-
-
+  
+  
   .navbar {
     background: linear-gradient(to right, #6a1b9a, #00b4d9);
     color: white;
@@ -72,55 +73,6 @@
 }
 
 .nav-link.active {
-    color: #ffffff;
-    font-weight: bold;
-} */
-
-
-
-.job-div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* Full viewport height */
-  background-image: url('https://wallpapers.com/images/hd/minimalist-aesthetic-actuary-work-laptop-wtvol12uoktgz31i.jpg'); /* Add your background image URL here */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.bg-image {
-  position: relative;
-  background: rgba(255, 255, 255, 0.9); /* White background with 90% opacity */
-  backdrop-filter: blur(5px); /* Blur effect to make text readable */
-}
-
-.card {
-  margin: 0 auto; /* Center horizontally */
-  width: 100%; /* Full width within column constraints */
-  max-width: 800px; /* Max width for readability */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for better appearance */
-}
-
-.card-title {
-  font-size: 1.5rem; /* Adjust font size for title */
-}
-
-.text-class {
-  margin-bottom: 1rem; /* Space between job details and the rest */
-}
-
-.fw-bolder, .fw-semibold {
-  margin-top: 1rem; /* Space between sections */
-}
-
-h1.text-center {
-  font-size: 2rem; /* Larger font size for "Form Details" */
-  margin-bottom: 1rem; /* Space below the title */
-}
-
-.text-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
 }

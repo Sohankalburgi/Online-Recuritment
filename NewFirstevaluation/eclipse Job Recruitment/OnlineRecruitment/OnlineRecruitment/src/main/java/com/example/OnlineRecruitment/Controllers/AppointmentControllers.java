@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +41,22 @@ public class AppointmentControllers {
 			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Created"));
 	}
 	
+	@GetMapping("/getAppointmentpending/{roleId}")
+	public List<Appointment> getAppointmentpending(@PathVariable String roleId){
+		return appointmentService.getAppointmentpending(roleId);
+	}
+	
+	@GetMapping("/acceptappoint/{roleId}")
+	public List<Appointment> getAppointmentaccepted(@PathVariable String roleId){
+		return appointmentService.getAppointmentaccepted(roleId);
+	}
+	
+	@GetMapping("/rejectedappointment/{roleId}")
+	public List<Appointment> getAppointmentrejected(@PathVariable String roleId){
+		return appointmentService.getAppointmentrejected(roleId);
+	}
+	
+	
 	@GetMapping("/getAppointmentAllNotSet/{roleId}")
 	public List<Appointment> getAlltheAppointmentwhichisNotSet(@PathVariable String roleId){
 		return appointmentService.getAllAppointmentNotSet(roleId);
@@ -52,9 +69,10 @@ public class AppointmentControllers {
 		return appointmentService.getAllAppointmentSet(roleId);
 	}
 	
-	@DeleteMapping("/rejectAppointment/{applicantId}")
+	@PutMapping("/rejectAppointment/{applicantId}")
 	public ResponseEntity<?> rejectAppointment(@PathVariable String applicantId) {
 		try { 
+			System.out.println(applicantId);
 		appointmentService.rejectAppointment(applicantId);
 		}
 		catch(Exception e) {

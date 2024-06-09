@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GradPendingComponent } from './grad-pending.component';
+import { PendingappointComponent } from './pendingappoint.component';
 
-describe('GradPendingComponent', () => {
-  let component: GradPendingComponent;
-  let fixture: ComponentFixture<GradPendingComponent>;
+describe('PendingappointComponent', () => {
+  let component: PendingappointComponent;
+  let fixture: ComponentFixture<PendingappointComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GradPendingComponent]
+      declarations: [PendingappointComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(GradPendingComponent);
+    fixture = TestBed.createComponent(PendingappointComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

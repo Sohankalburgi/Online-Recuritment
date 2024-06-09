@@ -21,7 +21,7 @@ public class Appointment {
 
 	private String location;
 	
-	private boolean isSet;
+	private int isSet;
 	
 	private String status;
 	
@@ -32,7 +32,7 @@ public class Appointment {
 	public Appointment() {
 		super();
 	}
-	public Appointment(String applicantId, String date, String location, boolean isSet, JobSeeker jobSeeker,String status) {
+	public Appointment(String applicantId, String date, String location, int isSet, JobSeeker jobSeeker,String status) {
 		super();
 		this.applicantId = applicantId;
 		this.date = date;
@@ -59,10 +59,10 @@ public class Appointment {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public boolean isSet() {
+	public int isSet() {
 		return isSet;
 	}
-	public void setSet(boolean isSet) {
+	public void setSet(int isSet) {
 		this.isSet = isSet;
 	}
 	public JobSeeker getJobSeeker() {

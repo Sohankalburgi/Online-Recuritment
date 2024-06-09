@@ -1,0 +1,99 @@
+<div style="position: static;">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+      <div class="container-fluid">
+        <!-- Centered brand -->
+        <img src="assets/ors-logo.png" alt="logo" style="height: 55px; width:190px; margin-right: 10px;">
+  
+        <!-- Toggler button for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navigation items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+            <!-- Home -->
+            <!-- *ngIf="currentRoute !== '/home'" -->
+            <li class="nav-item" >
+              <a class="nav-link"  (click)="home()" routerLinkActive="active">Home</a>
+            </li>
+  
+  
+            <li class="nav-item" >
+              <a class="nav-link"  *ngIf="roleIdString?.startsWith('GRAD')" routerLink="/gradmessage/{{roleIdString}}" routerLinkActive="active">Contact Us/Notification</a>
+            </li>
+  
+  
+            <!-- Blog  -->
+            <!-- *ngIf="currentRoute !== '/job-search'" -->
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/blogs/{{roleIdString}}" routerLinkActive="active">Blogs</a>
+            </li>
+  
+  
+            <!-- About Us -->
+            <!-- *ngIf="currentRoute !== '/login'" -->
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/about-us/{{roleIdString}}" routerLinkActive="active">About Us</a>
+            </li>
+            
+            <li class="nav-item" >
+              <a class="nav-link" *ngIf="roleIdString?.startsWith('GRAD')" routerLink="/appointstatus/{{roleIdString}}" routerLinkActive="active">Appointment Status</a>
+            </li>
+            
+           
+  
+  
+            <li class="nav-item" >
+              <a class="nav-link"  *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLinkActive="active">Login</a>
+            </li>
+  
+            <li>
+              <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/register"  routerLinkActive="active">Register</a>
+            </li>
+          </ul>
+  
+          <!-- Green dot for logged-in status -->
+          <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+        </div>
+        <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" (click)="logout()" >Logout</a>
+      </div>
+    </nav>
+  </div>
+  <div class="container mt-6 mb-4">
+
+    <h2 class="mt-4 text-center ">Appointment Status</h2>
+    <div class="container mt-4">
+        <div class="card-deck text-center">
+          <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">
+                <a routerLink="/appointstatus/{{roleIdString}}/appointpending/{{roleIdString}}">Pending</a>
+              </h5>
+              <p class="card-text">Appointments not yet scheduled.</p>
+            </div>
+          </div>
+          <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">
+                <a routerLink="/appointstatus/{{roleIdString}}/acceptappoint/{{roleIdString}}">Accepted</a>
+              </h5>
+              <p class="card-text">Accepted appointments.</p>
+            </div>
+          </div>
+          <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">
+                <a routerLink="/appointstatus/{{roleIdString}}/rejectappoint/{{roleIdString}}">Rejected</a>
+      
+              </h5>
+              <p class="card-text">Jobs which are rejected.</p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="mt-4">
+          <router-outlet></router-outlet>
+        </div>
+      </div>

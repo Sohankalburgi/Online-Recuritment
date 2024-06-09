@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GradSchedComponent } from './grad-sched.component';
+import { RejectedappointComponent } from './rejectedappoint.component';
 
-describe('GradSchedComponent', () => {
-  let component: GradSchedComponent;
-  let fixture: ComponentFixture<GradSchedComponent>;
+describe('RejectedappointComponent', () => {
+  let component: RejectedappointComponent;
+  let fixture: ComponentFixture<RejectedappointComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GradSchedComponent]
+      declarations: [RejectedappointComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(GradSchedComponent);
+    fixture = TestBed.createComponent(RejectedappointComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

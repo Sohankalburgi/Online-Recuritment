@@ -1,0 +1,91 @@
+<!-- <div class="container mt-4">
+  <div class="card-deck text-center">
+    <div class="card" [class.active]="selectedSection === 'pending'" (click)="selectSection('pending')">
+      <div class="card-body">
+        <h5 class="card-title">Pending</h5>
+        <p class="card-text">Appointments not yet scheduled.</p>
+      </div>
+    </div>
+    <div class="card" [class.active]="selectedSection === 'scheduled'" (click)="selectSection('scheduled')">
+      <div class="card-body">
+        <h5 class="card-title">Scheduled</h5>
+        <p class="card-text">Scheduled appointments.</p>
+      </div>
+    </div>
+    <div class="card" [class.active]="selectedSection === 'applied'" (click)="selectSection('applied')">
+      <div class="card-body">
+        <h5 class="card-title">Applied</h5>
+        <p class="card-text">Jobs you have applied for.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+
+
+<!-- <div class="container mt-4">
+  <div class="d-flex justify-content-center">
+    <div class="card-deck text-center">
+      <div class="card" [class.active]="selectedSection === 'pending'" (click)="selectSection('pending')">
+        <div class="card-body">
+          <h5 class="card-title">Pending</h5>
+          <p class="card-text">Appointments not yet scheduled.</p>
+        </div>
+      </div>
+      <div class="card" [class.active]="selectedSection === 'scheduled'" (click)="selectSection('scheduled')">
+        <div class="card-body">
+          <h5 class="card-title">Scheduled</h5>
+          <p class="card-text">Scheduled appointments.</p>
+        </div>
+      </div>
+      <div class="card" [class.active]="selectedSection === 'applied'" (click)="selectSection('applied')">
+        <div class="card-body">
+          <h5 class="card-title">Applied</h5>
+          <p class="card-text">Jobs you have applied for.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+
+
+<div class="container mt-4">
+  <div class="card-deck text-center">
+    <div class="card" [class.active]="selectedSection === 'pending'" (click)="selectSection('pending')">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a routerLink="/grad-status/pending">Pending</a>
+        </h5>
+        <p class="card-text">Appointments not yet scheduled.</p>
+      </div>
+    </div>
+    <div class="card" [class.active]="selectedSection === 'scheduled'" (click)="selectSection('scheduled')">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a routerLink="/grad-status/scheduled">Scheduled</a>
+        </h5>
+        <p class="card-text">Scheduled appointments.</p>
+      </div>
+    </div>
+    <div class="card" [class.active]="selectedSection === 'applied'" (click)="selectSection('applied')">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a routerLink="/grad-status/applied">Applied</a>
+
+        </h5>
+        <p class="card-text">Jobs you have applied for.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

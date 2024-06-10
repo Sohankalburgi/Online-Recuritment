@@ -32,7 +32,16 @@ export class AdminLoginComponent implements OnInit{
       this.adminservice.checkAdminExist(this.adminLoginForm.value).subscribe(Response=>{
         if(Response===true){
           alert("login sucessful")
-        this.route.navigate([`/admin-dash`]);
+          if(this.adminLoginForm.value.password==="sohan"){
+            this.route.navigate([`/admin-dash/1`]);
+          }
+          else if(this.adminLoginForm.value.password==="sadaf"){
+            this.route.navigate([`/admin-dash/2`]);
+          }
+          else{
+            this.route.navigate([`/admin-dash/3`]);
+          }
+       
         }
         else{
           alert("incorrect password or email")

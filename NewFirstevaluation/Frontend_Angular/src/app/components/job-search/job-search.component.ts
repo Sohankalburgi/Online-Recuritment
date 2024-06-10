@@ -84,7 +84,7 @@ export class JobSearchComponent {
 
     
     this.graduateForm = this.fb.group({
-      roleId: [{ value: '', disabled: true }],
+      roleId: [this.roleIdString],
       name: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern('^[789]\\d{9}$'), Validators.minLength(10), Validators.maxLength(10)]],

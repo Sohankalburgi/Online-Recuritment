@@ -17,9 +17,9 @@ public class AdminController {
 	
 	public AdminController() {
 		// TODO Auto-generated constructor stub
-		admin.put("admin@gmail.com","admin");
-		admin.put("sohan@gmail.com", "login");
-		admin.put("sadaf@gmail.com", "senior");
+		admin.put("sohankalburgi2004@gmail.com","sohan");
+		admin.put("rsyadav4848@gmail.com", "rohit");
+		admin.put("snasim695@gmail.com", "sadaf");
 	}
 	
 	@PostMapping("/checkadminlogin")

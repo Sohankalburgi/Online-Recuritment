@@ -115,7 +115,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'admin-dash',
+    path: 'admin-dash/:person',
     component: AdminDashComponent, children: [
       { path: 'graduates', component: GradDashComponent },
       { path: 'employers', component: EmpDashComponent },

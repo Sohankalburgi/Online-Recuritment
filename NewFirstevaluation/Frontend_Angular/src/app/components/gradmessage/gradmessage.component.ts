@@ -34,6 +34,7 @@ export class GradmessageComponent {
         senderId : this.roleIdString,
         message : this.contactForm.value.message,
         receiverId:''
+        
       }
       if(this.isLoading!=true){
         alert("loading,please Wait Until confirmation message Sent")

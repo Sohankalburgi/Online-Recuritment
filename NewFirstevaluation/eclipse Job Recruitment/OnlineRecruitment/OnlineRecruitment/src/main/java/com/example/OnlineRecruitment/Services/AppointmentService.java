@@ -36,8 +36,8 @@ public class AppointmentService {
 		String email = appoint.getJobSeeker().getEmail();
 		String JobName = appoint.getJobSeeker().getJob().getJobName();
 		String JobDescription = appoint.getJobSeeker().getJob().getJobDescription();
-		String text = "Your Application/appointmentId is : "+applicantId+" "+"Appointment Date is :"+appointment.getDate()+" "+
-				 "Location :"+appointment.getLocation()+" "+"Job Name :"+JobName+" "+"Job Description :"+JobDescription;
+		String text = "Your Application/appointmentId is : "+applicantId+"\n "+"Appointment Date is :"+appointment.getDate()+"\n "+
+				 "Location :"+appointment.getLocation()+"\n "+"Job Name :"+JobName+"\n "+"Job Description :"+JobDescription;
 		
 		Message message = new Message();
 		message.setMessage(text);
